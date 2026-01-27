@@ -1,0 +1,1710 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\documentclass[
+]{book}
+\usepackage{xcolor}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{longtable,booktabs,array}
+\newcounter{none} % for unnumbered tables
+\usepackage{multirow}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\newsavebox\pandoc@box
+\newcommand*\pandocbounded[1]{% scales image to fit in text height/width
+  \sbox\pandoc@box{#1}%
+  \Gscale@div\@tempa{\textheight}{\dimexpr\ht\pandoc@box+\dp\pandoc@box\relax}%
+  \Gscale@div\@tempb{\linewidth}{\wd\pandoc@box}%
+  \ifdim\@tempb\p@<\@tempa\p@\let\@tempa\@tempb\fi% select the smaller of both
+  \ifdim\@tempa\p@<\p@\scalebox{\@tempa}{\usebox\pandoc@box}%
+  \else\usebox{\pandoc@box}%
+  \fi%
+}
+% Set default figure placement to htbp
+\def\fps@figure{htbp}
+\makeatother
+\usepackage{svg}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\author{}
+\date{}
+
+\begin{document}
+\frontmatter
+
+\mainmatter
+Contents
+
+\hyperref[image-aquisition-details]{Image Aquisition Details
+\hyperref[image-aquisition-details]{2}}
+
+\hyperref[identification-of-precise-handcrafted-features-for-habitat-imaging]{Identification
+of Precise Handcrafted Features for Habitat Imaging
+\hyperref[identification-of-precise-handcrafted-features-for-habitat-imaging]{5}}
+
+\hyperref[development-and-validation-of-biologically-informed-ct-habitats]{Development
+and Validation of Biologically-Informed CT Habitats
+\hyperref[development-and-validation-of-biologically-informed-ct-habitats]{16}}
+
+\hyperref[clinical-relevance-of-ct-habitats]{Clinical Relevance of CT
+Habitats \hyperref[clinical-relevance-of-ct-habitats]{24}}
+
+Annex A
+
+\chapter{Image Aquisition Details}\label{image-aquisition-details}
+
+\subsection{A.1. MRI Acquisition Details
+(PREDICT)}\label{a.1.-mri-acquisition-details-predict}
+
+Patients were scanned on either a 1.5T Siemens Avanto or a 3T GE SIGNA
+Pioneer system. Each patient was scanned on only one of the two
+scanners. The protocol included anatomical imaging (T2-weighted and
+T1-weighted), diffusion MRI, variable flip angle spoiled gradient echo
+(SGrE) imaging for T1 mapping, and dynamic contrast-enhanced (DCE) MRI.
+
+\subsubsection{\texorpdfstring{\textbf{1.5T Siemens Avanto
+system}}{1.5T Siemens Avanto system}}\label{t-siemens-avanto-system}
+
+The protocol included high-resolution anatomical T2w and T1w scans,
+diffusion MRI and different spoiled gradient echo (SGrE) sequences, such
+as those for T1 mapping and dynamic contrast enhanced (DCE) MRI.
+
+\begin{itemize}
+\item
+  Anatomical T2w scan: turbo spin echo, TE = 82 ms, TR = 4500 ms, turbo
+  factor of 29, echo spacing 8.2 ms, NEX = 8, 2 concatenations,
+  resolution of 1.4mm × 1.4mm, slice thickness of 5 mm, GRAPPA = 2,
+  acquisition in free breathing.
+\item
+  Anatomical T1w scan: turbo spin echo, TE = 6.3 ms, TR = 470 ms, turbo
+  factor of 11, echo spacing 6.26 ms, NEX = 6, 6 concatenations,
+  resolution of 1.4mm × 1.4mm, slice thickness of 5 mm, GRAPPA = 2,
+  acquisition in free breathing.
+\item
+  Diffusion MRI: single-shot twice-refocused spin echo EPI, b = \{0, 50,
+  100, 400, 900, 1200, 1600\} s/mm\textsuperscript{2}, TR = 7900 ms,
+  averaging of 3 mutually-orthogonal directions, NEX = 2, 1
+  concatenation, resolution of 1.9mm × 1.9mm, slice thickness of 6 mm,
+  SPAIR fat suppression, GRAPPA = 2, EPI factor 150, echo spacing 0.82
+  ms, each b-value acquired at TE = \{93 ms, 105 ms, 120 ms\},
+  acquisition in free breathing. Additionally, one b = 0 image at TE =
+  93 ms was acquired with reversed phase encoding polarity.
+\item
+  SGrE for T1 mapping: FLASH, TE = 1.76 ms, TR = 4.59 ms, NEX = 1, 1
+  concatenation, resolution of 2.7mm × 2.7mm, slice thickness of 6 mm,
+  flip angles of \{5°, 15°, 20°\}, GRAPPA = 2, acquisition in free
+  breathing.
+\item
+  SGrE for DCE: same acquisition as for T1 mapping with fixed flip angle
+  of 15°; 26 dynamic acquisitions with temporal resolution of 10s,
+  Gadovist with dose of 0.5ml/Kg injected at 3ml/s followed by a bolus
+  of physiological solution of 20ml at 3ml/s, injection delay of 10s,
+  acquisition in free breathing.
+\end{itemize}
+
+\subsubsection{\texorpdfstring{\textbf{3T GE SIGNA Pioneer
+system}}{3T GE SIGNA Pioneer system}}\label{t-ge-signa-pioneer-system}
+
+The protocol included high-resolution anatomical T2w and T1w scans,
+diffusion MRI and different spoiled gradient echo (SGrE) sequences, as
+those for T1 mapping and DCE imaging.
+
+\begin{itemize}
+\item
+  Anatomical T2w scan: fast spin echo, TE = 50 ms, TR = 3750 ms, turbo
+  factor of 16, NEX = 2, resolution of 1.4mm × 1.4mm, slice thickness of
+  6 mm, respiratory-gated acquisition.
+\item
+  Anatomical T1w scan: navigated SGrE LAVA-Flex providing water/fat
+  images, TE = 2.60 ms, TR = 5.38 ms, resolution of 1.4mm × 1.4mm, slice
+  thickness of 6 mm, flip angle of 12°, acquisition in free-breathing
+  after liver motion measurement.
+\item
+  Diffusion MRI: single-shot pulsed gradient spin echo EPI, b = \{0, 50,
+  100, 400, 900, 1200, 1500\} s/mm\textsuperscript{2}, TR = 3500ms,
+  averaging of 3 mutually-orthogonal directions, NEX = 2, resolution of
+  2.4mm × 2.4mm, slice thickness of 6 mm, ASPIR fat suppression, ASSET =
+  2, echo spacing 0.80 ms, each b-value acquired at TE = \{75 ms, 90 ms,
+  105 ms\}, respiratory-gated acquisition.
+\item
+  SGrE for T1 mapping: LAVA, TE = 1.2 ms, TR = 2.72 ms, NEX = 1,
+  resolution of 2.4mm × 2.4mm; slice thickness of 6 mm; flip angles of
+  \{5°, 10°, 15°\}, ASSET = 2, acquisition of two separate images in
+  breathhold, acquisition of the vendor's B1 map.
+\item
+  SGrE for DCE: same acquisition as for T1 mapping with fixed flip angle
+  of 12°; 26 dynamic acquisitions with temporal resolution of 10s,
+  Clariscan 0.5 mmol/ml with dose of 0.2ml/Kg injected at of 0.5ml/kg at
+  3ml/s followed by a bolus of physiological solution of 20ml at 3ml/s,
+  injection delay of 10s, acquisition in free breathing.
+\end{itemize}
+
+\subsection{A.2. mpMRI Maps Biological
+Ranges}\label{a.2.-mpmri-maps-biological-ranges}
+
+\textbf{Table A.1. mpMRI maps dervied with biological ranges.} Thirteen
+quantitative maps were derived from diffusion-relaxation MRI, variable
+flip angle T1 mapping, and dynamic contrast-enhanced MRI.
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\centering\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.0651}}
+  >{\centering\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2603}}
+  >{\centering\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.1544}}
+  >{\centering\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2124}}
+  >{\centering\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2967}}@{}}
+\toprule\noalign{}
+\multicolumn{2}{@{}>{\centering\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.3254} + 2\tabcolsep}}{%
+\begin{minipage}[b]{\linewidth}\centering
+\textbf{mpMRI metric}
+\end{minipage}} & \begin{minipage}[b]{\linewidth}\centering
+\textbf{Computed from}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\textbf{Units}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\textbf{Biological Range}
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+ADCₜ & Tissue ADC & Diffusion-relaxation MRI & μm²/ms & 0.0-3.0 \\
+ADCᵥ & Vascular ADC & Diffusion-relaxation MRI & μm²/ms & 3.0-150.0 \\
+Kₜ & Tissue kurtosis excess & Diffusion-relaxation MRI & Dimensionless &
+0.0-5.0 \\
+fᵥ & Vascular signal fraction & Diffusion-relaxation MRI & Normalized &
+0.0-1.0 \\
+T₂ₜ & Tissue T₂ & Diffusion-relaxation MRI & ms & 0.0-800.0 \\
+D₀ & Intrinsic diffusivity & Advanced diffusion model & μm²/ms &
+0.8-3.0 \\
+vCS & Volume-weighted cell size & Advanced diffusion model & μm &
+5.0-40.0 \\
+fᵢₙ & Intracellular fraction & Advanced diffusion model & Normalized &
+0.0-1.0 \\
+CD & Cell density & Advanced diffusion model & Cells/mm³ &
+0.0-8000000.0 \\
+T₁ & T₁ & Variable flip angle SGrE & ms & 0.0-5000.0 \\
+T2\textsuperscript{*} & T2\textsuperscript{*} & Multiecho SGrE & ms &
+0.0-200.0 \\
+K\textsuperscript{trans} & Capillary permeability & DCE MRI & min⁻¹ &
+0.0-4.0 \\
+vₑ & Extracellular-extravascular volume & DCE MRI & Normalized &
+0.0-1.0 \\
+\end{longtable}
+}
+
+Annex B
+
+\chapter{Identification of Precise Handcrafted Features for Habitat
+Imaging}\label{identification-of-precise-handcrafted-features-for-habitat-imaging}
+
+\subsection{B.1. Cohort
+Characteristics}\label{b.1.-cohort-characteristics}
+
+\textbf{Table B.1. Total number of patients, images, and lesions per
+cohort and lesion location.}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1976}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1330}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1327}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1331}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1327}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1331}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1327}}@{}}
+\toprule\noalign{}
+\multirow{2}{=}{\begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Primary tumor}
+\end{minipage}} &
+\multicolumn{2}{>{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.2657} + 2\tabcolsep}}{%
+\begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Patients}
+\end{minipage}} &
+\multicolumn{2}{>{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.2658} + 2\tabcolsep}}{%
+\begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Images}
+\end{minipage}} &
+\multicolumn{2}{>{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.2658} + 2\tabcolsep}@{}}{%
+\begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Lesions}
+\end{minipage}} \\
+& \begin{minipage}[b]{\linewidth}\raggedright
+Liver
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Lung
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Liver
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Lung
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Liver
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Lung
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Colorectal & 63 & 12 & 186 & 29 & 959 & 122 \\
+Lung & 13 & 72 & 22 & 102 & 89 & 141 \\
+Neuroendocrine & 86 & 0 & 86 & 0 & 447 & 0 \\
+Mixed & 44 & 41 & 93 & 87 & 366 & 312 \\
+\multirow{2}{=}{Total} & 206 & 125 & 387 & 218 & 1861 & 575 \\
+&
+\multicolumn{2}{>{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.2657} + 2\tabcolsep}}{%
+331} &
+\multicolumn{2}{>{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.2658} + 2\tabcolsep}}{%
+605} &
+\multicolumn{2}{>{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.2658} + 2\tabcolsep}@{}}{%
+2436} \\
+\end{longtable}
+}
+
+\textbf{Table B.2. Image acquisition parameters per cohort.}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2898}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.1927}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.1549}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.1886}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.1739}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Colorectal}
+
+\textbf{(n=215)}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Lung}
+
+\textbf{(n=124)}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Neuroendocrine}
+
+\textbf{(n=86)}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Mixed}
+
+\textbf{(n=180)}
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\textbf{Manufacturers}
+
+SIEMENS/PHILIPS/
+
+TOSHIBA/GENERAL ELECTRIC & 138/58/9/10 & 63/40/0/21 & 22/35/6/23 &
+144/23/3/10 \\
+\textbf{Tube Voltage (kVP)}
+
+100/110/120/130/140/unknown & 25/17/161/0/0/12 & 6/1/105/3/0/9 &
+10/3/70/1/2/0 & 14/7/158/0/1/0 \\
+\textbf{Reconstruction kernel}
+
+SOFT/STANDARD/B
+
+B20f/B30f/B31f
+
+I31s/I50s/unkown & 1/7/96
+
+16/38/12
+
+15/6/20 & 14/7/43
+
+11/23/0
+
+0/0/22 & 1/19/36
+
+2/2/4
+
+0/0/19 & 2/11/21
+
+9/112/4
+
+0/0/21 \\
+\textbf{Slice thickness (mm)*} & 2.0 {[}2.00-5.00{]} & 2.5 {[}2.0-5.0{]}
+& 2.0 {[}2.0-3.0{]} & 5.0 {[}1.00-5.00{]} \\
+\textbf{Pixel spacing (mm)*} & 0.92 {[}0.77-0.98{]} & 0.91
+{[}0.81-0.98{]} & 0.75 {[}0.70-0.82{]} & 0.98 {[}0.82-0.98{]} \\
+\multicolumn{5}{@{}>{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{1.0000} + 8\tabcolsep}@{}}{%
+(*) Median {[}IQR{]}} \\
+\end{longtable}
+}
+
+\textbf{Table B.3. List of primary tumor types included within the mixed
+cohort.}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1457}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1425}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1423}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1424}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1423}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1424}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1423}}@{}}
+\toprule\noalign{}
+\multirow{2}{=}{\begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Primary tumor}
+\end{minipage}} &
+\multicolumn{2}{>{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.2848} + 2\tabcolsep}}{%
+\begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Patients}
+\end{minipage}} &
+\multicolumn{2}{>{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.2847} + 2\tabcolsep}}{%
+\begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Images}
+\end{minipage}} &
+\multicolumn{2}{>{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.2847} + 2\tabcolsep}@{}}{%
+\begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Lesions}
+\end{minipage}} \\
+& \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Liver}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Lung}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Liver}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Lung}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Liver}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Lung}
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Adrenal & 3 & 0 & 5 & 0 & 35 & 5 \\
+Biliary Tract & 11 & 5 & 24 & 11 & 71 & 66 \\
+Bladder & 3 & 3 & 5 & 5 & 41 & 20 \\
+Bone & 0 & 1 & 0 & 3 & 0 & 21 \\
+Breast & 4 & 2 & 9 & 6 & 32 & 6 \\
+Cervix & 2 & 2 & 3 & 3 & 21 & 21 \\
+Esophagus & 1 & 2 & 2 & 4 & 8 & 9 \\
+Head\&Neck & 2 & 4 & 4 & 11 & 13 & 13 \\
+Kidney & 1 & 2 & 2 & 3 & 4 & 18 \\
+Liver & 2 & 1 & 3 & 1 & 11 & 1 \\
+Ovary & 1 & 2 & 2 & 4 & 4 & 26 \\
+Pancreas & 2 & 0 & 4 & 0 & 12 & 0 \\
+Penis & 1 & 0 & 3 & 0 & 9 & 0 \\
+Skin & 6 & 11 & 13 & 19 & 68 & 39 \\
+Stomach & 4 & 0 & 10 & 0 & 29 & 0 \\
+Thymus & 1 & 0 & 4 & 0 & 8 & 0 \\
+Thyroid & 0 & 6 & 0 & 17 & 0 & 52 \\
+Total & 44 & 41 & 93 & 87 & 366 & 312 \\
+&
+\multicolumn{2}{>{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.2848} + 2\tabcolsep}}{%
+85} &
+\multicolumn{2}{>{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.2847} + 2\tabcolsep}}{%
+180} &
+\multicolumn{2}{>{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.2847} + 2\tabcolsep}@{}}{%
+678} \\
+\end{longtable}
+}
+
+\subsection{B.2. Radiomics Features and
+Computation}\label{b.2.-radiomics-features-and-computation}
+
+\textbf{Table B.4. List of Radiomics features analyzed in this study.}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.1042}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.3432}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.1072}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.4344}}@{}}
+\caption{93 voxel-wise features were computed. However, 91 were analyzed
+after excluding GLCM\_MCC (for having missing values in many cases due
+to memory error) and FirstOrder\_TotalEnergy (for being equal to
+FirstOrder\_Energy for constant kernel size during computation). Feature
+definitions are available in the IBSI reference manual (Zwanenburg et
+al., 2020).}\tabularnewline
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Class}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Feature}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Class}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Feature}
+\end{minipage} \\
+\midrule\noalign{}
+\endfirsthead
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Class}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Feature}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Class}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Feature}
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\multirow{2}{=}{\textbf{First order}} & \multirow{2}{=}{10Percentile
+
+90Percentile
+
+Energy
+
+Entropy
+
+InterquartileRange
+
+Kurtosis
+
+Maximum
+
+MeanAbsoluteDeviation
+
+Mean
+
+Median
+
+Minimum
+
+Range
+
+RobustMeanAbsoluteDeviation
+
+RootMeanSquared
+
+Skewness
+
+TotalEnergy
+
+Uniformity
+
+Variance} & \textbf{GLRLM} & GrayLevelNonUniformity
+
+GrayLevelNonUniformityNormalized
+
+GrayLevelVariance
+
+HighGrayLevelRunEmphasis
+
+LongRunEmphasis
+
+LongRunHighGrayLevelEmphasis
+
+LongRunLowGrayLevelEmphasis
+
+LowGrayLevelRunEmphasis
+
+RunEntropy
+
+RunLengthNonUniformity
+
+RunLengthNonUniformityNormalized
+
+RunPercentage
+
+RunVariance
+
+ShortRunEmphasis
+
+ShortRunHighGrayLevelEmphasis
+
+ShortRunLowGrayLevelEmphasis \\
+& & \multirow{2}{=}{\textbf{GLSZM}} &
+\multirow{2}{=}{GrayLevelNonUniformity
+
+GrayLevelNonUniformityNormalized
+
+GrayLevelVariance
+
+HighGrayLevelZoneEmphasis
+
+LargeAreaEmphasis
+
+LargeAreaHighGrayLevelEmphasis
+
+LargeAreaLowGrayLevelEmphasis
+
+LowGrayLevelZoneEmphasis
+
+SizeZoneNonUniformity
+
+SizeZoneNonUniformityNormalized
+
+SmallAreaEmphasis
+
+SmallAreaHighGrayLevelEmphasis
+
+SmallAreaLowGrayLevelEmphasis
+
+ZoneEntropy
+
+ZonePercentage
+
+ZoneVariance} \\
+\multirow{2}{=}{\textbf{GLCM}} & \multirow{2}{=}{Autocorrelation
+
+ClusterProminence
+
+ClusterShade
+
+ClusterTendency
+
+Contrast
+
+Correlation
+
+DifferenceAverage
+
+DifferenceEntropy
+
+DifferenceVariance
+
+Id
+
+Idm
+
+Idmn
+
+Idn
+
+Imc1
+
+Imc2
+
+InverseVariance
+
+JointAverage
+
+JointEnergy
+
+JointEntropy
+
+MCC
+
+MaximumProbability
+
+SumAverage
+
+SumEntropy
+
+SumSquares} \\
+& & \multirow{2}{=}{\textbf{GLDM}} & \multirow{2}{=}{DependenceEntropy
+
+DependenceNonUniformity
+
+DependenceNonUniformityNormalized
+
+DependenceVariance
+
+GrayLevelNonUniformity
+
+GrayLevelVariance
+
+HighGrayLevelEmphasis
+
+LargeDependenceEmphasis
+
+LargeDependenceHighGrayLevelEmphasis
+
+LargeDependenceLowGrayLevelEmphasis
+
+LowGrayLevelEmphasis
+
+SmallDependenceEmphasis
+
+SmallDependenceHighGrayLevelEmphasis
+
+SmallDependenceLowGrayLevelEmphasis} \\
+\textbf{NGTDM} & Busyness
+
+Coarseness
+
+Complexity
+
+Contrast
+
+Strength \\
+\end{longtable}
+
+Table B.5. Image processing and radiomics feature computation
+parameters.
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.4819}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5181}}@{}}
+\toprule\noalign{}
+\multicolumn{2}{@{}>{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{1.0000} + 2\tabcolsep}@{}}{%
+\begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Image Processing}
+\end{minipage}} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Software & PyRadiomics v3.0.1, installed in Python 3.7.10 \\
+Bounding box & Defined by the segmentation, extended by default padding
+distance. \\
+Resampled voxel spacing (mm) & 1 x 1 x 1 \\
+Image interpolation method & B-spline \\
+Intensity rounding & None \\
+ROI interpolation method & Nearest neighbor \\
+Resegmentation & None \\
+\multicolumn{2}{@{}>{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{1.0000} + 2\tabcolsep}@{}}{%
+\textbf{Feature Computation}} \\
+Kernel radius & 1 / 3mm \\
+Discretization (fixed bin size) & 12/25HU \\
+Image filter & None \\
+maskedKernel & True (only voxels in the kernel that were also segmented
+in the ROI were used for calculation) \\
+Initvalue & NaN (voxels outside ROI were considered as transparent) \\
+Distance weighting for GLCM, GLRLM, NGTDM & No weighting \\
+GLCM Symmetry & Symmetric \\
+GLCM distance, GLSZM linkage distance, GLDZM linkage distance, NGTDM
+distance & Chebyshev distance δ = 1 \\
+NGTDM coarseness & Coarseness parameter α = 0 \\
+\end{longtable}
+}
+
+\subsection{B.3. Image Perturbation}\label{b.3.-image-perturbation}
+
+Image perturbation was carried out in three ways: rotation, translation,
+and noise addition. While the first two emulate changes in patient
+positioning, the latter represents the noise present in different voxel
+intensities in CT images. Perturbations were performed as described in
+(Bernatowicz et al., 2021), where the authors demonstrated that the
+combination of these three perturbations simulate the retest scenario.
+Briefly, we added Gaussian noise (mean 0, standard deviation as present
+in the image); for translation, we shifted the voxel grid by a fraction
+of the image voxel spacing following; finally, we rotated the image
+around the z-axis by an angle of 0.5°.
+
+\subsection{B.4. Habitat Computation}\label{b.4.-habitat-computation}
+
+To take into account intravoxel heterogeneity, we decided to choose a
+probabilistic model, Gaussian Mixture Models (GMMs), for clustering
+rather than a deterministic approach. GMMs, which have been previously
+used in similar contexts (J. Chen et al., 2019; Jardim-Perassi et al.,
+2019), are generative probabilistic models that find a mixture of
+multiple Gaussian probability distributions that best fit the data. The
+Expectation-Maximization (EM) algorithm is used to estimate the model
+parameters (Bishop, 2006). A GMM is represented by the following
+formula:
+
+\[P\ (x) = \sum_{}^{}(\pi_{k}\ N\ (x\ |\ \mu_{k},\ \sum_{k})\]
+
+where
+
+P(x) : probability density of the data point x
+
+\(\mathbf{\pi}_{\mathbf{k}}\): mixing coefficient for the kth Gaussian
+component
+
+\(\mathbf{N}\ (\mathbf{x}\ |\ \mathbf{\mu}_{\mathbf{k}},\ \sum_{\mathbf{k}})\):
+kth Gaussian component with mean \(\mathbf{\mu}_{\mathbf{k}}\) and
+covariance matrix \(\sum_{\mathbf{k}}\)
+
+To determine the optimal number of habitats (k), we used the Bayesian
+Information Criterion (BIC). The formula for BIC is:
+
+\[BIC = \ {- \ 2\ log}{(L)\  + \ d\ log(n)}\]
+
+where
+
+L : likelihood of the data given the model
+
+d: number of parameters
+
+n: number of data points
+
+The BIC score is a measure of the trade-off between model complexity and
+goodness of fit. It penalizes models with more parameters, such as GMMs
+with more clusters. In general, lower BIC scores indicate better model
+fit. However, depending on data characteristics, a clear minimum in BIC
+scores might not be observed and thus, the gradient can be used to
+determine the optimal number of clusters. This was our case and
+therefore we performed a GMM fit for different values of clusters (k):
+\{2, 3, 4 and 5\}. The maximum number of 5 clusters was determined by
+being the maximum number of tissue types observed in histology by an
+experienced pathologist. The optimal value of k was the one where the
+change in BIC score with respect to k was maximal, which was an
+indication that adding more clusters after that point does not improve
+the model fit significantly. A cluster number was automatically selected
+by BIC using the precise original radiomics data and was given as a
+parameter to the GMM model to compute imaging habitats in both the
+original and perturbed data. GMM was implemented using Python package
+scikit-learn (v1.0.2) with a random seed of 123, and default parameters
+(except for the number of clusters), specifically maximum iteration of
+100, convergence threshold of 10\textsuperscript{-3}, full covariance
+type and initialization with kmeans.
+
+In addition, The Hungarian algorithm (also known as the Kuhn-Munkres
+algorithm) (Kuhn, 1955), was used to match habitats between original and
+perturbed data. The Hungarian algorithm is a combinatorial optimization
+algorithm that solves the assignment problem in polynomial time. It
+finds an optimal one-to-one matching between two sets by minimizing the
+total cost (in our case, the difference in cluster assignments).
+
+Finally, to quantify habitat stability, we computed the Dice Similarity
+Coefficient (DSC) (Zou et al., 2004) between original and perturbed
+habitats for each habitat within a lesion, across all lesions. The DSC
+is a widely used metric for evaluating the overlap between two sets,
+with a higher DSC indicating greater similarity.
+
+All codes are publicly available at
+\url{https://github.com/radiomicsgroup/precise-habitats}.
+
+\subsection{B.5. Intraclass Correlation
+Coefficient}\label{b.5.-intraclass-correlation-coefficient}
+
+An Intraclass Correlation Coefficient (ICC) value of 1 indicates that a
+feature is highly repeatable/reproducible whereas a value of 0 implies
+no reliability. Negative ICC values were truncated at 0 as proposed and
+done previously (Bartko, 1976; Fornacon-Wood et al., 2020). The ICC is
+calculated by mean squares obtained through the analysis of variance
+(ANOVA). In this study, we use two versions of the ICC that are based on
+a two-way mixed effects ANOVA model, following Koo's guidelines. Below
+we describe the formulas used to compute the ICC formulas. More
+information regarding such formulas can be found in the highly cited
+paper from McGraw and Wong.
+
+To compute the ANOVA model let's consider a dataframe with dimensions
+\(\mathbf{n}\  \times \mathbf{k}\) dataframe where \(\mathbf{n}\) is the
+total number of voxels (rows) for one region of interest (ROI) and
+\(\mathbf{k}\) is the total number of conditions or measurements
+(columns). In our case, \(\mathbf{k}\)=2. For repeatability the two
+conditions are original-perturbed (test-retest) and for reproducibility
+against kernel size the two conditions are computation with radius
+kernel 1mm or radius kernel 3mm (or bin size 12HU or 25HU in the case of
+reproducibility against bin size). Each voxel measurement is indexed as
+\(\mathbf{Y}_{\mathbf{ij}}\) where \emph{i} denotes the voxel (\emph{i}
+= 1, \ldots{} \emph{n)} and \emph{j} denotes the measurement under the
+repeatability/reproducibility condition (\emph{j = 1 \ldots{} k)}. We
+define the following concepts:
+
+\({\overline{\mathbf{Y}}}_{\mathbf{i}}\): mean of all voxel values in a
+column
+
+\[{\overline{\mathbf{Y}}}_{\mathbf{i}} = \frac{\sum_{\mathbf{j} = \mathbf{1}}^{\mathbf{k}}\mathbf{Y}_{\mathbf{ij}}}{\mathbf{k}}\]
+
+\({\overline{\mathbf{Y}}}_{\mathbf{j}}:\) mean of all voxel values in a
+column
+
+\[{\overline{\mathbf{Y}}}_{\mathbf{j}} = \frac{\sum_{\mathbf{i} = \mathbf{1}}^{\mathbf{n}}\mathbf{Y}_{\mathbf{ij}}}{\mathbf{n}}\]
+
+\(\mathbf{\mu}:\) mean of all values (also called \emph{grand mean})
+
+\[\mathbf{\mu} = \frac{\sum_{\mathbf{j} = \mathbf{1}}^{\mathbf{k}}{\sum_{\mathbf{i} = \mathbf{1}}^{\mathbf{n}}\mathbf{Y}_{\mathbf{ij}}}}{\mathbf{n}*\mathbf{k}}\]
+
+\({\mathbf{\sigma}_{\mathbf{w}}}^{\mathbf{2}}:\ \)Within-voxel variance,
+the estimated variance of repeated measurements
+
+\[{\mathbf{\sigma}_{\mathbf{w}}}^{\mathbf{2}} = \frac{\sum_{\mathbf{j} = \mathbf{1}}^{\mathbf{k}}{(\mathbf{Y}_{\mathbf{ij}} - {\overline{\mathbf{Y}}}_{\mathbf{i}})\ }^{\mathbf{2}}}{\mathbf{k} - \mathbf{1}}\]
+
+\(\mathbf{\sigma}_{\mathbf{w}}\ :\ \ \)Within-voxel standard deviation,
+the standard deviation we get if we measure the voxel multiple times.
+Calculated by averaging the within-subject sample variances. Since we
+have a variance per voxel and we can't meaningfully take the average of
+a list of standard deviations, we first calculate the variance for each
+voxel, and then compute the average of those, and finally square root
+that mean variance (Ye et al., 2022).
+
+\[\mathbf{\sigma}_{\mathbf{w}} = \sqrt{\frac{\sum_{\mathbf{i} = \mathbf{1}}^{\mathbf{n}}\frac{\sum_{\mathbf{j} = \mathbf{1}}^{\mathbf{k}}{(\mathbf{Y}_{\mathbf{ij}} - {\overline{\mathbf{Y}}}_{\mathbf{i}})\ }^{\mathbf{2}}}{\mathbf{k} - \mathbf{1}}}{\mathbf{n}}}\]
+
+The degrees of freedom, sum squares and mean square expectations that
+correspond to a two-way mixed ANOVA model are summarized below.
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2511}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.1648}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2996}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2846}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Source of Variation}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Degrees of freedom}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Sum Squares}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Mean Square Expectations}
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Conditions (columns) & dfc = k -1 &
+\(\mathbf{SSC} = \ \sum_{\mathbf{j} = \mathbf{1}}^{\mathbf{k}}{\mathbf{n}\  \times \ {({\overline{\mathbf{Y}}}_{\mathbf{j}} - \mathbf{\mu})\ }^{\mathbf{2}}}\)
+&
+\(\mathbf{MSC} = \frac{\mathbf{SSC}}{\mathbf{dfc}\  \times \ \mathbf{n}\ }\) \\
+Voxels (rows) & dfr = n -1 &
+\(\mathbf{SSR} = \ \sum_{\mathbf{i} = \mathbf{1}}^{\mathbf{n}}{\mathbf{k}\  \times \ {({\overline{\mathbf{Y}}}_{\mathbf{i}} - \mathbf{\mu})\ }^{\mathbf{2}}}\)
+& \(\mathbf{MSR} = \frac{\mathbf{SSR}}{\mathbf{dfr}\ }\) \\
+Total & &
+\(\mathbf{SST} = \ \sum_{\mathbf{j} = \mathbf{1}}^{\mathbf{k}}{\sum_{\mathbf{i} = \mathbf{1}}^{\mathbf{n}}{(\mathbf{Y}_{\mathbf{ij}} - \mathbf{\mu})\ }^{\mathbf{2}}\ }\)
+& \\
+Error (or residual) & dfe = (n -1)(k -1) &
+\(\mathbf{SSE} = \mathbf{SST} - \mathbf{SSC} - \mathbf{SSR}\) &
+\(\mathbf{MSE} = \frac{\mathbf{SSE}}{\mathbf{dfe}\ }\) \\
+\multicolumn{4}{@{}>{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{1.0000} + 6\tabcolsep}@{}}{%
+MSC: mean square columns, MSR: mean square rows, MSE: mean square error,
+SSC= sum of squares columns, SSR=sum of squares rows, SST= sum of
+squares total, SSE= sum of squares error, dfc= degrees of freedom
+columns, dfr=degrees of freedom rows, dfe=degrees of freedom errors} \\
+\end{longtable}
+}
+
+We compute the two versions of ICC for repeatability and
+reproducibility:
+
+Repeatibility ICC(3A,1): ICC based on single-measurement,
+absolute-agreement, two-way mixed-effects model. \emph{\hfill\break
+}\[\mathbf{ICC}\ (\mathbf{3A},\mathbf{1}) = \frac{\mathbf{MSR} - \mathbf{MSE}}{\mathbf{MSR} + \mathbf{dfc}\  \times \ \mathbf{MSE} + \ \frac{\mathbf{k}}{\mathbf{n}\ }\  \times (\mathbf{MSC} - \mathbf{MSE})\ \ }\]
+
+Reproducibility ICC(3C,1): ICC based on single-measurement, consistency,
+two-way mixed-effects model.
+
+\[\mathbf{ICC}(\mathbf{3C},\mathbf{1}) = \frac{\mathbf{MSR} - \mathbf{MSE}}{\mathbf{MSR} + \mathbf{dfc} \times \ \mathbf{MSE}\ }\]
+
+We compute the lower bound of the 95\% CI of the ICC (LCL) and the upper
+bound (UCL):
+
+\[\mathbf{LCL =}\frac{\frac{\mathbf{FR}}{\mathbf{F}}\mathbf{- 1}}{\frac{\mathbf{FR}}{\mathbf{F}}\mathbf{+ k - \ 1}}\mathbf{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ UCL =}\frac{\mathbf{(FR\  \times \ F)\  - 1}}{\mathbf{(FR\  \times \ F) + k - \ 1}}\]
+
+Where F is the (1-\(\frac{\mathbf{\alpha}}{\mathbf{2}}\) ) x
+100\textsuperscript{th} percentile of the F distribution with n-1
+numerator degrees of freedom and (n-1)(k-1) denominator degrees of
+freedom and FR is the F-statistic for voxels computed as:
+\(\mathbf{FR =}\frac{\mathbf{MSR}}{\mathbf{MSE}}\)\emph{\textbf{.}}
+
+Custom codes used to calculate ICC (3A,1) and ICC (3C,1)\textbf{,} based
+on Nipype's (Esteban et al., 2022) module ICC (v1.8.5) and approved by
+an statistician (VN) are available at
+https://github.com/radiomicsgroup/precise-habitats.
+
+\subsection{B.6. Justification for NGTDM Coarseness
+Inclusion}\label{b.6.-justification-for-ngtdm-coarseness-inclusion}
+
+NGTDM (Neighborhood Gray-Tone-Difference Matrix) coarseness describes
+the roughness (i.e. how fine or coarse) the texture of an image is. In
+the radiomics literature, evidence has been found regarding its
+usefulness to characterize heterogeneity and predict progression-free
+survival in oncology (Gupta et al., 2021).
+
+In our study, we identified precise features by linking repeatability
+and reproducibility results. That is, for every feature, we considered
+results obtained in the three relevant experiments: repeatability
+(setting R3B12), reproducibility against R (fixed B=12HU), and
+reproducibility against B (fixed R=3mm). A feature was selected as
+precise if it presented LCL ≥ 0.50 (i.e. moderate, good or excellent
+repeatability/reproducibility) in the three experiments. NGTDM
+Coarseness presented excellent repeatability and reproducibility against
+bin size, but was not selected as precise as it presented poor
+reproducibility against kernel radius. However, by the nature of its
+definition, the poor reproducibility against kernel radius is
+acceptable: the feature captures the distribution of differences in
+gray-tone values between pairs of neighboring pixels. Considering the
+feature's excellent results in two out of three experiments, its
+potential usefulness and in light of the fact that we were already being
+stringent, first by using LCL rather than ICC and second by linking
+results of three different experiments, , we decided to include it as a
+precise feature for both liver and lung lesions.
+
+\subsection{B.7. Primary Tumor Has No Effect on
+Precision}\label{b.7.-primary-tumor-has-no-effect-on-precision}
+
+\begin{figure}
+\centering
+\includegraphics[width=6.49444in,height=6.03472in]{source/figures/annex/media/image1.png}
+\caption{\textbar{} Repeatability by primary tumor type}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics[width=6.49444in,height=6.03472in]{source/figures/annex/media/image2.png}
+\caption{Repeatability distribution of radiomics features computed with
+setting R1B12 (\textbf{A),} R1B25 (\textbf{B),} R3B12 \textbf{(C)} and
+R3B25 \textbf{(D)} per cohort for lung and liver lesions separately.
+Primary tumor has no effect on repeatability. LCL, 95\% lower confidence
+limit of the Intraclass Correlation Coefficient; R1B12, features
+computed with kernel radius 1mm and bin size 12HU; R1B25, features
+computed with kernel radius 1mm and bin size 25HU; R3B12, features
+computed with kernel radius 3mm and bin size 12HU; R3B25, features
+computed with kernel radius 3mm and bin size 25HU; CRC: colorectal
+cohort; NET: neuroendocrine cohort; ALL: all cohorts combined.}
+\end{figure}
+
+\textbar{} Reproducibility by primary tumor type
+
+Reproducibility distribution against R of radiomics features computed
+with fixed bin size of 12HU \textbf{(A)} and fixed bin size of 25HU
+\textbf{(B)} per cohort for lung and liver lesions separately. Similary,
+\textbf{(C)} and \textbf{(D)} depict the reproducibility distribution
+against B of radiomics features computed with fixed radius of 1mm
+\textbf{(C)} and 3mm \textbf{(D)} per cohort for lung and liver lesions
+separately. LCL, 95\% lower confidence limit of the Intraclass
+Correlation Coefficient; CRC: colorectal cohort; NET: neuroendocrine
+cohort; ALL: all cohorts combined.
+
+Annex C
+
+\chapter{Development and Validation of Biologically-Informed CT
+Habitats}\label{development-and-validation-of-biologically-informed-ct-habitats}
+
+This annex provides extended methods and results supporting Chapter 7.
+
+\subsection{C.1. CT--mpMRI Co-Registration: Extended
+Methods}\label{c.1.-ctmpmri-co-registration-extended-methods}
+
+Prior to registration, all images were cropped to a tumor-centered
+bounding box with a 5--7 mm margin beyond the segmentation boundary.
+Cropping served two purposes: it reduced computational cost and focused
+the registration algorithm on the tumor region, avoiding spurious
+alignment driven by distant anatomical structures (e.g., ribs, spine)
+that may differ in position between CT and MRI acquisitions.
+
+Images were resampled to 2×2×2 mm isotropic resolution to match the
+T2-weighted reference. Resampling to a common grid is necessary for
+voxelwise comparison; we chose the T2w resolution as the reference
+because it represented the coarsest native resolution among the
+sequences and avoided artificial upsampling of M RI data.
+
+Three pipelines were required:
+
+\textbf{CT→T2w:} Aligns contrast-enhanced CT to the anatomical MRI
+reference. This is the most challenging registration due to differences
+in tissue contrast between modalities.
+
+\textbf{DWI→T2w:} Aligns diffusion-weighted images (and derived ADC
+maps) to T2w. DWI and T2w are both MRI sequences, but DWI suffers from
+geometric distortion, particularly near air-tissue interfaces.
+
+\textbf{DCE→T2w:} Aligns dynamic contrast-enhanced images (and derived
+perfusion maps) to T2w. DCE images were acquired with a GRE sequence at
+different resolution than T2w.
+
+All registrations were performed using NiftyReg (reg\_aladin for
+rigid/affine, reg\_f3d for B-spline deformable registration). The
+pipeline proceeded sequentially: rigid registration was performed first;
+if affine registration improved DSC, it replaced the rigid result; if
+B-spline registration improved DSC further, it replaced the affine
+result. This conservative approach avoided overfitting from unnecessary
+deformable registration.
+
+Registration quality was assessed by computing the Dice similarity
+coefficient between the tumor mask on the fixed image (T2w) and the
+warped tumor mask from the moving image. Tumors with CT→T2w DSC
+\textless{} 0.50 were excluded from analysis, as low overlap indicates
+registration failure that would propagate errors into habitat
+comparisons
+
+\subsection{C.2. Handcrafted Feature Reduction by Correlation
+Analysis}\label{c.2.-handcrafted-feature-reduction-by-correlation-analysis}
+
+Chapter 6 identified 26 radiomics features with acceptable repeatability
+and reproducibility for liver lesions. However, many of these features
+are highly correlated, capturing overlapping information. Clustering on
+redundant features can distort distance metrics and bias cluster
+assignments toward the correlated feature set.
+
+To obtain a non-redundant feature set, we computed pairwise Spearman
+correlations across all voxels in the PREDICT cohort. Features with
+\textbar ρ\textbar{} ≥ 0.80 were considered redundant. From each
+correlated pair, we retained the feature with higher mean repeatability
+(ICC) from the Chapter 6 analysis. This procedure reduced the 26 precise
+features to 6 non-redundant features:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  10th percentile intensity (first-order)
+\item
+  GLDM dependence entropy
+\item
+  GLDM small dependence high gray level emphasis
+\item
+  GLRLM gray level non-uniformity
+\item
+  GLRLM run length non-uniformity
+\item
+  NGTDM coarseness
+\end{enumerate}
+
+\hyperref[_Ref219944195]{Figure C.1} shows the correlation matrix of the
+original 26 features and \hyperref[_Ref219944203]{Figure C.2} shows the
+retained features, which span different texture families (GLDM, GLRLM,
+NGTDM) and capture distinct aspects of local intensity variation,
+ensuring that the clustering input is diverse rather than dominated by a
+single texture property.
+
+\begin{figure}
+\centering
+\includesvg[width=6.5in,height=5.74931in]{source/figures/annex/media/image4.svg}
+\caption{\textbar{} Correlation matrix of the 26 precise handcrafted
+radiomics features identified in Chapter 6}
+\end{figure}
+
+Pairwise Spearman correlations computed across all voxels in the PREDICT
+cohort. Features with \textbar ρ\textbar{} ≥ 0.80 were considered
+redundant.
+
+\begin{figure}
+\centering
+\includesvg[width=6.02174in,height=4.5163in]{source/figures/annex/media/image6.svg}
+\caption{}
+\end{figure}
+
+\textbar{} Correlation matrix of the 6 selected precise handcrafted
+radiomics features identified in Chapter 6
+
+The 6 non-redundant features retained for habitat computation are
+highlighted: 10th percentile intensity, GLDM dependence entropy, GLDM
+small dependence high gray level emphasis, GLRLM gray level
+non-uniformity, GLRLM run length non-uniformity, and NGTDM coarseness.
+
+\subsection{C.3. Sensitivity Analysis for Number of Habitats
+(K)}\label{c.3.-sensitivity-analysis-for-number-of-habitats-k}
+
+To determine the optimal number of habitats, we compared K = 2, 3, and 4
+using the handcrafted feature representation. For each K, we computed
+habitats and assessed their separation of mpMRI-derived biophysical
+metrics using Kendall\textquotesingle s W effect size.
+
+\begin{itemize}
+\item
+  \textbf{K = 2} achieved the highest effect sizes for most metrics but
+  collapsed biologically distinct compartments into a single
+  "vascularized" cluster. The two-habitat solution could not distinguish
+  the cellular-perfused tumor (H2) from the vascular interface (H3).
+\item
+  \textbf{K = 3} provided the best interpretive balance. It separated
+  the avascular core (H1) from two distinct vascularized phenotypes: a
+  cellular-perfused compartment with high Ktrans (H2) and a vascular
+  compartment with high fv but moderate Ktrans (H3). This three-way
+  distinction aligns with the known histological architecture of
+  colorectal liver metastases.
+\item
+  \textbf{K = 4} introduced a fourth habitat by splitting H3 into two
+  subgroups. However, this split showed no clear biological
+  rationale---both subhabitats had similar mpMRI profiles---and the
+  fourth cluster showed unstable membership across bootstrap resampling
+  (ARI = 0.91 vs. 0.97 for K = 3).
+\end{itemize}
+
+Based on these findings, K = 3 was selected as the final model
+configuration.
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\centering\arraybackslash}p{(\linewidth - 14\tabcolsep) * \real{0.0512}}
+  >{\centering\arraybackslash}p{(\linewidth - 14\tabcolsep) * \real{0.0692}}
+  >{\centering\arraybackslash}p{(\linewidth - 14\tabcolsep) * \real{0.0672}}
+  >{\centering\arraybackslash}p{(\linewidth - 14\tabcolsep) * \real{0.1118}}
+  >{\centering\arraybackslash}p{(\linewidth - 14\tabcolsep) * \real{0.1040}}
+  >{\centering\arraybackslash}p{(\linewidth - 14\tabcolsep) * \real{0.0981}}
+  >{\centering\arraybackslash}p{(\linewidth - 14\tabcolsep) * \real{0.0903}}
+  >{\centering\arraybackslash}p{(\linewidth - 14\tabcolsep) * \real{0.4083}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\centering
+\textbf{K}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\textbf{fv\_W}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\textbf{fv\_p}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\textbf{Ktrans\_W}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\textbf{Ktrans\_p}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\textbf{ADCt\_W}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\textbf{ADCt\_p}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\textbf{Interpretation}
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+2 & 0.98 & 0.002 & 0.78 & 0.014 & 0.62 & 0.049 & Strong separation but
+oversimplified; merges biologically distinct vascular phenotypes \\
+3 & 0.67 & 0.005 & 0.52 & 0.018 & 0.16 & 0.328 & Best balance; separates
+vascular gradient while identifying cellular-perfused compartment \\
+4 & 0.85 & 0 & 0.37 & 0.025 & 0.32 & 0.039 & Fourth habitat splits H3
+without biological justification; unstable across bootstrap \\
+\end{longtable}
+}
+
+\textbf{Table C.1 \textbar{} Biophysical separation
+(Kendall\textquotesingle s W) across different numbers of habitats (K).}
+
+\subsection{C.4. Technical Validation: Extended
+Results}\label{c.4.-technical-validation-extended-results}
+
+\begin{itemize}
+\item
+  \textbf{Initialization stability:} All representations achieved ARI
+  \textgreater{} 0.96, indicating that clustering solutions were
+  reproducible regardless of random seed initialization.
+\item
+  \textbf{Data stability:} All representations showed high bootstrap
+  stability (median ARI \textgreater{} 0.96), indicating that habitat
+  definitions were not driven by a few influential patients.
+\item
+  \textbf{Spatial coherence:} Handcrafted features produced the highest
+  Moran\textquotesingle s I (0.804), indicating strong spatial
+  autocorrelation---habitats formed contiguous regions rather than
+  scattered voxels. DL-SALSA and DL-FM produced lower spatial coherence
+  (0.513--0.622), reflecting more fragmented "salt-and-pepper" patterns.
+  Raw HU showed the lowest spatial coherence (0.420).
+\end{itemize}
+
+The combination of high initialization stability, adequate data
+stability, and superior spatial coherence supported the selection of
+handcrafted features for the final CT habitat model.
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\centering\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.1838}}
+  >{\centering\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2015}}
+  >{\centering\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.3137}}
+  >{\centering\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2919}}@{}}
+\toprule\noalign{}
+\multicolumn{4}{@{}>{\centering\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.9909} + 6\tabcolsep}@{}}{%
+\begin{minipage}[b]{\linewidth}\centering
+Table C.2 \textbar{} Technical robustness of candidate CT feature
+representations.
+\end{minipage}} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+& \textbf{Initialization Stability (ARI)} & \textbf{Data Stability
+(ARI)}
+
+{[}Median (IQR){]} & \textbf{Moran's I}
+
+{[}Mean ± SD{]} \\
+\begin{minipage}[t]{\linewidth}\centering
+\begin{quote}
+Raw HU
+\end{quote}
+\end{minipage} & 0.965 & \textbf{0.991 (0.980-0.997)} & 0.420
+±0.0.143 \\
+\begin{minipage}[t]{\linewidth}\centering
+\begin{quote}
+Handcrafted
+\end{quote}
+\end{minipage} & \textbf{0.997} & 0.966 (0.959-0.985) & \textbf{0.804
+±0.056} \\
+\begin{minipage}[t]{\linewidth}\centering
+\begin{quote}
+DL-SALSA
+\end{quote}
+\end{minipage} & 0.984 & 0.985 (0.977-0.988) & 0.513 ±0.110 \\
+\begin{minipage}[t]{\linewidth}\centering
+\begin{quote}
+DL-FM
+\end{quote}
+\end{minipage} & 0.978 & 0.989 (0.976-0.992) & 0.622 ±0.119 \\
+\end{longtable}
+}
+
+\subsection{C.5. mpMRI Characterization: Pairwise
+Comparison}\label{c.5.-mpmri-characterization-pairwise-comparison}
+
+For metrics with significant Friedman test (p \textless{} 0.05,
+BH-corrected), we report Wilcoxon signed-rank tests comparing habitat
+pairs. Effect size r = Z/√N. All p-values are BH-corrected within each
+metric. N = 10 patients.
+
+\begin{longtable}[]{@{}
+  >{\centering\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.0901}}
+  >{\centering\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1714}}
+  >{\centering\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1307}}
+  >{\centering\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1712}}
+  >{\centering\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1306}}
+  >{\centering\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1734}}
+  >{\centering\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1328}}@{}}
+\caption{\textbf{Table C.3 \textbar{} Post-hoc pairwise comparisons for
+mpMRI metrics across CT habitats.}}\tabularnewline
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\centering
+\textbf{Metric}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\textbf{H1\_vs\_H2\_p\_BH}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\textbf{H1\_vs\_H2\_r}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\textbf{H1\_vs\_H3\_p\_BH}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\textbf{H1\_vs\_H3\_r}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\textbf{H2\_vs\_H3\_p\_BH}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\textbf{H2\_vs\_H3\_r}
+\end{minipage} \\
+\midrule\noalign{}
+\endfirsthead
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\centering
+\textbf{Metric}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\textbf{H1\_vs\_H2\_p\_BH}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\textbf{H1\_vs\_H2\_r}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\textbf{H1\_vs\_H3\_p\_BH}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\textbf{H1\_vs\_H3\_r}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\textbf{H2\_vs\_H3\_p\_BH}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\textbf{H2\_vs\_H3\_r}
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+ADCt & 0.029 & 0.82 & 0.24 & 0.44 & 1 & 0 \\
+ADCv & 0.126 & 0.55 & 0.111 & 0.66 & 0.232 & 0.38 \\
+fv & 0.375 & 0.28 & 0.006 & 0.98 & 0.006 & 0.91 \\
+D0 & 0.049 & 0.62 & 0.003 & 0.98 & 0.003 & 0.98 \\
+T2star & 0.02 & 0.74 & 0.003 & 0.98 & 0.003 & 0.98 \\
+T1 & 0.029 & 0.74 & 0.012 & 0.91 & 0.037 & 0.66 \\
+Ktrans & 0.015 & 0.87 & 0.015 & 0.82 & 0.16 & 0.44 \\
+\end{longtable}
+
+\textbf{Key findings:}
+
+• \textbf{Vascular gradient (H1 → H3):} fv, D0, T2*, and T1 showed
+significant differences between H1 and H3, with large effect sizes (r
+\textgreater{} 0.90), confirming a vascular gradient from the avascular
+core to the vascular rim.
+
+• \textbf{Cellular peak (H2):} ADCt was significantly lower in H2 than
+H1 (p = 0.029, r = 0.82), indicating H2 as the most cellular habitat.
+Ktrans was significantly higher in H2 than H1 (p = 0.015, r = 0.87),
+consistent with leaky tumor neovessels.
+
+• \textbf{H2 vs H3 distinction:} fv distinguished H2 from H3 (p =
+0.006), but Ktrans did not (p = 0.160). This supports the interpretation
+that H3 represents a vascular compartment with mature (less leaky)
+vessels, possibly reflecting partial volume with normal liver.
+
+\subsection{C.6. Habitat-Histology
+Correlations}\label{c.6.-habitat-histology-correlations}
+
+As an exploratory analysis, we computed Spearman correlations between
+whole-tumor habitat proportions and histological tissue percentages in
+the POEM cohort (N = 6 tumors). Direct voxel-to-voxel co-registration
+between CT and histology was not feasible; correlations therefore
+reflect whole-tumor associations only.
+
+\begin{figure}
+\centering
+\includegraphics[width=5.71739in,height=5.7847in]{source/figures/annex/media/image7.png}
+\caption{\textbar{} \textbar{} Exploratory correlations between CT
+habitat proportions and histological tissue percentages (POEM cohort, N
+= 6)}
+\end{figure}
+
+Each panel shows the relationship between a habitat proportion (rows:
+H1, H2, H3) and a histological tissue percentage (columns: necrosis,
+fibrosis, viable tumor). Spearman correlation coefficients (ρ) and
+p-values are shown. All correlations were non-significant, reflecting
+the small sample size and CT\textquotesingle s inability to distinguish
+necrosis from fibrosis within the avascular compartment.
+
+\textbf{Table C.4 \textbar{} Spearman correlations between habitat
+proportions and histological tissue percentages.}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\centering\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.0949}}
+  >{\centering\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1451}}
+  >{\centering\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1246}}
+  >{\centering\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1404}}
+  >{\centering\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1199}}
+  >{\centering\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1979}}
+  >{\centering\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1774}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\centering
+\textbf{Habitat}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\textbf{Necrosis\_rho}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\textbf{Necrosis\_p}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\textbf{Fibrosis\_rho}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\textbf{Fibrosis\_p}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\textbf{Viable\_Tumor\_rho}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\textbf{Viable\_Tumor\_p}
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+H1 & 0.49 & 0.329 & -0.6 & 0.208 & -0.31 & 0.544 \\
+H2 & -0.37 & 0.468 & 0.43 & 0.397 & 0.14 & 0.787 \\
+H3 & 0.03 & 0.957 & 0.77 & 0.072 & -0.09 & 0.872 \\
+\end{longtable}
+}
+
+All correlations were weak to moderate and non-significant. Several
+trends were observed:
+
+\begin{itemize}
+\item
+  \textbf{H1 and necrosis:} A positive trend (ρ = 0.49) suggests that
+  the avascular habitat may partially capture necrotic tissue,
+  consistent with its biological profile (low vascularity, low
+  cellularity).
+\item
+  \textbf{H1 and fibrosis:} A negative trend (ρ = −0.60) suggests that
+  H1 does not specifically correspond to fibrosis. This is expected: CT
+  cannot distinguish necrosis from fibrosis, and both may appear as
+  avascular tissue.
+\item
+  \textbf{H3 and fibrosis:} The strongest trend observed (ρ = 0.77, p =
+  0.072) suggests a potential association between the vascular habitat
+  and fibrotic tissue. However, this finding is difficult to interpret
+  biologically and may reflect confounding by tumor size or treatment
+  history.
+\end{itemize}
+
+The sample size (N = 6) provides insufficient power to detect moderate
+correlations. Additionally, the scale mismatch between voxel-level
+imaging (mm resolution) and microscopic histology (μm resolution),
+combined with tissue deformation during resection and processing, limits
+the interpretability of whole-tumor correlations. These exploratory
+findings should be interpreted with caution and require validation in
+larger cohorts with spatially co-registered imaging and histology.
+
+Annex D
+
+\chapter{Clinical Relevance of CT
+Habitats}\label{clinical-relevance-of-ct-habitats}
+
+\subsection{D.1. Habitat Metrics and Tumor
+Volume}\label{d.1.-habitat-metrics-and-tumor-volume}
+
+Table D.1 presents the full correlation analysis between habitat-derived
+metrics and tumor volume for both cohorts.
+
+\textbf{Table D.1 \textbar{} Spearman correlations between habitat
+metrics and tumor volume.}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3915}}
+  >{\centering\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.1162}}
+  >{\centering\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.1261}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\centering
+\textbf{Metric}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\textbf{TCIA (ρ)}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\textbf{VHIO (ρ)}
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\textbf{Rim metrics} & & \\
+Rim entropy vs Volume & -0.77*** & -0.71*** \\
+Rim cellular-perfused vs Volume & 0.49*** & 0.45*** \\
+Rim avascular vs Volume & -0.32*** & -0.28*** \\
+Rim vascular vs Volume & -0.21** & -0.19** \\
+\textbf{Whole-tumor metrics} & & \\
+Whole entropy vs Volume & -0.44*** & -0.62*** \\
+Whole avascular vs Volume & 0.44*** & 0.70*** \\
+Whole cellular-perfused vs Volume & 0.12 & 0.08 \\
+Whole vascular vs Volume & -0.38*** & -0.52*** \\
+\textbf{Core metrics} & & \\
+Core entropy vs Volume & -0.28*** & -0.41*** \\
+Core avascular vs Volume & 0.31*** & 0.55*** \\
+Core cellular-perfused vs Volume & -0.18* & -0.22** \\
+\end{longtable}
+}
+
+*p\textless0.05, **p\textless0.01, ***p\textless0.001
+
+\subsection{D.2. TCIA: Neoadjuvant Chemotherapy Remodels Tumor
+Composition}\label{d.2.-tcia-neoadjuvant-chemotherapy-remodels-tumor-composition}
+
+Table D.2 presents FDR-adjusted p-values for all habitat metric
+comparisons between treatment-naive and neoadjuvant-treated TCIA
+patients.
+
+\textbf{Table D.2 \textbar{} Habitat metric comparisons: treatment-naive
+vs neoadjuvant-treated (TCIA).}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\centering\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.1674}}
+  >{\centering\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2891}}
+  >{\centering\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2740}}
+  >{\centering\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.1322}}
+  >{\centering\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.1373}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\centering
+\textbf{Metric}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\textbf{Treatment-naive (n=74) Median {[}IQR{]}}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\textbf{Neoadjuvant (n=115) Median {[}IQR{]}}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\textbf{Unadjusted p}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\textbf{FDR-adjusted p}
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Tumor volume (mm³) & 14,639 {[}5,812--38,421{]} & 8,620
+{[}3,284--24,108{]} & 0.018 & 0.057 \\
+Whole entropy & 1.45 {[}1.38--1.52{]} & 1.51 {[}1.44--1.57{]} &
+\textless0.001 & 0.001 \\
+Whole avascular & 0.398 {[}0.31--0.49{]} & 0.354 {[}0.27--0.44{]} &
+0.019 & 0.057 \\
+Whole cellular-perfused & 0.412 {[}0.34--0.48{]} & 0.408
+{[}0.35--0.47{]} & 0.75 & 0.75 \\
+Whole vascular & 0.168 {[}0.12--0.22{]} & 0.214 {[}0.16--0.27{]} &
+\textless0.001 & 0.001 \\
+Rim entropy & 1.13 {[}1.02--1.24{]} & 1.25 {[}1.14--1.35{]} &
+\textless0.001 & 0.001 \\
+Rim avascular & 0.152 {[}0.09--0.22{]} & 0.138 {[}0.08--0.20{]} & 0.28 &
+0.42 \\
+Rim cellular-perfused & 0.485 {[}0.41--0.56{]} & 0.512 {[}0.44--0.58{]}
+& 0.057 & 0.11 \\
+Rim vascular & 0.342 {[}0.28--0.41{]} & 0.328 {[}0.27--0.39{]} & 0.35 &
+0.47 \\
+Core entropy & 1.08 {[}0.95--1.21{]} & 1.12 {[}1.01--1.24{]} & 0.09 &
+0.16 \\
+\end{longtable}
+}
+
+Mann-Whitney U test. FDR correction using Benjamini-Hochberg procedure.
+Bold indicates FDR-adjusted p\textless0.05.
+
+\subsection{D.3. Cox Regression Analyses by Treatment
+(VHIO)}\label{d.3.-cox-regression-analyses-by-treatment-vhio}
+
+\textbf{Table D.3a \textbar{} Cox regression: Chemotherapy alone (n=122,
+89 events).}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\centering\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.1837}}
+  >{\centering\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2523}}
+  >{\centering\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.0680}}
+  >{\centering\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2700}}
+  >{\centering\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.0696}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\centering
+\textbf{Variable}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\textbf{Univariable HR {[}95\% CI{]}}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\textbf{p}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\textbf{Multivariable HR {[}95\% CI{]}}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\textbf{p}
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Tumor volume & 5.46 {[}3.19--9.34{]} & \textless0.001 & 5.21
+{[}2.98--9.12{]} & \textless0.001 \\
+Rim entropy & 0.88 {[}0.54--1.43{]} & 0.61 & --- & --- \\
+Extrahepatic disease & 1.82 {[}1.18--2.81{]} & 0.007 & 1.54
+{[}0.98--2.42{]} & 0.06 \\
+Age & 1.24 {[}0.92--1.67{]} & 0.16 & --- & --- \\
+\textbf{C-index} & & & 0.703 & \\
+\end{longtable}
+}
+
+\textbf{Table D.3b \textbar{} Cox regression: Chemotherapy + Bevacizumab
+(n=133, 95 events).}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\centering\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.1837}}
+  >{\centering\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2523}}
+  >{\centering\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.0680}}
+  >{\centering\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2700}}
+  >{\centering\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.0572}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\centering
+\textbf{Variable}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\textbf{Univariable HR {[}95\% CI{]}}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\textbf{p}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\textbf{Multivariable HR {[}95\% CI{]}}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\textbf{p}
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Tumor volume & 1.69 {[}1.31--2.17{]} & \textless0.001 & 1.58
+{[}1.21--2.06{]} & 0.001 \\
+Rim entropy & 0.68 {[}0.52--0.88{]} & 0.004 & 0.71 {[}0.54--0.93{]} &
+0.012 \\
+Extrahepatic disease & 1.44 {[}0.95--2.18{]} & 0.09 & 1.38
+{[}0.90--2.12{]} & 0.14 \\
+Left primary & 0.58 {[}0.38--0.89{]} & 0.012 & 0.62 {[}0.40--0.96{]} &
+0.031 \\
+\textbf{C-index} & & & 0.674 & \\
+\end{longtable}
+}
+
+\textbf{Table D.3c \textbar{} Cox regression: RAS-mutant patients
+(n=195, 138 events).}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\centering\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.1837}}
+  >{\centering\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2523}}
+  >{\centering\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.0680}}
+  >{\centering\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2700}}
+  >{\centering\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.0696}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\centering
+\textbf{Variable}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\textbf{Univariable HR {[}95\% CI{]}}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\textbf{p}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\textbf{Multivariable HR {[}95\% CI{]}}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\textbf{p}
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Tumor volume & 1.89 {[}1.41--2.53{]} & \textless0.001 & 1.78
+{[}1.32--2.41{]} & \textless0.001 \\
+Rim entropy & 0.80 {[}0.65--1.00{]} & 0.047 & 0.82 {[}0.66--1.02{]} &
+0.07 \\
+Extrahepatic disease & 1.61 {[}1.14--2.27{]} & 0.007 & 1.48
+{[}1.04--2.11{]} & 0.03 \\
+Age & 1.18 {[}0.96--1.45{]} & 0.11 & --- & --- \\
+\textbf{C-index} & & & 0.700 & \\
+\end{longtable}
+}
+
+\subsection{D.4. Longitudinal Analysis Summary
+Statistics}\label{d.4.-longitudinal-analysis-summary-statistics}
+
+\textbf{Table D.4 \textbar{} Rim entropy change by RECIST category
+(n=38).}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\centering\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1770}}
+  >{\centering\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.0285}}
+  >{\centering\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.2306}}
+  >{\centering\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1268}}
+  >{\centering\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1097}}
+  >{\centering\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1150}}
+  >{\centering\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.2124}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\centering
+\textbf{RECIST Category}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\textbf{n}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\textbf{Median Δ Rim Entropy}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\textbf{IQR}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\textbf{n Increase}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\textbf{n Decrease}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\textbf{Median OS (months)}
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+All patients & 38 & +0.013 & {[}-0.04, +0.10{]} & 21 & 17 & 27.1 \\
+PR & 23 & +0.053 & {[}-0.02, +0.10{]} & 14 & 9 & 32.8 \\
+SD & 8 & +0.023 & {[}-0.06, +0.16{]} & 4 & 4 & 18.3 \\
+PD & 7 & -0.041 & {[}-0.25, +0.03{]} & 3 & 4 & 9.0 \\
+\end{longtable}
+}
+
+\chapter{}\label{section}
+
+\backmatter
+\end{document}

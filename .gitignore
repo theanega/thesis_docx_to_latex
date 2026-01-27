@@ -1,3 +1,50 @@
-C:\Users\oprio\Documents\thesis_docx_to_latex\.vscode
-C:\Users\oprio\Documents\thesis_docx_to_latex\original
-C:\Users\oprio\Documents\thesis_docx_to_latex\output
+############################
+# Project: thesis_docx_to_latex
+############################
+
+# Editor / IDE
+.vscode/
+
+############################
+# LaTeX build artifacts
+############################
+*.aux
+*.log
+*.toc
+*.lof
+*.lot
+*.bbl
+*.blg
+*.out
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+
+# Beamer / slides (just in case)
+*.nav
+*.snm
+*.vrb
+
+############################
+# Build directories
+############################
+/build/
+/output/
+
+# Word inputs (original thesis/annex)
+/input/
+
+############################
+# Optional large assets
+############################
+# Uncomment if you decide to keep figures elsewhere
+# /source/figures/
+
+# Pandoc extracted media (we use our own high-res figures)
+/source/figures/*/media/
+
+############################
+# OS / misc
+############################
+.DS_Store
+Thumbs.db

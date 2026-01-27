@@ -1,0 +1,77 @@
+% ============================================================================
+% ABSTRACT (English)
+% ============================================================================
+
+\chapter*{Abstract}
+\addcontentsline{toc}{chapter}{Abstract}
+
+In colorectal cancer, mortality is primarily driven by metastatic
+disease, most commonly to the liver. Colorectal liver metastases are
+biologically heterogeneous, composed of varying proportions of viable
+tumor cells, fibrosis, and necrosis. Both the presence and spatial
+organization of these tissue components influence treatment response and
+patient outcome. In clinical practice, however, such information is
+available only through biopsy, which samples a limited tumor region, or
+after surgical resection, which is feasible in only a minority of
+patients. As a result, most patients receive systemic therapy without
+direct knowledge of whole-tumor tissue composition.
+
+Computed tomography (CT) is the standard imaging modality for managing
+colorectal liver metastases and is acquired repeatedly throughout the
+disease course. Despite providing non-invasive, spatially resolved
+information at the whole-tumor level, clinical interpretation largely
+focuses on lesion size, number, and location. Consequently, the ability
+of CT to characterize intratumor heterogeneity has not yet been fully
+leveraged.
+
+Habitat imaging has been proposed as a framework for capturing tumor
+heterogeneity by partitioning tumors into spatial subregions with
+similar imaging properties (habitats). Most habitat imaging studies rely
+on multiparametric MRI (mpMRI), whose quantitative maps are biologically
+interpretable, while applications to CT remain limited despite its
+widespread clinical use. In addition, existing studies rarely assess the
+robustness of CT-derived features, often define habitats through purely
+data-driven optimization without biological grounding, and generally do
+not report clinical relevance beyond tumor volume.
+
+This thesis addresses these gaps by investigating whether routine CT can
+capture biologically and clinically meaningful intratumor heterogeneity
+in colorectal liver metastases. First, we identified 26 radiomic
+features suitable for robust CT-based habitat computation based on
+repeatability and reproducibility criteria. Second, we developed a
+biologically anchored CT habitat model by incorporating co-registered
+mpMRI as a reference during habitat definition, rather than relying
+solely on statistical optimization. Within this framework, we compared
+multiple CT representations, including handcrafted radiomic features and
+deep learning embeddings, and found that handcrafted features produced
+more biologically coherent habitats. The resulting three habitats
+reflected vascular architecture: an avascular core, a cellular, perfused
+intermediate zone, and a highly vascularized outer rim.
+
+Third, we evaluated clinical relevance by assessing associations between
+habitat-derived metrics and patient outcomes in two independent cohorts.
+Habitat metrics provided prognostic information beyond tumor volume, but
+only in specific treatment contexts. In particular, habitat entropy at
+the tumor--liver interface predicted survival in settings in which
+treatment may alter tissue composition without inducing measurable size
+changes. Across all treatment contexts, prognostic information
+consistently localized to the invasive tumor rim rather than being
+uniformly distributed throughout the lesion.
+
+Overall, this thesis contributes both methodological and clinical
+advances: an open-source CT habitat imaging pipeline, a comprehensive
+assessment of handcrafted radiomic feature robustness, the first
+comparison of CT representations for habitat computation, biological
+grounding of CT-derived habitats using mpMRI, and demonstration of their
+context-dependent clinical relevance. Together, these findings establish
+that routine CT scans contain clinically meaningful information about
+tumor heterogeneity that current assessment strategies do not capture,
+and provide a framework for extracting it.
+
+\vspace{1cm}
+
+\noindent\textbf{Keywords:} liver metastases, colorectal cancer, habitat imaging,
+intratumor heterogeneity, radiomics, computed tomography,
+multiparametric magnetic resonance imaging, precision oncology
+
+\cleardoublepage

@@ -1,0 +1,334 @@
+\chapter{Medical Image Techniques: An
+Overview}\label{medical-image-techniques-an-overview}
+
+Imaging guides clinical decisions at nearly every stage of cancer care.
+The modalities most relevant to this thesis are computed tomography
+(CT{}), magnetic resonance imaging (MRI), and histopathology. This
+chapter describes how each technique generates images and captures
+tumors at different scales. A note on terminology: because radiological
+images are 3D volumes, the basic unit of measurement is the voxel (a
+pixel extended into three dimensions). A single CT{} or MRI voxel
+typically represents a tissue volume on the order of
+1mm\textsuperscript{3}. Histopathological images, by contrast, are 2D
+sections at micrometer resolution so the basic unit is the pixel.
+
+\section{Computed Tomography}\label{computed-tomography}
+
+Computed tomography (CT{}) produces cross-sectional images of the body
+using X-rays (Sprawls, 1995). The physics begins with how X-ray photons
+interact with matter. When photons pass through tissue, they can be
+absorbed (the photoelectric effect) or deflected (Compton scattering).
+Both processes remove photons from the X-ray beam reducing its
+intensity. This reduction is known as attenuation and we quantify it
+with the linear attenuation coefficient, \emph{μ}. In our bodies,
+different tissues attenuate X-rays to different degrees depending on
+their composition. For instance, bone, with its high calcium content,
+attenuates strongly (i.e. has a high \emph{μ}); air attenuates almost
+none; soft tissues like liver fall in between.
+
+A CT{} scanner consists of an X-ray tube and a rotating detector, with
+the patient lying on a table that passes through. The X-ray tube emits a
+narrow beam that traverses the patient while detectors on the opposite
+side count the photons that emerge. Each detector reading represents the
+sum of attenuation along that beam\textquotesingle s
+path---mathematically, a line integral of \emph{μ}. Fewer emerging
+photons means more attenuation occurred along that path. Over a full
+rotation, the scanner collects hundreds of such measurements from
+different angles, effectively sampling line integrals of \emph{μ(x)}
+through the body from all directions. The relationship follows
+Lambert-Beer\textquotesingle s law: a beam from origin \emph{s,} with
+unit direction vector \emph{θ} and initial intensity \(N_{0}\)is reduced
+to \(N\) as it passes through tissue, where:
+
+\[N\, = \, N_{0}\, e^{- \int_{}^{}{\, d\lambda\,\mu(s\, + \,\lambda\theta)}\,}\]
+
+Turning these raw measurements into an image is an inverse problem:
+recovering the spatial distribution of attenuation coefficients from
+their line integrals. The standard solution is filtered back-projection,
+which combines a sharpening filter with projection along original beam
+paths to reconstruct each slice. The result is a 3D map of attenuation
+coefficients, reconstructed as a stack of slices. Each slice represents
+a cross-section of the body at a given thickness, typically 0.5--5 mm
+depending on the clinical application. Each element in this 3D map
+(voxel) represents the average attenuation within a small tissue volume.
+All voxel values are rescaled to Hounsfield units (HU)\footnote{The
+  method was developed in the early 1970s by Sir Godfrey Hounsfield,
+  building on mathematical work by Allan Cormack on image
+  reconstruction, for which they shared the 1979 Nobel Prize in
+  Physiology or Medicine.}, a dimensionless scale defined so that water
+is 0 HU and air is −1000 HU:
+
+\[\text{HU} = 1000 \times \frac{\mu_{\text{tissue}} - \mu_{\text{water}}}{\mu_{\text{water}}}\]
+
+On this scale (\hyperref[_Ref220408295]{Figure 2.1}), soft tissues
+typically fall around 20--80 HU, bone exceeds +400 HU, and fat is
+slightly negative (around −100 HU). Radiologists can adjust the range of
+HU values (known as window) to optimize visualization for different
+tissues. Importantly, HU values depend on scanner model, acquisition
+settings (tube voltage, reconstruction kernel), and whether contrast has
+been administered. This variability is why only broad HU ranges exist
+for tissues rather than a precise atlas. When contrast is used we refer
+to the image as a contrast-enhanced CT{} (CECT) scan. Contrast agents
+are usually iodine-based. This is because iodine has a high atomic
+number, which makes it a strong X-ray absorber. Thus, tissues containing
+the contrast show increased attenuation. Since contrast is administered
+intravenously, the resulting enhancement reflects blood flow. A CECT
+scan can be obtained in different phases related to where the contrast
+is travelling through the body at that point:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Arterial phase (\textasciitilde20--30 seconds post-injection):
+  contrast fills the arterial system, highlighting arteries and
+  hypervascular lesions that receive blood directly from arterial
+  supply.
+\item
+  Portal venous phase (\textasciitilde60--70 seconds): contrast fills
+  the portal venous system and liver tissue. This phase provides the
+  best tumor-to-liver contrast for detection of liver metastases.
+\item
+  Delayed phase (several minutes): contrast has diffused into
+  extracellular spaces and is washing out.
+\end{enumerate}
+
+CT{} is one of the most widely used imaging modalities due to its speed
+(the total acquisition time is less than 15 minutes), availability, and
+quantitative nature. The main disadvantage is ionizing radiation. For
+primary liver tumors such as hepatocellular carcinoma, MRI is preferred
+because its superior soft tissue contrast enables more accurate
+diagnosis (\emph{Cancer Facts \& Figures 2025}, n.d.). For colorectal
+liver metastases, however, CT{} remains the standard for diagnosis and
+response assessment.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.95\textwidth]{fig_2_1.png}
+\caption{Hounsfield units and contrast enhancement in abdominal CT.
+\textbf{(A)} Hounsfield unit (HU) scale with typical values for air
+(−1000 HU), fat (≈ −100 HU), water (0 HU), soft tissue such as liver (≈
+40--80 HU), and bone (>1000 HU). HU provide a quantitative
+measure of X-ray attenuation, with values depending on scanner and
+protocol. \textbf{(B)} Axial abdominal CT images acquired without
+contrast and after contrast administration in the arterial and portal
+venous phases, adapted from Hartung et al., 2024. Images are displayed
+according to radiological convention (viewed from the patient's feet).
+Arrows indicate the liver's vasculature (blue) and the aorta (green) to
+highlight phase-specific enhancement. Created with BioRender.com.}
+\label{fig:2.1}
+\end{figure}
+
+\section{Magnetic Resonance Imaging}\label{magnetic-resonance-imaging}
+
+Magnetic resonance imaging\footnote{MRI was developed for clinical use
+  around 1980, building on foundational work by Lauterbur (who described
+  the first MR image in 1973) and Mansfield (who developed
+  gradient-based spatial encoding). Both were awarded the Nobel Prize in
+  Physiology or Medicine in 2003.} (MRI) generates images by exploiting
+the magnetic properties of atomic nuclei, primarily hydrogen. Unlike
+CT{}, MRI uses no ionizing radiation. Instead, it's based on
+radiofrequency pulses and strong magnetic fields to induce and detect
+signals from water protons in tissue. \hyperref[_Ref219540589]{Figure
+2.2} shows examples of MRI images of patients with liver metastases.
+
+\subsection{Physical Principles}\label{physical-principles}
+
+A hydrogen nucleus consists of a single proton, which possesses a
+property called spin, an intrinsic angular momentum that gives it a
+small magnetic moment. Normally, these magnetic moments are randomly
+oriented. When placed in a strong external magnetic field (typically 1.5
+or 3 Tesla in clinical scanners), they align preferentially with the
+field direction, creating a net magnetization (Lauterbur, 1973). A
+radiofrequency pulse at the resonant frequency (known as the Larmor
+frequency) tips this magnetization away from equilibrium. When the pulse
+ends, the system relaxes back to equilibrium, releasing energy as a
+radiofrequency signal that can be detected by receiver coils. This
+signal is used to construct the MR image.
+
+Two relaxation processes govern signal behavior (Pooley, 2005). T1
+relaxation (spin-lattice relaxation) describes the recovery of
+longitudinal magnetization as protons release energy to their
+surroundings. T2 relaxation (spin-spin relaxation) describes the decay
+of transverse magnetization as protons lose phase coherence due to
+interactions with each other. Different tissues have different T1 and T2
+values depending on their molecular environment, which is what creates
+contrast in MR images. By manipulating the timing of pulses and signal
+acquisition, different contrasts can be generated. T1-weighted images
+emphasize differences in T1 (fat appears bright, fluid dark) while
+T2-weighted images emphasize differences in T2 (fluid appears bright).
+This flexibility allows MRI to highlight different tissue properties
+depending on clinical need. Spatial localization is achieved through
+magnetic field gradients, which are small, controlled variations in
+field strength across the imaging volume. These gradients encode spatial
+position into the frequency and phase of the MR signal, enabling
+reconstruction of a spatially resolved image through Fourier
+transformation.
+
+\subsection{Quantitative MRI}\label{quantitative-mri}
+
+MRI can provide quantitative measurements of tissue properties through
+specialized sequences and biophysical modeling. In this thesis, two
+types of quantitative MRI are relevant: diffusion-weighted imaging and
+dynamic contrast-enhanced imaging.
+
+\subsubsection{Diffusion-Weighted
+Imaging}\label{diffusion-weighted-imaging}
+
+Diffusion-weighted MRI (DWI) measures the random motion of water
+molecules in tissue (Le Bihan D, 1985). A magnetic field gradient is
+applied that labels water protons based on their position. After a short
+interval, an opposite gradient is applied. If protons were stationary,
+the second gradient would perfectly reverse the effect of the first and
+full signal would be recovered. But water molecules undergo Brownian
+motion, so protons move between the two gradients. Those that have
+diffused further experience incomplete refocusing, leading to signal
+loss. The more freely water can diffuse, the greater the signal
+attenuation.
+
+The strength and timing of the diffusion gradients are combined into a
+single parameter called the b-value (with units s/mm²). At higher
+b-values, the sequence becomes more sensitive to diffusion and signal
+attenuation increases. The apparent diffusion coefficient (ADC)
+quantifies water mobility by fitting the signal decay across b-values.
+For two b-values, b₁ and b₂, and corresponding signal intensities S(b₁)
+and S(b₂), the ADC is:
+
+\[\text{ADC} = \frac{1}{b_{2} - b_{1}}\ln\left( \frac{S\left( b_{1} \right)}{S\left( b_{2} \right)} \right)\]
+
+Low ADC indicates restricted diffusion (water has diffused less so there
+is less signal attenuation). Biologically, this can mean high
+cellularity since cells obstruct water movement. Following the same
+reasoning, high ADC indicates freer diffusion (water has diffused more
+and therefore there is more signal attenuation), which means that the
+tissue in question has low cellularity (e.g. necrosis or edema). While
+ADC is used as a proxy for cellularity, we must acknowledge that it is a
+measurement conflating multiple factors including cell density, cell
+size, membrane permeability, and vascular perfusion. These factors
+affect ADC in competing ways, which explains why correlations between
+ADC and histological cellularity have been inconsistent across studies
+(Chen et al., 2013; Surov et al., 2017; Yoshikawa et al., 2008).
+
+More advanced diffusion models attempt to disentangle these factors by
+assuming a certain tissue microstructure. In these models, the signal is
+represented as a mixture of compartments with distinct water
+diffusivity, such as vascular, intracellular, and extracellular
+components (Novikov et al., 2018). Many such models have been proposed,
+and while they remain mostly investigational, they have shown promising
+results for clinical applications. A well known example of a model is
+the intravoxel incoherent motion (IVIM) model (Le Bihan et al., 1988),
+which assumes that tissue water is present in two different
+compartments: vascular (pseudo-diffusing water inside blood vessels) and
+nonvascular (diffusing water in and around cells). In this thesis, when
+diffusion--relaxation modeling is employed, we therefore distinguish
+between a tissue-related apparent diffusion coefficient (ADCₜ) and a
+vascular-related apparent diffusion coefficient (ADCᵥ). The specific
+models and fitting strategies used are described in Chapter 5.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.85\textwidth]{fig_2_2.png}
+\caption{Examples of MRI and multiparametric MRI maps.
+Axial T2-weighted MRI slices from three representative patients with
+liver metastases. The example mpMRI maps overlays are the apparent
+diffusion coefficient (ADC) and the volume transfer constant
+(K\textsuperscript{trans}), derived from DWI and DCE, respectively. In
+ADC, darker regions indicate restricted diffusion (higher cellularity).
+In the K\textsuperscript{trans} maps, brighter regions indicate higher
+vascular permeability.}
+\label{fig:2.2}
+\end{figure}
+
+\subsubsection{Dynamic Contrast-Enhanced
+MRI}\label{dynamic-contrast-enhanced-mri}
+
+Dynamic contrast-enhanced MRI (DCE) captures the flow of a contrast
+agent through tissue over time. Unlike CT{}, the contrast agent is
+gadolinium-based. Following the injection of the contrast, MRI
+differentiates tissues based on how gadolinium shortens the T1
+relaxation. Therefore, in tissues where gadolinium accumulates, the
+signal is enhanced. Pharmacokinetic models analyze these enhancement
+curves. The most common model used is the Tofts model (Tofts \& Kermode,
+1991) which assumes that the movemenet of the contrast agent in the
+tissue is from the blood vessels to the extracellular space (outside the
+cells). Thus, we can obtain a parameter related to the contrast agent
+leakage (perfusion), \emph{K\textsuperscript{tran}}\textsuperscript{s},
+and a parameters related to the volume of the extracellular space,
+\emph{ve}.
+
+Within a single examination, multiple MRI sequences can be acquired to
+obtain functional information beyond anatomy. We refer to this
+combination of sequences as multiparametric MRI (mpMRI). After
+preprocessing and model fitting, we can obtain the different
+quantitative parameters such as ADC, fv, and Ktrans. We refer to these
+as mpMRI maps. In this thesis, mpMRI serves as the biological reference
+for developing and validating CT{}-derived habitats (Chapter 7). The
+specific parameters used are detailed in Chapter 5.
+
+\section{Histopathologic Light Microscopy}\label{histopathologic-light-microscopy}
+
+Unlike the non-invasive imaging techniques described above,
+histopathological assessment requires the surgical removal of tissue.
+The extracted sample must then be processed through a series of
+preparation steps (Paxton et al., 2003) prior to microscopic
+examination.
+
+First, to prevent tissue decay, the sample requires chemical fixation,
+which is done by applying formalin, which inactivates enzymes and kills
+bacteria that would otherwise degrade the tissue. Next, to enable
+processing into thin slices, the tissue\textquotesingle s mechanical
+stability must be increased. This is achieved by first dehydrating the
+sample with alcohol and then embedding it in paraffin wax. After this
+the tissue is a hardened block which is cut by a microtome (i.e. a
+slicer) that produces sections typically around 5 μm thick. Once the
+tissue sections are mounted on glass microscope slides, dyes are applied
+to enhance visual contrast of cellular components. The most common
+staining is Haematoxylin and eosin (H\&E), in which cell nuclei appear
+purple and most other components different shades of pink
+(\hyperref[_Ref219584906]{Figure 2.3}).
+
+The stained and mounted sections are then examined through conventional
+light microscopy, which achieves resolutions down to approximately 200
+nm. In the last few years pathologists have shifted from using
+conventional microscopy to digitized images. This is known as
+whole-slide imaging (WSI) (Pantanowitz et al., 2015). Here, automated
+scanners that combine a light microscope and a digital camera digitize
+whole tissue sections. WSI images are usually obtained at several
+magnifications (stored as an image pyramid), with 40× magnification
+producing pixels that are roughly 0.25 μm in size. The resulting files
+grow to several gigabytes per slide, which presents storage issues but
+also makes computational analysis possible. Algorithms that quantify
+details that are impossible for the human eye to count can be fed the
+same image that a pathologist examines.
+
+Understanding the scale gap between radiology and pathology will allow
+us to contextualize the results in Chapter 7. A single CT{} voxel may
+contain tens of thousands of hepatocytes (liver cells) while in a
+whole-slide image a single hepatocyte covers thousands of pixels. The
+resolution gap is approximately nine orders of magnitude in
+volume.\footnote{A CT{} voxel is approximately 1 mm³ volume (=10⁹ μm³).
+  Assuming an average hepatocyte diameter of \textasciitilde30 μm
+  (volume ≈ 14,000 μm³ for a sphere), this is roughly 10⁴--10⁵
+  hepatocytes per voxel. Whole-slide imaging at 40× magnification has a
+  pixel size of \textasciitilde0.25 × 0.25 μm (0.0625 μm²).
+  Approximating a hepatocyte cross-section as a circle of diameter 30 μm
+  (area ≈ 700 μm²), one cell spans \textasciitilde10⁴ pixels. Comparing
+  volumes: one CT{} voxel (10⁹ μm³) versus one histology pixel extended
+  to a 5 μm section thickness (0.0625 μm² × 5 μm ≈ 0.3 μm³) gives a
+  ratio of \textasciitilde10⁹.} As an analogy, we can picture
+Barcelona's beach. Histopathology is like examining individual grains of
+sand while CT{} imaging is like viewing the beach from an airplane. From
+altitude we can tell fine sand from rocky areas, but individual grains
+are invisible.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.95\textwidth]{fig_2_3.pdf}
+\caption{From radiological imaging to histopathological examination.
+Pre-operative CT reveals a colorectal liver metastasis (dashed
+contour, $\sim$4 cm). Following surgical resection, the
+specimen is sectioned and processed for whole-slide imaging (H\&E),
+enabling examination at cellular resolution.}
+\label{fig:2.3}
+\end{figure}
+
+

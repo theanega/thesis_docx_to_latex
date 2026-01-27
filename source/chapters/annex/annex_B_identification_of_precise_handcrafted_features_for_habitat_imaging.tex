@@ -1,0 +1,750 @@
+\chapter{Identification of Precise Handcrafted Features for Habitat
+Imaging}\label{identification-of-precise-handcrafted-features-for-habitat-imaging}
+
+\subsection{B.1. Cohort
+Characteristics}\label{b.1.-cohort-characteristics}
+
+\textbf{Table B.1. Total number of patients, images, and lesions per
+cohort and lesion location.}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1976}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1330}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1327}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1331}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1327}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1331}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1327}}@{}}
+\toprule\noalign{}
+\multirow{2}{=}{\begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Primary tumor}
+\end{minipage}} &
+\multicolumn{2}{>{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.2657} + 2\tabcolsep}}{%
+\begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Patients}
+\end{minipage}} &
+\multicolumn{2}{>{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.2658} + 2\tabcolsep}}{%
+\begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Images}
+\end{minipage}} &
+\multicolumn{2}{>{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.2658} + 2\tabcolsep}@{}}{%
+\begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Lesions}
+\end{minipage}} \\
+& \begin{minipage}[b]{\linewidth}\raggedright
+Liver
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Lung
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Liver
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Lung
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Liver
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Lung
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Colorectal & 63 & 12 & 186 & 29 & 959 & 122 \\
+Lung & 13 & 72 & 22 & 102 & 89 & 141 \\
+Neuroendocrine & 86 & 0 & 86 & 0 & 447 & 0 \\
+Mixed & 44 & 41 & 93 & 87 & 366 & 312 \\
+\multirow{2}{=}{Total} & 206 & 125 & 387 & 218 & 1861 & 575 \\
+&
+\multicolumn{2}{>{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.2657} + 2\tabcolsep}}{%
+331} &
+\multicolumn{2}{>{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.2658} + 2\tabcolsep}}{%
+605} &
+\multicolumn{2}{>{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.2658} + 2\tabcolsep}@{}}{%
+2436} \\
+\end{longtable}
+}
+
+\textbf{Table B.2. Image acquisition parameters per cohort.}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2898}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.1927}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.1549}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.1886}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.1739}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Colorectal}
+
+\textbf{(n=215)}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Lung}
+
+\textbf{(n=124)}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Neuroendocrine}
+
+\textbf{(n=86)}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Mixed}
+
+\textbf{(n=180)}
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\textbf{Manufacturers}
+
+SIEMENS/PHILIPS/
+
+TOSHIBA/GENERAL ELECTRIC & 138/58/9/10 & 63/40/0/21 & 22/35/6/23 &
+144/23/3/10 \\
+\textbf{Tube Voltage (kVP)}
+
+100/110/120/130/140/unknown & 25/17/161/0/0/12 & 6/1/105/3/0/9 &
+10/3/70/1/2/0 & 14/7/158/0/1/0 \\
+\textbf{Reconstruction kernel}
+
+SOFT/STANDARD/B
+
+B20f/B30f/B31f
+
+I31s/I50s/unkown & 1/7/96
+
+16/38/12
+
+15/6/20 & 14/7/43
+
+11/23/0
+
+0/0/22 & 1/19/36
+
+2/2/4
+
+0/0/19 & 2/11/21
+
+9/112/4
+
+0/0/21 \\
+\textbf{Slice thickness (mm)*} & 2.0 {[}2.00-5.00{]} & 2.5 {[}2.0-5.0{]}
+& 2.0 {[}2.0-3.0{]} & 5.0 {[}1.00-5.00{]} \\
+\textbf{Pixel spacing (mm)*} & 0.92 {[}0.77-0.98{]} & 0.91
+{[}0.81-0.98{]} & 0.75 {[}0.70-0.82{]} & 0.98 {[}0.82-0.98{]} \\
+\multicolumn{5}{@{}>{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{1.0000} + 8\tabcolsep}@{}}{%
+(*) Median {[}IQR{]}} \\
+\end{longtable}
+}
+
+\textbf{Table B.3. List of primary tumor types included within the mixed
+cohort.}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1457}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1425}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1423}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1424}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1423}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1424}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1423}}@{}}
+\toprule\noalign{}
+\multirow{2}{=}{\begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Primary tumor}
+\end{minipage}} &
+\multicolumn{2}{>{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.2848} + 2\tabcolsep}}{%
+\begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Patients}
+\end{minipage}} &
+\multicolumn{2}{>{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.2847} + 2\tabcolsep}}{%
+\begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Images}
+\end{minipage}} &
+\multicolumn{2}{>{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.2847} + 2\tabcolsep}@{}}{%
+\begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Lesions}
+\end{minipage}} \\
+& \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Liver}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Lung}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Liver}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Lung}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Liver}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Lung}
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Adrenal & 3 & 0 & 5 & 0 & 35 & 5 \\
+Biliary Tract & 11 & 5 & 24 & 11 & 71 & 66 \\
+Bladder & 3 & 3 & 5 & 5 & 41 & 20 \\
+Bone & 0 & 1 & 0 & 3 & 0 & 21 \\
+Breast & 4 & 2 & 9 & 6 & 32 & 6 \\
+Cervix & 2 & 2 & 3 & 3 & 21 & 21 \\
+Esophagus & 1 & 2 & 2 & 4 & 8 & 9 \\
+Head\&Neck & 2 & 4 & 4 & 11 & 13 & 13 \\
+Kidney & 1 & 2 & 2 & 3 & 4 & 18 \\
+Liver & 2 & 1 & 3 & 1 & 11 & 1 \\
+Ovary & 1 & 2 & 2 & 4 & 4 & 26 \\
+Pancreas & 2 & 0 & 4 & 0 & 12 & 0 \\
+Penis & 1 & 0 & 3 & 0 & 9 & 0 \\
+Skin & 6 & 11 & 13 & 19 & 68 & 39 \\
+Stomach & 4 & 0 & 10 & 0 & 29 & 0 \\
+Thymus & 1 & 0 & 4 & 0 & 8 & 0 \\
+Thyroid & 0 & 6 & 0 & 17 & 0 & 52 \\
+Total & 44 & 41 & 93 & 87 & 366 & 312 \\
+&
+\multicolumn{2}{>{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.2848} + 2\tabcolsep}}{%
+85} &
+\multicolumn{2}{>{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.2847} + 2\tabcolsep}}{%
+180} &
+\multicolumn{2}{>{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.2847} + 2\tabcolsep}@{}}{%
+678} \\
+\end{longtable}
+}
+
+\subsection{B.2. Radiomics Features and
+Computation}\label{b.2.-radiomics-features-and-computation}
+
+\textbf{Table B.4. List of Radiomics features analyzed in this study.}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.1042}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.3432}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.1072}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.4344}}@{}}
+\caption{93 voxel-wise features were computed. However, 91 were analyzed
+after excluding GLCM\_MCC (for having missing values in many cases due
+to memory error) and FirstOrder\_TotalEnergy (for being equal to
+FirstOrder\_Energy for constant kernel size during computation). Feature
+definitions are available in the IBSI reference manual (Zwanenburg et
+al., 2020).}\tabularnewline
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Class}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Feature}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Class}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Feature}
+\end{minipage} \\
+\midrule\noalign{}
+\endfirsthead
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Class}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Feature}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Class}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Feature}
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\multirow{2}{=}{\textbf{First order}} & \multirow{2}{=}{10Percentile
+
+90Percentile
+
+Energy
+
+Entropy
+
+InterquartileRange
+
+Kurtosis
+
+Maximum
+
+MeanAbsoluteDeviation
+
+Mean
+
+Median
+
+Minimum
+
+Range
+
+RobustMeanAbsoluteDeviation
+
+RootMeanSquared
+
+Skewness
+
+TotalEnergy
+
+Uniformity
+
+Variance} & \textbf{GLRLM} & GrayLevelNonUniformity
+
+GrayLevelNonUniformityNormalized
+
+GrayLevelVariance
+
+HighGrayLevelRunEmphasis
+
+LongRunEmphasis
+
+LongRunHighGrayLevelEmphasis
+
+LongRunLowGrayLevelEmphasis
+
+LowGrayLevelRunEmphasis
+
+RunEntropy
+
+RunLengthNonUniformity
+
+RunLengthNonUniformityNormalized
+
+RunPercentage
+
+RunVariance
+
+ShortRunEmphasis
+
+ShortRunHighGrayLevelEmphasis
+
+ShortRunLowGrayLevelEmphasis \\
+& & \multirow{2}{=}{\textbf{GLSZM}} &
+\multirow{2}{=}{GrayLevelNonUniformity
+
+GrayLevelNonUniformityNormalized
+
+GrayLevelVariance
+
+HighGrayLevelZoneEmphasis
+
+LargeAreaEmphasis
+
+LargeAreaHighGrayLevelEmphasis
+
+LargeAreaLowGrayLevelEmphasis
+
+LowGrayLevelZoneEmphasis
+
+SizeZoneNonUniformity
+
+SizeZoneNonUniformityNormalized
+
+SmallAreaEmphasis
+
+SmallAreaHighGrayLevelEmphasis
+
+SmallAreaLowGrayLevelEmphasis
+
+ZoneEntropy
+
+ZonePercentage
+
+ZoneVariance} \\
+\multirow{2}{=}{\textbf{GLCM}} & \multirow{2}{=}{Autocorrelation
+
+ClusterProminence
+
+ClusterShade
+
+ClusterTendency
+
+Contrast
+
+Correlation
+
+DifferenceAverage
+
+DifferenceEntropy
+
+DifferenceVariance
+
+Id
+
+Idm
+
+Idmn
+
+Idn
+
+Imc1
+
+Imc2
+
+InverseVariance
+
+JointAverage
+
+JointEnergy
+
+JointEntropy
+
+MCC
+
+MaximumProbability
+
+SumAverage
+
+SumEntropy
+
+SumSquares} \\
+& & \multirow{2}{=}{\textbf{GLDM}} & \multirow{2}{=}{DependenceEntropy
+
+DependenceNonUniformity
+
+DependenceNonUniformityNormalized
+
+DependenceVariance
+
+GrayLevelNonUniformity
+
+GrayLevelVariance
+
+HighGrayLevelEmphasis
+
+LargeDependenceEmphasis
+
+LargeDependenceHighGrayLevelEmphasis
+
+LargeDependenceLowGrayLevelEmphasis
+
+LowGrayLevelEmphasis
+
+SmallDependenceEmphasis
+
+SmallDependenceHighGrayLevelEmphasis
+
+SmallDependenceLowGrayLevelEmphasis} \\
+\textbf{NGTDM} & Busyness
+
+Coarseness
+
+Complexity
+
+Contrast
+
+Strength \\
+\end{longtable}
+
+Table B.5. Image processing and radiomics feature computation
+parameters.
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.4819}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5181}}@{}}
+\toprule\noalign{}
+\multicolumn{2}{@{}>{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{1.0000} + 2\tabcolsep}@{}}{%
+\begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Image Processing}
+\end{minipage}} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Software & PyRadiomics v3.0.1, installed in Python 3.7.10 \\
+Bounding box & Defined by the segmentation, extended by default padding
+distance. \\
+Resampled voxel spacing (mm) & 1 x 1 x 1 \\
+Image interpolation method & B-spline \\
+Intensity rounding & None \\
+ROI interpolation method & Nearest neighbor \\
+Resegmentation & None \\
+\multicolumn{2}{@{}>{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{1.0000} + 2\tabcolsep}@{}}{%
+\textbf{Feature Computation}} \\
+Kernel radius & 1 / 3mm \\
+Discretization (fixed bin size) & 12/25HU \\
+Image filter & None \\
+maskedKernel & True (only voxels in the kernel that were also segmented
+in the ROI were used for calculation) \\
+Initvalue & NaN (voxels outside ROI were considered as transparent) \\
+Distance weighting for GLCM, GLRLM, NGTDM & No weighting \\
+GLCM Symmetry & Symmetric \\
+GLCM distance, GLSZM linkage distance, GLDZM linkage distance, NGTDM
+distance & Chebyshev distance δ = 1 \\
+NGTDM coarseness & Coarseness parameter α = 0 \\
+\end{longtable}
+}
+
+\subsection{B.3. Image Perturbation}\label{b.3.-image-perturbation}
+
+Image perturbation was carried out in three ways: rotation, translation,
+and noise addition. While the first two emulate changes in patient
+positioning, the latter represents the noise present in different voxel
+intensities in CT images. Perturbations were performed as described in
+(Bernatowicz et al., 2021), where the authors demonstrated that the
+combination of these three perturbations simulate the retest scenario.
+Briefly, we added Gaussian noise (mean 0, standard deviation as present
+in the image); for translation, we shifted the voxel grid by a fraction
+of the image voxel spacing following; finally, we rotated the image
+around the z-axis by an angle of 0.5°.
+
+\subsection{B.4. Habitat Computation}\label{b.4.-habitat-computation}
+
+To take into account intravoxel heterogeneity, we decided to choose a
+probabilistic model, Gaussian Mixture Models (GMMs), for clustering
+rather than a deterministic approach. GMMs, which have been previously
+used in similar contexts (J. Chen et al., 2019; Jardim-Perassi et al.,
+2019), are generative probabilistic models that find a mixture of
+multiple Gaussian probability distributions that best fit the data. The
+Expectation-Maximization (EM) algorithm is used to estimate the model
+parameters (Bishop, 2006). A GMM is represented by the following
+formula:
+
+\[P\ (x) = \sum_{}^{}(\pi_{k}\ N\ (x\ |\ \mu_{k},\ \sum_{k})\]
+
+where
+
+P(x) : probability density of the data point x
+
+\(\mathbf{\pi}_{\mathbf{k}}\): mixing coefficient for the kth Gaussian
+component
+
+\(\mathbf{N}\ (\mathbf{x}\ |\ \mathbf{\mu}_{\mathbf{k}},\ \sum_{\mathbf{k}})\):
+kth Gaussian component with mean \(\mathbf{\mu}_{\mathbf{k}}\) and
+covariance matrix \(\sum_{\mathbf{k}}\)
+
+To determine the optimal number of habitats (k), we used the Bayesian
+Information Criterion (BIC). The formula for BIC is:
+
+\[BIC = \ {- \ 2\ log}{(L)\  + \ d\ log(n)}\]
+
+where
+
+L : likelihood of the data given the model
+
+d: number of parameters
+
+n: number of data points
+
+The BIC score is a measure of the trade-off between model complexity and
+goodness of fit. It penalizes models with more parameters, such as GMMs
+with more clusters. In general, lower BIC scores indicate better model
+fit. However, depending on data characteristics, a clear minimum in BIC
+scores might not be observed and thus, the gradient can be used to
+determine the optimal number of clusters. This was our case and
+therefore we performed a GMM fit for different values of clusters (k):
+\{2, 3, 4 and 5\}. The maximum number of 5 clusters was determined by
+being the maximum number of tissue types observed in histology by an
+experienced pathologist. The optimal value of k was the one where the
+change in BIC score with respect to k was maximal, which was an
+indication that adding more clusters after that point does not improve
+the model fit significantly. A cluster number was automatically selected
+by BIC using the precise original radiomics data and was given as a
+parameter to the GMM model to compute imaging habitats in both the
+original and perturbed data. GMM was implemented using Python package
+scikit-learn (v1.0.2) with a random seed of 123, and default parameters
+(except for the number of clusters), specifically maximum iteration of
+100, convergence threshold of 10\textsuperscript{-3}, full covariance
+type and initialization with kmeans.
+
+In addition, The Hungarian algorithm (also known as the Kuhn-Munkres
+algorithm) (Kuhn, 1955), was used to match habitats between original and
+perturbed data. The Hungarian algorithm is a combinatorial optimization
+algorithm that solves the assignment problem in polynomial time. It
+finds an optimal one-to-one matching between two sets by minimizing the
+total cost (in our case, the difference in cluster assignments).
+
+Finally, to quantify habitat stability, we computed the Dice Similarity
+Coefficient (DSC) (Zou et al., 2004) between original and perturbed
+habitats for each habitat within a lesion, across all lesions. The DSC
+is a widely used metric for evaluating the overlap between two sets,
+with a higher DSC indicating greater similarity.
+
+All codes are publicly available at
+\url{https://github.com/radiomicsgroup/precise-habitats}.
+
+\subsection{B.5. Intraclass Correlation
+Coefficient}\label{b.5.-intraclass-correlation-coefficient}
+
+An Intraclass Correlation Coefficient (ICC) value of 1 indicates that a
+feature is highly repeatable/reproducible whereas a value of 0 implies
+no reliability. Negative ICC values were truncated at 0 as proposed and
+done previously (Bartko, 1976; Fornacon-Wood et al., 2020). The ICC is
+calculated by mean squares obtained through the analysis of variance
+(ANOVA). In this study, we use two versions of the ICC that are based on
+a two-way mixed effects ANOVA model, following Koo's guidelines. Below
+we describe the formulas used to compute the ICC formulas. More
+information regarding such formulas can be found in the highly cited
+paper from McGraw and Wong.
+
+To compute the ANOVA model let's consider a dataframe with dimensions
+\(\mathbf{n}\  \times \mathbf{k}\) dataframe where \(\mathbf{n}\) is the
+total number of voxels (rows) for one region of interest (ROI) and
+\(\mathbf{k}\) is the total number of conditions or measurements
+(columns). In our case, \(\mathbf{k}\)=2. For repeatability the two
+conditions are original-perturbed (test-retest) and for reproducibility
+against kernel size the two conditions are computation with radius
+kernel 1mm or radius kernel 3mm (or bin size 12HU or 25HU in the case of
+reproducibility against bin size). Each voxel measurement is indexed as
+\(\mathbf{Y}_{\mathbf{ij}}\) where \emph{i} denotes the voxel (\emph{i}
+= 1, \ldots{} \emph{n)} and \emph{j} denotes the measurement under the
+repeatability/reproducibility condition (\emph{j = 1 \ldots{} k)}. We
+define the following concepts:
+
+\({\overline{\mathbf{Y}}}_{\mathbf{i}}\): mean of all voxel values in a
+column
+
+\[{\overline{\mathbf{Y}}}_{\mathbf{i}} = \frac{\sum_{\mathbf{j} = \mathbf{1}}^{\mathbf{k}}\mathbf{Y}_{\mathbf{ij}}}{\mathbf{k}}\]
+
+\({\overline{\mathbf{Y}}}_{\mathbf{j}}:\) mean of all voxel values in a
+column
+
+\[{\overline{\mathbf{Y}}}_{\mathbf{j}} = \frac{\sum_{\mathbf{i} = \mathbf{1}}^{\mathbf{n}}\mathbf{Y}_{\mathbf{ij}}}{\mathbf{n}}\]
+
+\(\mathbf{\mu}:\) mean of all values (also called \emph{grand mean})
+
+\[\mathbf{\mu} = \frac{\sum_{\mathbf{j} = \mathbf{1}}^{\mathbf{k}}{\sum_{\mathbf{i} = \mathbf{1}}^{\mathbf{n}}\mathbf{Y}_{\mathbf{ij}}}}{\mathbf{n}*\mathbf{k}}\]
+
+\({\mathbf{\sigma}_{\mathbf{w}}}^{\mathbf{2}}:\ \)Within-voxel variance,
+the estimated variance of repeated measurements
+
+\[{\mathbf{\sigma}_{\mathbf{w}}}^{\mathbf{2}} = \frac{\sum_{\mathbf{j} = \mathbf{1}}^{\mathbf{k}}{(\mathbf{Y}_{\mathbf{ij}} - {\overline{\mathbf{Y}}}_{\mathbf{i}})\ }^{\mathbf{2}}}{\mathbf{k} - \mathbf{1}}\]
+
+\(\mathbf{\sigma}_{\mathbf{w}}\ :\ \ \)Within-voxel standard deviation,
+the standard deviation we get if we measure the voxel multiple times.
+Calculated by averaging the within-subject sample variances. Since we
+have a variance per voxel and we can't meaningfully take the average of
+a list of standard deviations, we first calculate the variance for each
+voxel, and then compute the average of those, and finally square root
+that mean variance (Ye et al., 2022).
+
+\[\mathbf{\sigma}_{\mathbf{w}} = \sqrt{\frac{\sum_{\mathbf{i} = \mathbf{1}}^{\mathbf{n}}\frac{\sum_{\mathbf{j} = \mathbf{1}}^{\mathbf{k}}{(\mathbf{Y}_{\mathbf{ij}} - {\overline{\mathbf{Y}}}_{\mathbf{i}})\ }^{\mathbf{2}}}{\mathbf{k} - \mathbf{1}}}{\mathbf{n}}}\]
+
+The degrees of freedom, sum squares and mean square expectations that
+correspond to a two-way mixed ANOVA model are summarized below.
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2511}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.1648}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2996}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2846}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Source of Variation}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Degrees of freedom}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Sum Squares}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Mean Square Expectations}
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Conditions (columns) & dfc = k -1 &
+\(\mathbf{SSC} = \ \sum_{\mathbf{j} = \mathbf{1}}^{\mathbf{k}}{\mathbf{n}\  \times \ {({\overline{\mathbf{Y}}}_{\mathbf{j}} - \mathbf{\mu})\ }^{\mathbf{2}}}\)
+&
+\(\mathbf{MSC} = \frac{\mathbf{SSC}}{\mathbf{dfc}\  \times \ \mathbf{n}\ }\) \\
+Voxels (rows) & dfr = n -1 &
+\(\mathbf{SSR} = \ \sum_{\mathbf{i} = \mathbf{1}}^{\mathbf{n}}{\mathbf{k}\  \times \ {({\overline{\mathbf{Y}}}_{\mathbf{i}} - \mathbf{\mu})\ }^{\mathbf{2}}}\)
+& \(\mathbf{MSR} = \frac{\mathbf{SSR}}{\mathbf{dfr}\ }\) \\
+Total & &
+\(\mathbf{SST} = \ \sum_{\mathbf{j} = \mathbf{1}}^{\mathbf{k}}{\sum_{\mathbf{i} = \mathbf{1}}^{\mathbf{n}}{(\mathbf{Y}_{\mathbf{ij}} - \mathbf{\mu})\ }^{\mathbf{2}}\ }\)
+& \\
+Error (or residual) & dfe = (n -1)(k -1) &
+\(\mathbf{SSE} = \mathbf{SST} - \mathbf{SSC} - \mathbf{SSR}\) &
+\(\mathbf{MSE} = \frac{\mathbf{SSE}}{\mathbf{dfe}\ }\) \\
+\multicolumn{4}{@{}>{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{1.0000} + 6\tabcolsep}@{}}{%
+MSC: mean square columns, MSR: mean square rows, MSE: mean square error,
+SSC= sum of squares columns, SSR=sum of squares rows, SST= sum of
+squares total, SSE= sum of squares error, dfc= degrees of freedom
+columns, dfr=degrees of freedom rows, dfe=degrees of freedom errors} \\
+\end{longtable}
+}
+
+We compute the two versions of ICC for repeatability and
+reproducibility:
+
+Repeatibility ICC(3A,1): ICC based on single-measurement,
+absolute-agreement, two-way mixed-effects model. \emph{\hfill\break
+}\[\mathbf{ICC}\ (\mathbf{3A},\mathbf{1}) = \frac{\mathbf{MSR} - \mathbf{MSE}}{\mathbf{MSR} + \mathbf{dfc}\  \times \ \mathbf{MSE} + \ \frac{\mathbf{k}}{\mathbf{n}\ }\  \times (\mathbf{MSC} - \mathbf{MSE})\ \ }\]
+
+Reproducibility ICC(3C,1): ICC based on single-measurement, consistency,
+two-way mixed-effects model.
+
+\[\mathbf{ICC}(\mathbf{3C},\mathbf{1}) = \frac{\mathbf{MSR} - \mathbf{MSE}}{\mathbf{MSR} + \mathbf{dfc} \times \ \mathbf{MSE}\ }\]
+
+We compute the lower bound of the 95\% CI of the ICC (LCL) and the upper
+bound (UCL):
+
+\[\mathbf{LCL =}\frac{\frac{\mathbf{FR}}{\mathbf{F}}\mathbf{- 1}}{\frac{\mathbf{FR}}{\mathbf{F}}\mathbf{+ k - \ 1}}\mathbf{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ UCL =}\frac{\mathbf{(FR\  \times \ F)\  - 1}}{\mathbf{(FR\  \times \ F) + k - \ 1}}\]
+
+Where F is the (1-\(\frac{\mathbf{\alpha}}{\mathbf{2}}\) ) x
+100\textsuperscript{th} percentile of the F distribution with n-1
+numerator degrees of freedom and (n-1)(k-1) denominator degrees of
+freedom and FR is the F-statistic for voxels computed as:
+\(\mathbf{FR =}\frac{\mathbf{MSR}}{\mathbf{MSE}}\)\emph{\textbf{.}}
+
+Custom codes used to calculate ICC (3A,1) and ICC (3C,1)\textbf{,} based
+on Nipype's (Esteban et al., 2022) module ICC (v1.8.5) and approved by
+an statistician (VN) are available at
+https://github.com/radiomicsgroup/precise-habitats.
+
+\subsection{B.6. Justification for NGTDM Coarseness
+Inclusion}\label{b.6.-justification-for-ngtdm-coarseness-inclusion}
+
+NGTDM (Neighborhood Gray-Tone-Difference Matrix) coarseness describes
+the roughness (i.e. how fine or coarse) the texture of an image is. In
+the radiomics literature, evidence has been found regarding its
+usefulness to characterize heterogeneity and predict progression-free
+survival in oncology (Gupta et al., 2021).
+
+In our study, we identified precise features by linking repeatability
+and reproducibility results. That is, for every feature, we considered
+results obtained in the three relevant experiments: repeatability
+(setting R3B12), reproducibility against R (fixed B=12HU), and
+reproducibility against B (fixed R=3mm). A feature was selected as
+precise if it presented LCL ≥ 0.50 (i.e. moderate, good or excellent
+repeatability/reproducibility) in the three experiments. NGTDM
+Coarseness presented excellent repeatability and reproducibility against
+bin size, but was not selected as precise as it presented poor
+reproducibility against kernel radius. However, by the nature of its
+definition, the poor reproducibility against kernel radius is
+acceptable: the feature captures the distribution of differences in
+gray-tone values between pairs of neighboring pixels. Considering the
+feature's excellent results in two out of three experiments, its
+potential usefulness and in light of the fact that we were already being
+stringent, first by using LCL rather than ICC and second by linking
+results of three different experiments, , we decided to include it as a
+precise feature for both liver and lung lesions.
+
+\subsection{B.7. Primary Tumor Has No Effect on
+Precision}\label{b.7.-primary-tumor-has-no-effect-on-precision}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.95\textwidth]{fig_B_1.png}
+\caption{Repeatability by primary tumor type.}
+\label{fig:B.1}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.95\textwidth]{fig_B_2.png}
+\caption{Reproducibility by primary tumor type.
+Repeatability distribution of radiomics features computed with
+setting R1B12 \textbf{(A)}, R1B25 \textbf{(B)}, R3B12 \textbf{(C)} and
+R3B25 \textbf{(D)} per cohort for lung and liver lesions separately.
+Primary tumor has no effect on repeatability. LCL, 95\% lower confidence
+limit of the Intraclass Correlation Coefficient; R1B12, features
+computed with kernel radius 1mm and bin size 12HU; R1B25, features
+computed with kernel radius 1mm and bin size 25HU; R3B12, features
+computed with kernel radius 3mm and bin size 12HU; R3B25, features
+computed with kernel radius 3mm and bin size 25HU; CRC: colorectal
+cohort; NET: neuroendocrine cohort; ALL: all cohorts combined.}
+\label{fig:B.2}
+\end{figure}
+
+Annex C

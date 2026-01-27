@@ -1,0 +1,40 @@
+\chapter{\texorpdfstring{Conclusions }{Conclusions }}\label{conclusions}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \textbf{Only a minority of handcrafted radiomics features are suitable
+  for robust habitat computation.} Of the 91 handcrafted CT radiomics
+  features evaluated, only 26 met repeatability and reproducibility
+  criteria in liver lesions. Feature stability was strongly influenced
+  by computational choices, with kernel radius having a greater impact
+  than intensity discretization.
+\item
+  \textbf{Handcrafted texture features outperform deep learning
+  embeddings for CT habitat computation.} Handcrafted features produced
+  more spatially contiguous and biologically coherent habitats than
+  embeddings from both a liver tumor segmentation model and a foundation
+  model. The optimal representation depends on the downstream task, data
+  type, and sample size, not model complexity alone.
+\item
+  \textbf{CT-derived habitats reflect vascular organization rather than
+  discrete histological compartments.} While habitats were initially
+  expected to distinguish necrosis, fibrosis, and viable tumor, they
+  instead consistently mapped gradients of vascular organization:
+  avascular cores, cellular--perfused regions, and vascularized rims.
+\item
+  \textbf{The prognostic value of CT habitat metrics depends on
+  context.} Rim entropy was associated with survival after neoadjuvant
+  chemotherapy and anti-angiogenic treatment, but not with cytotoxic
+  chemotherapy alone, where tumor volume remained dominant. CT habitats
+  may complement volumetric assessment when treatment effects are not
+  captured by size change.
+\item
+  \textbf{Prognostic information is spatially concentrated at the
+  invasive tumor rim.} Metrics derived from a 2 mm outer rim
+  consistently outperformed whole-tumor and core-based measures for
+  survival prediction. Rim heterogeneity may capture biologically
+  relevant features related to histopathological growth patterns.
+  Focusing analysis on the invasive margin, rather than averaging across
+  the tumor, preserves this signal and improves prognostic performance.
+\end{enumerate}

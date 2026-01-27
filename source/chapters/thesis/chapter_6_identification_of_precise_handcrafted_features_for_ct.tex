@@ -1,0 +1,867 @@
+\chapter{\texorpdfstring{Identification of Precise Handcrafted Features
+for CT{} Habitats
+Computation}{Identification of Precise Handcrafted Features for CT Habitats Computation}}\label{identification-of-precise-handcrafted-features-for-ct-habitats-computation}
+
+Robustness is a prerequisite for useful representations. If a radiomic
+feature\textquotesingle s value changes meaningfully when a patient
+shifts position by a few millimeters, or when we adjust a minor
+computational parameter, then any habitat computed with that feature
+will be measuring noise, not biology. In this Chapter we describe a
+comprehensive study of precision analysis of handcrafted features, with
+the goal of identifying optimal features for stable habitat computation.
+
+\textbf{Contributions}:
+
+\begin{itemize}
+\item
+  We assess repeatability by perturbating images to simulate a
+  test-retest dataset collected under routine clinical conditions.
+\item
+  We assess reproducibility against two key parameters for computing
+  handcrafted radiomics: kernel radius (R, defining the neighborhood for
+  feature calculation) and bin size (B, defining intensity
+  discretization).
+\item
+  Combining repeatability and reproducibility resutls, we identify a
+  subset of precise voxelwise features for both lung and liver lesions,
+  and test whether habitats computed with only precise features are more
+  stable.
+\item
+  We explore the biological meaning of habitats in an independent cohort
+  of 13 liver metastases with mpMRI and histology.
+\end{itemize}
+
+This chapter reproduces many parts of the publication (Prior et al.,
+2024), adapted to the thesis format. A note on scope: lung lesion
+results are not directly relevant to the questions addressed in this
+thesis and therefore are not discussed in depth, they have just been
+kept for comparison.
+
+\section{Rationale}\label{rationale}
+
+CT{}-based habitat imaging offers a non-invasive, volumetric approach to
+quantify tumor heterogeneity. Unlike biopsy, it samples the entire
+tumor. Unlike whole-region summary statistics (e.g. mean kurtosis), it
+preserves spatial structure. This makes habitats potentially valuable
+for treatment planning, response monitoring, and understanding
+resistance patterns---but only if the habitats themselves are stable.
+
+For habitats to be stable, and therefore clinically useful, the
+underlying radiomics features (RFs) (Lambin et al., 2017) must be
+precise. This means that RFs should be both \emph{repeatable} (i.e.,
+exhibiting measurement precision under the same set of computation
+conditions, also known as test-retest) and \emph{reproducible} (i.e.,
+exhibiting measurement precision under different computation conditions)
+(Kessler et al., 2015; Sullivan et al., 2015).
+
+Most existing studies of radiomics precision, however, focus on features
+extracted from entire regions of interest (ROIs) and evaluate them as
+independent predictive biomarkers. Many such studies also fail to
+provide critical information such as whether the features were computed
+in 2D (pixelwise) or 3D (voxelwise) (Pfaehler et al., 2021; Traverso et
+al., 2018). This is especially relevant for habitat compuation since
+pixelwise features are computed slice-by-slice and ignore out-of-plane
+texture information, making them less representative of true 3D tumor
+architecture. Few studies address the precision of voxelwise 3D features
+specifically, and fewer still in the context of clustering-based methods
+like habitat imaging (Ng et al., 2013; Xu et al., 2019). Thus, there is
+a lack of knowledge on precision of 3D RF for CT{} tumor habitat
+computation.
+
+We therefore set out to answer: Which 3D radiomics features are precise
+enough to support stable habitat computation? We evaluated precision
+under three sources of variability:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Repeatability: Do features remain consistent when the same patient is
+  scanned twice (test-retest)?
+\item
+  Reproducibility against kernel radius (R): Does changing the size of
+  the neighborhood used for feature calculation alter feature values
+  significantly?
+\item
+  Reproducibility against bin size (B): Does changing the intensity
+  discretization design alter feature values significantly?
+\end{enumerate}
+
+Features that ``passed'' all three tests were identified as
+\emph{precise} and suitable for habitat modeling. We then asked whether
+using only precise features resulted in more stable habitats, using a
+Gaussian mixture model (GMM) clustering approach (Divine et al., 2016;
+Jardim-Perassi et al., 2019). Finally, we explored the biological
+plausibility of the resulting CT{} habitats by comparing them to
+multiparametric MRI and histopathology in an independent liver
+metastasis cohort.
+
+\section{Methods}\label{methods}
+
+\subsection{Patient Cohorts}\label{patient-cohorts-1}
+
+We analyzed 1,861 liver lesions and 575 lung lesions from 318 patients
+(mean age 64.5 years ± 10.1 SD; 185 male) imaged at multiple timepoints
+between November 2010 and December 2021 (\hyperref[_Ref219819126]{Figure
+6.1}A). All patients had advanced cancer with liver metastases.
+Intravenous contrast-enhanced CT{} scans were acquired as part of
+routine clinical care at Vall d\textquotesingle Hebron University
+Hospital. The analysis of anonymized imaging data was approved by the
+Vall d\textquotesingle Hebron Ethics Committee with waiver of informed
+consent. The cohort comprised four primary tumor types: (1) colorectal,
+(2) lung, (3) gastrointestinal neuroendocrine tumors, and (4) a mixed
+group of other cancers. Patients with neuroendocrine tumors were
+enrolled in the multicenter phase II TALENT trial (NCT02678780). Full
+cohort characteristics and imaging protocols are detailed in Annex B.
+
+A small independent cohort of 13 patients with liver metastases,
+enrolled in the PREDICT prospective trial (PR{[}AG{]}29/2020), underwent
+CT{}, multiparametric MRI (mpMRI), and image-guided biopsy. This cohort
+was used solely for exploratory biological validation. All participants
+provided written informed consent for acquisition and analysis of
+imaging and tissue samples.
+
+\subsection{Image Segmentation and Perturbation}\label{image-segmentation-and-perturbation}
+
+A radiologist with more than 10 years of experience in oncologic imaging
+manually segmented all measurable lesions (maximal diameter ≥10 mm per
+RECIST 1.1 (Eisenhauer et al., 2009)) in 3D using 3D Slicer
+(v4.11.20210226) (Fedorov et al., 2012).
+
+To assess repeatability, we simulated test-retest scenarios by applying
+controlled image perturbations, implemented using the
+\href{https://github.com/oncoray/mirp}{Medical Image Radiomics Processor
+(MIRP) toolkit} (v1.2.0) (Zwanenburg et al., 2019). Details of the
+perturbation protocol are provided in Annex B.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.95\textwidth]{fig_6_1.png}
+\caption{Precision analysis workflow.
+\textbf{(A)} Distribution of lung and liver lesions across different
+cohorts for precision analysis. \textbf{(B)} Precision analysis design.
+3D radiomic features were computed from both original and perturbed
+images, four times per image, each time with a different combination of
+kernel radius, R (1mm/3mm), and bin size, B (12HU/25HU). To study
+repeatability, original-perturbed feature pairs were evaluated for every
+combination of extraction settings (R1B12, R1B25, R3B12 and R3B25). To
+study reproducibility against extraction parameters, we compared
+original feature pairs extracted with different extraction settings: for
+reproducibility against R, we first compared features extracted with
+fixed B=12HU and different kernel radius, and then repeated for features
+extracted with fixed B=25HU; analogously, for reproducibility against
+B, we compared features extracted from original images with fixed R=1mm
+and different bin size, and then repeated with those extracted with
+fixed R=3mm. Precise features were selected by linking reproducibility
+and repeatability results. R, kernel size; B, bin size.}
+\label{fig:6.1}
+\end{figure}
+
+\subsection{Radiomics Feature Computation}\label{radiomics-feature-computation}
+
+We computed 91 voxelwise radiomics features using PyRadiomics (v3.0.1)
+(Van Griethuysen et al., 2017). The full feature list is provided in
+Annex B. Features were calculated on original (unfiltered) images at
+each voxel within the segmented lesion volume. For each lesion we
+computed features four times, using the different combinations of the
+two computational parameteres we're studying:
+
+\begin{itemize}
+\item
+  \textbf{Kernel radius (R)}: the size of the neighborhood used for
+  texture computation (1 mm or 3 mm).
+\item
+  \textbf{Bin size (B)}: the intensity discretization used before
+  feature calculation (12 HU or 25 HU).
+\end{itemize}
+
+The four parameter combinations---denoted R1B12, R1B25, R3B12, and
+R3B25---were chosen based on common practice in the radiomics
+literature. PyRadiomics defaults to R=1 mm and B=25 HU; we selected R=3
+mm and B=12 HU as alternative values frequently reported in prior
+studies. All computations followed the Image Biomarker Standardization
+Initiative (IBSI) guidelines (Zwanenburg et al., 2020). Computation
+details are provided in Annex B.
+
+\subsection{Precision Analysis: Repeatability and Reproducibility}\label{precision-analysis-repeatability-and-reproducibility}
+
+\hyperref[_Ref219819126]{Figure 6.1}B summarizes the precision analysis
+workflow. We evaluated:
+
+\begin{itemize}
+\item
+  \textbf{Repeatability} (test-retest stability): We compared feature
+  values from original and perturbed images for each of the four
+  parameter settings (R1B12, R1B25, R3B12, R3B25).
+\item
+  \textbf{Reproducibility against kernel radius (R)}: We compared
+  features computed with R=1 mm versus R=3 mm, holding bin size
+  constant. Two experiments were conducted: one at B=12 HU (R1B12 vs.
+  R3B12) and one at B=25 HU (R1B25 vs. R3B25).
+\item
+  \textbf{Reproducibility against bin size (B)}: We compared features
+  computed with B=12 HU versus B=25 HU, holding kernel radius constant.
+  Two experiments were conducted: one at R=1 mm (R1B12 vs. R1B25) and
+  one at R=3 mm (R3B12 vs. R3B25).
+\end{itemize}
+
+All experiments were performed on the full dataset, on liver and lung
+lesions separately, and stratified by primary tumor type. This allowed
+us to assess whether precision varied by lesion location or primary
+cancer.
+
+We quantified precision using the intraclass correlation coefficient
+(ICC) (Koo \& Li, 2016). For repeatability, we used a
+single-measurement, absolute-agreement, two-way mixed-effects model. For
+reproducibility, we used a single-measurement, consistency, two-way
+mixed-effects model. Following Koo and Li, we classified features based
+on the lower 95\% confidence limit (LCL) of the ICC: poor (LCL
+\textless0.50), moderate (0.50 ≤ LCL \textless0.75), good (0.75 ≤ LCL
+\textless0.90), and excellent (LCL ≥0.90). A feature was selected as
+\textbf{precise} if the 95\% lower confidence limit (LCL) of the ICC was
+≥ 0.50 across the three relevant experiments: repeatability (R3B12),
+reproducibility against R (B=12HU), and reproducibility against B
+(R=3mm).
+
+\subsection{Habitat Computation and Stability Assessment}\label{habitat-computation-and-stability-assessment}
+
+Habitats were computed using Gaussian mixture models (GMMs). We
+clustered voxels based on their radiomics feature values, treating each
+lesion independently. To avoid redundancy, we first removed highly
+correlated features (Spearman\textquotesingle s r ≥0.70, p
+\textless0.001) (Schwarz, 1978). The optimal number of clusters
+(habitats) for each lesion was determined using the Bayesian Information
+Criterion (BIC) (Cohen, 1992). We computed habitats four times per
+lesion:
+
+\begin{itemize}
+\item
+  Using all 91 features, on original images
+\item
+  Using all 91 features, on perturbed images
+\item
+  Using only precise features, on original images
+\item
+  Using only precise features, on perturbed images
+\end{itemize}
+
+Habitat stability was quantified by comparing the spatial overlap of
+habitats derived from original versus perturbed images, using the Dice
+Similarity Coefficient (DSC). Higher DSC indicates greater stability. We
+tested the hypothesis that habitats derived from precise features would
+be more stable than those derived from all features. Details of the GMM
+implementation and BIC optimization are provided in Annex B.
+
+\subsection{Exploratory Biological Case Study}\label{exploratory-biological-case-study}
+
+To assess whether CT{} habitats capture biologically meaningful tissue
+compartments rather than imaging artifacts, we conducted an exploratory
+analysis in a subset of 13 patients from the PREDICT cohort (see Section
+5.1) who had co-acquired CT{}, multiparametric MRI (mpMRI) and digitized
+hematoxylin-eosin (HE) histopathology from biopsy.
+
+CT{} habitats were computed using the precise liver features identified
+in Section 6.2.4, clustered with GMM and BIC as described above. For
+comparison, mpMRI habitats were computed by voxelwise clustering of nine
+quantitative maps---warped non-linearly onto a high-resolution
+T2-weighted anatomical scan---including tissue T2 (T2t), longitudinal
+relaxation time (T1), tissue and vascular apparent diffusion
+coefficients (ADCt, ADCv), tissue apparent kurtosis (Kt), vascular
+fraction (fv), capillary permeability constant (Ktrans), extracellular
+extravascular volume fraction (ve), and plasma volume fraction (vp). We
+then compared the number of habitats selected by BIC for both CT{} and
+mpMRI habitats in each lesion and the qualtiative correspondence between
+imaging habitats and tissue phenotypes identified by a pathologist on HE
+slides.
+
+This analysis was deliberately exploratory. Given the sampling bias, our
+goal was not to establish definitive biological ground truth, but to
+confirm that CT{} habitats have a plausible relationship to known tissue
+phenotypes such as necrosis and viable tumor.
+
+\subsection{Statistical Analysis}\label{statistical-analysis}
+
+Differences in feature reproducibility across parameter settings, lesion
+locations, and habitat stability were assessed using paired two-sided
+Wilcoxon signed-rank tests. Effect sizes were calculated using
+Cohen\textquotesingle s d and classified as small (d ≥0.20), medium (d
+≥0.50), or large (d ≥0.80) (Cohen, 1992). Statistical significance was
+defined as p \textless0.05. All statistical analyses were reviewed by a
+statistician and performed in Python (v3.7.10). Code for reproducibility
+and repeatability analysis is publicly available at
+\url{https://github.com/radiomicsgroup/precise-habitats}.
+
+\section{Results}\label{results}
+
+\subsection{Precision Analysis}\label{precision-analysis}
+
+\textbf{Repeatability.} \hyperref[_Ref219819183]{Figure 6.2} shows the
+distribution of repeatability across the four parameter settings. Most
+features exhibited poor repeatability (ICC LCL \textless0.50) regardless
+of settings, but clear differences emerged between parameter choices.
+
+Features computed with a kernel radius of 3 mm were substantially more
+repeatable than those computed with 1 mm, regardless of bin size. The
+R3B12 setting yielded the highest repeatability, with a median ICC LCL
+of 0.442 (IQR: 0.312--0.516) across all features, compared to 0.191
+(0.116--0.382) for R1B12, 0.199 (0.103--0.344) for R1B25, and 0.415
+(0.306--0.516) for R3B25. Bin size had minimal impact: changing B from
+12 HU to 25 HU did not meaningfully alter repeatability for either
+kernel radius.
+
+The type of repeatable features varied by lesion location
+(\hyperref[_Ref219819183]{Figure 6.2}B). In liver lesions, first-order
+and Gray-Level Run-Length Matrix (GLRLM) features were more repeatable.
+Primary tumor type (colorectal, lung, neuroendocrine, other) had no
+detectable effect on repeatability (Annex B).
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.95\textwidth]{fig_6_2.png}
+\caption{Repeatability of voxelwise radiomics features.
+\textbf{(A)} Repeatability distribution of radiomics features per
+setting. Most radiomic features exhibit poor repeatability. Features
+extracted with kernel radius (R) of 3mm were more repeatable than those
+extracted with R=1mm. Bin size changes didn't affect repeatability.
+\textbf{(B)} Repeatability distribution of radiomics features extracted
+with setting R3B12 per feature class for lung and liver lesions
+separately. First order and GLRLM features were more repeatable in liver
+lesions while GLCM features were more repeatable in lung lesions. LCL,
+95\% lower confidence limit of the Intraclass Correlation Coefficient;
+R3B12, features extracted with kernel radius 3mm and bin size 12HU; FO,
+First-Order; GLCM, Grey Level Co-occurrence Matrix features; GLDM, Grey
+Level Dependence Matrix; GLRLM, Grey Level Run Length Matrix; GLSZM,
+Grey Level Size Zone Matrix; NGTDM, Neighboring Grey Tone Difference
+Matrix Features.}
+\label{fig:6.2}
+\end{figure}
+
+\textbf{Reproducibility.} Features were far more sensitive to changes in
+kernel radius than to changes in bin size
+(\hyperref[_Ref219819213]{Figure 6.3}A-B). Changing R from 1 mm to 3 mm
+substantially altered feature values: median ICC LCL was only 0.440
+(IQR: 0.330--0.526) when B=12 HU and 0.437 (0.355--0.524) when B=25 HU.
+In contrast, changing B from 12 HU to 25 HU had little effect: median
+ICC LCL was 0.929 (0.853--0.988) when R=3 mm and 0.833 (0.706--0.946)
+when R=1 mm.
+
+\textbar{} Reproducibility against kernel radius and bin size
+
+Median (IQR) lower confidence limit of the Intraclass Correlation
+Coefficient reported. B = bin size, HU = Hounsfield units, R = kernel
+radius.
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\centering\arraybackslash}p{(\linewidth - 16\tabcolsep) * \real{0.1666}}
+  >{\centering\arraybackslash}p{(\linewidth - 16\tabcolsep) * \real{0.1047}}
+  >{\centering\arraybackslash}p{(\linewidth - 16\tabcolsep) * \real{0.1053}}
+  >{\centering\arraybackslash}p{(\linewidth - 16\tabcolsep) * \real{0.1036}}
+  >{\centering\arraybackslash}p{(\linewidth - 16\tabcolsep) * \real{0.1049}}
+  >{\centering\arraybackslash}p{(\linewidth - 16\tabcolsep) * \real{0.1044}}
+  >{\centering\arraybackslash}p{(\linewidth - 16\tabcolsep) * \real{0.1051}}
+  >{\centering\arraybackslash}p{(\linewidth - 16\tabcolsep) * \real{0.1040}}
+  >{\centering\arraybackslash}p{(\linewidth - 16\tabcolsep) * \real{0.1014}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\centering
+\end{minipage} &
+\multicolumn{4}{>{\centering\arraybackslash}p{(\linewidth - 16\tabcolsep) * \real{0.4186} + 6\tabcolsep}}{%
+\begin{minipage}[b]{\linewidth}\centering
+\textbf{Reproducibility against R}
+\end{minipage}} &
+\multicolumn{4}{>{\centering\arraybackslash}p{(\linewidth - 16\tabcolsep) * \real{0.4149} + 6\tabcolsep}@{}}{%
+\begin{minipage}[b]{\linewidth}\centering
+\textbf{Reproducibility against B}
+\end{minipage}} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+&
+\multicolumn{2}{>{\centering\arraybackslash}p{(\linewidth - 16\tabcolsep) * \real{0.2100} + 2\tabcolsep}}{%
+\textbf{Fixed B = 12HU}} &
+\multicolumn{2}{>{\centering\arraybackslash}p{(\linewidth - 16\tabcolsep) * \real{0.2085} + 2\tabcolsep}}{%
+\textbf{Fixed B = 25HU}} &
+\multicolumn{2}{>{\centering\arraybackslash}p{(\linewidth - 16\tabcolsep) * \real{0.2095} + 2\tabcolsep}}{%
+\textbf{Fixed R = 1mm}} &
+\multicolumn{2}{>{\centering\arraybackslash}p{(\linewidth - 16\tabcolsep) * \real{0.2053} + 2\tabcolsep}@{}}{%
+\textbf{Fixed = 3mm}} \\
+\emph{Lesion type} & \emph{Liver} & \emph{Lung} & \emph{Liver} &
+\emph{Lung} & \emph{Liver} & \emph{Lung} & \emph{Liver} & \emph{Lung} \\
+LCL {[}Median(IQR){]} & 0.422 (0.346-0.513) & 0.573 (0.403-0.701) &
+0.407 (0.291-0.536) & 0.573 (0.443-0.696) & 0.805 (0.672-0.919) & 0.929
+(0.823-0.997) & 0.921 (0.821-0.982) & 0.967 (0.93-0.999) \\
+\end{longtable}
+}
+
+In other words, \textbf{most features were reproducible against bin
+size} (good or excellent agreement), \textbf{but poorly reproducible
+against kernel radius}. The choice of neighborhood size matters more
+than the choice of discretization bin. Features computed with B=12 HU
+were slightly more reproducible against kernel radius than those with
+B=25 HU (p \textless0.001). Features computed with R=3 mm were more
+reproducible against bin size than those with R=1 mm (p \textless0.001).
+
+As with repeatability, lesion location affected reproducibility
+(\hyperref[_Ref219819213]{Figure 6.3}C-D, \hyperref[_Ref219819227]{Table
+6.2}\hyperref[_Ref219819242]{Table 6.1}). Features from lung lesions
+were more reproducible than those from liver lesions, both against R and
+against B (p \textless0.001), particularly for GLCM and GLRLM feature
+classes. Primary tumor type again had no detectable effect (Annex B).
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.95\textwidth]{fig_6_3.png}
+\caption{Reproducibility against kernel radius and bin size.
+\textbf{(A)} Reproducibility distribution against kernel radius, R, for
+features extracted with fixed bin size of 12HU and bin size 25HU. Most
+features present poor reproducibility against R. Features extracted with
+B=12HU were more reproducible (p$<$.001). \textbf{(B)}
+Reproducibility distribution against bin size, B, for features extracted
+with fixed kernel radius 3mm and fixed kernel radius 1mm. Most features
+present good or excellent reproducibility against B. Features extracted
+with R=3mm were more reproducible (p$<$.001). \textbf{(C)}
+Reproducibility distribution against kernel radius for features
+extracted with fixed bin size of 12HU per feature class for lung and
+liver lesions separately. Features extracted from lung lesions are more
+reproducible against R, especially for features belonging to GLCM and
+GLRLM classes. \textbf{(D)} Reproducibility distribution against bin
+size for features extracted with fixed kernel radius 3mm per feature
+class for lung and liver lesions separately. Features extracted from
+lung lesions are more reproducible against B, especially for features
+belonging to GLCM, first-order and NGTDM classes. LCL, 95\% lower
+confidence limit of the Intraclass Correlation Coefficient; FO,
+First-Order features; GLCM, Grey Level Co-occurrence Matrix features;
+GLDM, Grey Level Dependence Matrix; GLRLM, Grey Level Run Length Matrix;
+GLSZM, Grey Level Size Zone Matrix; NGTDM, Neighboring Grey Tone
+Difference Matrix Features.}
+\label{fig:6.3}
+\end{figure}
+
+\subsection{\texorpdfstring{6.3.2. Identification of Precise Features
+}{6.3.2. Identification of Precise Features }}\label{identification-of-precise-features}
+
+We defined a feature as precise if it met three criteria: ICC LCL ≥0.50
+for (1) repeatability (R3B12 setting), (2) reproducibility against
+kernel radius (at B=12 HU), and (3) reproducibility against bin size (at
+R=3 mm). These thresholds represent the minimum acceptable stability for
+clinical use.
+
+Of the 91 features tested, 25 met all three criteria for liver lesions.
+A 26th feature---NGTDM Coarseness---was added based on its consistently
+high performance across experiments (top 3 most repeatable and
+reproducible against B; see Annex B for justification). The final set
+thus comprised 26 precise features for liver lesions. The same analysis
+for lung lesions also identified 26 precise features
+(\hyperref[_Ref219819227]{Table 6.2}). \hyperref[_Ref219819288]{Figure
+6.4} displays the ICC LCL values for all 91 features across the three
+experiments, for liver and lung lesions separately.
+
+\textbar{} Precise 3D Radiomics Features in Liver and Lung Lesions
+
+A precise radiomic feature was defined as lower confidence limit ≥ 0.50
+in the repeatability and reproducibility experiments. FO = first-order;
+GLCM = Grey Level Co-occurrence Matrix features; GLDM = Grey Level
+Dependence Matrix; GLRLM = Grey Level Run Length Matrix; GLSZM = Grey
+Level Size Zone Matrix; NGTDM = Neighboring Grey Tone Difference Matrix
+Features.
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5464}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.4536}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\centering
+\textbf{Liver lesions}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\textbf{Lung} \textbf{lesions}
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+FO\_10Percentile
+
+FO\_90Percentile
+
+FO\_Energy
+
+FO\_Mean
+
+FO\_Median
+
+FO\_Minimum
+
+FO\_RootMeanSquared
+
+GLCM\_Autocorrelation
+
+GLCM\_JointAverage
+
+GLCM\_SumAverage
+
+GLDM\_DependenceEntropy
+
+GLDM\_GrayLevelNonUniformity
+
+GLDM\_HighGrayLevelEmphasis
+
+GLDM\_LargeDependenceLowGrayLevelEmphasis
+
+GLDM\_LowGrayLevelEmphasis
+
+GLDM\_SmallDependenceHighGrayLevelEmphasis
+
+GLRLM\_GrayLevelNonUniformity
+
+GLRLM\_HighGrayLevelRunEmphasis
+
+GLRLM\_LongRunHighGrayLevelEmphasis
+
+GLRLM\_LongRunLowGrayLevelEmphasis
+
+GLRLM\_LowGrayLevelRunEmphasis
+
+GLRLM\_RunLengthNonUniformity
+
+GLRLM\_RunPercentage
+
+GLRLM\_RunVariance
+
+GLRLM\_ShortRunHighGrayLevelEmphasis & FO\_90Percentile
+
+GLCM\_Id
+
+GLCM\_Idm
+
+GLCM\_Imc1
+
+GLCM\_InverseVariance
+
+GLCM\_JointEntropy
+
+GLDM\_DependenceEntropy
+
+GLDM\_DependenceNonUniformityNormalized
+
+GLDM\_GrayLevelNonUniformity
+
+GLDM\_LargeDependenceEmphasis
+
+GLDM\_LargeDependenceHighGrayLevelEmphasis
+
+GLDM\_SmallDependenceEmphasis
+
+GLDM\_SmallDependenceHighGrayLevelEmphasis
+
+GLRLM\_GrayLevelNonUniformity
+
+GLRLM\_LongRunEmphasis
+
+GLRLM\_LongRunHighGrayLevelEmphasis
+
+GLRLM\_RunLengthNonUniformity
+
+GLRLM\_RunLengthNonUniformityNormalized
+
+GLRLM\_RunPercentage
+
+GLRLM\_RunVariance
+
+GLRLM\_ShortRunEmphasis
+
+GLSZM\_LargeAreaEmphasis
+
+GLSZM\_LargeAreaHighGrayLevelEmphasis
+
+GLSZM\_ZonePercentage
+
+GLSZM\_ZoneVariance \\
+NGTDM\_Coarseness & NGTDM\_Coarseness \\
+\multicolumn{2}{@{}>{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{1.0000} + 2\tabcolsep}@{}}{%
+} \\
+\end{longtable}
+}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.9\textwidth]{fig_6_4.png}
+\caption{Summary of Precision Analysis.
+Heatmap displaying the lower 95\% confidence limit (LCL) of the
+Intraclass Correlation Coefficient results obtained in the three
+experiments used to identify precise features: repeatability (setting
+R3B12), reproducibility against R (fixed B=12HU), and reproducibility
+against B (fixed R=3mm), for lung and liver lesions separately. FO,
+First-Order features; GLCM, Grey Level Co-occurrence Matrix features;
+GLDM, Grey Level Dependence Matrix; GLRLM, Grey Level Run Length Matrix;
+GLSZM, Grey Level Size Zone Matrix; NGTDM, Neighboring Grey Tone
+Difference Matrix Features.}
+\label{fig:6.4}
+\end{figure}
+
+\subsection{Imaging Habitats Computed with Precise Features Show Increased Stability}\label{imaging-habitats-computed-with-precise-features-show-increased-stability}
+
+Having identified which features are precise, we asked whether using
+only these features improves habitat stability. For each lesion, we
+computed habitats twice: once using all 91 features, and once using only
+the 26 precise features. In both cases, highly correlated features
+(Spearman\textquotesingle s r ≥0.70) were removed before clustering.
+Habitats were generated using Gaussian mixture models (GMMs), with the
+number of clusters determined by the Bayesian Information Criterion
+(BIC). We then compared the spatial overlap of habitats derived from
+original versus perturbed images using the Dice Similarity Coefficient
+(DSC). Higher DSC indicates greater stability.
+
+Habitats computed from precise features were significantly more stable
+than those computed from all features (p \textless0.001, Wilcoxon
+signed-rank test; \hyperref[_Ref219819367]{Figure 6.5}C). This held for
+both liver and lung lesions, with small-to-medium effect sizes
+(Cohen\textquotesingle s d = 0.34 for lung, 0.43 for liver).
+
+For liver lesions, the median DSC was 0.587 (IQR: 0.465--0.703) when
+using all features, compared to 0.651 (0.520--0.784) when using only
+precise features. For lung lesions, median DSC was 0.532 (0.424--0.637)
+with all features versus 0.601 (0.494--0.712) with precise features.
+
+\hyperref[_Ref219819367]{Figure 6.5}B illustrates this difference for a
+single liver lesion. Habitats derived from precise features maintained
+their spatial structure across test-retest (DSC: 0.976, 0.891, 0.915 for
+the three habitats), whereas habitats derived from all features
+exhibited substantial variation (DSC: 0.751, 0.328, 0.570).
+
+\textbf{\hfill\break
+}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.9\textwidth]{fig_6_5.png}
+\caption{Precise features increase habitat stability.
+\textbf{(A)} Original and perturbed CT scans for one liver lesion.
+\textbf{(B)} Example of habitats obtained for the same lesion. Habitats
+computed with precise features show higher stability (measured via Dice
+Similarity Coefficient [DSC] of original-perturbed habitat pairs).
+Top row: habitats obtained with precise features computed from original
+image (left) and perturbed image (right). DSC scores for habitats 1, 2
+and 3 are 0.976, 0.891 and 0.915, respectively. Bottom row: habitats
+obtained with non-precise (i.e., all computed features) features
+computed from original image (left) and perturbed image (right). DSC
+scores for habitats 1, 2 and 3 are 0.751, 0.328 and 0.57, respectively.
+\textbf{(C)} Quantification of habitat stability computed with precise
+features and non-precise features for all lung and liver lesions.
+Habitats computed with precise features present higher stability
+(Wilcoxon signed rank test, p $<$ 0.0001). DSC: Dice Similarity
+Coefficient.}
+\label{fig:6.5}
+\end{figure}
+
+\subsection{Exploratory Biological Case Study}\label{exploratory-biological-case-study-1}
+
+As a preliminary check of biological plausibility, we examined CT{}
+habitats in 13 PREDICT patients with multiparametric MRI (mpMRI) and
+histopathology (biopsy, not whole tumor resection).
+\hyperref[_Ref219819404]{Figure 6.6} shows an example from a patient
+with liver metastasis from melanoma.
+
+CT{} habitats (computed from precise features) displayed spatial
+distributions qualitatively consistent with habitats derived from nine
+mpMRI maps (\hyperref[_Ref219819404]{Figure 6.6}A--B). For example, a
+CT{} habitat depicted in blue---spatially concordant with an mpMRI
+habitat in the lesion core---showed elevated T2t, T1, and ADCt
+(consistent with lower cellularity) and reduced fv, Ktrans, ve, and vp
+(consistent with lower vascularization). This pattern is compatible with
+necrosis. Histopathology confirmed a necrotic core surrounded by viable
+tumor (\hyperref[_Ref219819404]{Figure 6.6}C), matching the spatial
+organization suggested by both imaging modalities.
+
+This exploratory analysis relied on visual comparison rather than
+voxel-wise co-registration or quantitative spatial metrics. Its purpose
+was not to validate the biological meaning of habitats definitively, but
+to rule out the possibility that they reflect pure imaging noise or
+reconstruction artifacts. The qualitative agreement between CT{}
+habitats, mpMRI habitats, and pathologist-identified tissue types
+(necrosis, viable tumor) suggests that CT{} habitats encode biologically
+relevant information about tumor microenvironment heterogeneity.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.95\textwidth]{fig_6_6.png}
+\caption{Exploration of the biological relevance of imaging habitats.
+One exemplificatory patient (liver metastasis of melanoma). \textbf{(A)}
+CT scan with visible lesion (yellow arrow) and resulting CT habitats
+computed with precise liver radiomic features (also shown). \textbf{(B)}
+Anatomical MRI T2 scan with visible lesion (yellow arrow) and resulting
+mpMRI habitats computed with the 9 mpMRI maps (also shown). mpMRI and
+CT habitats presented comparable distributions. \textbf{(C)} Image
+guided biopsy with needle (N) and liver (L) tumor lesion (T), and
+resulting histologic image (H\&E stain) with observable tissue types,
+annotated by a pathologist. The H\&E-stained histological material reveals
+areas of necrosis in the core of the lesion. ADCt: tissue apparent
+diffusion coefficient, ADCv: vascular apparent diffusion coefficient,
+T2t: tissue transverse relaxation time, AKt: tissue apparent kurtosis
+coefficient, Fv: vascular signal fraction, T1: total longitudinal
+relaxation time, Ktrans: capillary permeability constant, Vp: plasma
+volume fraction, Ve: extravascular and extracellular volume fraction.}
+\label{fig:6.6}
+\end{figure}
+
+\section{Discussion}\label{discussion}
+
+To achieve an effective clinical translation of CT{} habitats, excellent
+robustness of the underlying imaging features is necessary. In this
+chapter we examined 3D radiomics\textquotesingle{} repeatability in a
+simulated test-retest scenario and reproducibility against kernel radius
+(R) and bin size (B), two relevant computation parameters.
+
+Of the 91 features we evaluated, only 26 met our criteria for acceptable
+repeatability and reproducibility in liver lesions. These precise
+features were not a random subset---they exhibited consistent patterns.
+Texture features generally outperformed first-order (histogram)
+features, likely because histogram features depend on absolute intensity
+values and are more vulnerable to outliers. Features computed with a
+larger kernel radius (R=3 mm) were more repeatable than those with a
+smaller radius (R=1 mm), suggesting that averaging over a larger
+neighborhood reduces sensitivity to noise. Features were far more
+sensitive to changes in kernel radius than to changes in bin size,
+meaning the choice of neighborhood matters more than the choice of
+discretization.
+
+Using only precise features produced more stable habitats. When we
+clustered voxels based on all 91 features, habitats shifted
+substantially between test and retest (median DSC: 0.587 for liver
+lesions). When we used only the 26 precise features, habitat boundaries
+remained far more consistent (median DSC: 0.651). The improvement was
+statistically significant (p \textless0.001) and, while modest in
+absolute terms, represents a meaningful gain in reliability. Without
+ground truth, we cannot say which habitat map is "correct," but we can
+say which is more robust---and robustness is a prerequisite for clinical
+utility.
+
+The set of precise features differed between liver and lung lesions.
+This was true both in number and in type: GLCM features were more
+precise in lung, while first-order and GLRLM features were more precise
+in liver. One plausible explanation is the difference in
+contrast-to-noise ratio between the two tissue types. Lung lesions,
+surrounded by air, exhibit high contrast on CT{}; liver lesions,
+embedded in soft tissue, do not. This suggests that radiomics models are
+not universally portable---features that work in one anatomical site may
+not work in another. Primary tumor type (colorectal, lung,
+neuroendocrine, other) had no detectable effect on precision, implying
+that lesion location matters more than tumor origin.
+
+Our exploratory case study attempted to explore the biological relevance
+of CT{} habitats, inspired by previous studies that highlighted the
+value of quantitative MRI-derived habitats for characterizing tumor
+heterogeneity (Divine et al., 2016; Jardim-Perassi et al., 2019). In the
+13 patients examined, CT{} habitats showed qualitative agreement with
+habitats derived from nine mpMRI maps and with tissue features visible
+on histology (e.g., necrotic cores, viable tumor rims). Though
+conclusions are difficult to draw in view of our limited sample size,
+CT{} and mpMRI habitats may be capturing biologically relevant imaging
+phenotypes, potentially serving as non-invasive markers of cancer
+aggressiveness. This underscores the potential clinical utility of our
+approach, still in an exploratory context.
+
+To our knowledge, this is the first study to systematically evaluate the
+precision of 3D voxelwise radiomics features against both kernel radius
+and bin size in liver and lung lesions. Direct comparison with prior
+work is therefore limited. Previous studies reported higher proportions
+of repeatable features (Berenguer et al., 2018; Bernatowicz et al.,
+2021; Jha et al., 2021; Mottola et al., 2021), which could be attributed
+to differences in the number of RF, perturbation methods (Jha et al.,
+2021; Mottola et al., 2021) and the use of phantoms instead of real
+patients (Berenguer et al., 2018)
+
+Our finding that texture features are more precise than first-order
+features contrasts with some earlier reports (Traverso et al., 2018).
+This discrepancy may reflect our focus on voxelwise computation:
+histogram features, which summarize intensity distributions, are
+inherently less local and may be more stable when computed over large
+regions but less stable when computed voxel-by-voxel.
+
+The high sensitivity of features to kernel radius has received little
+attention in the literature, yet it has important implications. Many
+radiomics studies do not report the kernel radius used, or report it
+inconsistently. If a feature\textquotesingle s value changes
+substantially when R is varied from 1 mm to 3 mm---a seemingly minor
+adjustment---then comparing results across studies becomes difficult.
+Our results underscore the need for standardized reporting of all
+computational parameters, not just acquisition protocols.
+
+The generalizability of our results is subject to several key
+limitations. First, we evaluated only original (unfiltered) features.
+Convolutional filters---such as wavelet and Laplacian of Gaussian
+filters---are commonly used in radiomics and have been shown to improve
+predictive performance in some contexts (Demircioğlu, 2022). Whether
+filtered features are more or less precise than original features, and
+whether they improve habitat stability, remains unknown. Filter
+standardization is still under development, and extending our precision
+framework to filtered features is a natural next step.
+
+Second, all segmentations were performed by a single radiologist. While
+this ensures consistency, it does not capture variability introduced by
+inter-observer differences in lesion delineation. Features depend on
+contours, and contours vary across readers. Assessing the impact of
+segmentation variability on habitat stability is important future work,
+but it was beyond the scope of this chapter. In addition, we did not
+evaluate reproducibility across different scanners. Scanner variability
+is a well-studied problem in radiomics and has been addressed
+extensively elsewhere. Our focus was on sources of variability that
+arise even when imaging is performed on the same scanner under identical
+protocols---namely, patient repositioning and computational parameter
+choices. These sources of variability are less explored and, we argue,
+equally important.
+
+Fourth, our precision analysis was limited to CT{}. Whether the same
+features are precise in MRI or PET, and whether habitats derived from
+different modalities overlap spatially, are open questions. The
+exploratory mpMRI analysis in this chapter suggests qualitative
+agreement, but quantitative validation requires dedicated studies with
+co-registered multimodal imaging and ground truth from spatially matched
+biopsies.
+
+Finally, our habitat stability analysis relied on voxel-by-voxel
+comparison (Dice coefficient). This may underestimate global similarity:
+two habitat maps with slightly shifted boundaries but similar overall
+structure would receive a low DSC despite being qualitatively similar.
+Alternative metrics---such as mutual information or topology-based
+measures---might capture stability more holistically. The modest
+absolute DSC values we observed (median \textasciitilde0.65 for precise
+features) likely reflect this limitation, along with genuine variability
+in how habitats are defined when clustering is applied to noisy
+features.
+
+\section{Summary}\label{summary}
+
+Our comprehensive repeatability and reproducibility analysis identified
+two subsets of precise RF for effectively computing stable CT{} tumor
+habitats in lung and liver lesions. By employing these precise RF and
+using unsupervised clustering models, we demonstrated the ability to
+identify distinct tumor phenotypes in an exploratory case study. CT{}
+tumor habitats correlated with biologically meaningful tumor aspects
+such as cellularity, vascularization, and necrosis, but further studies
+with larger sample sizes are needed to validate these findings. This
+approach to computing CT{} habitats holds great potential for studying
+intra-tumoral heterogeneity and monitoring cancer evolution throughout
+the course of the disease.
+
+\textbf{Key Points:}
+
+\begin{itemize}
+\item
+  Voxelwise 3D radiomics features showed poor repeatability (median ICC
+  LCL: 0.442) and reproducibility against kernel radius (ICC LCL:
+  0.440), but excellent reproducibility against bin size (ICC LCL:
+  0.929).
+\item
+  Of 91 features, 26 were classified as precise for liver lesions. The
+  set of precise features differed between liver and lung lesions.
+\item
+  Habitats computed from precise features were 11\% more stable (median
+  DSC: 0.651 vs. 0.587, p \textless0.001) than those computed from all
+  features.
+\item
+  Exploratory validation with mpMRI and histopathology suggested that
+  CT{} habitats capture biologically relevant tissue compartments (e.g.,
+  necrosis, viable tumor, vascularization differences).
+\end{itemize}
+
+

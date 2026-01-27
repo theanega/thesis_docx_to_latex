@@ -1,0 +1,143 @@
+\chapter{Image Aquisition Details}\label{image-aquisition-details}
+
+\subsection{A.1. MRI Acquisition Details
+(PREDICT)}\label{a.1.-mri-acquisition-details-predict}
+
+Patients were scanned on either a 1.5T Siemens Avanto or a 3T GE SIGNA
+Pioneer system. Each patient was scanned on only one of the two
+scanners. The protocol included anatomical imaging (T2-weighted and
+T1-weighted), diffusion MRI, variable flip angle spoiled gradient echo
+(SGrE) imaging for T1 mapping, and dynamic contrast-enhanced (DCE) MRI.
+
+\subsubsection{\texorpdfstring{\textbf{1.5T Siemens Avanto
+system}}{1.5T Siemens Avanto system}}\label{t-siemens-avanto-system}
+
+The protocol included high-resolution anatomical T2w and T1w scans,
+diffusion MRI and different spoiled gradient echo (SGrE) sequences, such
+as those for T1 mapping and dynamic contrast enhanced (DCE) MRI.
+
+\begin{itemize}
+\item
+  Anatomical T2w scan: turbo spin echo, TE = 82 ms, TR = 4500 ms, turbo
+  factor of 29, echo spacing 8.2 ms, NEX = 8, 2 concatenations,
+  resolution of 1.4mm × 1.4mm, slice thickness of 5 mm, GRAPPA = 2,
+  acquisition in free breathing.
+\item
+  Anatomical T1w scan: turbo spin echo, TE = 6.3 ms, TR = 470 ms, turbo
+  factor of 11, echo spacing 6.26 ms, NEX = 6, 6 concatenations,
+  resolution of 1.4mm × 1.4mm, slice thickness of 5 mm, GRAPPA = 2,
+  acquisition in free breathing.
+\item
+  Diffusion MRI: single-shot twice-refocused spin echo EPI, b = \{0, 50,
+  100, 400, 900, 1200, 1600\} s/mm\textsuperscript{2}, TR = 7900 ms,
+  averaging of 3 mutually-orthogonal directions, NEX = 2, 1
+  concatenation, resolution of 1.9mm × 1.9mm, slice thickness of 6 mm,
+  SPAIR fat suppression, GRAPPA = 2, EPI factor 150, echo spacing 0.82
+  ms, each b-value acquired at TE = \{93 ms, 105 ms, 120 ms\},
+  acquisition in free breathing. Additionally, one b = 0 image at TE =
+  93 ms was acquired with reversed phase encoding polarity.
+\item
+  SGrE for T1 mapping: FLASH, TE = 1.76 ms, TR = 4.59 ms, NEX = 1, 1
+  concatenation, resolution of 2.7mm × 2.7mm, slice thickness of 6 mm,
+  flip angles of \{5°, 15°, 20°\}, GRAPPA = 2, acquisition in free
+  breathing.
+\item
+  SGrE for DCE: same acquisition as for T1 mapping with fixed flip angle
+  of 15°; 26 dynamic acquisitions with temporal resolution of 10s,
+  Gadovist with dose of 0.5ml/Kg injected at 3ml/s followed by a bolus
+  of physiological solution of 20ml at 3ml/s, injection delay of 10s,
+  acquisition in free breathing.
+\end{itemize}
+
+\subsubsection{\texorpdfstring{\textbf{3T GE SIGNA Pioneer
+system}}{3T GE SIGNA Pioneer system}}\label{t-ge-signa-pioneer-system}
+
+The protocol included high-resolution anatomical T2w and T1w scans,
+diffusion MRI and different spoiled gradient echo (SGrE) sequences, as
+those for T1 mapping and DCE imaging.
+
+\begin{itemize}
+\item
+  Anatomical T2w scan: fast spin echo, TE = 50 ms, TR = 3750 ms, turbo
+  factor of 16, NEX = 2, resolution of 1.4mm × 1.4mm, slice thickness of
+  6 mm, respiratory-gated acquisition.
+\item
+  Anatomical T1w scan: navigated SGrE LAVA-Flex providing water/fat
+  images, TE = 2.60 ms, TR = 5.38 ms, resolution of 1.4mm × 1.4mm, slice
+  thickness of 6 mm, flip angle of 12°, acquisition in free-breathing
+  after liver motion measurement.
+\item
+  Diffusion MRI: single-shot pulsed gradient spin echo EPI, b = \{0, 50,
+  100, 400, 900, 1200, 1500\} s/mm\textsuperscript{2}, TR = 3500ms,
+  averaging of 3 mutually-orthogonal directions, NEX = 2, resolution of
+  2.4mm × 2.4mm, slice thickness of 6 mm, ASPIR fat suppression, ASSET =
+  2, echo spacing 0.80 ms, each b-value acquired at TE = \{75 ms, 90 ms,
+  105 ms\}, respiratory-gated acquisition.
+\item
+  SGrE for T1 mapping: LAVA, TE = 1.2 ms, TR = 2.72 ms, NEX = 1,
+  resolution of 2.4mm × 2.4mm; slice thickness of 6 mm; flip angles of
+  \{5°, 10°, 15°\}, ASSET = 2, acquisition of two separate images in
+  breathhold, acquisition of the vendor's B1 map.
+\item
+  SGrE for DCE: same acquisition as for T1 mapping with fixed flip angle
+  of 12°; 26 dynamic acquisitions with temporal resolution of 10s,
+  Clariscan 0.5 mmol/ml with dose of 0.2ml/Kg injected at of 0.5ml/kg at
+  3ml/s followed by a bolus of physiological solution of 20ml at 3ml/s,
+  injection delay of 10s, acquisition in free breathing.
+\end{itemize}
+
+\subsection{A.2. mpMRI Maps Biological
+Ranges}\label{a.2.-mpmri-maps-biological-ranges}
+
+\textbf{Table A.1. mpMRI maps dervied with biological ranges.} Thirteen
+quantitative maps were derived from diffusion-relaxation MRI, variable
+flip angle T1 mapping, and dynamic contrast-enhanced MRI.
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\centering\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.0651}}
+  >{\centering\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2603}}
+  >{\centering\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.1544}}
+  >{\centering\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2124}}
+  >{\centering\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2967}}@{}}
+\toprule\noalign{}
+\multicolumn{2}{@{}>{\centering\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.3254} + 2\tabcolsep}}{%
+\begin{minipage}[b]{\linewidth}\centering
+\textbf{mpMRI metric}
+\end{minipage}} & \begin{minipage}[b]{\linewidth}\centering
+\textbf{Computed from}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\textbf{Units}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\textbf{Biological Range}
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+ADCₜ & Tissue ADC & Diffusion-relaxation MRI & μm²/ms & 0.0-3.0 \\
+ADCᵥ & Vascular ADC & Diffusion-relaxation MRI & μm²/ms & 3.0-150.0 \\
+Kₜ & Tissue kurtosis excess & Diffusion-relaxation MRI & Dimensionless &
+0.0-5.0 \\
+fᵥ & Vascular signal fraction & Diffusion-relaxation MRI & Normalized &
+0.0-1.0 \\
+T₂ₜ & Tissue T₂ & Diffusion-relaxation MRI & ms & 0.0-800.0 \\
+D₀ & Intrinsic diffusivity & Advanced diffusion model & μm²/ms &
+0.8-3.0 \\
+vCS & Volume-weighted cell size & Advanced diffusion model & μm &
+5.0-40.0 \\
+fᵢₙ & Intracellular fraction & Advanced diffusion model & Normalized &
+0.0-1.0 \\
+CD & Cell density & Advanced diffusion model & Cells/mm³ &
+0.0-8000000.0 \\
+T₁ & T₁ & Variable flip angle SGrE & ms & 0.0-5000.0 \\
+T2\textsuperscript{*} & T2\textsuperscript{*} & Multiecho SGrE & ms &
+0.0-200.0 \\
+K\textsuperscript{trans} & Capillary permeability & DCE MRI & min⁻¹ &
+0.0-4.0 \\
+vₑ & Extracellular-extravascular volume & DCE MRI & Normalized &
+0.0-1.0 \\
+\end{longtable}
+}
+
+Annex B

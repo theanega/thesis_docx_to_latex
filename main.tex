@@ -1,0 +1,492 @@
+% ============================================================================
+% MAIN THESIS DOCUMENT
+% ============================================================================
+% Este archivo es el punto de entrada principal para compilar la tesis.
+% Para generar las 4 versiones diferentes, usa los archivos en /build/
+%
+% Versiones disponibles:
+% - thesis_with_annex_digital_version.pdf
+% - thesis_digital_version.pdf
+% - annex_thesis_digital_version.pdf
+% - thesis_with_annex_printed_version.pdf
+% ============================================================================
+
+% IMPORTANTE: Compilar con XeLaTeX o LuaLaTeX (NO pdfLaTeX)
+% Comando: xelatex main.tex
+% O usar latexmk: latexmk -xelatex main.tex
+
+\documentclass[11pt,a4paper,oneside]{book}
+
+% ============================================================================
+% PAQUETES BÁSICOS Y CONFIGURACIÓN DE FUENTES
+% ============================================================================
+
+% Encoding y fuentes (requiere XeLaTeX o LuaLaTeX)
+\usepackage{fontspec}
+\usepackage{xunicode}
+\usepackage{xltxtra}
+
+% Fuente de texto: Times New Roman (mejor calidad con newtxtext)
+% Nota: Con XeLaTeX no necesitamos inputenc/fontenc, pero los mantenemos por compatibilidad
+% XeLaTeX maneja UTF-8 nativamente
+\usepackage{newtxtext}  % Times New Roman mejorado
+% Matemáticas: usar amsmath estándar (evitamos newtxmath por conflictos con XeLaTeX)
+\usepackage{amsmath,amssymb}
+% Nota: newtxmath causa conflictos con amssymb (\Zbar, \Bbbk). 
+% Usamos amsmath estándar que funciona bien con Times text.
+
+% Fuente de títulos: Sans-serif
+% Usar la fuente sans-serif por defecto del sistema (Latin Modern Sans)
+% Si tienes Fira Sans instalada, descomenta la siguiente línea:
+% \setsansfont{Fira Sans}
+
+% Definir comando titlefont que use sans-serif (Fira Sans)
+\newcommand{\titlefont}{\sffamily}
+
+% Interlineado 1.5
+\usepackage{setspace}
+\onehalfspacing
+
+% Separación entre párrafos (sin indentación)
+\setlength{\parskip}{0.5\baselineskip}
+\setlength{\parindent}{0pt}
+
+% ============================================================================
+% PAQUETES DE FORMATO Y ESTILO
+% ============================================================================
+
+% Geometría de página (twoside: márgenes alternados para encuadernación)
+\usepackage[a4paper,inner=3cm,outer=2.5cm,top=3cm,bottom=2.5cm]{geometry}
+
+% Gráficos e imágenes
+\usepackage{graphicx}
+\usepackage{svg}  % Para incluir SVG
+\graphicspath{{../source/figures/}}
+
+% Tablas mejoradas
+\usepackage{booktabs}  % Para tablas profesionales (\toprule, \midrule, \bottomrule)
+\usepackage{longtable}  % Para tablas largas
+\usepackage{tabularx}   % Para tablas con ancho ajustable
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{threeparttable}  % Para notas en tablas
+
+% Configuración de tablas: texto pequeño (9pt) y mejor espaciado
+\AtBeginEnvironment{longtable}{\small}
+\AtBeginEnvironment{tabular}{\small}
+\AtBeginEnvironment{tabularx}{\small}
+\setlength{\LTpre}{12pt}   % Espacio antes de longtable
+\setlength{\LTpost}{12pt}  % Espacio después de longtable
+\renewcommand{\arraystretch}{1.2}  % Más espacio entre filas
+
+% Bold math (amsmath ya cargado arriba)
+\usepackage{bm}  % Bold math
+
+% Colores
+\usepackage{xcolor}
+
+% ============================================================================
+% CABECERAS Y PIES DE PÁGINA (fancyhdr)
+% ============================================================================
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+% Limpiar headers por defecto
+\fancyhf{}
+
+% Configuración de headers para twoside - mostrar solo el nombre del capítulo
+\fancyhead[LE,RO]{\thepage}     % Página izq: número a la izquierda, Página der: número a la derecha
+\fancyhead[RE,LO]{\leftmark}    % Nombre del capítulo
+
+% Línea separadora fina
+\renewcommand{\headrulewidth}{0.4pt}
+\setlength{\headheight}{15pt}
+
+% Estilo para páginas de capítulo (sin header)
+\fancypagestyle{plain}{
+  \fancyhf{}
+  \fancyfoot[C]{\thepage}
+  \renewcommand{\headrulewidth}{0pt}
+}
+
+% Marcadores de capítulo para headers (solo capítulo, no sección)
+\renewcommand{\chaptermark}[1]{\markboth{\MakeUppercase{\chaptername\ \thechapter.\ #1}}{}}
+\renewcommand{\sectionmark}[1]{}  % No actualizar el header con secciones
+
+% ============================================================================
+% REFERENCIAS CRUZADAS E HIPERVÍNCULOS
+% ============================================================================
+
+\usepackage{hyperref}
+\usepackage{cleveref}  % Referencias inteligentes (\cref{}, \Cref{})
+
+% Configuración básica de hyperref (se sobrescribirá con digital_config.tex o print_config.tex)
+\hypersetup{
+  pdfencoding=auto,
+  pdfusetitle=true,
+  pdfcreator={LaTeX via XeLaTeX},
+  pdfproducer={XeLaTeX},
+}
+
+% ============================================================================
+% LISTAS Y ACRÓNIMOS
+% ============================================================================
+
+\usepackage{glossaries}  % Para lista de acrónimos
+\makeglossaries
+
+% Cargar definiciones de acrónimos
+\input{../source/abbreviations.tex}
+
+% Configuración de listas
+\usepackage{enumitem}
+\setlist{itemsep=4pt, parsep=2pt}  % Espacio entre items para mejor legibilidad
+
+% ============================================================================
+% OTROS PAQUETES ÚTILES
+% ============================================================================
+
+\usepackage{csquotes}  % Citas mejoradas
+\usepackage{etoolbox}  % Para hooks como \AtBeginEnvironment
+\usepackage{tocloft}   % Para controlar el formato del TOC
+
+% Reducir espaciado entre líneas del TOC
+\setlength{\cftbeforechapskip}{4pt}
+\setlength{\cftbeforesecskip}{2pt}
+\setlength{\cftbeforesubsecskip}{1pt}
+
+% Reducir espaciado en List of Figures y List of Tables
+\setlength{\cftbeforefigskip}{2pt}
+\setlength{\cftbeforetabskip}{2pt}
+\usepackage[numbers,sort&compress]{natbib}  % Para bibliografía con estilo unsrtnat
+\usepackage{microtype}  % Mejoras tipográficas
+\usepackage{url}  % URLs
+% Nota: breakurl no es compatible con XeLaTeX, usamos xurl en su lugar
+\usepackage{xurl}  % URLs que se parten en líneas (compatible con XeLaTeX)
+
+% Paquete para subrayado (usado por Pandoc en el contenido convertido)
+\usepackage{soul}  % Proporciona \ul para subrayado
+
+% Entornos especiales
+% Nota: quote es un entorno estándar de LaTeX, no necesita paquete
+
+% ============================================================================
+% CONFIGURACIÓN DE TÍTULOS CON ROBOTO
+% ============================================================================
+
+% Aplicar Roboto a títulos de partes, capítulos, secciones, etc.
+% Esto se hace redefiniendo los comandos de formato
+
+% Títulos de partes - estilo mejorado con quote en misma página
+\makeatletter
+\renewcommand{\@part}[2][]{%
+  \ifnum \c@secnumdepth >-2\relax
+    \refstepcounter{part}%
+    \addcontentsline{toc}{part}{\thepart\hspace{1em}#1}%
+  \else
+    \addcontentsline{toc}{part}{#1}%
+  \fi
+  \markboth{}{}%
+  {\centering
+   \interlinepenalty \@M
+   \normalfont
+   \ifnum \c@secnumdepth >-2\relax
+     \fontsize{24}{28}\selectfont\bfseries\sffamily\titlefont \partname\nobreakspace\thepart
+     \par
+     \vskip 25\p@
+   \fi
+   \fontsize{30}{36}\selectfont\bfseries\sffamily\titlefont #1\par}%
+  \vskip 40\p@  % Espacio después del título, antes de la quote
+  }
+% Redefinir \@endpart para NO forzar nueva página
+\renewcommand\@endpart{}
+\makeatother
+
+% Títulos de capítulos - número y título con tamaños similares
+\makeatletter
+\renewcommand{\@makechapterhead}[1]{%
+  \vspace*{50\p@}%
+  {\parindent \z@ \raggedright \normalfont
+    \ifnum \c@secnumdepth >\m@ne
+        \Huge\bfseries\sffamily\titlefont \@chapapp\space \thechapter
+        \par\nobreak
+        \vskip 20\p@
+    \fi
+    \interlinepenalty\@M
+    \Huge \bfseries\sffamily\titlefont #1\par\nobreak
+    \vskip 40\p@
+  }}
+% Títulos de capítulos sin número (para frontmatter)
+\renewcommand{\@makeschapterhead}[1]{%
+  \vspace*{50\p@}%
+  {\parindent \z@ \raggedright \normalfont
+    \interlinepenalty\@M
+    \Huge \bfseries\sffamily\titlefont #1\par\nobreak
+    \vskip 40\p@
+  }}
+\makeatother
+
+% Títulos de secciones y subsecciones - tamaños aumentados
+\usepackage{titlesec}
+\titleformat{\section}
+  {\LARGE\bfseries\sffamily\titlefont}{\thesection}{1em}{}
+\titleformat{\subsection}
+  {\Large\bfseries\sffamily\titlefont}{\thesubsection}{1em}{}
+\titleformat{\subsubsection}
+  {\large\bfseries\sffamily\titlefont}{\thesubsubsection}{1em}{}
+
+% Captions de figuras y tablas
+\usepackage{caption}
+\captionsetup{
+  font={small},           % 9pt para el texto del caption
+  labelfont={bf,sf},      % Label en bold sans-serif (Fira Sans)
+  textfont={rm,small},    % Texto en roman (Times) tamaño small (9pt)
+  format=hang,
+  margin=10pt
+}
+
+% Tamaño de fuente para notas a pie de página: 8pt
+\renewcommand{\footnotesize}{\fontsize{8pt}{10pt}\selectfont}
+
+% ============================================================================
+% CONFIGURACIÓN ESPECÍFICA POR VERSIÓN
+% ============================================================================
+% Los archivos en /build/ definen \thesisversion para elegir la configuración
+% Por defecto: configuración digital
+% Nota: Las rutas son relativas a donde se compila (desde build/), por eso usamos ../
+\def\printversion{print}
+\ifx\thesisversion\printversion
+  \input{../config/print_config.tex}
+\else
+  \input{../config/digital_config.tex}
+\fi
+
+% ============================================================================
+% METADATOS DEL DOCUMENTO
+% ============================================================================
+
+\title{Quantifying Tumor Heterogeneity in Colorectal Liver Metastases\\with CT-Derived Habitats}
+\author{Olivia Prior}
+\date{February 2026}
+
+% ============================================================================
+% CONTENIDO DEL DOCUMENTO
+% ============================================================================
+
+\begin{document}
+
+% Página de créditos para versión impresa (solo si es versión print)
+\def\printversion{print}
+\ifx\thesisversion\printversion
+  \input{../source/frontmatter/printed_cover_credits.tex}
+\fi
+
+\frontmatter
+
+% Portada
+\input{../source/frontmatter/titlepage.tex}
+\cleardoublepage
+
+% Copyright y Funding
+\input{../source/frontmatter/copyright_and_funding.tex}
+\cleardoublepage
+
+% Dedicatoria
+\input{../source/frontmatter/dedication.tex}
+\cleardoublepage
+
+% Abstract, Resumen, Resum
+\input{../source/frontmatter/abstract.tex}
+\cleardoublepage
+\input{../source/frontmatter/resumen.tex}
+\cleardoublepage
+\input{../source/frontmatter/resum.tex}
+\cleardoublepage
+
+% Agradecimientos
+\input{../source/frontmatter/acknowledgements.tex}
+\cleardoublepage
+
+% Tabla de contenidos
+\tableofcontents
+\cleardoublepage
+
+% Lista de figuras
+\listoffigures
+\cleardoublepage
+
+% Lista de tablas
+\listoftables
+\cleardoublepage
+
+% Lista de acrónimos
+\printglossary[type=\acronymtype,title=List of Abbreviations]
+\cleardoublepage
+
+\mainmatter
+
+% ============================================================================
+% PARTES Y CAPÍTULOS DE LA TESIS
+% ============================================================================
+% Los capítulos se incluirán desde source/chapters/
+% Usar flags \includethesis e \includeannex para controlar qué incluir
+
+% Por defecto: incluir tesis si no se especifica lo contrario
+\ifx\includethesis\undefined
+  \def\includethesis{true}
+\fi
+
+% Comparar con string "true"
+\def\trueflag{true}
+\ifx\includethesis\trueflag
+  % Part I: Introduction
+  \cleardoublepage
+  \thispagestyle{empty}
+  \vspace*{4cm}
+  \part{Introduction}
+  \vspace{1cm}
+  \begin{flushright}
+  \begin{minipage}{0.75\textwidth}
+  \raggedleft
+  \large\itshape
+  The purpose of computing is insight, not numbers.
+  
+  \vspace{0.5cm}
+  \upshape\normalsize --- Richard Hamming
+  \end{minipage}
+  \end{flushright}
+  \cleardoublepage
+  \input{../source/chapters/thesis/chapter_1_motivation_objectives_and_contributions.tex}
+  
+  % Part II: Foundations
+  \cleardoublepage
+  \thispagestyle{empty}
+  \vspace*{4cm}
+  \part{Foundations}
+  \vspace{1cm}
+  \begin{flushright}
+  \begin{minipage}{0.75\textwidth}
+  \raggedleft
+  \large\itshape
+  But suddenly the tumor tells its owner: end of mystery, the veil is
+  lifted. And like in a game of Cluedo that ends, one of the players
+  reveals all the details of the crime and interrupts the turns with a
+  killer declaration: ``I accuse cancer, with its metastases, in the
+  hospital room''.
+  
+  \vspace{0.5cm}
+  \upshape\normalsize --- Delphine Horvilleur, \emph{Vivre avec nos morts}
+  \end{minipage}
+  \end{flushright}
+  \cleardoublepage
+  \input{../source/chapters/thesis/chapter_2_medical_image_techniques_an_overview.tex}
+  \cleardoublepage
+  \input{../source/chapters/thesis/chapter_3_colorectal_liver_metastases.tex}
+  
+  % Part III: Methodological Framework
+  \cleardoublepage
+  \thispagestyle{empty}
+  \vspace*{4cm}
+  \part{Methodological Framework}
+  \vspace{1cm}
+  \begin{flushright}
+  \begin{minipage}{0.75\textwidth}
+  \raggedleft
+  \large\itshape
+  ``Science is a bit like the joke about the drunk who is looking under a
+  lamppost for a key that he has lost on the other side of the street,
+  because that's where the light is. It has no other choice.''
+  
+  \vspace{0.5cm}
+  \upshape\normalsize --- Noam Chomsky
+  \end{minipage}
+  \end{flushright}
+  \cleardoublepage
+  \input{../source/chapters/thesis/chapter_4_imaging_heterogeneity_state_of_the_art.tex}
+  \cleardoublepage
+  \input{../source/chapters/thesis/chapter_5_data_and_habitat_imaging_pipeline.tex}
+  
+  % Part IV: A Data-Driven Approach to CT Habitats
+  \cleardoublepage
+  \thispagestyle{empty}
+  \vspace*{4cm}
+  \part{A Data-Driven Approach to CT Habitats}
+  \vspace{1cm}
+  \begin{flushright}
+  \begin{minipage}{0.75\textwidth}
+  \raggedleft
+  \large\itshape
+  There are no straight lines or sharp corners in nature.
+  
+  \vspace{0.5cm}
+  \upshape\normalsize --- Antoni Gaudí
+  \end{minipage}
+  \end{flushright}
+  \cleardoublepage
+  \input{../source/chapters/thesis/chapter_6_identification_of_precise_handcrafted_features_for_ct.tex}
+  \cleardoublepage
+  \input{../source/chapters/thesis/chapter_7_development_and_validation_of_an_mpmri_anchored_ct.tex}
+  \cleardoublepage
+  \input{../source/chapters/thesis/chapter_7_clinical_relevance_of_ct.tex}
+  
+  % Part V: Synthesis and Conclusions
+  \cleardoublepage
+  \thispagestyle{empty}
+  \vspace*{4cm}
+  \part{Synthesis and Conclusions}
+  \vspace{1cm}
+  \begin{flushright}
+  \begin{minipage}{0.75\textwidth}
+  \raggedleft
+  \large\itshape
+  For now, at least, we need to wrestle with the grim realities of drug
+  development, the inadequate animal models, our ignorance of the behavior
+  of cellular regulatory circuitry, and the confounding biological
+  complexities of human cancer. And most importantly, we must never give
+  up. If our ancestors had, we would still be living in the Stone Age.
+  
+  \vspace{0.5cm}
+  \upshape\normalsize --- Robert Weinberg, \emph{The Biology of Cancer}
+  \end{minipage}
+  \end{flushright}
+  \cleardoublepage
+  \input{../source/chapters/thesis/chapter_9_general_discussion.tex}
+  \cleardoublepage
+  \input{../source/chapters/thesis/chapter_10_conclusions.tex}
+\fi
+
+% ============================================================================
+% ANEXOS (si aplica)
+% ============================================================================
+% Por defecto: no incluir anexo si no se especifica
+\ifx\includeannex\undefined
+  \def\includeannex{false}
+\fi
+
+% Comparar con string "true"
+\ifx\includeannex\trueflag
+  \appendix
+  \input{../source/chapters/annex/annex_A_image_aquisition_details.tex}
+  \cleardoublepage
+  \input{../source/chapters/annex/annex_B_identification_of_precise_handcrafted_features_for_habitat_imaging.tex}
+  \cleardoublepage
+  \input{../source/chapters/annex/annex_C_development_and_validation_of_biologically_informed_ct_habitats.tex}
+  \cleardoublepage
+  \input{../source/chapters/annex/annex_D_clinical_relevance_of_ct_habitats.tex}
+  \cleardoublepage
+\fi
+
+\backmatter
+
+% Bibliografía
+\renewcommand{\bibname}{References}  % Título "References" en lugar de "Bibliography"
+\bibliographystyle{unsrtnat}
+{\small  % Tamaño 9pt para las referencias
+\bibliography{../source/references}
+}
+
+% Índice alfabético (opcional)
+% \printindex
+
+\end{document}

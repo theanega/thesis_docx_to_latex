@@ -1,0 +1,271 @@
+\chapter{General Discussion}\label{general-discussion}
+
+This thesis set out to determine whether routine contrast-enhanced CT
+imaging can capture biologically and clinically meaningful intratumor
+heterogeneity in colorectal liver metastases. The work was structured
+around five interconnected research questions, each building on the
+findings of the previous one. Taken together, the results support a
+qualified affirmative answer: CT can capture meaningful tumor
+heterogeneity, but only under specific conditions. In this chapter, the
+main findings of the thesis are synthesized, their biological and
+clinical implications are discussed, and directions for future research
+are outlined.
+
+\section{Synthesis of Findings}\label{synthesis-of-findings}
+
+The \textbf{central hypothesis} of this thesis was that CT-derived
+habitats could capture biologically meaningful heterogeneity and provide
+clinically relevant information beyond tumor volume. This hypothesis was
+supported, with important qualifications: CT habitats primarily reflect
+vascular organization rather than discrete histological compartments,
+and their prognostic value depends on context.
+
+\begin{itemize}
+\item
+  \textbf{RQ1: Which CT handcrafted radiomics features are repeatable
+  and reproducible enough to support stable habitat computation?}
+  \emph{(Chapter 6)}
+\end{itemize}
+
+Only a minority of handcrafted features met repeatability and
+reproducibility criteria in liver lesions. Out of 91 features evaluated,
+26 were sufficiently precise to support robust habitat computation.
+Feature stability was more sensitive to kernel radius than to intensity
+discretization, and the set of robust features identified in liver
+tumors differed from those identified in lung. These findings highlight
+the site-specific nature of radiomics precision and the need for task-
+and anatomy-specific validation.
+
+\begin{itemize}
+\item
+  \textbf{RQ2: Which CT}{} \textbf{data representation produces habitats
+  that best separate tissue with different cellularity and vascularity?}
+  \emph{(Chapter 7)}
+\end{itemize}
+
+Contrary to expectations, handcrafted texture features produced habitats
+with stronger biological coherence than deep learning embeddings derived
+from both a liver tumor segmentation model and a foundation model.
+Handcrafted features yielded more spatially contiguous clusters and
+greater separation on co-registered mpMRI metrics of cellularity and
+perfusion (ADC, K\textsuperscript{trans}, and f\textsubscript{v}).
+
+\begin{itemize}
+\item
+  \textbf{RQ3: What tissue phenotypes do CT}{}\textbf{-derived habitats
+  represent?} \emph{(Chapter 7)}
+\end{itemize}
+
+Rather than mapping onto necrosis, fibrosis, and viable tumor, CT
+habitats consistently reflected gradients of vascular organization:
+avascular cores, transitional cellular--perfused regions, and
+vascularized rims at the tumor--liver interface. Histopathological
+assessment confirmed qualitative spatial correspondence between habitats
+and tissue composition, but the dominant signal was vascular rather than
+categorical histology.
+
+\begin{itemize}
+\item
+  \textbf{RQ4: Do CT-derived habitats provide prognostic information
+  independent of tumor volume?} \emph{(Chapter 8)}
+\end{itemize}
+
+Habitat-derived metrics added prognostic information beyond tumor volume
+in specific clinical contexts. Rim entropy predicted survival after
+neoadjuvant chemotherapy in resectable disease and prior to
+anti-angiogenic therapy in unresectable disease. In contrast, with
+cytotoxic chemotherapy alone, tumor volume remained the dominant
+predictor.
+
+\begin{itemize}
+\item
+  \textbf{RQ5: If prognostic information exists, is it spatially
+  localized (i.e. at the core or the rim), or is it uniformly
+  distributed within a tumor?} \emph{(Chapter 8)}
+\end{itemize}
+
+Across cohorts and treatment settings, metrics derived from a 2 mm outer
+rim consistently outperformed whole-tumor and core-based metrics.
+Exploratory pathology-correlated exploratory analyses suggested that rim
+entropy may reflect histopathological growth patterns, with higher
+entropy observed in desmoplastic growth compared to replacement growth.
+
+\section{Biological Interpretation of CT-Derived Habitats}\label{biological-interpretation-of-ct-derived-habitats}
+
+The findings of this thesis indicate that CT-derived habitats in
+colorectal liver metastases do not primarily represent discrete
+histological compartments such as necrosis, fibrosis, and viable tumor.
+Instead, they capture gradients of vascular organization and perfusion,
+with a consistent spatial structure across lesions. This observation is
+biologically plausible given the physics of contrast-enhanced CT, which
+is inherently sensitive to iodine distribution within blood vessels.
+
+Across cohorts, habitats consistently delineated an avascular tumor
+core, a transitional cellular--perfused zone, and a vascularized rim at
+the tumor--liver interface. This spatial organization aligns with known
+aspects of tumor biology. The invasive margin is the region where
+angiogenesis occurs, where tumor cells interact with host tissue, and
+where histopathological growth patterns are defined. In colorectal liver
+metastases, desmoplastic growth is characterized by a fibrotic rim
+separating tumor cells from liver parenchyma, whereas replacement growth
+involves direct infiltration of tumor cells along hepatic sinusoids
+without an intervening fibrotic barrier. The consistent concentration of
+prognostic information at the invasive rim suggests that CT-derived
+habitats may be sensitive to these growth-related vascular
+architectures. Tumors with heterogeneous rims may reflect mixed or
+unstable angiogenic patterns, variable perfusion, or coexistence of
+distinct growth behaviors within the same lesion. When heterogeneity is
+averaged across the entire tumor volume, this signal is diluted,
+explaining the superior performance of rim-based metrics compared to
+whole-tumor measures.
+
+These findings also provide a framework for understanding the
+context-dependent prognostic value of habitat-derived metrics. Cytotoxic
+chemotherapy primarily induces tumor cell death, leading to volumetric
+shrinkage that is well captured by size-based criteria. Anti-angiogenic
+therapies, in contrast, target the tumor vasculature, often altering
+tissue organization and perfusion without producing immediate changes in
+tumor diameter. In this setting, heterogeneity in contrast enhancement
+at the invasive margin captures treatment-relevant biology that is
+invisible to volumetric assessment.
+
+A recurring ambition in imaging research is the concept of a ``virtual
+biopsy'', implying that non-invasive imaging might replace tissue
+sampling in the future. While appealing, this framing ignores the
+complementary nature of radiology and pathology. These modalities
+operate at different spatial scales and capture different aspects of
+tumor biology.
+
+Histopathology provides molecular specificity and cellular detail,
+enabling assessment of genetic alterations, microarchitecture, and
+immune contexture. Imaging, in contrast, provides spatial context across
+the entire tumor and its surroundings, non-invasively and
+longitudinally. As of today, a habitat map cannot identify a BRAF
+mutation, but it can characterize vascular organization across the whole
+lesion at every timepoint. This information cannot be provided by a
+single biopsy due to sampling constraints. CT-derived habitats should
+therefore be understood as a distinct representation of tumor biology
+rather than an imperfect surrogate for histology. As illustrated in
+\hyperref[_Ref219821387]{Figure 9.1}, different representations of the
+same object emphasize different features without one being inherently
+superior. The clinical value of a model lies not in its fidelity to
+histology, but in its usefulness for decision-making.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.7\textwidth]{fig_9_1.png}
+\caption{Different representations capture different information.
+Leonardo da Vinci's anatomical sketch and finished
+portrait of the Mona Lisa depict the same subject but emphasize
+different features. Similarly, histopathology and imaging habitats are
+both valid representations of tumor biology, suited to different
+purposes. Adapted from Novikov et al., 2018.}
+\label{fig:9.1}
+\end{figure}
+
+\section{Technical and Translational Considerations}\label{technical-and-translational-considerations}
+
+Several limitations must be acknowledged when considering the
+translational potential of habitat imaging. First, all clinical analyses
+performed in this thesis were retrospective. Although associations
+between rim-based habitat metrics and outcome were consistent across
+cohorts and treatment contexts, prospective validation is required
+before these metrics can be used to inform clinical decision-making.
+
+A further limitation concerns the treatment of multiple liver
+metastases. In this thesis, habitat-derived metrics were aggregated at
+the patient level using volume-weighted averages, implicitly assuming
+that larger tumors carry more clinically relevant information. While
+this is a reasonable first approximation, it does not account for
+dissociated responses, where some metastases may respond biologically
+despite stable or increasing size in others. Before habitat imaging can
+be evaluated in clinical trials, it will be essential to study how
+\emph{inter}tumor heterogeneity (i.e. between tumors) should be
+combined, whether specific lesions dominate outcome, and how conflicting
+signals across metastases should be interpreted.
+
+Moreover, habitat imaging relies on a multi-step computational pipeline
+involving tumor segmentation, feature extraction, and clustering. Each
+step introduces variability and design choices. One reason tumor size
+remains the dominant imaging biomarker in oncology is its simplicity: it
+is easy to measure and widely interpretable. In contrast, habitat
+imaging currently requires multiple parameters to be specified, which
+may limit robustness and reproducibility. An important byproduct of this
+thesis is the development of a complete, end-to-end CT habitat imaging
+pipeline implemented from first principles. Although methodological
+standardization was not an explicit objective, addressing the research
+questions posed here required constructing a transparent and
+reproducible framework. This represents the first fully described
+habitat imaging pipeline and constitutes an initial step toward
+standardization. Future work should aim to simplify this framework,
+establish robust defaults, and enable automated deployment suitable for
+clinical workflows.
+
+Within this technical context, the choice of feature representation
+deserves particular attention. During the course of this thesis,
+expectations surrounding medical image analysis shifted rapidly with the
+adoption of deep learning and the emergence of foundation models
+(Paschali et al., 2025). These have transformed representation learning
+in other fields such as pathology (Song et al., 2023) and therefore it
+was reasonable to expect that learned embeddings would outperform
+handcrafted radiomics features for habitat computation. In this task and
+with the datasets used in this thesis, however, handcrafted texture
+features produced more spatially coherent and biologically meaningful CT
+habitats than deep learning embeddings derived from pretrained
+segmentation and foundation models. This likely reflects constraints
+imposed by data size and task type: first, none of the evaluated models
+were optimized for spatial clustering or habitat discovery; second, in
+limited datasets, lower-dimensional and interpretable representations
+such as handcrafted features may also be less prone to overfitting.
+
+These findings do not argue against deep learning, but rather emphasize
+that representation choice must be aware of both the task and the scale.
+Many clinically established imaging biomarkers, including tumor size and
+the multiparametric MRI maps used in this thesis, are handcrafted and
+remain valuable due to their interpretability and biological grounding.
+Learned representations may eventually surpass them, but such claims
+must be demonstrated empirically for each application.
+
+Additional challenges include robustness across scanners and
+institutions, dependence on tumor segmentation accuracy, and extension
+of biological validation beyond qualitative histopathological
+correspondence. One promising approach to address this last challenge
+involves imaging resected liver metastases with ex vivo MRI and CT using
+preclinical scanners. Such datasets would enable accurate
+co-registration across pathology and radiology, providing a quantitative
+link between voxel-level imaging habitats and underlying tissue
+composition.
+
+\section{Final Reflections}\label{final-reflections}
+
+The global burden of cancer is projected to increase substantially over
+the coming decades. At the same time, advances in targeted therapies,
+immunotherapy, and supportive care raise the possibility that many
+cancers may increasingly be managed as chronic diseases rather than
+acute, fatal conditions. In this context, the need for robust,
+non-invasive, and informative biomarkers becomes even more urgent.
+
+Medical imaging occupies a unique position in this landscape. It is
+routinely acquired, longitudinal, and captures the entire tumor and its
+microenvironment. As emphasized in recent perspectives on artificial
+intelligence in cancer research (T.-G. Chang et al., 2025), the
+challenge is no longer the lack of data, but the ability to extract
+meaningful and clinically relevant information from complex datasets.
+This thesis argues that part of this challenge can be addressed by
+asking better questions of the imaging data already available. Habitat
+imaging seeks to move beyond the question of how large a tumor is,
+toward how it is organized and how it interacts with host tissue.
+Inevitably, this framework introduces new complexities and opens new
+methodological questions, which future PhD theses will need to address.
+
+This work began with the image of a patient whose CT scan showed stable
+disease, offering little insight into whether her tumor was responding
+or adapting. One can envision a future in which intratumor heterogeneity
+assessment becomes a routine component of imaging interpretation,
+allowing radiologists to ask not only how large a tumor is, but how it
+is responding biologically. Narrowing the gap between what imaging
+captures and what clinicians need will require continued biological
+validation, technical rigor, and prospective testing, but the
+information is already present in the images we acquire every day.
+
+
