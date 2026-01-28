@@ -1,5 +1,5 @@
 \chapter{Motivation, Objectives, and
-Contributions}\label{motivation-objectives-and-contributions}
+Contributions}\label{motivation-objectives-and-contributions}\label{ch:1}
 
 \section{Motivation}\label{motivation}
 
@@ -14,29 +14,26 @@ growth. Size alone cannot distinguish between these possibilities. This
 uncertainty, encountered routinely in oncologic practice, motivates the
 work presented in this thesis.
 
-Cancer is a leading cause of death worldwide (Bray et al., 2024), with
+Cancer is a leading cause of death worldwide \citep{brayGlobalCancerStatistics2024}, with
 most cancer-related mortality driven by metastatic disease rather than
-primary tumors (Chaffer \& Weinberg, 2011). The liver is one of the most
-common sites of metastasis across cancer types (Tsilimigras et al.,
-2021), and colorectal cancer is the leading source of liver metastases
-(Hess et al., 2006). Approximately 25\% of patients with colorectal
+primary tumors \citep{chafferPerspectiveCancerCell2011}. The liver is one of the most
+common sites of metastasis across cancer types \citep{tsilimigrasLiverMetastases2021}, and colorectal cancer is the leading source of liver metastases
+\citep{hessMetastaticPatternsAdenocarcinoma2006}. Approximately 25\% of patients with colorectal
 cancer present with liver metastases at diagnosis, and up to 50\%
 develop them during the course of disease. Surgical resection can be
 curative, but only a subset of patients are eligible. For the majority,
 systemic therapy is the main treatment option, with limited long-term
-survival (Engstrand et al., 2018)..
+survival \citep{engstrandColorectalCancerLiver2018}.
 
 Pathology studies have long recognized the biological heterogeneity of
 colorectal liver metastases and its clinical relevance. These tumors
 mostly contain varying proportions of viable tumor cells, fibrosis (i.e.
-scar tissue), and necrosis (i.e. dead cells) (Ozaki et al., 2022;
-Poultsides et al., 2012). Importantly, both the presence of tissue
+scar tissue), and necrosis (i.e. dead cells) \citep{ozakiLiverMetastasesCorrelation2022,poultsidesPathologicResponsePreoperative2012}. Importantly, both the presence of tissue
 components and their spatial location within the tumor have therapeutic
 implications. Fibrotic tissue at the tumor periphery following treatment
-has been associated with improved survival (Latacz et al., 2022),
+has been associated with improved survival \citep{lataczHistopathologicalGrowthPatterns2022},
 whereas extensive necrosis, particularly at the tumor core, has been
-linked to more aggressive disease and poorer prognosis (Rubbia-Brandt et
-al., 2007; Van den Eynden et al., 2013). Despite their clinical
+linked to more aggressive disease and poorer prognosis \citep{rubbia-brandtImportanceHistologicalTumor2007,vandeneyndenMultifacetedRoleMicroenvironment2013}. Despite their clinical
 relevance, such tissue phenotypes can only be assessed through surgical
 resection or biopsy. Resection provides comprehensive tissue but is
 limited to eligible patients at a single timepoint. Biopsies are more
@@ -60,24 +57,24 @@ precede or occur independently of volumetric shrinkage.
 The field of radiomics treats medical images as quantitative data,
 computing radiomic features (i.e. numerical descriptors of intensity
 distributions and spatial texture patterns) to extract information
-beyond visual assessment (Lambin et al., 2012). Most radiomics studies
+beyond visual assessment \citep{lambinRadiomicsExtractingMore2012}. Most radiomics studies
 summarize each tumor using features averaged across the entire lesion,
 implicitly assuming that global aggregation is sufficient to
 characterize tumor biology despite known intratumor heterogeneity.
-Habitat imaging challenges this assumption (Gatenby et al., 2013).
+Habitat imaging challenges this assumption \citep{gatenbyQuantitativeImagingCancer2013}.
 Rather than collapsing tumors into summary statistics, habitat imaging
 partitions lesions into spatially distinct subregions based on imaging
 characteristics. These subregions, referred to as habitats, may
 correspond to different tissue phenotypes within the same tumor.
 
 To date, habitat imaging has been applied predominantly to magnetic
-resonance imaging (MRI) (S. Li et al., 2024). Multiparametric MRI
+resonance imaging (MRI) \citep{liMRIbasedHabitatImaging2024}. Multiparametric MRI
 combines multiple quantitative sequences acquired in the same imaging
 session, each sensitive to different tissue properties. For instance,
 the apparent diffusion coefficient (ADC) reflects tissue cellularity (Le
 Bihan D, 1985), and the volume transfer constant,
 K\textsuperscript{trans} , provides information on vascular permeability
-and perfusion (Tofts \& Kermode, 1991). These biologically interpretable
+and perfusion \citep{toftsMeasurementBloodbrainBarrier1991}. These biologically interpretable
 maps make MRI particularly suitable for studying intratumor
 heterogeneity in research settings. In contrast, CT-derived habitats are
 generally unexplored, despite CT being the dominant modality for
@@ -89,9 +86,9 @@ standard.
 Moreover, the habitat imaging literature lacks systematic evaluation of
 how data representation influences habitat computation. Tumor
 characteristics can be encoded using handcrafted (i.e. predefined)
-radiomics features (Van Griethuysen et al., 2017) or learned embeddings
+radiomics features \citep{vangriethuysenComputationalRadiomicsSystem2017} or learned embeddings
 from deep learning models, in which image representations are optimized
-automatically rather than explicitly defined (Pai et al., 2025). While
+automatically rather than explicitly defined \citep{paiVisionFoundationModels2025}. While
 learned representations are often assumed to be superior, their
 suitability for CT-derived habitats has not been established.
 
@@ -151,22 +148,22 @@ These research questions correspond to five specific objectives:
 \def\labelenumi{\arabic{enumi}.}
 \item
   \textbf{Objective 1:} To identify precise CT{} handcrafted radiomics
-  features suitable for robust habitat computation. \emph{(Chapter 6)}
+  features suitable for robust habitat computation. \emph{(Chapter~\ref{ch:6})}
 \item
   \textbf{Objective 2:} To determine the optimal CT{} data
   representation for capturing biologically distinct tissue regions.
-  \emph{(Chapter 7)}
+  \emph{(Chapter~\ref{ch:7})}
 \item
   \textbf{Objective 3:} To characterize the biological meaning of
   CT{}-derived habitats using multiparametric MRI and histopathology.
-  \emph{(Chapter 7)}
+  \emph{(Chapter~\ref{ch:7})}
 \item
   \textbf{Objective 4:} To evaluate whether CT{}-derived habitats
   provide clinically relevant information beyond tumor volume.
-  \emph{(Chapter 8)}
+  \emph{(Chapter~\ref{ch:8})}
 \item
   \textbf{Objective 5:} To investigate the spatial localization of
-  clinically relevant heterogeneity within tumors. \emph{(Chapter 8)}
+  clinically relevant heterogeneity within tumors. \emph{(Chapter~\ref{ch:8})}
 \end{enumerate}
 
 \section{Contributions to Knowledge}\label{contributions-to-knowledge}
@@ -210,12 +207,12 @@ clinical limitations of existing habitat imaging approaches.
   the first time for habitat imaging.} Raw Hounsfield units, handcrafted
   radiomics, and deep learning embeddings were evaluated using
   co-registered multiparametric MRI as biological reference. This work
-  is described in Chapter 7.
+  is described in Chapter~\ref{ch:7}.
 \item
   \textbf{A biologically anchored CT}{} \textbf{habitat framework was
   developed.} Habitat definitions were constrained by tissue properties
   (cellularity, vascularity) measured with quantitative MRI rather than
-  post-hoc outcome associations. This work is described in Chapter 7.
+  post-hoc outcome associations. This work is described in Chapter~\ref{ch:7}.
   Preliminary results were presented at international meetings as:
 \end{enumerate}
 
@@ -245,11 +242,11 @@ clinical limitations of existing habitat imaging approaches.
   demonstrated to depend on context.} Habitat metrics were prognostic in
   anti-angiogenic and post-neoadjuvant settings but not with
   chemotherapy alone, and added information beyond tumor volume. This
-  work is described in Chapter 8.
+  work is described in Chapter~\ref{ch:8}.
 \item
   \textbf{Prognostic information was shown to concentrate at the
   invasive rim.} Rim-based metrics outperformed whole-tumor
-  heterogeneity measures. This work is described in Chapter 8.
+  heterogeneity measures. This work is described in Chapter~\ref{ch:8}.
 \end{enumerate}
 
 \begin{itemize}
@@ -361,19 +358,19 @@ PhD}\label{other-contributions-during-the-phd}
 This thesis consists of five parts across ten chapters. Part I
 introduces the problem and research objectives (\textbf{Chapter 1}).
 Part II provides foundations: medical imaging techniques
-(\textbf{Chapter 2}), oncological context with focus on colorectal liver
+(\textbf{Chapter~\ref{ch:2}}), oncological context with focus on colorectal liver
 metastases and treatment response assessment (\textbf{Chapter 3}), and
 imaging heterogeneity methods including the state of the art in habitat
-imaging (\textbf{Chapter 4}). Part III describes data sources, the
+imaging (\textbf{Chapter~\ref{ch:4}}). Part III describes data sources, the
 general methodological framework, and the habitat imaging pipeline
 developed for this work (\textbf{Chapter 5}). Part IV presents the core
 experimental contributions: precision analysis of radiomics features
-(\textbf{Chapter 6}), development and biological validation of CT{}
+(\textbf{Chapter~\ref{ch:6}}), development and biological validation of CT{}
 habitats using multiparametric MRI (\textbf{Chapter 7}), and clinical
-relevance assessment across treatment contexts (\textbf{Chapter 8}).
+relevance assessment across treatment contexts (\textbf{Chapter~\ref{ch:8}}).
 Part V synthesizes findings and draws conclusions: general discussion
 including limitations and future directions (\textbf{Chapter 9}), and
-main conclusions (\textbf{Chapter 10}).
+main conclusions (\textbf{Chapter~\ref{ch:10}}).
 
 Each experimental chapter is self-contained and can be read
 independently. Sequentially, they follow a logical progression: from

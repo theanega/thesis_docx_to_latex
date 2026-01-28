@@ -1,7 +1,7 @@
 \chapter{\texorpdfstring{Clinical Relevance of CT{} Habitats
-}{Clinical Relevance of CT Habitats }}\label{clinical-relevance-of-ct-habitats}
+}{Clinical Relevance of CT Habitats }}\label{clinical-relevance-of-ct-habitats}\label{ch:8}
 
-In Chapter 7, we developed an mpMRI-anchored CT{} habitat model that
+In Chapter~\ref{ch:7}, we developed an mpMRI-anchored CT{} habitat model that
 segments colorectal liver metastases into three biologically meaningful
 compartments: avascular core, cellular-perfused viable tumor, and
 vascular rim. Histopathological validation confirmed that this spatial
@@ -128,7 +128,7 @@ detailed in Section 5.1.
 \subsection{Habitat Computation}\label{habitat-computation}
 
 CT{} habitats were computed using the biologically-anchored model
-developed in Chapter 7 (Section 7.3.1). Briefly, six handcrafted
+developed in Chapter~\ref{ch:7} (Section 7.3.1). Briefly, six handcrafted
 features were computed from contrast-enhanced CT{} (portal phase) and
 clustered using a Gaussian mixture model (K=3) in two steps (hybrid mode
 in the imaging habitats pipeline, see Section 5.2). The handcrafted
@@ -191,15 +191,14 @@ Group comparisons used Mann-Whitney U tests \citep{mannTestWhetherOne1947} with
 false discovery rate (FDR) correction for multiple comparisons
 \citep{benjaminiControllingFalseDiscovery1995}.
 
-Survival analyses used Cox proportional hazards regression (Cox, 1972)
+Survival analyses used Cox proportional hazards regression \citep{coxRegressionModelsLifeTables1972}
 in a two-stage approach. Stage 1 screened all variables in univariable
 models, retaining those with p\textless0.10. Stage 2 fitted a
 multivariable model with retained variables. Hazard ratios (HR) are
 reported per standard deviation increase. Model discrimination was
 assessed using Harrell\textquotesingle s C-index \citep{harrellMULTIVARIABLEPROGNOSTICMODELS1996}.
 The proportional hazards assumption was tested using Schoenfeld
-residuals \citep{schoenfeldPartialResidualsProportional1982}. Kaplan-Meier curves \citep{kaplanNonparametricEstimationIncomplete1958
-1958) were generated using median splits, with differences assessed by
+residuals \citep{schoenfeldPartialResidualsProportional1982}. Kaplan-Meier curves \citep{kaplanNonparametricEstimationIncomplete1958} were generated using median splits, with differences assessed by
 log-rank test \citep{petoDesignAnalysisRandomized1976}.
 
 Statistical analyses used Python 3.10 with lifelines 0.27
@@ -211,7 +210,7 @@ p\textless0.05.
 \subsection{Patient characteristics}\label{patient-characteristics}
 
 Clinical characteristics of both cohorts are summarized in
-\hyperref[_Ref219821329]{Table 8.1}. The TCIA cohort included 189
+\Cref{tab:clinical_characteristics}. The TCIA cohort included 189
 patients with resectable colorectal liver metastases who underwent
 hepatic resection with curative intent; 115 (60.8\%) received
 neoadjuvant chemotherapy prior to surgery. The VHIO cohort included 344
@@ -229,62 +228,53 @@ surgery; VHIO patients had unresectable disease treated with palliative
 systemic therapy. IQR = interquartile range; OS = overall survival; DFS
 = disease-free survival; PFS = progression-free survival.
 
-{\def\LTcaptype{none} % do not increment counter
-\begin{longtable}[]{@{}
-  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.5002}}
-  >{\centering\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.2500}}
-  >{\centering\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.2298}}@{}}
-\toprule\noalign{}
-\begin{minipage}[b]{\linewidth}\centering
-\textbf{Variables}
-\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
-\textbf{TCIA}
-
-\textbf{(n=189)}
-\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
-\textbf{VHIO}
-
-\textbf{(n=344)}
-\end{minipage} \\
-\midrule\noalign{}
-\endhead
-\bottomrule\noalign{}
-\endlastfoot
-\textbf{Age} {[}years, Median(range){]} & 61 (30 - 88) & 69 (32 - 88) \\
-\textbf{Sex} {[}n (\%){]} & & \\
-Male & 111 (58.7) & 205 (59.6) \\
-Female & 78 (41.3) & 139 (40.4) \\
-\textbf{Primary Tumor Location} {[}n (\%){]} & & \\
-Right & & 139 (40.4) \\
-Left & & 183 (53.2) \\
-Rectum & & 17 (4.9) \\
-Unknown & 189 (100) & 5 (1.5) \\
-\textbf{RAS Status} {[}n (\%){]} & & \\
-Wild-type & & 136 (39.5\%) \\
-Mutant & & 195 (56.7\%) \\
-Unknown & & 13 (3.8\%) \\
-\textbf{Synchronous CRLM} {[}n(\%){]} & 104 (55.0) & 277 (80.5) \\
-\textbf{Extrahepatic Disease} {[}n(\%){]} & 15 (7.9) & 203 (59.0) \\
-\textbf{No. of liver metastases per patient} {[}Median (IQR){]} & 2.0
-(1.0, 3.0) & 3.0 (2.0, 7.0) \\
-\textbf{Median liver metastasis size} {[}cm³, Median (IQR){]} & 3.2
-(1.2, 10.9) & 5.1 (2.0, 15.0) \\
-\textbf{Liver Disease Volume} {[}cm³, Median (IQR){]} & 10.7 (4.1, 32.8)
-& 32.4 (6.8, 180.3) \\
-\textbf{First-line Treatment Type} {[}n (\%){]} & -\/- & \\
-Chemotherapy Only & & 122 (35.5) \\
-Chemotherapy + Antiangiogenic & & 133 (38.7) \\
-Chemotherapy + Targeted & & 69 (20.1) \\
-Other & & 20 (5.8\%) \\
-\textbf{Neoadjuvant chemotherapy} {[}n (\%){]} & 115 (60.8) & -\/- \\
-\textbf{Progression Free Survival} {[}months, Median (IQR){]} & -\/- &
-8.9 (5.0, 15.3) \\
-\textbf{Overall Survival} {[}months, Median (IQR){]} & 67.1 (34.4, 97.5)
-& 19.1 (11.1, 32.8) \\
-\textbf{Disease Free Survival} {[}months, Median (IQR){]} & 22.3 (9.4,
-69.3) & 8.9 (5.0, 15.3) \\
-\end{longtable}
-}
+\begin{table}[ht]
+    \centering
+    \small
+    \caption[\textbf{\sffamily Clinical characteristics of the TCIA and VHIO cohorts}]{%
+        \textbf{\sffamily Clinical characteristics of the TCIA and VHIO cohorts.}%
+        TCIA patients had resectable disease treated with curative-intent surgery; VHIO patients had unresectable disease treated with palliative systemic therapy. IQR = interquartile range; OS = overall survival; DFS = disease-free survival; PFS = progression-free survival.}
+    \label{tab:clinical_characteristics}
+    \begin{tabularx}{\textwidth}{@{} l c c @{}}
+        \toprule
+        \textbf{Variables} & \textbf{\makecell{TCIA\\(n=189)}} & \textbf{\makecell{VHIO\\(n=344)}} \\
+        \midrule
+        \textbf{Age} [years, Median(range)] & 61 (30 -- 88) & 69 (32 -- 88) \\ \addlinespace
+        \textbf{Sex} [n (\%)] & & \\
+        \quad Male & 111 (58.7) & 205 (59.6) \\
+        \quad Female & 78 (41.3) & 139 (40.4) \\ \addlinespace
+        \textbf{Primary Tumor Location} [n (\%)] & & \\
+        \quad Right & & 139 (40.4) \\
+        \quad Left & & 183 (53.2) \\
+        \quad Rectum & & 17 (4.9) \\
+        \quad Unknown & 189 (100) & 5 (1.5) \\ \addlinespace
+        \textbf{RAS Status} [n (\%)] & & \\
+        \quad Wild-type & & 136 (39.5\%) \\
+        \quad Mutant & & 195 (56.7\%) \\
+        \quad Unknown & & 13 (3.8\%) \\ \addlinespace
+        \textbf{Synchronous CRLM} [n(\%)] & 104 (55.0) & 277 (80.5) \\ \addlinespace
+        \textbf{Extrahepatic Disease} [n(\%)] & 15 (7.9) & 203 (59.0) \\ \addlinespace
+        \textbf{No. of liver metastases per patient} & 2.0 (1.0, 3.0) & 3.0 (2.0, 7.0) \\
+        \quad [Median (IQR)] & & \\ \addlinespace
+        \textbf{Median liver metastasis size} & 3.2 (1.2, 10.9) & 5.1 (2.0, 15.0) \\
+        \quad [cm$^3$, Median (IQR)] & & \\ \addlinespace
+        \textbf{Liver Disease Volume} & 10.7 (4.1, 32.8) & 32.4 (6.8, 180.3) \\
+        \quad [cm$^3$, Median (IQR)] & & \\ \addlinespace
+        \textbf{First-line Treatment Type} [n (\%)] & -- & \\
+        \quad Chemotherapy Only & & 122 (35.5) \\
+        \quad Chemotherapy + Antiangiogenic & & 133 (38.7) \\
+        \quad Chemotherapy + Targeted & & 69 (20.1) \\
+        \quad Other & & 20 (5.8\%) \\ \addlinespace
+        \textbf{Neoadjuvant chemotherapy} [n (\%)] & 115 (60.8) & -- \\ \addlinespace
+        \textbf{Progression Free Survival} & -- & 8.9 (5.0, 15.3) \\
+        \quad [months, Median (IQR)] & & \\ \addlinespace
+        \textbf{Overall Survival} & 67.1 (34.4, 97.5) & 19.1 (11.1, 32.8) \\
+        \quad [months, Median (IQR)] & & \\ \addlinespace
+        \textbf{Disease Free Survival} & 22.3 (9.4, 69.3) & 8.9 (5.0, 15.3) \\
+        \quad [months, Median (IQR)] & & \\
+        \bottomrule
+    \end{tabularx}
+\end{table}
 
 \subsection{Habitat Characteristics Across Cohorts}\label{habitat-characteristics-across-cohorts}
 
@@ -296,12 +286,12 @@ clinical setting, both cohorts showed the same spatial pattern observed
 in POEM and PREDICT (Section 7.3.3): cores dominated by the avascular
 habitat (\textasciitilde75\%), rims enriched in cellular-perfused
 (\textasciitilde50\%) and vascular (\textasciitilde35\%) habitats
-(\hyperref[_Ref219821801]{Figure 8.2}A). This consistency confirms that
+(\hyperref[_Ref219821801]{Figure~\ref{fig:8.2}}A). This consistency confirms that
 the CT{} habitat model captures generalizable tumor biology rather than
 cohort-specific artifacts.
 
 \textbf{Correlation with volume.} Habitat metrics were correlated with
-tumor volume (\hyperref[_Ref219821801]{Figure 8.2}B). The strongest
+tumor volume (\hyperref[_Ref219821801]{Figure~\ref{fig:8.2}}B). The strongest
 relationship was between rim entropy and volume (ρ = -0.77 TCIA, ρ =
 -0.71 VHIO, both p\textless0.001): larger tumors have more homogeneous
 rims, while smaller tumors maintain greater spatial diversity at the
@@ -341,7 +331,7 @@ p$<$0.001. Full correlation matrix in Annex D.}
 \subsection{TCIA: Neoadjuvant Chemotherapy Remodels Tumor Composition}\label{tcia-neoadjuvant-chemotherapy-remodels-tumor-composition}
 
 We examined whether neoadjuvant chemotherapy alters habitat composition.
-\hyperref[_Ref219821707]{Figure 8.3}A compares habitat metrics between
+\hyperref[_Ref219821707]{Figure~\ref{fig:8.3}}A compares habitat metrics between
 treatment-naive (n=74) and neoadjuvant-treated (n=115) patients.
 
 Several metrics differed between groups after FDR correction.
@@ -373,7 +363,7 @@ Extended results are available in Annex D.
 
 We next assessed whether habitat metrics predict survival. Rim metrics
 were the most prognostic and only in neoadjuvant-treated patients, not
-in treatment-naive tumors (\hyperref[_Ref219821312]{Table 8.2}.).
+in treatment-naive tumors (\Cref{tab:cox_regression}).
 
 In treatment-naive patients (n=74, 36 events), no habitat metric reached
 significance (all p\textgreater0.15), and tumor volume showed no
@@ -391,7 +381,7 @@ whole entropy (HR=0.62, p=0.001), whole cellular-perfused proportion
 (HR=1.49, p=0.010). Core metrics showed no associations (all
 p\textgreater0.12). Tumor volume was also prognostic (HR=2.01, p=0.001).
 Kaplan-Meier curves confirmed these patterns
-(\hyperref[_Ref219821707]{Figure 8.3}B): high rim cellular-perfused
+(\hyperref[_Ref219821707]{Figure~\ref{fig:8.3}}B): high rim cellular-perfused
 proportion predicted worse survival (median 48 vs 92 months, p=0.002);
 high rim entropy was protective (median 92 vs 51 months, p=0.002); core
 entropy showed no separation (p=0.087).
@@ -413,7 +403,7 @@ entropy (median 92 vs 51 months, p=0.002) and high rim avascular
 proportion (median 109 vs 52 months, p=0.002) were protective. Core
 entropy showed no significant separation (p=0.087), confirming that
 prognostic information concentrates at the tumor rim rather than the
-interior (\hyperref[_Ref219821707]{Figure 8.3}B).
+interior (\hyperref[_Ref219821707]{Figure~\ref{fig:8.3}}B).
 
 In multivariable analysis, most rim metrics lost significance despite
 strong univariable associations. This attenuation reflects the
@@ -456,60 +446,40 @@ associations, core metrics show none. Attenuation of rim metrics in
 multivariable analysis reflects collinearity rather than lack of
 prognostic value.
 
-{\def\LTcaptype{none} % do not increment counter
-\begin{longtable}[]{@{}
-  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.3780}}
-  >{\centering\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2180}}
-  >{\centering\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.1017}}
-  >{\centering\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.1890}}
-  >{\centering\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.1132}}@{}}
-\toprule\noalign{}
-\begin{minipage}[b]{\linewidth}\centering
-\textbf{Variable}
-\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
-\textbf{Univariable}
-
-\textbf{HR {[}95\% CI{]}}
-\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
-\textbf{P-value}
-\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
-\textbf{Multivariable}
-
-\textbf{HR {[}95\% CI{]}}
-\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
-\textbf{P-value}
-\end{minipage} \\
-\midrule\noalign{}
-\endhead
-\bottomrule\noalign{}
-\endlastfoot
-\textbf{Clinical} & & & & \\
-Extrahepatic disease & 2.61 {[}1.28-5.30{]} & 0.008 & 2.64
-{[}0.96-7.27{]} & 0.059 \\
-Synchronous metastases & 0.76 {[}0.46-1.25{]} & 0.280 & & \\
-\textbf{Tumor volume} & & & & \\
-Tumor volume & 2.01 {[}1.31-3.07{]} & 0.001 & 1.90 {[}0.75-4.80{]} &
-0.173 \\
-\textbf{Habitats-Whole Tumor} & & & & \\
-Whole entropy & 0.62 {[}0.47-0.83{]} & 0.001 & 0.73 {[}0.32-1.66{]} &
-0.455 \\
-Whole Avascular proportion & 0.92 {[}0.69-1.23{]} & 0.585 & & \\
-Whole Cellular-Perfused proportion & 1.49 {[}1.10-2.01{]} & 0.010 & 1.66
-{[}1.04-2.65{]} & \textbf{0.033} \\
-\textbf{Habitats-Rim} & & & & \\
-Rim entropy & 0.59 {[}0.45-0.78{]} & \textless0.001 & 0.90
-{[}0.60-1.35{]} & 0.622 \\
-Rim Avascular proportion & 0.60 {[}0.45-0.80{]} & \textless0.001 & 0.60
-{[}0.29-1.24{]} & 0.168 \\
-Rim Cellular-Perfused proportion & 1.65 {[}1.21-2.23{]} & 0.001 & 0.59
-{[}0.26-1.33{]} & 0.201 \\
-\textbf{Habitats-Core} & & & & \\
-Core entropy & 1.22 {[}0.95-1.57{]} & 0.121 & & \\
-Core Avascular proportion & 1.11 {[}0.88-1.41{]} & 0.370 & & \\
-Core Cellular-Perfused proportion & 0.87 {[}0.69-1.09{]} & 0.224 & & \\
-\textbf{Model C-index} & & & \textbf{0.699} & \\
-\end{longtable}
-}
+\begin{table}[ht]
+    \centering
+    \small
+    \caption[\textbf{\sffamily Cox regression for overall survival in neoadjuvant-treated TCIA patients}]{%
+        \textbf{\sffamily Cox regression for overall survival in neoadjuvant-treated TCIA patients.}%
+        Multivariable model includes variables with univariable p$<$0.10. Dashes indicate variables not entered. Bold indicates p$<$0.05.}
+    \label{tab:cox_regression}
+    \begin{tabular}{l c c c c}
+        \toprule
+        & \multicolumn{2}{c}{\textbf{Univariable}} & \multicolumn{2}{c}{\textbf{Multivariable}} \\
+        \cmidrule(lr){2-3} \cmidrule(lr){4-5}
+        \textbf{Variable} & \textbf{HR [95\% CI]} & \textbf{P-value} & \textbf{HR [95\% CI]} & \textbf{P-value} \\
+        \midrule
+        \textbf{Clinical} & & & & \\
+        \quad Extrahepatic disease & 2.61 [1.28--5.30] & \textbf{0.008} & 2.64 [0.96--7.27] & 0.059 \\
+        \quad Synchronous metastases & 0.76 [0.46--1.25] & 0.280 & --- & --- \\ \addlinespace
+        \textbf{Tumor volume} & & & & \\
+        \quad Tumor volume & 2.01 [1.31--3.07] & \textbf{0.001} & 1.90 [0.75--4.80] & 0.173 \\ \addlinespace
+        \textbf{Habitats-Whole Tumor} & & & & \\
+        \quad Whole entropy & 0.62 [0.47--0.83] & \textbf{0.001} & 0.73 [0.32--1.66] & 0.455 \\
+        \quad Whole Avasc. prop. & 0.92 [0.69--1.23] & 0.585 & --- & --- \\
+        \quad Whole Cell.-Perf. prop. & 1.49 [1.10--2.01] & \textbf{0.010} & 1.66 [1.04--2.65] & \textbf{0.033} \\ \addlinespace
+        \textbf{Habitats-Rim} & & & & \\
+        \quad Rim entropy & 0.59 [0.45--0.78] & \textbf{$<$0.001} & 0.90 [0.60--1.35] & 0.622 \\
+        \quad Rim Avasc. prop. & 0.60 [0.45--0.80] & \textbf{$<$0.001} & 0.60 [0.29--1.24] & 0.168 \\
+        \quad Rim Cell.-Perf. prop. & 1.65 [1.21--2.23] & \textbf{0.001} & 0.59 [0.26--1.33] & 0.201 \\ \addlinespace
+        \textbf{Habitats-Core} & & & & \\
+        \quad Core entropy & 1.22 [0.95--1.57] & 0.121 & --- & --- \\
+        \quad Core Avasc. prop. & 1.11 [0.88--1.41] & 0.370 & --- & --- \\
+        \quad Core Cell.-Perf. prop. & 0.87 [0.69--1.09] & 0.224 & --- & --- \\ \midrule
+        \textbf{Model C-index} & & & \multicolumn{2}{c}{\textbf{0.699}} \\
+        \bottomrule
+    \end{tabular}
+\end{table}
 
 \subsection{VHIO: Prognostic Value Depends on Treatment and Molecular Context}\label{vhio-prognostic-value-depends-on-treatment-and-molecular-context}
 
@@ -560,7 +530,7 @@ tumors, than for cytotoxic chemotherapy, where response manifests as
 cell death and volume reduction.
 
 The data supported this hypothesis (\hyperref[_Ref219821545]{Figure
-8.4}A, \hyperref[_Ref219821298]{Table 8.3}). In patients receiving
+8.4}A, \Cref{tab:context_dependent_prognostic}). In patients receiving
 chemotherapy alone (n=122), tumor volume dominated with a massive effect
 size (HR=5.46, 95\% CI 3.19--9.34, p\textless0.001). No habitat metric
 added value. In this cytotoxic context, tumor burden determines
@@ -594,7 +564,7 @@ As predicted, in RAS wild-type patients (n=136), only volume was
 prognostic (HR=1.23, p=0.028); rim entropy showed no association
 (HR=0.96, p=0.76). In RAS-mutant patients (n=195), both volume (HR=1.89,
 p\textless0.001) and rim entropy (HR=0.80, 95\% CI 0.65--1.00, p=0.047)
-were independently prognostic \hyperref[_Ref219821545]{Figure 8.4}B).
+were independently prognostic \hyperref[_Ref219821545]{Figure~\ref{fig:8.4}}B).
 
 The bevacizumab and RAS-mutant findings converge---unsurprising given
 that these groups overlap substantially---RAS-mutant patients often
@@ -602,78 +572,34 @@ receive bevacizumab---and both show the same rim entropy signal. This
 suggests we are capturing real biology, not statistical noise. Extended
 results are available in Annex D.
 
-\textbar{} Context-dependent prognostic value of habitat metrics in VHIO
+Context-dependent prognostic value of habitat metrics in VHIO is
+summarized in \Cref{tab:context_dependent_prognostic}.
 
-\begin{longtable}[]{@{}
-  >{\raggedright\arraybackslash}p{(\linewidth - 14\tabcolsep) * \real{0.2034}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 14\tabcolsep) * \real{0.0424}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 14\tabcolsep) * \real{0.0803}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 14\tabcolsep) * \real{0.2021}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 14\tabcolsep) * \real{0.0745}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 14\tabcolsep) * \real{0.2460}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 14\tabcolsep) * \real{0.0637}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 14\tabcolsep) * \real{0.0875}}@{}}
-\caption[Multivariable hazard ratios adjusted for clinical covariates]{Multivariable hazard ratios adjusted for clinical covariates
-(extrahepatic disease, primary site, age, synchronous metastases where
-p\textless0.10). Bold indicates p\textless0.05. Rim entropy is
-independently prognostic in bevacizumab-treated and RAS-mutant
-patients---contexts where anti-angiogenic therapy is
-relevant.}\tabularnewline
-\toprule\noalign{}
-\begin{minipage}[b]{\linewidth}\centering
-\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
-\textbf{n}
-\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
-\textbf{Events}
-\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
-\textbf{Volume HR {[}95\% CI{]}}
-\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
-\textbf{p}
-\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
-\textbf{Rim Entropy HR {[}95\% CI{]}}
-\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
-\textbf{p}
-\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
-\textbf{C-index}
-\end{minipage} \\
-\midrule\noalign{}
-\endfirsthead
-\toprule\noalign{}
-\begin{minipage}[b]{\linewidth}\centering
-\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
-\textbf{n}
-\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
-\textbf{Events}
-\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
-\textbf{Volume HR {[}95\% CI{]}}
-\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
-\textbf{p}
-\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
-\textbf{Rim Entropy HR {[}95\% CI{]}}
-\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
-\textbf{p}
-\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
-\textbf{C-index}
-\end{minipage} \\
-\midrule\noalign{}
-\endhead
-\bottomrule\noalign{}
-\endlastfoot
-\textbf{All patients} & 344 & 246 & 1.29 {[}1.08--1.55{]} & 0.006 & 0.88
-{[}0.76--1.02{]} & 0.10 & 0.665 \\
-\textbf{By Treatment} & & & & & & & \\
-Chemo alone & 122 & --- & \textbf{5.46 {[}3.19--9.34{]}} &
-\textless0.001 & 0.88 {[}0.54--1.43{]} & 0.61 & 0.703 \\
-Chemo + Bevacizumab & 133 & --- & 1.69 {[}1.31--2.17{]} & \textless0.001
-& \textbf{0.68 {[}0.52--0.88{]}} & 0.004 & 0.674 \\
-Chemo + Targeted & 69 & --- & 1.21 {[}1.01--1.47{]} & 0.043 & 1.14
-{[}0.81--1.60{]} & 0.46 & 0.723 \\
-\textbf{By RAS Status} & & & & & & & \\
-RAS Wild-Type & 136 & --- & 1.23 {[}1.02--1.48{]} & 0.028 & 0.96
-{[}0.77--1.21{]} & 0.76 & 0.705 \\
-RAS Mutant & 195 & --- & 1.89 {[}1.41--2.53{]} & \textless0.001 &
-\textbf{0.80 {[}0.65--1.00{]}} & 0.047 & 0.700 \\
-\end{longtable}
+\begin{table}[ht]
+    \centering
+    \small
+    \setlength{\tabcolsep}{3pt}
+    \caption[\textbf{\sffamily Context-dependent prognostic value of habitat metrics in VHIO}]{%
+        \textbf{\sffamily Context-dependent prognostic value of habitat metrics in VHIO.}%
+        Multivariable hazard ratios adjusted for clinical covariates (extrahepatic disease, primary site, age, synchronous metastases where p$<$0.10). Bold indicates p$<$0.05. Rim entropy is independently prognostic in bevacizumab-treated and RAS-mutant patients—contexts where anti-angiogenic therapy is relevant.}
+    \label{tab:context_dependent_prognostic}
+    \begin{tabular}{l c c c c c c c}
+        \toprule
+        & & & \multicolumn{2}{c}{\textbf{Volume}} & \multicolumn{2}{c}{\textbf{Rim Entropy}} & \\
+        \cmidrule(lr){4-5} \cmidrule(lr){6-7}
+        & \textbf{n} & \textbf{Events} & \textbf{HR [95\% CI]} & \textbf{p} & \textbf{HR [95\% CI]} & \textbf{p} & \textbf{C-index} \\
+        \midrule
+        \textbf{All patients} & 344 & 246 & \textbf{1.29 [1.08--1.55]} & \textbf{0.006} & 0.88 [0.76--1.02] & 0.10 & 0.665 \\ \addlinespace
+        \textbf{By Treatment} & & & & & & & \\
+        \quad Chemo alone & 122 & -- & \textbf{5.46 [3.19--9.34]} & \textbf{$<$0.001} & 0.88 [0.54--1.43] & 0.61 & 0.703 \\
+        \quad Chemo + Bevacizumab & 133 & -- & \textbf{1.69 [1.31--2.17]} & \textbf{$<$0.001} & \textbf{0.68 [0.52--0.88]} & \textbf{0.004} & 0.674 \\
+        \quad Chemo + Targeted & 69 & -- & \textbf{1.21 [1.01--1.47]} & \textbf{0.043} & 1.14 [0.81--1.60] & 0.46 & 0.723 \\ \addlinespace
+        \textbf{By RAS Status} & & & & & & & \\
+        \quad RAS Wild-Type & 136 & -- & \textbf{1.23 [1.02--1.48]} & \textbf{0.028} & 0.96 [0.77--1.21] & 0.76 & 0.705 \\
+        \quad RAS Mutant & 195 & -- & \textbf{1.89 [1.41--2.53]} & \textbf{$<$0.001} & \textbf{0.80 [0.65--1.00]} & \textbf{0.047} & 0.700 \\
+        \bottomrule
+    \end{tabular}
+\end{table}
 
 \subsubsection{Biological Interpretation: Rim Entropy and Growth Patterns}\label{biological-interpretation-rim-entropy-and-growth-patterns}
 
@@ -689,7 +615,7 @@ In the six POEM tumors with annotated growth patterns, desmoplastic
 tumors (n=3) showed higher rim entropy than replacement tumors (n=3),
 with large effect sizes despite the small sample (rim entropy:
 Cohen\textquotesingle s d = 1.92; rim avascular proportion: d = 2.03;
-(\hyperref[_Ref219821448]{Figure 8.5}). Desmoplastic tumors also showed
+(\hyperref[_Ref219821448]{Figure~\ref{fig:8.5}}). Desmoplastic tumors also showed
 lower rim cellular-perfused proportion (d = -1.44), consistent with the
 fibrous stroma displacing viable tumor at the interface.
 
@@ -703,7 +629,7 @@ assessment, currently requiring resection or biopsy.
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=0.9\textwidth]{fig_8_5.png}
-\caption{Rim metrics differ between histopathological growth patterns.
+\caption[Rim metrics differ between histopathological growth patterns]{Rim metrics differ between histopathological growth patterns.
 Boxplots comparing rim habitat metrics between replacement (n=3, blue)
 and desmoplastic (n=3, salmon) tumors in the POEM cohort, annotated by
 an experienced pathologist. Desmoplastic tumors show higher rim entropy
@@ -721,7 +647,7 @@ limited by sample size.}
 
 RECIST classifies patients by tumor size change, but PR and SD
 categories have overlapping survival curves
-(\hyperref[_Ref219821408]{Figure 8.6}A, left)---size alone does not
+(\hyperref[_Ref219821408]{Figure~\ref{fig:8.6}}A, left)---size alone does not
 cleanly separate outcomes. We asked whether rim entropy change could
 provide additional information.
 
@@ -732,11 +658,11 @@ biologically consistent: partial responders showed increasing entropy
 decreasing entropy (median Δ = −0.041, median OS = 9.0 months) (Annex
 D).
 
-The waterfall plot (\hyperref[_Ref219821408]{Figure 8.6}B) reveals the
+The waterfall plot (\hyperref[_Ref219821408]{Figure~\ref{fig:8.6}}B) reveals the
 key finding: SD patients span the full range of entropy change. Four
 showed increasing entropy (among the highest in the cohort), four showed
 decreasing entropy. When substratified by entropy direction
-(\hyperref[_Ref219821408]{Figure 8.6}A, right), SD patients with
+(\hyperref[_Ref219821408]{Figure~\ref{fig:8.6}}A, right), SD patients with
 increasing entropy tracked with PR, while those with decreasing entropy
 tracked closer to PD.
 
@@ -855,7 +781,7 @@ In this Chatper we studied whether CT{} habitats provide prognostic
 information beyond tumor volume in colorectal liver metastases. Using
 two independent cohorts representing resectable and unresectable
 disease, we found that the biologically-anchored CT{} habitat model
-developed in Chapter 7 translates into clinical signal where spatial
+developed in Chapter~\ref{ch:7} translates into clinical signal where spatial
 heterogeneity captures treatment response that size-based metrics can't.
 
 \textbf{Key Points:}

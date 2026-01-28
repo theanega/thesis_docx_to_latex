@@ -30,7 +30,7 @@
 ############################
 /build/
 /output/
-
+/example/
 # Word inputs (original thesis/annex)
 /input/
 

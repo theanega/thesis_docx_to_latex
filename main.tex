@@ -55,8 +55,8 @@
 % PAQUETES DE FORMATO Y ESTILO
 % ============================================================================
 
-% Geometría de página (twoside: márgenes alternados para encuadernación)
-\usepackage[a4paper,inner=3cm,outer=2.5cm,top=3cm,bottom=2.5cm]{geometry}
+% Geometría de página - márgenes normales A4
+\usepackage[a4paper,left=2.5cm,right=2.5cm,top=2.5cm,bottom=2.5cm]{geometry}
 
 % Gráficos e imágenes
 \usepackage{graphicx}
@@ -67,6 +67,7 @@
 \usepackage{booktabs}  % Para tablas profesionales (\toprule, \midrule, \bottomrule)
 \usepackage{longtable}  % Para tablas largas
 \usepackage{tabularx}   % Para tablas con ancho ajustable
+\usepackage{makecell}   % Para celdas con múltiples líneas
 \usepackage{array}
 \usepackage{multirow}
 \usepackage{threeparttable}  % Para notas en tablas
@@ -95,12 +96,13 @@
 % Limpiar headers por defecto
 \fancyhf{}
 
-% Configuración de headers para twoside - mostrar solo el nombre del capítulo
-\fancyhead[LE,RO]{\thepage}     % Página izq: número a la izquierda, Página der: número a la derecha
-\fancyhead[RE,LO]{\leftmark}    % Nombre del capítulo
+% Configuración de headers - solo título del capítulo (sin "Chapter X")
+\fancyhead[C]{\leftmark}        % Título del capítulo centrado arriba
+\fancyfoot[C]{\thepage}         % Número de página abajo centrado
 
 % Línea separadora fina
 \renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0pt}
 \setlength{\headheight}{15pt}
 
 % Estilo para páginas de capítulo (sin header)
@@ -110,8 +112,8 @@
   \renewcommand{\headrulewidth}{0pt}
 }
 
-% Marcadores de capítulo para headers (solo capítulo, no sección)
-\renewcommand{\chaptermark}[1]{\markboth{\MakeUppercase{\chaptername\ \thechapter.\ #1}}{}}
+% Marcadores de capítulo para headers (SOLO título, sin "Chapter X")
+\renewcommand{\chaptermark}[1]{\markboth{\MakeUppercase{#1}}{}}
 \renewcommand{\sectionmark}[1]{}  % No actualizar el header con secciones
 
 % ============================================================================
@@ -133,7 +135,8 @@
 % LISTAS Y ACRÓNIMOS
 % ============================================================================
 
-\usepackage{glossaries}  % Para lista de acrónimos
+\usepackage[acronym,nonumberlist,style=long,toc]{glossaries}  % Para lista de acrónimos
+\usepackage{multicol}  % Para dos columnas en abbreviations
 \makeglossaries
 
 % Cargar definiciones de acrónimos
@@ -178,7 +181,7 @@
 % Aplicar Roboto a títulos de partes, capítulos, secciones, etc.
 % Esto se hace redefiniendo los comandos de formato
 
-% Títulos de partes - estilo mejorado con quote en misma página
+% Títulos de partes - alineados a la izquierda con quote
 \makeatletter
 \renewcommand{\@part}[2][]{%
   \ifnum \c@secnumdepth >-2\relax
@@ -188,16 +191,16 @@
     \addcontentsline{toc}{part}{#1}%
   \fi
   \markboth{}{}%
-  {\centering
+  {\raggedright  % Alineado a la izquierda
    \interlinepenalty \@M
    \normalfont
    \ifnum \c@secnumdepth >-2\relax
-     \fontsize{24}{28}\selectfont\bfseries\sffamily\titlefont \partname\nobreakspace\thepart
+     \fontsize{20}{24}\selectfont\bfseries\sffamily\titlefont \partname\nobreakspace\thepart
      \par
-     \vskip 25\p@
+     \vskip 15\p@
    \fi
-   \fontsize{30}{36}\selectfont\bfseries\sffamily\titlefont #1\par}%
-  \vskip 40\p@  % Espacio después del título, antes de la quote
+   \fontsize{26}{32}\selectfont\bfseries\sffamily\titlefont #1\par}%
+  \vskip 30\p@  % Espacio después del título, antes de la quote
   }
 % Redefinir \@endpart para NO forzar nueva página
 \renewcommand\@endpart{}
@@ -227,21 +230,26 @@
   }}
 \makeatother
 
-% Títulos de secciones y subsecciones - tamaños aumentados
+% Títulos de secciones y subsecciones - tamaños y espaciados consistentes
 \usepackage{titlesec}
 \titleformat{\section}
   {\LARGE\bfseries\sffamily\titlefont}{\thesection}{1em}{}
+\titlespacing*{\section}{0pt}{24pt plus 4pt minus 2pt}{12pt plus 2pt minus 2pt}
+
 \titleformat{\subsection}
   {\Large\bfseries\sffamily\titlefont}{\thesubsection}{1em}{}
+\titlespacing*{\subsection}{0pt}{18pt plus 4pt minus 2pt}{9pt plus 2pt minus 2pt}
+
 \titleformat{\subsubsection}
   {\large\bfseries\sffamily\titlefont}{\thesubsubsection}{1em}{}
+\titlespacing*{\subsubsection}{0pt}{12pt plus 4pt minus 2pt}{6pt plus 2pt minus 2pt}
 
 % Captions de figuras y tablas
 \usepackage{caption}
 \captionsetup{
   font={small},           % 9pt para el texto del caption
   labelfont={bf,sf},      % Label en bold sans-serif (Fira Sans)
-  textfont={rm,small},    % Texto en roman (Times) tamaño small (9pt)
+  textfont={rm,small},    % Texto del caption en roman (Times) 9pt
   format=hang,
   margin=10pt
 }
@@ -320,7 +328,8 @@
 \listoftables
 \cleardoublepage
 
-% Lista de acrónimos
+% Lista de acrónimos (mostrar todos aunque no se usen en el texto)
+\glsaddall
 \printglossary[type=\acronymtype,title=List of Abbreviations]
 \cleardoublepage
 
@@ -428,7 +437,7 @@
   \cleardoublepage
   \input{../source/chapters/thesis/chapter_7_development_and_validation_of_an_mpmri_anchored_ct.tex}
   \cleardoublepage
-  \input{../source/chapters/thesis/chapter_7_clinical_relevance_of_ct.tex}
+  \input{../source/chapters/thesis/chapter_8_clinical_relevance_of_ct.tex}
   
   % Part V: Synthesis and Conclusions
   \cleardoublepage
@@ -481,7 +490,7 @@
 
 % Bibliografía
 \renewcommand{\bibname}{References}  % Título "References" en lugar de "Bibliography"
-\bibliographystyle{unsrtnat}
+\bibliographystyle{apalike}
 {\small  % Tamaño 9pt para las referencias
 \bibliography{../source/references}
 }

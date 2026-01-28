@@ -1,8 +1,8 @@
 \chapter{\texorpdfstring{Development and Validation of an mpMRI-anchored
 CT{} Habitat
-Model}{Development and Validation of an mpMRI-anchored CT Habitat Model}}\label{development-and-validation-of-an-mpmri-anchored-ct-habitat-model}
+Model}{Development and Validation of an mpMRI-anchored CT Habitat Model}}\label{development-and-validation-of-an-mpmri-anchored-ct-habitat-model}\label{ch:7}
 
-In Chapter 6, we identified a set of precise handcrafted radiomics
+In Chapter~\ref{ch:6}, we identified a set of precise handcrafted radiomics
 features for stable CT{} habitat computation. An exploratory analysis
 suggested qualitative agreement between these habitats and histologic
 phenotypes such as necrosis and viable cancer. In this chapter, we
@@ -47,30 +47,28 @@ currently in preparation.
 \section{Rationale}\label{rationale-1}
 
 Colorectal cancer is the third most common malignancy worldwide, and the
-liver is its most frequent site of metastasis (Arnold et al., 2017;
-Siegel, Miller, et al., 2020). Approximately half of patients with
+liver is its most frequent site of metastasis \citep{arnoldGlobalPatternsTrends2017,siegelColorectalCancerStatistics2020}. Approximately half of patients with
 colorectal cancer will develop liver metastases during their disease
 course. While surgical resection offers the best change for long-term
 survival, the majority of patients present with unresectable disease and
 receive systemic therapy (i.e. chemotherapy and/or targeted therapy).
 Response to these therapies is highly variable, and a significant
-proportion of patients develop resistance (Zeineddine et al., 2023).
+proportion of patients develop resistance \citep{zeineddineSurvivalImprovementPatients2023}.
 
 Tumor heterogeneity is increasingly recognized as a driver of this
 resistance. Colorectal liver metastases are not uniform masses but
 histologically complex ecosystems containing variable proportions of
 viable tumor, necrosis, and fibrosis. These compartments carry
 prognostic significance: fibrosis often indicates favorable response to
-chemotherapy (Poultsides et al., 2012), while central necrosis may
-reflect treatment failure due to poor drug penetration (Wong \& Neville,
-2007b). If we could distinguish these tissue states non-invasively, we
+chemotherapy \citep{poultsidesPathologicResponsePreoperative2012}, while central necrosis may
+reflect treatment failure due to poor drug penetration \citep{wongColorectalCancerLiver2007b}. If we could distinguish these tissue states non-invasively, we
 might stratify patients more accurately and guide treatment decisions
 earlier.
 
 Habitat imaging offers a potential solution. By clustering voxels into
 spatially distinct subregions, habitats can identify tissue compartments
 that correspond to different biological states, potentially including
-necrosis, fibrosis and viable cancer. In Chapter 6, we demonstrated that
+necrosis, fibrosis and viable cancer. In Chapter~\ref{ch:6}, we demonstrated that
 stable CT{} habitats can be computed using a precise subset of
 handcrafted radiomics features, and we observed qualitative
 correspondence with histologic phenotypes in an exploratory analysis.
@@ -103,17 +101,17 @@ Multiparametric MRI offers a middle ground between
 histology\textquotesingle s cellular resolution and
 CT{}\textquotesingle s accessibility. Diffusion-weighted imaging (DWI),
 the primary non-invasive MRI technique for probing tissue microstructure
-(Le Bihan et al., 2001), measures water diffusion at scales far below
+\citep{lebihanDiffusionTensorImaging2001}, measures water diffusion at scales far below
 the millimeter-level image resolution. In tumors, apparent diffusion
 coefficient (ADC) values inversely correlate with cellularity: dense
 cellular packing restricts water motion, yielding low ADC (Chen et al.,
 2013; Surov et al., 2017). Advanced diffusion models can also estimate
 microvascular volume fraction (fv), a marker of tissue vascularity
-(Federau et al., 2014; Togao et al., 2018). Similarly, dynamic
+\citep{federauPerfusionMeasurementBrain2014,togaoMeasurementPerfusionFraction2018}. Similarly, dynamic
 contrast-enhanced (DCE) MRI quantifies vascular properties through
 pharmacokinetic modeling. Parameters such as the transfer constant
 (\emph{Ktrans)} have been validated as markers of tumor vascularity and
-perfusion (Jackson et al., 2007; Tofts \& Kermode, 1991). Together,
+perfusion \citep{jacksonImagingTumorVascular2007,toftsMeasurementBloodbrainBarrier1991}. Together,
 these modalities provide voxel-level maps of biologically meaningful
 tissue states---cellularity and vascularity---that are impractical to
 obtain from histology alone. If CT{} habitats reflect true biology, they
@@ -177,7 +175,7 @@ architecture.
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=0.95\textwidth]{fig_7_1.pdf}
-\caption{Schematic of the mpMRI-anchored CT habitat model development.
+\caption[Schematic of the mpMRI-anchored CT habitat model development]{Schematic of the mpMRI-anchored CT habitat model development.
 CT and MRI scans from the PREDICT cohort were co-registered to T2w
 space. Four voxelwise CT feature representations---Raw HU, Handcrafted
 Radiomics, DL-SALSA, and DL-FM---were extracted and processed through
@@ -244,8 +242,7 @@ nearest-neighbor interpolation.
 
 \subsection{CT Habitat Model Development}\label{ct-habitat-model-development}
 
-\subsubsection{\texorpdfstring{\textbf{7.2.4.1 Clustering
-Configuration}}{7.2.4.1 Clustering Configuration}}\label{clustering-configuration}
+\subsubsection{Clustering Configuration}\label{clustering-configuration}
 
 Habitats were computed using the imaging habitats pipeline described in
 Section 5.4, with standard preprocessing: features with high
@@ -259,9 +256,7 @@ histological compartments of colorectal liver metastases: viable tumor,
 necrosis, and fibrosis. The fitted scaler and global prototypes were
 saved, enabling application to new data without retraining.
 
-\subsubsection{\texorpdfstring{\textbf{7.2.4.2 CT}{} \textbf{Habitat
-Model
-Selection}}{7.2.4.2 CT Habitat Model Selection}}\label{ct-habitat-model-selection}
+\subsubsection{CT Habitat Model Selection}\label{ct-habitat-model-selection}
 
 To select the optimal CT{} representation, we evaluated how well each
 feature set produced habitats that separate \emph{biologically} distinct
@@ -288,15 +283,13 @@ For each representation, we computed habitats and extracted the median
 value of each mpMRI metric within each habitat for each patient. We
 aggregated to patient level (N=10) to avoid pseudo-replication. Habitat
 separation was assessed using the Friedman test, with
-Kendall\textquotesingle s W as effect size (Kendall \& Smith, 1939;
-Tomczak \& Tomczak, n.d.) . To summarize performance across the three
+Kendall\textquotesingle s W as effect size \citep{kendallProblem$m$Rankings1939,tomczakNeedReportEffect} . To summarize performance across the three
 metrics, we computed a biophysical separation score defined as the mean
 Kendall\textquotesingle s W across ADCt, fv, and Ktrans. The
 representation with the highest biophysical separation score was
 selected for further validation.
 
-\subsubsection{\texorpdfstring{\textbf{7.2.4.3 Technical
-Validation}}{7.2.4.3 Technical Validation}}\label{technical-validation}
+\subsubsection{Technical Validation}\label{technical-validation}
 
 Strong biophysical separation could be spurious if the clustering is
 unstable. We therefore evaluated:
@@ -317,9 +310,7 @@ unstable. We therefore evaluated:
   noise.
 \end{itemize}
 
-\subsubsection{\texorpdfstring{\textbf{7.2.4.4 Habitat Characterization
-with
-mpMRI}}{7.2.4.4 Habitat Characterization with mpMRI}}\label{habitat-characterization-with-mpmri}
+\subsubsection{Habitat Characterization with mpMRI}\label{habitat-characterization-with-mpmri}
 
 Having selected the optimal CT{} representation based on biophysical
 separation, we characterized the resulting habitats using the full panel
@@ -338,7 +329,7 @@ following the same aggregation approach used for model selection.
 Differences across the three habitats were assessed using the Friedman
 test, with Kendall\textquotesingle s W as effect size. Post-hoc pairwise
 comparisons used Wilcoxon signed-rank tests with Benjamini-Hochberg
-(Benjamini \& Hochberg, 1995) correction for multiple comparisons within
+\citep{benjaminiControllingFalseDiscovery1995} correction for multiple comparisons within
 each metric.
 
 \subsection{Histopathological Validation}\label{histopathological-validation}
@@ -347,7 +338,7 @@ To assess whether CT{} habitats correspond to histologically defined
 tissue compartments, we applied the trained model to the POEM cohort
 (Section 5.1.3). Whole-tumor H\&E sections were digitized and annotated
 for viable tumor, necrosis, and fibrosis using a supervised pixel
-classifier in QuPath (Bankhead et al., 2017), trained on regions
+classifier in QuPath \citep{bankheadQuPathOpenSource2017}, trained on regions
 delineated by the author of this thesis, based on an experienced
 pathologist's guidance. Automated annotations were reviewed by the
 pathologist for quality assurance. We then performed two experiments:
@@ -387,7 +378,7 @@ and CT{}-to-T2w (median DSC = 0.70, IQR: 0.65--0.78).
 CT{} representations by their ability to produce habitats that separate
 the three pre-specified mpMRI metrics: tissue ADC (cellularity proxy),
 vascular fraction (fv), and perfusion (Ktrans).
-\hyperref[_Ref219821967]{Figure 7.2} shows examples of CT{} habitats
+\hyperref[_Ref219821967]{Figure~\ref{fig:7.2}} shows examples of CT{} habitats
 with the four feature sets. \hyperref[_Ref219821259]{Table 7.1}
 summarizes the results.
 
@@ -403,112 +394,25 @@ our primary cellularity proxy. This suggested that CT{} habitats capture
 vascular rather than cellular heterogeneity---a finding we examine in
 detail in Section 7.3.2.
 
-\textbar{} Comparison of candidate CT{} feature representations
-
-\begin{longtable}[]{@{}
-  >{\centering\arraybackslash}p{(\linewidth - 14\tabcolsep) * \real{0.1841}}
-  >{\centering\arraybackslash}p{(\linewidth - 14\tabcolsep) * \real{0.0651}}
-  >{\centering\arraybackslash}p{(\linewidth - 14\tabcolsep) * \real{0.1189}}
-  >{\centering\arraybackslash}p{(\linewidth - 14\tabcolsep) * \real{0.0912}}
-  >{\centering\arraybackslash}p{(\linewidth - 14\tabcolsep) * \real{0.1390}}
-  >{\centering\arraybackslash}p{(\linewidth - 14\tabcolsep) * \real{0.1227}}
-  >{\centering\arraybackslash}p{(\linewidth - 14\tabcolsep) * \real{0.1073}}
-  >{\centering\arraybackslash}p{(\linewidth - 14\tabcolsep) * \real{0.1563}}@{}}
-\caption{*p \textless{} 0.05 after Bonferroni correction. W =
-Kendall\textquotesingle s W effect size.}\tabularnewline
-\toprule\noalign{}
-\multirow{2}{=}{\centering\arraybackslash \begin{minipage}[b]{\linewidth}\centering
-\end{minipage}} &
-\multicolumn{2}{>{\centering\arraybackslash}p{(\linewidth - 14\tabcolsep) * \real{0.1841} + 2\tabcolsep}}{%
-\begin{minipage}[b]{\linewidth}\centering
-\textbf{ADCt}
-\end{minipage}} &
-\multicolumn{2}{>{\centering\arraybackslash}p{(\linewidth - 14\tabcolsep) * \real{0.2301} + 2\tabcolsep}}{%
-\begin{minipage}[b]{\linewidth}\centering
-\textbf{Vascular Fraction}
-\end{minipage}} &
-\multicolumn{2}{>{\centering\arraybackslash}p{(\linewidth - 14\tabcolsep) * \real{0.2300} + 2\tabcolsep}}{%
-\begin{minipage}[b]{\linewidth}\centering
-\textbf{Ktrans}
-\end{minipage}} &
-\multirow{2}{=}{\centering\arraybackslash \begin{minipage}[b]{\linewidth}\centering
-\textbf{Biophysical Score}
-\end{minipage}} \\
-& \begin{minipage}[b]{\linewidth}\centering
-W
-\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
-P-value
-\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
-W
-\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
-P-value
-\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
-W
-\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
-P-value
-\end{minipage} \\
-\midrule\noalign{}
-\endfirsthead
-\toprule\noalign{}
-\multirow{2}{=}{\centering\arraybackslash \begin{minipage}[b]{\linewidth}\centering
-\end{minipage}} &
-\multicolumn{2}{>{\centering\arraybackslash}p{(\linewidth - 14\tabcolsep) * \real{0.1841} + 2\tabcolsep}}{%
-\begin{minipage}[b]{\linewidth}\centering
-\textbf{ADCt}
-\end{minipage}} &
-\multicolumn{2}{>{\centering\arraybackslash}p{(\linewidth - 14\tabcolsep) * \real{0.2301} + 2\tabcolsep}}{%
-\begin{minipage}[b]{\linewidth}\centering
-\textbf{Vascular Fraction}
-\end{minipage}} &
-\multicolumn{2}{>{\centering\arraybackslash}p{(\linewidth - 14\tabcolsep) * \real{0.2300} + 2\tabcolsep}}{%
-\begin{minipage}[b]{\linewidth}\centering
-\textbf{Ktrans}
-\end{minipage}} &
-\multirow{2}{=}{\centering\arraybackslash \begin{minipage}[b]{\linewidth}\centering
-\textbf{Biophysical Score}
-\end{minipage}} \\
-& \begin{minipage}[b]{\linewidth}\centering
-W
-\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
-P-value
-\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
-W
-\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
-P-value
-\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
-W
-\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
-P-value
-\end{minipage} \\
-\midrule\noalign{}
-\endhead
-\bottomrule\noalign{}
-\endlastfoot
-\begin{minipage}[t]{\linewidth}\centering
-\begin{quote}
-Raw HU
-\end{quote}
-\end{minipage} & 0.31 & 0.2928 & 0.12 & 0.4894 & 0.04 & 0.6703 &
-0.1567 \\
-\begin{minipage}[t]{\linewidth}\centering
-\begin{quote}
-Handcrafted
-\end{quote}
-\end{minipage} & 0.16 & 0.3281 & 0.67 & 0.0053* & 0.52 & 0.0055* &
-0.4500 \\
-\begin{minipage}[t]{\linewidth}\centering
-\begin{quote}
-DL-SALSA
-\end{quote}
-\end{minipage} & 0.1481 & 0.3808 & 0.4815 & 0.0853 & 0.3457 & 0.0446* &
-0.3251 \\
-\begin{minipage}[t]{\linewidth}\centering
-\begin{quote}
-DL-FM
-\end{quote}
-\end{minipage} & 0.13 & 0.4429 & 0.19 & 0.3889 & 0.13 & 0.2725 &
-0.1500 \\
-\end{longtable}
+\begin{table}[ht]
+    \centering
+    \small
+    \setlength{\tabcolsep}{4pt}
+    \caption[Comparison of candidate CT feature representations]{\textbf{Comparison of candidate CT feature representations.} *p < 0.05 after Bonferroni correction. W = Kendall's W effect size.}
+    \label{tab:ct_feature_comparison}
+    \begin{tabular}{l c c c c c c c}
+        \toprule
+        & \multicolumn{2}{c}{\textbf{ADCt}} & \multicolumn{2}{c}{\textbf{Vascular Fraction}} & \multicolumn{2}{c}{\textbf{Ktrans}} & \multirow{2}{*}{\textbf{\makecell{Biophysical\\Score}}} \\
+        \cmidrule(lr){2-3} \cmidrule(lr){4-5} \cmidrule(lr){6-7}
+        & W & P-value & W & P-value & W & P-value & \\
+        \midrule
+        Raw HU & 0.31 & 0.2928 & 0.12 & 0.4894 & 0.04 & 0.6703 & 0.1567 \\ \addlinespace
+        Handcrafted & 0.16 & 0.3281 & 0.67 & 0.0053* & 0.52 & 0.0055* & 0.4500 \\ \addlinespace
+        DL-SALSA & 0.1481 & 0.3808 & 0.4815 & 0.0853 & 0.3457 & 0.0446* & 0.3251 \\ \addlinespace
+        DL-FM & 0.13 & 0.4429 & 0.19 & 0.3889 & 0.13 & 0.2725 & 0.1500 \\
+        \bottomrule
+    \end{tabular}
+\end{table}
 
 To assess whether the three-habitat solution was optimal for the
 selected representation, we performed post-hoc sensitivity analyses with
@@ -533,7 +437,7 @@ CT{} habitat model.
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=0.95\textwidth]{fig_7_2.pdf}
-\caption{Selection of the optimal CT representation.
+\caption[Selection of the optimal CT representation]{Selection of the optimal CT representation.
 \textbf{(A)} Representative habitat maps for a single tumor generated by
 the four candidate representations (Raw HU, Handcrafted Radiomics,
 DL-SALSA, DL-FM), alongside reference mpMRI maps (ADCt, fv, Ktrans).
@@ -557,105 +461,38 @@ compartments---necrosis, fibrosis, and viable tumor
 across habitats, plus two cellularity-related metrics (fin, ADCt). Full
 results with pairwise significance tests are available in Annex C.
 
-\textbar{} CT{} Habitat Characterization with mpMRI metrics
+\begin{table}[ht]
+    \centering
+    \small
+    \setlength{\tabcolsep}{3pt}
+    \caption[CT Habitat Characterization with mpMRI metrics]{\textbf{CT Habitat Characterization with mpMRI metrics.} Patient-level median values for 13 mpMRI-derived biophysical parameters across the three CT habitats. W = Kendall's W. *p < 0.05, **p < 0.01.}
+    \label{tab:habitat_characterization}
+    \begin{tabular}{l l c c c c c c}
+        \toprule
+        \multicolumn{2}{c}{\textbf{mpMRI metric}} & \textbf{Units} & \multicolumn{3}{c}{\textbf{Habitats (medians)}} & \textbf{\makecell{p-value\\(BH)}} & \textbf{\makecell{Effect\\Size (W)}} \\
+        \cmidrule(r){1-2} \cmidrule(lr){4-6}
+        & & & \textbf{H1} & \textbf{H2} & \textbf{H3} & & \\
+        \midrule
+        $ADC_t$ & Tissue ADC & $\mu m^2/ms$ & 1.45 & 1.30 & 1.36 & 0.328 & 0.16 \\ \addlinespace
+        $ADC_v$ & Vascular ADC & $\mu m^2/ms$ & 16.6 & 16.8 & 17.6 & 0.044* & 0.39 \\ \addlinespace
+        $K_t$ & Tissue kurtosis excess & Dim.less & 0.75 & 0.69 & 0.70 & 0.587 & 0.07 \\ \addlinespace
+        $f_v$ & Vasc. signal fraction & Norm. & 0.068 & 0.081 & 0.112 & 0.005** & 0.67 \\ \addlinespace
+        $T_{2t}$ & Tissue $T_2$ & ms & 81.4 & 100.8 & 82.9 & 0.726 & 0.04 \\ \addlinespace
+        $D_0$ & Intrinsic diffusivity & $\mu m^2/ms$ & 37.5 & 54.1 & 71.6 & 0.001** & 0.84 \\ \addlinespace
+        $vCS$ & Vol-weighted cell size & $\mu m$ & 24.0 & 23.6 & 23.9 & 0.529 & 0.09 \\ \addlinespace
+        $f_{in}$ & Intracellular fraction & Norm. & 0.46 & 0.50 & 0.48 & 0.113 & 0.28 \\ \addlinespace
+        $CD$ & Cell density & \makecell{$\times 10^3$\\Cells/$mm^3$} & 51.2 & 56.8 & 53.6 & 0.529 & 0.09 \\ \addlinespace
+        $T_1$ & $T_1$ & ms & 1063 & 945 & 911 & 0.019* & 0.49 \\ \addlinespace
+        $T_2^*$ & $T_2^*$ & ms & 27.5 & 26.5 & 23.7 & 0.001** & 0.84 \\ \addlinespace
+        $K^{trans}$ & Capillary permeability & $min^{-1}$ & 0.41 & 0.52 & 0.51 & 0.018* & 0.52 \\ \addlinespace
+        $v_e$ & EES volume & Norm. & 0.66 & 0.73 & 0.74 & 0.741 & 0.03 \\
+        \bottomrule
+    \end{tabular}
+\end{table}
 
-\begin{longtable}[]{@{}
-  >{\centering\arraybackslash}p{(\linewidth - 14\tabcolsep) * \real{0.0649}}
-  >{\centering\arraybackslash}p{(\linewidth - 14\tabcolsep) * \real{0.2053}}
-  >{\centering\arraybackslash}p{(\linewidth - 14\tabcolsep) * \real{0.1460}}
-  >{\centering\arraybackslash}p{(\linewidth - 14\tabcolsep) * \real{0.1196}}
-  >{\centering\arraybackslash}p{(\linewidth - 14\tabcolsep) * \real{0.1196}}
-  >{\centering\arraybackslash}p{(\linewidth - 14\tabcolsep) * \real{0.1196}}
-  >{\centering\arraybackslash}p{(\linewidth - 14\tabcolsep) * \real{0.1124}}
-  >{\centering\arraybackslash}p{(\linewidth - 14\tabcolsep) * \real{0.1127}}@{}}
-\caption{Patient-level median values for 13 mpMRI-derived biophysical
-parameters across the three CT{} habitats (N = 10 patients, 42 tumors).
-Vascular parameters (fv, Ktrans, ADCv) show a gradient from H1 to H3;
-cellular parameters (ADCt, fin, CD) peak in H2. Significance assessed
-using Friedman test with Benjamini-Hochberg correction; effect size
-reported as Kendall\textquotesingle s W. BH = Benjamini-Hochberg
-correction for multiple comparisons across metrics. W =
-Kendall\textquotesingle s W coefficient of concordance (effect size). *p
-\textless{} 0.05, **p \textless{} 0.01.}\tabularnewline
-\toprule\noalign{}
-\multicolumn{2}{@{}>{\centering\arraybackslash}p{(\linewidth - 14\tabcolsep) * \real{0.2702} + 2\tabcolsep}}{%
-\multirow{2}{=}{\centering\arraybackslash \begin{minipage}[b]{\linewidth}\centering
-\textbf{mpMRI metric}
-\end{minipage}}} &
-\multirow{2}{=}{\centering\arraybackslash \begin{minipage}[b]{\linewidth}\centering
-\textbf{Units}
-\end{minipage}} &
-\multicolumn{3}{>{\centering\arraybackslash}p{(\linewidth - 14\tabcolsep) * \real{0.3587} + 4\tabcolsep}}{%
-\begin{minipage}[b]{\linewidth}\centering
-\textbf{Habitats (medians)}
-\end{minipage}} &
-\multirow{2}{=}{\centering\arraybackslash \begin{minipage}[b]{\linewidth}\centering
-\textbf{p-value (BH)}
-\end{minipage}} &
-\multirow{2}{=}{\centering\arraybackslash \begin{minipage}[b]{\linewidth}\centering
-\textbf{Effect Size (W)}
-\end{minipage}} \\
-& & & \begin{minipage}[b]{\linewidth}\centering
-\textbf{H1}
-\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
-\textbf{H2}
-\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
-\textbf{H3}
-\end{minipage} \\
-\midrule\noalign{}
-\endfirsthead
-\toprule\noalign{}
-\multicolumn{2}{@{}>{\centering\arraybackslash}p{(\linewidth - 14\tabcolsep) * \real{0.2702} + 2\tabcolsep}}{%
-\multirow{2}{=}{\centering\arraybackslash \begin{minipage}[b]{\linewidth}\centering
-\textbf{mpMRI metric}
-\end{minipage}}} &
-\multirow{2}{=}{\centering\arraybackslash \begin{minipage}[b]{\linewidth}\centering
-\textbf{Units}
-\end{minipage}} &
-\multicolumn{3}{>{\centering\arraybackslash}p{(\linewidth - 14\tabcolsep) * \real{0.3587} + 4\tabcolsep}}{%
-\begin{minipage}[b]{\linewidth}\centering
-\textbf{Habitats (medians)}
-\end{minipage}} &
-\multirow{2}{=}{\centering\arraybackslash \begin{minipage}[b]{\linewidth}\centering
-\textbf{p-value (BH)}
-\end{minipage}} &
-\multirow{2}{=}{\centering\arraybackslash \begin{minipage}[b]{\linewidth}\centering
-\textbf{Effect Size (W)}
-\end{minipage}} \\
-& & & \begin{minipage}[b]{\linewidth}\centering
-\textbf{H1}
-\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
-\textbf{H2}
-\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
-\textbf{H3}
-\end{minipage} \\
-\midrule\noalign{}
-\endhead
-\bottomrule\noalign{}
-\endlastfoot
-ADCₜ & Tissue ADC & μm²/ms & 1.45 & 1.3 & 1.36 & 0.328 & 0.16 \\
-ADCᵥ & Vascular ADC & μm²/ms & 16.6 & 16.8 & 17.6 & 0.044* & 0.39 \\
-Kₜ & Tissue kurtosis excess & Dimensionless & 0.75 & 0.69 & 0.7 & 0.587
-& 0.07 \\
-\textbf{fᵥ} & \textbf{Vascular signal fraction} & Normalized & 0.068 &
-0.081 & 0.112 & 0.005** & 0.67 \\
-T₂ₜ & Tissue T₂ & ms & 81.4 & 100.8 & 82.9 & 0.726 & 0.04 \\
-\textbf{D₀} & \textbf{Intrinsic diffusivity} & μm²/ms & 37.5 & 54.1 &
-71.6 & 0.001** & 0.84 \\
-vCS & Volume-weighted cell size & μm & 24 & 23.6 & 23.9 & 0.529 &
-0.09 \\
-fᵢₙ & Intracellular fraction & Normalized & 0.46 & 0.5 & 0.48 & 0.113 &
-0.28 \\
-CD & Cell density & x10\textsuperscript{3} Cells/mm³ & 51.2 & 56.8 &
-53.6 & 0.529 & 0.09 \\
-\textbf{T₁} & \textbf{T₁} & ms & 1063 & 945 & 911 & 0.019* & 0.49 \\
-\textbf{T2\textsuperscript{*}} & \textbf{T2\textsuperscript{*}} & ms &
-27.5 & 26.5 & 23.7 & 0.001** & 0.84 \\
-\textbf{Kᵗʳᵃⁿˢ} & \textbf{Capillary permeability} & min⁻¹ & 0.41 & 0.52
-& 0.51 & 0.018* & 0.52 \\
-vₑ & Extracellular-extravascular volume & Normalized & 0.66 & 0.73 &
-0.74 & 0.741 & 0.03 \\
-\end{longtable}
+% Eliminar longtable antigua:
+\iffalse
+\fi
 
 Vascular parameters showed consistent gradients across habitats.
 Vascular fraction (fv) increased monotonically from H1 to H3 (0.068 →
@@ -683,7 +520,7 @@ necrotic or fibrotic tissue; H3 showed intermediate values.
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=0.95\textwidth]{fig_7_4.pdf}
-\caption{Biophysical characterization of CT habitats using mpMRI.
+\caption[Biophysical characterization of CT habitats using mpMRI]{Biophysical characterization of CT habitats using mpMRI.
 Distribution of eight mpMRI metrics across the three CT habitats (H1:
 blue, H2: yellow, H3: pink). Vascular parameters (fv, Ktrans, ADCv, D0)
 show gradients from H1 to H3. Cellular parameters (ADCt, fin) show H2 as
@@ -725,7 +562,7 @@ habitat model to the POEM cohort (n = 6) to assess correspondence with
 whole-tumor histology. Resected specimens displayed the architecture
 characteristic of colorectal liver metastases: central regions of
 necrosis and fibrosis surrounded by viable tumor at the periphery
-(\hyperref[_Ref219822008]{Figure 7.4}A). CT{} habitat maps captured this
+(\hyperref[_Ref219822008]{Figure~\ref{fig:7.4}}A). CT{} habitat maps captured this
 organization---H1 (Avascular) localized to tumor cores, coinciding
 mostly with histologically annotated necrosis, while H2
 (Cellular-Perfused) and H3 (Vascular) predominated at the periphery,
@@ -735,7 +572,7 @@ corresponding to viable tumor margins (\hyperref[_Ref219822008]{Figure
 To quantify this spatial organization, we computed habitat proportions
 separately for the tumor rim (2mm outer shell) and core (interior)
 across both cohorts (N = 48 tumors: 6 POEM, 42 PREDICT;
-\hyperref[_Ref219822008]{Figure 7.4}C). H1 dominated the core (79.4\% ±
+\hyperref[_Ref219822008]{Figure~\ref{fig:7.4}}C). H1 dominated the core (79.4\% ±
 2.9\%) but was largely absent from the rim (9.0\% ± 2.3\%). H3 was
 concentrated in the rim (35.0\% ± 1.5\%) and virtually absent from the
 core (0.4\% ± 0.2\%). H2 showed intermediate localization, enriched in
@@ -755,7 +592,7 @@ fibrosis within the avascular compartment.
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=0.95\textwidth]{fig_7_3.png}
-\caption{Spatial architecture and histopathological validation of CT habitats.
+\caption[Spatial architecture and histopathological validation of CT habitats]{Spatial architecture and histopathological validation of CT habitats.
 \textbf{(A)} Schematic representation of habitat organization in
 colorectal liver metastases. H1 (Avascular, blue) localizes to the tumor
 core; H2 (Cellular-Perfused, yellow) represents viable proliferating
@@ -855,7 +692,7 @@ imaging. The distinction between vascularized and avascular compartments
 is clinically meaningful: vascularized tissue is more likely to respond
 to systemic therapy, while avascular cores may indicate resistance.
 Whether habitat-derived metrics predict treatment response or survival
-is tested in Chapter 8.
+is tested in Chapter~\ref{ch:8}.
 
 \section{Summary}\label{summary-1}
 

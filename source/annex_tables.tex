@@ -1,0 +1,420 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=1in]{geometry}
+
+% --- REQUIRED PACKAGES ---
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{longtable}
+\usepackage{multirow}
+\usepackage{makecell}
+\usepackage{ragged2e}
+\usepackage{caption}
+\usepackage{amsmath}
+\usepackage{textcomp}
+
+\title{Annex Tables Conversion}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+\listoftables
+\newpage
+
+% =================================================================
+% TABLE B.1
+% =================================================================
+\begin{table}[ht]
+    \centering
+    \small
+    \caption{\textbf{Total number of patients, images, and lesions per cohort and lesion location.}}
+    \label{tab:annex_totals}
+    \begin{tabular}{l c c c c c c}
+        \toprule
+        \textbf{Primary tumor} & \multicolumn{2}{c}{\textbf{Patients}} & \multicolumn{2}{c}{\textbf{Images}} & \multicolumn{2}{c}{\textbf{Lesions}} \\
+        \cmidrule(lr){2-3} \cmidrule(lr){4-5} \cmidrule(lr){6-7}
+        & \textbf{Liver} & \textbf{Lung} & \textbf{Liver} & \textbf{Lung} & \textbf{Liver} & \textbf{Lung} \\
+        \midrule
+        Colorectal      & 63 & 12 & 186 & 29 & 959 & 122 \\
+        Lung            & 13 & 72 & 22 & 102 & 89 & 141 \\
+        Neuroendocrine  & 86 & 0  & 86 & 0   & 447 & 0   \\
+        Mixed           & 44 & 41 & 93 & 87  & 366 & 312 \\
+        \midrule
+        \textbf{Total}  & 206 & 125 & 387 & 218 & 1861 & 575 \\
+        & \multicolumn{2}{c}{\textbf{331}} & \multicolumn{2}{c}{\textbf{605}} & \multicolumn{2}{c}{\textbf{2436}} \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+\newpage
+
+% =================================================================
+% TABLE B.2
+% =================================================================
+\begin{table}[ht]
+    \centering
+    \small
+    \caption{\textbf{Image acquisition parameters per cohort.} (*) Median [IQR]}
+    \label{tab:annex_acquisition}
+    \begin{tabularx}{\textwidth}{@{} l c c c c @{}}
+        \toprule
+        & \textbf{\makecell{Colorectal\\(n=215)}} & \textbf{\makecell{Lung\\(n=124)}} & \textbf{\makecell{Neuroendocrine\\(n=86)}} & \textbf{\makecell{Mixed\\(n=180)}} \\
+        \midrule
+        \textbf{Manufacturers} & & & & \\
+        \makecell[l]{SIEMENS/PHILIPS/\\TOSHIBA/GE} & \makecell{138/58/9/10} & \makecell{63/40/0/21} & \makecell{22/35/6/23} & \makecell{144/23/3/10} \\ \addlinespace
+        \textbf{Tube Voltage (kVP)} & & & & \\
+        \makecell[l]{100/110/120/\\130/140/unknown} & \makecell{25/17/161/\\0/0/12} & \makecell{6/1/105/\\3/0/9} & \makecell{10/3/70/\\1/2/0} & \makecell{14/7/158/\\0/1/0} \\ \addlinespace
+        \textbf{Recon. kernel} & & & & \\
+        \makecell[l]{SOFT/STANDARD/B\\B20f/B30f/B31f\\I31s/I50s/unknown} & \makecell{1/7/96\\16/38/12\\15/6/20} & \makecell{14/7/43\\11/23/0\\0/0/22} & \makecell{1/19/36\\2/2/4\\0/0/19} & \makecell{2/11/21\\9/112/4\\0/0/21} \\ \addlinespace
+        \textbf{Slice thickness (mm)*} & 2.0 [2.0--5.0] & 2.5 [2.0--5.0] & 2.0 [2.0--3.0] & 5.0 [1.0--5.0] \\ \addlinespace
+        \textbf{Pixel spacing (mm)*} & 0.92 [0.77--0.98] & 0.91 [0.81--0.98] & 0.75 [0.70--0.82] & 0.98 [0.82--0.98] \\ 
+        \bottomrule
+    \end{tabularx}
+\end{table}
+
+\newpage
+
+% =================================================================
+% TABLE B.3
+% =================================================================
+\begin{table}[ht]
+    \centering
+    \small
+    \caption{\textbf{List of primary tumor types included within the mixed cohort.}}
+    \label{tab:annex_mixed_cohort}
+    \begin{tabular}{l c c c c c c}
+        \toprule
+        \textbf{Primary tumor} & \multicolumn{2}{c}{\textbf{Patients}} & \multicolumn{2}{c}{\textbf{Images}} & \multicolumn{2}{c}{\textbf{Lesions}} \\
+        \cmidrule(lr){2-3} \cmidrule(lr){4-5} \cmidrule(lr){6-7}
+        & \textbf{Liver} & \textbf{Lung} & \textbf{Liver} & \textbf{Lung} & \textbf{Liver} & \textbf{Lung} \\
+        \midrule
+        Adrenal         & 3 & 0 & 5 & 0 & 35 & 5 \\
+        Biliary Tract   & 11 & 5 & 24 & 11 & 71 & 66 \\
+        Bladder         & 3 & 3 & 5 & 5 & 41 & 20 \\
+        Bone            & 0 & 1 & 0 & 3 & 0 & 21 \\
+        Breast          & 4 & 2 & 9 & 6 & 32 & 6 \\
+        Cervix          & 2 & 2 & 3 & 3 & 21 & 21 \\
+        Esophagus       & 1 & 2 & 2 & 4 & 8 & 9 \\
+        Head \& Neck    & 2 & 4 & 4 & 11 & 13 & 13 \\
+        Kidney          & 1 & 2 & 2 & 3 & 4 & 18 \\
+        Liver           & 2 & 1 & 3 & 1 & 11 & 1 \\
+        Ovary           & 1 & 2 & 2 & 4 & 4 & 26 \\
+        Pancreas        & 2 & 0 & 4 & 0 & 12 & 0 \\
+        Penis           & 1 & 0 & 3 & 0 & 9 & 0 \\
+        Skin            & 6 & 11 & 13 & 19 & 68 & 39 \\
+        Stomach         & 4 & 0 & 10 & 0 & 29 & 0 \\
+        Thymus          & 1 & 0 & 4 & 0 & 8 & 0 \\
+        Thyroid         & 0 & 6 & 0 & 17 & 0 & 52 \\
+        \midrule
+        \textbf{Total}  & 44 & 41 & 93 & 87 & 366 & 312 \\
+        & \multicolumn{2}{c}{\textbf{85}} & \multicolumn{2}{c}{\textbf{180}} & \multicolumn{2}{c}{\textbf{678}} \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+\newpage
+
+% =================================================================
+% TABLE B.4
+% =================================================================
+\begin{table}[ht]
+    \centering
+    \scriptsize 
+    \caption{\textbf{List of Radiomics features analyzed in this study.} 93 voxel-wise features were computed. 91 were analyzed after excluding GLCM\_MCC and FirstOrder\_TotalEnergy. Feature definitions are available in the IBSI reference manual (Zwanenburg et al., 2020).}
+    \label{tab:annex_features}
+    \begin{tabularx}{\textwidth}{@{} l >{\raggedright\arraybackslash}X | l >{\raggedright\arraybackslash}X @{}}
+        \toprule
+        \textbf{Class} & \textbf{Feature} & \textbf{Class} & \textbf{Feature} \\
+        \midrule
+        \textbf{First Order} & 10Percentile, 90Percentile, Energy, Entropy, InterquartileRange, Kurtosis, Maximum, MeanAbsoluteDeviation, Mean, Median, Minimum, Range, RobustMeanAbsoluteDeviation, RootMeanSquared, Skewness, TotalEnergy, Uniformity, Variance & 
+        \textbf{GLRLM} & GrayLevelNonUniformity, GrayLevelNonUniformityNorm., GrayLevelVariance, HighGrayLevelRunEmphasis, LongRunEmphasis, LongRunHighGrayLevelEmphasis, LongRunLowGrayLevelEmphasis, LowGrayLevelRunEmphasis, RunEntropy, RunLengthNonUniformity, RunLengthNonUniformityNorm., RunPercentage, RunVariance, ShortRunEmphasis, ShortRunHighGrayLevelEmphasis, ShortRunLowGrayLevelEmphasis \\
+        \midrule
+        \textbf{GLSZM} & GrayLevelNonUniformity, GrayLevelNonUniformityNorm., GrayLevelVariance, HighGrayLevelZoneEmphasis, LargeAreaEmphasis, LargeAreaHighGrayLevelEmphasis, LargeAreaLowGrayLevelEmphasis, LowGrayLevelZoneEmphasis, SizeZoneNonUniformity, SizeZoneNonUniformityNorm., SmallAreaEmphasis, SmallAreaHighGrayLevelEmphasis, SmallAreaLowGrayLevelEmphasis, ZoneEntropy, ZonePercentage, ZoneVariance &
+        \textbf{GLDM} & DependenceEntropy, DependenceNonUniformity, DependenceNonUniformityNorm., DependenceVariance, GrayLevelNonUniformity, GrayLevelVariance, HighGrayLevelEmphasis, LargeDependenceEmphasis, LargeDependenceHighGrayLevelEmphasis, LargeDependenceLowGrayLevelEmphasis, LowGrayLevelEmphasis, SmallDependenceEmphasis, SmallDependenceHighGrayLevelEmphasis, SmallDependenceLowGrayLevelEmphasis \\
+        \midrule
+        \textbf{GLCM} & Autocorrelation, ClusterProminence, ClusterShade, ClusterTendency, Contrast, Correlation, DifferenceAverage, DifferenceEntropy, DifferenceVariance, Id, Idm, Idmn, Idn, Imc1, Imc2, InverseVariance, JointAverage, JointEnergy, JointEntropy, MCC (Excluded), MaximumProbability, SumAverage, SumEntropy, SumSquares & 
+        \textbf{NGTDM} & Busyness, Coarseness, Complexity, Contrast, Strength \\
+        \bottomrule
+    \end{tabularx}
+\end{table}
+
+\newpage
+
+% =================================================================
+% TABLE B.5
+% =================================================================
+\begin{table}[ht]
+    \centering
+    \small
+    \caption{\textbf{Image processing and radiomics feature computation parameters.}}
+    \label{tab:annex_parameters}
+    \begin{tabularx}{\textwidth}{@{} l >{\raggedright\arraybackslash}X @{}}
+        \toprule
+        \textbf{Parameter} & \textbf{Value/Description} \\
+        \midrule
+        \multicolumn{2}{l}{\textbf{Image Processing}} \\
+        \midrule
+        Software & PyRadiomics v3.0.1, installed in Python 3.7.10 \\
+        Bounding box & Defined by the segmentation, extended by default padding distance. \\
+        Resampled voxel spacing & 1 x 1 x 1 mm \\
+        Image interpolation & B-spline \\
+        Intensity rounding & None \\
+        ROI interpolation & Nearest neighbor \\
+        Resegmentation & None \\
+        \midrule
+        \multicolumn{2}{l}{\textbf{Feature Computation}} \\
+        \midrule
+        Kernel radius & 1 / 3 mm \\
+        Discretization & 12 / 25 HU (Fixed Bin Size) \\
+        Image filter & None \\
+        maskedKernel & True (only voxels in kernel also in ROI used) \\
+        Initvalue & NaN (voxels outside ROI considered transparent) \\
+        Distance weighting & No weighting \\
+        GLCM Symmetry & Symmetric \\
+        Distance Metrics & Chebyshev distance $\delta = 1$ \\
+        NGTDM Coarseness & Coarseness parameter $\alpha = 0$ \\
+        \bottomrule
+    \end{tabularx}
+\end{table}
+
+\newpage
+
+% =================================================================
+% TABLE C.1
+% =================================================================
+\begin{table}[ht]
+    \centering
+    \small
+    \caption{\textbf{Biophysical separation (Kendall's W) across different numbers of habitats (K).}}
+    \label{tab:annex_biophysical_separation}
+    \begin{tabularx}{\textwidth}{@{} c c c c c c c >{\raggedright\arraybackslash}X @{}}
+        \toprule
+        \multirow{2}{*}{\textbf{K}} & \multicolumn{2}{c}{\textbf{$f_v$}} & \multicolumn{2}{c}{\textbf{$K^{trans}$}} & \multicolumn{2}{c}{\textbf{$ADC_t$}} & \multirow{2}{*}{\textbf{Interpretation}} \\
+        \cmidrule(lr){2-3} \cmidrule(lr){4-5} \cmidrule(lr){6-7}
+        & \textbf{W} & \textbf{p} & \textbf{W} & \textbf{p} & \textbf{W} & \textbf{p} & \\
+        \midrule
+        2 & 0.98 & 0.002 & 0.78 & 0.014 & 0.62 & 0.049 & Strong separation but oversimplified; merges biologically distinct vascular phenotypes \\ \addlinespace
+        3 & 0.67 & 0.005 & 0.52 & 0.018 & 0.16 & 0.328 & Best balance; separates vascular gradient while identifying cellular-perfused compartment \\ \addlinespace
+        4 & 0.85 & 0 & 0.37 & 0.025 & 0.32 & 0.039 & Fourth habitat splits H3 without biological justification; unstable across bootstrap \\
+        \bottomrule
+    \end{tabularx}
+\end{table}
+
+\newpage
+
+% =================================================================
+% TABLE C.2
+% =================================================================
+\begin{table}[ht]
+    \centering
+    \small
+    \caption{\textbf{Technical robustness of candidate CT feature representations.} ARI = Adjusted Rand Index.}
+    \label{tab:annex_technical_robustness}
+    \begin{tabular}{l c c c}
+        \toprule
+        & \textbf{\makecell{Initialization\\Stability (ARI)}} & \textbf{\makecell{Data Stability (ARI)\\ {[}Median (IQR){]}}} & \textbf{\makecell{Moran's I\\ {[}Mean $\pm$ SD{]}}} \\
+        \midrule
+        Raw HU      & 0.965 & \textbf{0.991 (0.980--0.997)} & 0.420 $\pm$ 0.143 \\ \addlinespace
+        Handcrafted & \textbf{0.997} & 0.966 (0.959--0.985) & \textbf{0.804 $\pm$ 0.056} \\ \addlinespace
+        DL-SALSA    & 0.984 & 0.985 (0.977--0.988) & 0.513 $\pm$ 0.110 \\ \addlinespace
+        DL-FM       & 0.978 & 0.989 (0.976--0.992) & 0.622 $\pm$ 0.119 \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+\newpage
+
+% =================================================================
+% TABLE C.3
+% =================================================================
+\begin{table}[ht]
+    \centering
+    \small
+    \setlength{\tabcolsep}{4pt}
+    \caption{\textbf{Post-hoc pairwise comparisons for mpMRI metrics across CT habitats.} BH = Benjamini-Hochberg corrected p-values; r = effect size.}
+    \label{tab:annex_pairwise_comparisons}
+    \begin{tabular}{l c c c c c c}
+        \toprule
+        \multirow{2}{*}{\textbf{Metric}} & \multicolumn{2}{c}{\textbf{H1 vs H2}} & \multicolumn{2}{c}{\textbf{H1 vs H3}} & \multicolumn{2}{c}{\textbf{H2 vs H3}} \\
+        \cmidrule(lr){2-3} \cmidrule(lr){4-5} \cmidrule(lr){6-7}
+        & \textbf{p (BH)} & \textbf{r} & \textbf{p (BH)} & \textbf{r} & \textbf{p (BH)} & \textbf{r} \\
+        \midrule
+        $ADC_t$ & 0.029 & 0.82 & 0.24  & 0.44 & 1     & 0    \\ \addlinespace
+        $ADC_v$ & 0.126 & 0.55 & 0.111 & 0.66 & 0.232 & 0.38 \\ \addlinespace
+        $f_v$   & 0.375 & 0.28 & 0.006 & 0.98 & 0.006 & 0.91 \\ \addlinespace
+        $D_0$   & 0.049 & 0.62 & 0.003 & 0.98 & 0.003 & 0.98 \\ \addlinespace
+        $T_2^*$ & 0.02  & 0.74 & 0.003 & 0.98 & 0.003 & 0.98 \\ \addlinespace
+        $T_1$   & 0.029 & 0.74 & 0.012 & 0.91 & 0.037 & 0.66 \\ \addlinespace
+        $K^{trans}$ & 0.015 & 0.87 & 0.015 & 0.82 & 0.16  & 0.44 \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+\newpage
+
+% =================================================================
+% TABLE C.4
+% =================================================================
+\begin{table}[ht]
+    \centering
+    \small
+    \caption{\textbf{Spearman correlations between habitat proportions and histological tissue percentages.}}
+    \label{tab:annex_histology_correlations}
+    \begin{tabular}{l c c c c c c}
+        \toprule
+        \multirow{2}{*}{\textbf{Habitat}} & \multicolumn{2}{c}{\textbf{Necrosis}} & \multicolumn{2}{c}{\textbf{Fibrosis}} & \multicolumn{2}{c}{\textbf{Viable Tumor}} \\
+        \cmidrule(lr){2-3} \cmidrule(lr){4-5} \cmidrule(lr){6-7}
+        & \textbf{$\rho$} & \textbf{p} & \textbf{$\rho$} & \textbf{p} & \textbf{$\rho$} & \textbf{p} \\
+        \midrule
+        H1 & 0.49 & 0.329 & -0.60 & 0.208 & -0.31 & 0.544 \\ \addlinespace
+        H2 & -0.37 & 0.468 & 0.43 & 0.397 & 0.14 & 0.787 \\ \addlinespace
+        H3 & 0.03 & 0.957 & 0.77 & 0.072 & -0.09 & 0.872 \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+\newpage
+
+% =================================================================
+% TABLE D.1
+% =================================================================
+\begin{table}[ht]
+    \centering
+    \small
+    \caption{\textbf{Spearman correlations between habitat metrics and tumor volume.} *p$<$0.05, **p$<$0.01, ***p$<$0.001.}
+    \label{tab:annex_volume_correlation}
+    \begin{tabular}{l c c}
+        \toprule
+        \textbf{Metric} & \textbf{TCIA ($\rho$)} & \textbf{VHIO ($\rho$)} \\
+        \midrule
+        \textbf{Rim metrics} & & \\
+        \quad Rim entropy vs Volume & -0.77*** & -0.71*** \\
+        \quad Rim cellular-perfused vs Volume & 0.49*** & 0.45*** \\
+        \quad Rim avascular vs Volume & -0.32*** & -0.28*** \\
+        \quad Rim vascular vs Volume & -0.21** & -0.19** \\ \addlinespace
+        \textbf{Whole-tumor metrics} & & \\
+        \quad Whole entropy vs Volume & -0.44*** & -0.62*** \\
+        \quad Whole avascular vs Volume & 0.44*** & 0.70*** \\
+        \quad Whole cellular-perfused vs Volume & 0.12 & 0.08 \\
+        \quad Whole vascular vs Volume & -0.38*** & -0.52*** \\ \addlinespace
+        \textbf{Core metrics} & & \\
+        \quad Core entropy vs Volume & -0.28*** & -0.41*** \\
+        \quad Core avascular vs Volume & 0.31*** & 0.55*** \\
+        \quad Core cellular-perfused vs Volume & -0.18* & -0.22** \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+\newpage
+
+% =================================================================
+% TABLE D.2
+% =================================================================
+\begin{table}[ht]
+    \centering
+    \footnotesize
+    \caption{\textbf{Habitat metric comparisons: treatment-naive vs neoadjuvant-treated (TCIA).} Mann-Whitney U test. FDR correction using Benjamini-Hochberg procedure. Bold indicates FDR-adjusted p$<$0.05.}
+    \label{tab:annex_neoadjuvant_comparison}
+    \begin{tabular}{l c c c c}
+        \toprule
+        \textbf{Metric} & \textbf{\makecell{Treatment-naive\\(n=74)}} & \textbf{\makecell{Neoadjuvant\\(n=115)}} & \textbf{\makecell{Unadjusted\\p}} & \textbf{\makecell{FDR-\\adjusted p}} \\
+        & \textbf{Median [IQR]} & \textbf{Median [IQR]} & & \\
+        \midrule
+        Tumor volume ($mm^3$) & 14,639 [5,812--38,421] & 8,620 [3,284--24,108] & 0.018 & 0.057 \\ \addlinespace
+        Whole entropy & 1.45 [1.38--1.52] & 1.51 [1.44--1.57] & $<$0.001 & \textbf{0.001} \\ \addlinespace
+        Whole avascular & 0.398 [0.31--0.49] & 0.354 [0.27--0.44] & 0.019 & 0.057 \\ \addlinespace
+        Whole cellular-perf. & 0.412 [0.34--0.48] & 0.408 [0.35--0.47] & 0.75 & 0.75 \\ \addlinespace
+        Whole vascular & 0.168 [0.12--0.22] & 0.214 [0.16--0.27] & $<$0.001 & \textbf{0.001} \\ \addlinespace
+        Rim entropy & 1.13 [1.02--1.24] & 1.25 [1.14--1.35] & $<$0.001 & \textbf{0.001} \\ \addlinespace
+        Rim avascular & 0.152 [0.09--0.22] & 0.138 [0.08--0.20] & 0.28 & 0.42 \\ \addlinespace
+        Rim cellular-perf. & 0.485 [0.41--0.56] & 0.512 [0.44--0.58] & 0.057 & 0.11 \\ \addlinespace
+        Rim vascular & 0.342 [0.28--0.41] & 0.328 [0.27--0.39] & 0.35 & 0.47 \\ \addlinespace
+        Core entropy & 1.08 [0.95--1.21] & 1.12 [1.01--1.24] & 0.09 & 0.16 \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+\newpage
+
+% =================================================================
+% TABLES D.3a, D.3b, D.3c
+% =================================================================
+\begin{table}[ht]
+    \centering
+    \small
+    \caption{\textbf{Cox regression: Chemotherapy alone (n=122, 89 events).}}
+    \label{tab:annex_cox_chemo}
+    \begin{tabular}{l c c c c}
+        \toprule
+        \textbf{Variable} & \textbf{Univariable HR [95\% CI]} & \textbf{p} & \textbf{Multivariable HR [95\% CI]} & \textbf{p} \\
+        \midrule
+        Tumor volume & 5.46 [3.19--9.34] & $<$0.001 & 5.21 [2.98--9.12] & $<$0.001 \\
+        Rim entropy & 0.88 [0.54--1.43] & 0.61 & --- & --- \\
+        Extrahepatic disease & 1.82 [1.18--2.81] & 0.007 & 1.54 [0.98--2.42] & 0.06 \\
+        Age & 1.24 [0.92--1.67] & 0.16 & --- & --- \\
+        \midrule
+        \textbf{C-index} & & & \multicolumn{2}{c}{0.703} \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+\begin{table}[ht]
+    \centering
+    \small
+    \caption{\textbf{Cox regression: Chemotherapy + Bevacizumab (n=133, 95 events).}}
+    \label{tab:annex_cox_bev}
+    \begin{tabular}{l c c c c}
+        \toprule
+        \textbf{Variable} & \textbf{Univariable HR [95\% CI]} & \textbf{p} & \textbf{Multivariable HR [95\% CI]} & \textbf{p} \\
+        \midrule
+        Tumor volume & 1.69 [1.31--2.17] & $<$0.001 & 1.58 [1.21--2.06] & 0.001 \\
+        Rim entropy & 0.68 [0.52--0.88] & 0.004 & 0.71 [0.54--0.93] & 0.012 \\
+        Extrahepatic disease & 1.44 [0.95--2.18] & 0.09 & 1.38 [0.90--2.12] & 0.14 \\
+        Left primary & 0.58 [0.38--0.89] & 0.012 & 0.62 [0.40--0.96] & 0.031 \\
+        \midrule
+        \textbf{C-index} & & & \multicolumn{2}{c}{0.674} \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+\begin{table}[ht]
+    \centering
+    \small
+    \caption{\textbf{Cox regression: RAS-mutant patients (n=195, 138 events).}}
+    \label{tab:annex_cox_ras}
+    \begin{tabular}{l c c c c}
+        \toprule
+        \textbf{Variable} & \textbf{Univariable HR [95\% CI]} & \textbf{p} & \textbf{Multivariable HR [95\% CI]} & \textbf{p} \\
+        \midrule
+        Tumor volume & 1.89 [1.41--2.53] & $<$0.001 & 1.78 [1.32--2.41] & $<$0.001 \\
+        Rim entropy & 0.80 [0.65--1.00] & 0.047 & 0.82 [0.66--1.02] & 0.07 \\
+        Extrahepatic disease & 1.61 [1.14--2.27] & 0.007 & 1.48 [1.04--2.11] & 0.03 \\
+        Age & 1.18 [0.96--1.45] & 0.11 & --- & --- \\
+        \midrule
+        \textbf{C-index} & & & \multicolumn{2}{c}{0.700} \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+% =================================================================
+% TABLE D.4
+% =================================================================
+\begin{table}[ht]
+    \centering
+    \small
+    \caption{\textbf{Rim entropy change by RECIST category (n=38).}}
+    \label{tab:annex_recist}
+    \begin{tabular}{l c c c c c c}
+        \toprule
+        \textbf{\makecell{RECIST\\Category}} & \textbf{n} & \textbf{\makecell{Median $\Delta$ Rim\\Entropy}} & \textbf{IQR} & \textbf{\makecell{n\\Increase}} & \textbf{\makecell{n\\Decrease}} & \textbf{\makecell{Median OS\\(months)}} \\
+        \midrule
+        All patients & 38 & +0.013 & [-0.04, +0.10] & 21 & 17 & 27.1 \\ \addlinespace
+        PR & 23 & +0.053 & [-0.02, +0.10] & 14 & 9 & 32.8 \\ \addlinespace
+        SD & 8 & +0.023 & [-0.06, +0.16] & 4 & 4 & 18.3 \\ \addlinespace
+        PD & 7 & -0.041 & [-0.25, +0.03] & 3 & 4 & 9.0 \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+\end{document}

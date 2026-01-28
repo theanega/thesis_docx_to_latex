@@ -1,5 +1,5 @@
 \chapter{Medical Image Techniques: An
-Overview}\label{medical-image-techniques-an-overview}
+Overview}\label{medical-image-techniques-an-overview}\label{ch:2}
 
 Imaging guides clinical decisions at nearly every stage of cancer care.
 The modalities most relevant to this thesis are computed tomography
@@ -15,7 +15,7 @@ sections at micrometer resolution so the basic unit is the pixel.
 \section{Computed Tomography}\label{computed-tomography}
 
 Computed tomography (CT{}) produces cross-sectional images of the body
-using X-rays (Sprawls, 1995). The physics begins with how X-ray photons
+using X-rays \citep{sprawlsPhysicalPrinciplesMedical1995}. The physics begins with how X-ray photons
 interact with matter. When photons pass through tissue, they can be
 absorbed (the photoelectric effect) or deflected (Compton scattering).
 Both processes remove photons from the X-ray beam reducing its
@@ -60,7 +60,7 @@ is 0 HU and air is −1000 HU:
 
 \[\text{HU} = 1000 \times \frac{\mu_{\text{tissue}} - \mu_{\text{water}}}{\mu_{\text{water}}}\]
 
-On this scale (\hyperref[_Ref220408295]{Figure 2.1}), soft tissues
+On this scale (\hyperref[_Ref220408295]{Figure~\ref{fig:2.1}}), soft tissues
 typically fall around 20--80 HU, bone exceeds +400 HU, and fat is
 slightly negative (around −100 HU). Radiologists can adjust the range of
 HU values (known as window) to optimize visualization for different
@@ -104,7 +104,7 @@ response assessment.
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=0.95\textwidth]{fig_2_1.png}
-\caption{Hounsfield units and contrast enhancement in abdominal CT.
+\caption[Hounsfield units and contrast enhancement in abdominal CT]{Hounsfield units and contrast enhancement in abdominal CT.
 \textbf{(A)} Hounsfield unit (HU) scale with typical values for air
 (−1000 HU), fat (≈ −100 HU), water (0 HU), soft tissue such as liver (≈
 40--80 HU), and bone (>1000 HU). HU provide a quantitative
@@ -138,14 +138,14 @@ property called spin, an intrinsic angular momentum that gives it a
 small magnetic moment. Normally, these magnetic moments are randomly
 oriented. When placed in a strong external magnetic field (typically 1.5
 or 3 Tesla in clinical scanners), they align preferentially with the
-field direction, creating a net magnetization (Lauterbur, 1973). A
+field direction, creating a net magnetization \citep{lauterburImageFormationInduced1973}. A
 radiofrequency pulse at the resonant frequency (known as the Larmor
 frequency) tips this magnetization away from equilibrium. When the pulse
 ends, the system relaxes back to equilibrium, releasing energy as a
 radiofrequency signal that can be detected by receiver coils. This
 signal is used to construct the MR image.
 
-Two relaxation processes govern signal behavior (Pooley, 2005). T1
+Two relaxation processes govern signal behavior \citep{pooleyFundamentalPhysicsMR2005}. T1
 relaxation (spin-lattice relaxation) describes the recovery of
 longitudinal magnetization as protons release energy to their
 surroundings. T2 relaxation (spin-spin relaxation) describes the decay
@@ -175,7 +175,7 @@ dynamic contrast-enhanced imaging.
 Imaging}\label{diffusion-weighted-imaging}
 
 Diffusion-weighted MRI (DWI) measures the random motion of water
-molecules in tissue (Le Bihan D, 1985). A magnetic field gradient is
+molecules in tissue \citep{lebihandImagerieDiffusionVivo1985}. A magnetic field gradient is
 applied that labels water protons based on their position. After a short
 interval, an opposite gradient is applied. If protons were stationary,
 the second gradient would perfectly reverse the effect of the first and
@@ -206,28 +206,28 @@ measurement conflating multiple factors including cell density, cell
 size, membrane permeability, and vascular perfusion. These factors
 affect ADC in competing ways, which explains why correlations between
 ADC and histological cellularity have been inconsistent across studies
-(Chen et al., 2013; Surov et al., 2017; Yoshikawa et al., 2008).
+\citep{chenCorrelationApparentDiffusion2013,surovCorrelationApparentDiffusion2017,yoshikawaRelationCancerCellularity2008}.
 
 More advanced diffusion models attempt to disentangle these factors by
 assuming a certain tissue microstructure. In these models, the signal is
 represented as a mixture of compartments with distinct water
 diffusivity, such as vascular, intracellular, and extracellular
-components (Novikov et al., 2018). Many such models have been proposed,
+components \citep{novikovModeling2018}. Many such models have been proposed,
 and while they remain mostly investigational, they have shown promising
 results for clinical applications. A well known example of a model is
-the intravoxel incoherent motion (IVIM) model (Le Bihan et al., 1988),
+the intravoxel incoherent motion (IVIM) model \citep{lebihanSeparationDiffusionPerfusion1988},
 which assumes that tissue water is present in two different
 compartments: vascular (pseudo-diffusing water inside blood vessels) and
 nonvascular (diffusing water in and around cells). In this thesis, when
 diffusion--relaxation modeling is employed, we therefore distinguish
 between a tissue-related apparent diffusion coefficient (ADCₜ) and a
 vascular-related apparent diffusion coefficient (ADCᵥ). The specific
-models and fitting strategies used are described in Chapter 5.
+models and fitting strategies used are described in Chapter~\ref{ch:5}.
 
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=0.85\textwidth]{fig_2_2.png}
-\caption{Examples of MRI and multiparametric MRI maps.
+\caption[Examples of MRI and multiparametric MRI maps]{Examples of MRI and multiparametric MRI maps.
 Axial T2-weighted MRI slices from three representative patients with
 liver metastases. The example mpMRI maps overlays are the apparent
 diffusion coefficient (ADC) and the volume transfer constant
@@ -262,14 +262,14 @@ preprocessing and model fitting, we can obtain the different
 quantitative parameters such as ADC, fv, and Ktrans. We refer to these
 as mpMRI maps. In this thesis, mpMRI serves as the biological reference
 for developing and validating CT{}-derived habitats (Chapter 7). The
-specific parameters used are detailed in Chapter 5.
+specific parameters used are detailed in Chapter~\ref{ch:5}.
 
 \section{Histopathologic Light Microscopy}\label{histopathologic-light-microscopy}
 
 Unlike the non-invasive imaging techniques described above,
 histopathological assessment requires the surgical removal of tissue.
 The extracted sample must then be processed through a series of
-preparation steps (Paxton et al., 2003) prior to microscopic
+preparation steps \citep{paxtonLeedsHistologyGuide2003} prior to microscopic
 examination.
 
 First, to prevent tissue decay, the sample requires chemical fixation,
@@ -284,13 +284,13 @@ tissue sections are mounted on glass microscope slides, dyes are applied
 to enhance visual contrast of cellular components. The most common
 staining is Haematoxylin and eosin (H\&E), in which cell nuclei appear
 purple and most other components different shades of pink
-(\hyperref[_Ref219584906]{Figure 2.3}).
+(\hyperref[_Ref219584906]{Figure~\ref{fig:2.3}}).
 
 The stained and mounted sections are then examined through conventional
 light microscopy, which achieves resolutions down to approximately 200
 nm. In the last few years pathologists have shifted from using
 conventional microscopy to digitized images. This is known as
-whole-slide imaging (WSI) (Pantanowitz et al., 2015). Here, automated
+whole-slide imaging (WSI) \citep{pantanowitzWholeSlideImaging2015}. Here, automated
 scanners that combine a light microscope and a digital camera digitize
 whole tissue sections. WSI images are usually obtained at several
 magnifications (stored as an image pyramid), with 40× magnification
@@ -301,7 +301,7 @@ details that are impossible for the human eye to count can be fed the
 same image that a pathologist examines.
 
 Understanding the scale gap between radiology and pathology will allow
-us to contextualize the results in Chapter 7. A single CT{} voxel may
+us to contextualize the results in Chapter~\ref{ch:7}. A single CT{} voxel may
 contain tens of thousands of hepatocytes (liver cells) while in a
 whole-slide image a single hepatocyte covers thousands of pixels. The
 resolution gap is approximately nine orders of magnitude in
@@ -323,7 +323,7 @@ are invisible.
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=0.95\textwidth]{fig_2_3.pdf}
-\caption{From radiological imaging to histopathological examination.
+\caption[From radiological imaging to histopathological examination]{From radiological imaging to histopathological examination.
 Pre-operative CT reveals a colorectal liver metastasis (dashed
 contour, $\sim$4 cm). Following surgical resection, the
 specimen is sectioned and processed for whole-slide imaging (H\&E),

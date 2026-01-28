@@ -1,5 +1,5 @@
 \chapter{Data and Habitat Imaging
-Pipeline}\label{data-and-habitat-imaging-pipeline}
+Pipeline}\label{data-and-habitat-imaging-pipeline}\label{ch:5}
 
 This chapter describes the datasets and methods that support the
 experiments carried out in this thesis. We begin by introducing the four
@@ -13,7 +13,7 @@ computing tumor habitats from medical images.
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=0.95\textwidth]{fig_5_1.pdf}
-\caption{Overview of patient cohorts used in this thesis.
+\caption[Overview of patient cohorts used in this thesis]{Overview of patient cohorts used in this thesis.
 Prospective cohorts provide multiparametric imaging (PREDICT) and
 histology (POEM) for developing and validating the biologically-informed
 habitat model. Retrospective cohorts (blue) provide large-scale CT
@@ -26,9 +26,7 @@ remaining after exclusions.}
 This thesis is based on four main datasets of colorectal cancer patients
 with liver metastases, each serving a distinct role in the development,
 validation, and clinical application of CT{}-derived tumor habitats
-(\hyperref[_Ref219812879]{Table 5.1 \textbar{} Summary of datasets and
-their role in this thesis}\hyperref[_Ref219812884]{Table 5.1},
-\hyperref[_Ref219812891]{Figure 5.1}). For the development and
+(\Cref{tab:datasets}, \Cref{fig:5.1}). For the development and
 biological validation of the habitat model we used two small prospective
 cohorts: PREDICT (n=10 patients, 42 tumors) provides co-registered
 multiparametric MRI (mpMRI) to anchor CT{}-derived habitats to
@@ -37,11 +35,11 @@ quantitative imaging proxies of vascularity and cellularity, while POEM
 independent validation. Two large retrospective cohorts---TCIA (n=189
 patients, 389 tumors) and VHIO (n=343 patients, 1759 tumors)---provide
 portal-phase CT{} imaging alongside clinical outcomes and are used to
-apply the biologically-informed habitat model (developed in Chapter 7)
-and assess its prognostic value (Chapter 8). Detailed demographic and
-clinical characteristics of TCIA and VHIO are provided in Chapter 8.
+apply the biologically-informed habitat model (developed in Chapter~\ref{ch:7})
+and assess its prognostic value (Chapter~\ref{ch:8}). Detailed demographic and
+clinical characteristics of TCIA and VHIO are provided in Chapter~\ref{ch:8}.
 
-Chapter 6 presents a broader technical study assessing the precision of
+Chapter~\ref{ch:6} presents a broader technical study assessing the precision of
 3D voxelwise radiomics features using additional retrospective data from
 both liver and lung lesions. That analysis established which handcrafted
 features are sufficiently robust for habitat computation and informed
@@ -50,24 +48,23 @@ here---PREDICT, POEM, TCIA, and VHIO---form the foundation for the
 biologically-informed habitat model and its clinical translation, which
 are the central contributions of this thesis.
 
-\begin{longtable}{@{}lccllp{4cm}@{}}
-\caption{Summary of datasets and their role in this thesis. PREDICT provides co-registered mpMRI for biologically-informed habitat model development; POEM provides histology for independent validation. TCIA and VHIO provide large-scale CT imaging with survival outcomes for applying the habitat model and testing its prognostic value. OS: overall survival; PFS: progression-free survival; DFS: disease-free survival; mpMRI: multiparametric MRI; HE: hematoxylin and eosin.}\\
-\toprule
-\textbf{Dataset} & \textbf{N patients} & \textbf{N tumors} & \textbf{Imaging modalities} & \textbf{Clinical outcome} & \textbf{Primary use} \\
-\midrule
-\endfirsthead
-\toprule
-\textbf{Dataset} & \textbf{N patients} & \textbf{N tumors} & \textbf{Imaging modalities} & \textbf{Clinical outcome} & \textbf{Primary use} \\
-\midrule
-\endhead
-\bottomrule
-\endlastfoot
-PREDICT & 10 & 42 & CT (Portal Phase), MRI & --- & Habitat model development (mpMRI-anchored) and validation (Chapter 7) \\
-POEM & 6 & 6 & CT (Portal Phase), Histology (HE) & --- & Biological validation of habitat model (Chapter 7) \\
-TCIA & 189 & 389 & CT (Portal Phase) & OS, DFS & Application of habitat model and clinical outcome modeling (Chapter 8) \\
-VHIO & 343 & 1759 & CT (Portal Phase) & OS, PFS & Application of habitat model and clinical
-outcome modeling (Chapter 8) \\
-\end{longtable}
+\begin{table}[ht]
+    \centering
+    \small
+    \caption[Summary of datasets and their role in this thesis]{\textbf{Summary of datasets and their role in this thesis.} PREDICT provides co-registered mpMRI for biologically-informed habitat model development; POEM provides histology for independent validation. TCIA and VHIO provide large-scale CT imaging with survival outcomes for applying the habitat model and testing its prognostic value. OS: overall survival; PFS: progression-free survival; DFS: disease-free survival; mpMRI: multiparametric MRI; HE: hematoxylin and eosin.}
+    \label{tab:datasets}
+    
+    \begin{tabularx}{\textwidth}{@{} l c c >{\raggedright\arraybackslash}X c >{\raggedright\arraybackslash}X @{}}
+        \toprule
+        \textbf{Dataset} & \textbf{\makecell{N\\patients}} & \textbf{\makecell{N\\tumors}} & \textbf{Imaging modalities} & \textbf{\makecell{Clinical\\outcome}} & \textbf{Primary use} \\
+        \midrule
+        PREDICT & 10 & 42 & CT (Portal Phase), MRI & --- & Habitat model development (mpMRI-anchored) and validation (Chapter~\ref{ch:7}) \\ \addlinespace
+        POEM & 6 & 6 & CT (Portal Phase), Histology (HE) & --- & Biological validation of habitat model (Chapter~\ref{ch:7}) \\ \addlinespace
+        TCIA & 189 & 389 & CT (Portal Phase) & OS, DFS & Application of habitat model and clinical outcome modeling (Chapter~\ref{ch:8}) \\ \addlinespace
+        VHIO & 343 & 1759 & CT (Portal Phase) & OS, PFS & Application of habitat model and clinical outcome modeling (Chapter~\ref{ch:8}) \\
+        \bottomrule
+    \end{tabularx}
+\end{table}
 
 All cohorts were collected as part of ongoing studies approved by the
 Vall d'Hebron University Hospital Ethics Committee: PR(AG)29/2020
@@ -81,7 +78,7 @@ All CT{} images were acquired in the portal venous phase with
 intravenous contrast, tube voltage of 100-130kV, slice thickness of
 1.25-5mm and pixel size 0.7-1.1mm\textsuperscript{2}, and stored in
 DICOM format (\emph{Digital Imaging and Communications in Medicine
-(DICOM) Standard}, 2025). PREDICT and VHIO scans were retrieved from the
+(DICOM) Standard} \citep{DigitalImagingCommunications2025}). PREDICT and VHIO scans were retrieved from the
 Vall d\textquotesingle Hebron Hospital imaging archive (Picture
 Archiving and Communication System, PACS), anonymized with an
 identifiable patient ID, and transferred to a password-protected VHIO
@@ -98,12 +95,12 @@ suitability for analysis. Scans were excluded if they were
 non-contrast-enhanced, acquired outside the portal venous phase, did not
 include the entire liver, or showed no measurable disease at baseline
 (defined as liver lesions \textless1 cm in diameter or absent liver
-metastases). \hyperref[_Ref219813073]{Figure 5.1 \textbar{} Overview of
+metastases). \hyperref[_Ref219813073]{Figure~\ref{fig:5.1} \textbar{} Overview of
 patient cohorts used in this thesis} summarizes exclusion counts for
 each cohort.
 
 For the majority of the scans, tumor segmentation was performed manually
-using 3D Slicer (Fedorov et al., 2012). For PREDICT and POEM, all
+using 3D Slicer \citep{fedorov3DSlicerImage2012}. For PREDICT and POEM, all
 well-defined target lesions per patient were delineated by the group's
 experienced radiologists. For VHIO cohort, a third of the tumors
 (\textasciitilde600) were manually delineated by the author and
@@ -131,11 +128,9 @@ dynamic contrast-enhanced (DCE) MRI. Full acquisition parameters are
 provided in Annex A.
 
 MRI preprocessing was performed by MRI physicist F. Grussu, and included
-denoising (MP-PCA) (Veraart et al., 2016), Gibbs unringing (Kellner et
-al., 2016), motion correction via affine coregistration (Ourselin et
-al., 2001), and EPI distortion correction using reversed phase-encoding
-acquisitions (Andersson et al., 2003). Anatomical images underwent N4
-bias field correction based on ANTs (Avants et al., 2008). Tumor
+denoising (MP-PCA) \citep{veraartDenoisingDiffusionMRI2016}, Gibbs unringing \citep{kellnerGibbsringingArtifactRemoval2016}, motion correction via affine coregistration \citep{ourselinReconstructing3DStructure2001}, and EPI distortion correction using reversed phase-encoding
+acquisitions \citep{anderssonHowCorrectSusceptibility2003}. Anatomical images underwent N4
+bias field correction based on ANTs \citep{avantsSymmetricDiffeomorphicImage2008}. Tumor
 segmentations were drawn manually by an experienced radiologist on the
 T2-weighted scan, aided by visual inspection of all MRI contrasts.
 
@@ -146,12 +141,12 @@ two-pool system capturing tissue and vascular water contributions,
 yielding apparent diffusion coefficients (ADCₜ, ADCᵥ), corresponding to
 tissue and vascular water contributions, transverse relaxation times
 (T₂ₜ), vascular signal fraction (fᵥ), and tissue kurtosis excess (Kₜ);
-and (2) an advanced microstructural model (Grussu et al., 2025)
+and (2) an advanced microstructural model \citep{grussuClinicallyFeasibleLiver2025}
 incorporating intra- and extracellular compartments, yielding intrinsic
 diffusivity (D₀), volume-weighted cell size (vCS), intracellular
 fraction (fᵢₙ), and cell density. Variable flip angle imaging provided
 total longitudinal relaxation time (T₁). DCE MRI was fitted using a
-two-compartment Tofts model (Tofts, 1997), yielding the capillary
+two-compartment Tofts model \citep{toftsModelingTracerKinetics1997}, yielding the capillary
 permeability constant (K\textsuperscript{trans}), plasma volume fraction
 (vₚ), and extracellular-extravascular volume fraction (vₑ). Model
 fitting was performed using custom Python code available at
@@ -159,79 +154,39 @@ fitting was performed using custom Python code available at
 \url{https://github.com/fragrussu/bodymritools}.
 
 We harmonized mpMRI metrics across scanners with a custom-written ComBat
-(Fortin et al., 2018) implementation, rescaling metrics obtained on the
+\citep{fortinHarmonizationCorticalThickness2018} implementation, rescaling metrics obtained on the
 1.5T system to the 3T range. Quality control ensured that all mpMRI
 values were biologically plausible. For each metric, we established a
 valid range based on empirical knowledge (Annex A). Voxels within this
 range were included, those marginally outside (±10\%) were clipped to
 the boundary, and those beyond this tolerance were excluded.
 
-\textbar{} Multiparametric MRI maps used for CT{} habitat development
-
-\begin{longtable}[]{@{}
-  >{\centering\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.0651}}
-  >{\centering\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2603}}
-  >{\centering\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.1544}}
-  >{\centering\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2124}}
-  >{\centering\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2967}}@{}}
-\caption{Thirteen quantitative maps were derived from
-diffusion-relaxation MRI, variable flip angle T1 mapping, and dynamic
-contrast-enhanced MRI.}\tabularnewline
-\toprule\noalign{}
-\multicolumn{2}{@{}>{\centering\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.3254} + 2\tabcolsep}}{%
-\begin{minipage}[b]{\linewidth}\centering
-\textbf{mpMRI metric}
-\end{minipage}} & \begin{minipage}[b]{\linewidth}\centering
-\textbf{Computed from}
-\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
-\textbf{Units}
-\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
-\textbf{Description}
-\end{minipage} \\
-\midrule\noalign{}
-\endfirsthead
-\toprule\noalign{}
-\multicolumn{2}{@{}>{\centering\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.3254} + 2\tabcolsep}}{%
-\begin{minipage}[b]{\linewidth}\centering
-\textbf{mpMRI metric}
-\end{minipage}} & \begin{minipage}[b]{\linewidth}\centering
-\textbf{Computed from}
-\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
-\textbf{Units}
-\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
-\textbf{Description}
-\end{minipage} \\
-\midrule\noalign{}
-\endhead
-\bottomrule\noalign{}
-\endlastfoot
-ADCₜ & Tissue ADC & Diffusion-relaxation MRI & μm²/ms & Apparent
-diffusivity of water in tissue (excluding vasculature) \\
-ADCᵥ & Vascular ADC & Diffusion-relaxation MRI & μm²/ms & Apparent
-diffusivity in vascular compartment (IVIM effect) \\
-Kₜ & Tissue kurtosis excess & Diffusion-relaxation MRI & Dimensionless &
-Quantifies non-Gaussian diffusion due to heterogeneity or restriction \\
-fᵥ & Vascular signal fraction & Diffusion-relaxation MRI & Normalized &
-Signal arising from vascular compartment (IVIM) \\
-T₂ₜ & Tissue T₂ & Diffusion-relaxation MRI & ms & Transverse relaxation
-time of tissue (excluding vasculature) \\
-D₀ & Intrinsic diffusivity & Advanced diffusion model & μm²/ms &
-Intrinsic intracellular diffusivity \\
-vCS & Volume-weighted cell size & Advanced diffusion model & μm &
-Average cell size weighted by cell volume \\
-fᵢₙ & Intracellular fraction & Advanced diffusion model & Normalized &
-Fraction of signal arising from intracellular water \\
-CD & Cell density & Advanced diffusion model & Cells/mm³ & Estimated
-cell density (derived from fᵢₙ and vCS) \\
-T₁ & T₁ & Variable flip angle SGrE & ms & Total longitudinal relaxation
-time \\
-T2\textsuperscript{*} & T2\textsuperscript{*} & Multiecho SGrE & ms &
-Effective transverse relaxation time \\
-K\textsuperscript{trans} & Capillary permeability & DCE MRI & min⁻¹ &
-Influx mass transfer rate of contrast agent \\
-vₑ & Extracellular-extravascular volume & DCE MRI & Normalized & Volume
-of extracellular, extravascular space per unit tissue volume \\
-\end{longtable}
+\begin{table}[ht]
+    \centering
+    \small
+    \caption[Multiparametric MRI maps used for CT habitat development]{\textbf{Multiparametric MRI maps used for CT habitat development.} Thirteen quantitative maps were derived from diffusion-relaxation MRI, variable flip angle T1 mapping, and dynamic contrast-enhanced MRI.}
+    \label{tab:mpmri_maps}
+    
+    \begin{tabularx}{\textwidth}{@{} l l l c >{\raggedright\arraybackslash}X @{}}
+        \toprule
+        \multicolumn{2}{c}{\textbf{mpMRI metric}} & \textbf{Computed from} & \textbf{Units} & \textbf{Description} \\
+        \cmidrule(r){1-2}
+        $ADC_t$ & Tissue ADC & Diffusion-relaxation MRI & $\mu m^2/ms$ & Apparent diffusivity of water in tissue (excluding vasculature) \\ \addlinespace
+        $ADC_v$ & Vascular ADC & Diffusion-relaxation MRI & $\mu m^2/ms$ & Apparent diffusivity in vascular compartment (IVIM effect) \\ \addlinespace
+        $K_t$ & Tissue kurtosis excess & Diffusion-relaxation MRI & Dim.less & Quantifies non-Gaussian diffusion due to heterogeneity or restriction \\ \addlinespace
+        $f_v$ & Vascular signal fraction & Diffusion-relaxation MRI & Norm. & Signal arising from vascular compartment (IVIM) \\ \addlinespace
+        $T_{2t}$ & Tissue $T_2$ & Diffusion-relaxation MRI & ms & Transverse relaxation time of tissue (excluding vasculature) \\ \addlinespace
+        $D_0$ & Intrinsic diffusivity & Advanced diffusion model & $\mu m^2/ms$ & Intrinsic intracellular diffusivity \\ \addlinespace
+        $vCS$ & Vol-weighted cell size & Advanced diffusion model & $\mu m$ & Average cell size weighted by cell volume \\ \addlinespace
+        $f_{in}$ & Intracellular fraction & Advanced diffusion model & Norm. & Fraction of signal arising from intracellular water \\ \addlinespace
+        $CD$ & Cell density & Advanced diffusion model & Cells/$mm^3$ & Estimated cell density (derived from $f_{in}$ and $vCS$) \\ \addlinespace
+        $T_1$ & $T_1$ & Variable flip angle SGrE & ms & Total longitudinal relaxation time \\ \addlinespace
+        $T_2^*$ & $T_2^*$ & Multiecho SGrE & ms & Effective transverse relaxation time \\ \addlinespace
+        $K^{trans}$ & Capillary permeability & DCE MRI & $min^{-1}$ & Influx mass transfer rate of contrast agent \\ \addlinespace
+        $v_e$ & EES volume & DCE MRI & Norm. & Volume of extracellular, extravascular space per unit tissue volume \\
+        \bottomrule
+    \end{tabularx}
+\end{table}
 
 \subsection{Histopathology Workflow (POEM)}\label{histopathology-workflow-poem}
 
@@ -239,7 +194,7 @@ The POEM cohort (PrOspEctive Metastases Imaging) was collected as part
 of a multicenter observational study led by Dr. Peter Vermeulen (GZA
 Hospitals, Belgium) in collaboration with Hospital Universitari de
 Bellvitge (Spain). The study aims to develop radiomic signatures of
-histopathological growth patterns (Latacz et al., 2021) in liver
+histopathological growth patterns \citep{lataczCanMedicalImaging2021} in liver
 metastases from colorectal and breast cancer using standard-of-care CT{}
 and MRI alongside complete histopathological sampling (Latacz et al.,
 2024). Our analysis focused on colorectal liver metastases from patients
@@ -257,12 +212,12 @@ Whole-slide images were acquired using a 3DHISTECH Pannoramic-series
 scanner, producing MRXS files.
 
 Histological annotations of necrosis, viable cancer and fibrosis/stroma
-were automatically performed using QuPath (Bankhead et al., 2017), an
+were automatically performed using QuPath \citep{bankheadQuPathOpenSource2017}, an
 open-source digital pathology platform, and supervised by an experienced
 pathologist. An experienced pathologist manually delineated regions of
 necrosis, fibrosis, and viable tumor on digitized whole-slide images.
 These annotations provided qualitative ground truth for validating
-CT{}-derived habitats (Chapter 7). We attempted spatial coregistration
+CT{}-derived habitats (Chapter~\ref{ch:7}). We attempted spatial coregistration
 between histology slices and corresponding CT{} slices but found it
 impractical due to tissue deformation during resection and processing.
 As a result, histology was used for qualitative biological validation
@@ -285,7 +240,7 @@ These are not trivial implementation choices. A pipeline that ignores
 voxel spacing differences will produce habitats that reflect acquistion
 parameters rather than biology. A pipeline that clusters all tumors
 together may dilute tumor-specific heterogeneity into noise. The
-experiments carried out in Chapter 6 made these challenges concrete for
+experiments carried out in Chapter~\ref{ch:6} made these challenges concrete for
 us. Computing habitats for the precision analysis requires solvign each
 of these problems from scratch, and the solutions were tied to the
 specific dataset and analysis.
@@ -334,7 +289,7 @@ Analysis (\hyperref[_Ref219813172]{Figure 5.2}):
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=0.95\textwidth]{fig_5_2.pdf}
-\caption{Habitat imaging pipeline overview.
+\caption[Habitat imaging pipeline overview]{Habitat imaging pipeline overview.
 The pipeline consists of three modules. Preprocessing removes background
 voxels, applies optional log transformation, and performs standard
 scaling, outputting a 4D NIfTI volume per tumor. Clustering assigns
@@ -400,7 +355,7 @@ Criterion (BIC) or the Silhouette Score.
 
 \textbf{Clustering Scope:} A critical design choice is whether to
 cluster each tumor individually or pool all tumors together. The
-pipeline supports three modes (\hyperref[_Ref219813148]{Figure 5.3}):
+pipeline supports three modes (\hyperref[_Ref219813148]{Figure~\ref{fig:5.3}}):
 
 \emph{Single-tumor mode} clusters each tumor independently. This
 preserves local heterogeneity patterns but produces arbitrary label
@@ -451,7 +406,7 @@ tumors, Habitat K the highest. This can be applied to any mode.
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=0.9\textwidth]{fig_5_3.pdf}
-\caption{Clustering scope: single-tumor, pooled, and hybrid modes.
+\caption[Clustering scope: single-tumor, pooled, and hybrid modes]{Clustering scope: single-tumor, pooled, and hybrid modes.
 \textbf{(A)} Single-tumor mode. Each tumor is clustered independently.
 Labels are arbitrary and not comparable across tumors. \textbf{(B)}
 Pooled mode. All voxels are clustered together, producing globally
@@ -505,7 +460,7 @@ separate tumor subregions:
 The rim thickness is a user-defined parameter. In this thesis, we use a
 default of 2 mm based on biological considerations: tumor cells cannot
 survive more than approximately 2 mm from a blood vessel due to the
-diffusion limits of oxygen and nutrients (Thng, 2010). This distance
+diffusion limits of oxygen and nutrients \citep{thngPerfusionMagneticResonance2010}. This distance
 defines the maximum viable thickness of tissue without direct vascular
 supply, and is the rationale underlying anti-angiogenic therapies that
 target tumor neovascularization. For each subregion, we compute habitat

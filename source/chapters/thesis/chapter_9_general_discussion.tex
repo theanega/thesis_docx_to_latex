@@ -1,4 +1,4 @@
-\chapter{General Discussion}\label{general-discussion}
+\chapter{General Discussion}\label{general-discussion}\label{ch:9}
 
 This thesis set out to determine whether routine contrast-enhanced CT
 imaging can capture biologically and clinically meaningful intratumor
@@ -40,7 +40,7 @@ and anatomy-specific validation.
 \item
   \textbf{RQ2: Which CT}{} \textbf{data representation produces habitats
   that best separate tissue with different cellularity and vascularity?}
-  \emph{(Chapter 7)}
+  \emph{(Chapter~\ref{ch:7})}
 \end{itemize}
 
 Contrary to expectations, handcrafted texture features produced habitats
@@ -53,7 +53,7 @@ perfusion (ADC, K\textsuperscript{trans}, and f\textsubscript{v}).
 \begin{itemize}
 \item
   \textbf{RQ3: What tissue phenotypes do CT}{}\textbf{-derived habitats
-  represent?} \emph{(Chapter 7)}
+  represent?} \emph{(Chapter~\ref{ch:7})}
 \end{itemize}
 
 Rather than mapping onto necrosis, fibrosis, and viable tumor, CT
@@ -67,7 +67,7 @@ categorical histology.
 \begin{itemize}
 \item
   \textbf{RQ4: Do CT-derived habitats provide prognostic information
-  independent of tumor volume?} \emph{(Chapter 8)}
+  independent of tumor volume?} \emph{(Chapter~\ref{ch:8})}
 \end{itemize}
 
 Habitat-derived metrics added prognostic information beyond tumor volume
@@ -81,7 +81,7 @@ predictor.
 \item
   \textbf{RQ5: If prognostic information exists, is it spatially
   localized (i.e. at the core or the rim), or is it uniformly
-  distributed within a tumor?} \emph{(Chapter 8)}
+  distributed within a tumor?} \emph{(Chapter~\ref{ch:8})}
 \end{itemize}
 
 Across cohorts and treatment settings, metrics derived from a 2 mm outer
@@ -146,7 +146,7 @@ lesion at every timepoint. This information cannot be provided by a
 single biopsy due to sampling constraints. CT-derived habitats should
 therefore be understood as a distinct representation of tumor biology
 rather than an imperfect surrogate for histology. As illustrated in
-\hyperref[_Ref219821387]{Figure 9.1}, different representations of the
+\hyperref[_Ref219821387]{Figure~\ref{fig:9.1}}, different representations of the
 same object emphasize different features without one being inherently
 superior. The clinical value of a model lies not in its fidelity to
 histology, but in its usefulness for decision-making.
@@ -154,7 +154,7 @@ histology, but in its usefulness for decision-making.
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=0.7\textwidth]{fig_9_1.png}
-\caption{Different representations capture different information.
+\caption[Different representations capture different information]{Different representations capture different information.
 Leonardo da Vinci's anatomical sketch and finished
 portrait of the Mona Lisa depict the same subject but emphasize
 different features. Similarly, histopathology and imaging habitats are
@@ -205,8 +205,8 @@ Within this technical context, the choice of feature representation
 deserves particular attention. During the course of this thesis,
 expectations surrounding medical image analysis shifted rapidly with the
 adoption of deep learning and the emergence of foundation models
-(Paschali et al., 2025). These have transformed representation learning
-in other fields such as pathology (Song et al., 2023) and therefore it
+\citep{paschaliFoundationModelsRadiology2025}. These have transformed representation learning
+in other fields such as pathology \citep{songArtificialIntelligenceDigital2023} and therefore it
 was reasonable to expect that learned embeddings would outperform
 handcrafted radiomics features for habitat computation. In this task and
 with the datasets used in this thesis, however, handcrafted texture
@@ -248,7 +248,7 @@ non-invasive, and informative biomarkers becomes even more urgent.
 Medical imaging occupies a unique position in this landscape. It is
 routinely acquired, longitudinal, and captures the entire tumor and its
 microenvironment. As emphasized in recent perspectives on artificial
-intelligence in cancer research (T.-G. Chang et al., 2025), the
+intelligence in cancer research \citep{changArtificialIntelligenceCancer2025}, the
 challenge is no longer the lack of data, but the ability to extract
 meaningful and clinically relevant information from complex datasets.
 This thesis argues that part of this challenge can be addressed by
