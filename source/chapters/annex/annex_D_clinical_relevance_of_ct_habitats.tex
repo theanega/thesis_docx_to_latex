@@ -1,5 +1,4 @@
-\chapter{Clinical Relevance of CT
-Habitats}\label{clinical-relevance-of-ct-habitats}
+\chapter{Clinical Relevance of CT Habitats}\label{annex:clinical-relevance-of-ct-habitats}
 
 \subsection{D.1. Habitat Metrics and Tumor
 Volume}\label{d.1.-habitat-metrics-and-tumor-volume}
@@ -10,39 +9,32 @@ metrics and tumor volume for both cohorts.
 \textbf{Table D.1 \textbar{} Spearman correlations between habitat
 metrics and tumor volume.}
 
-{\def\LTcaptype{none} % do not increment counter
-\begin{longtable}[]{@{}
-  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3915}}
-  >{\centering\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.1162}}
-  >{\centering\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.1261}}@{}}
-\toprule\noalign{}
-\begin{minipage}[b]{\linewidth}\centering
-\textbf{Metric}
-\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
-\textbf{TCIA (ρ)}
-\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
-\textbf{VHIO (ρ)}
-\end{minipage} \\
-\midrule\noalign{}
-\endhead
-\bottomrule\noalign{}
-\endlastfoot
-\textbf{Rim metrics} & & \\
-Rim entropy vs Volume & -0.77*** & -0.71*** \\
-Rim cellular-perfused vs Volume & 0.49*** & 0.45*** \\
-Rim avascular vs Volume & -0.32*** & -0.28*** \\
-Rim vascular vs Volume & -0.21** & -0.19** \\
-\textbf{Whole-tumor metrics} & & \\
-Whole entropy vs Volume & -0.44*** & -0.62*** \\
-Whole avascular vs Volume & 0.44*** & 0.70*** \\
-Whole cellular-perfused vs Volume & 0.12 & 0.08 \\
-Whole vascular vs Volume & -0.38*** & -0.52*** \\
-\textbf{Core metrics} & & \\
-Core entropy vs Volume & -0.28*** & -0.41*** \\
-Core avascular vs Volume & 0.31*** & 0.55*** \\
-Core cellular-perfused vs Volume & -0.18* & -0.22** \\
-\end{longtable}
-}
+\begin{table}[ht]
+    \centering
+    \small
+    \caption{\textbf{Spearman correlations between habitat metrics and tumor volume.} *p$<$0.05, **p$<$0.01, ***p$<$0.001.}
+    \label{tab:annex_volume_correlation}
+    \begin{tabular}{l c c}
+        \toprule
+        \textbf{Metric} & \textbf{TCIA ($\rho$)} & \textbf{VHIO ($\rho$)} \\
+        \midrule
+        \textbf{Rim metrics} & & \\
+        \quad Rim entropy vs Volume & -0.77*** & -0.71*** \\
+        \quad Rim cellular-perfused vs Volume & 0.49*** & 0.45*** \\
+        \quad Rim avascular vs Volume & -0.32*** & -0.28*** \\
+        \quad Rim vascular vs Volume & -0.21** & -0.19** \\ \addlinespace
+        \textbf{Whole-tumor metrics} & & \\
+        \quad Whole entropy vs Volume & -0.44*** & -0.62*** \\
+        \quad Whole avascular vs Volume & 0.44*** & 0.70*** \\
+        \quad Whole cellular-perfused vs Volume & 0.12 & 0.08 \\
+        \quad Whole vascular vs Volume & -0.38*** & -0.52*** \\ \addlinespace
+        \textbf{Core metrics} & & \\
+        \quad Core entropy vs Volume & -0.28*** & -0.41*** \\
+        \quad Core avascular vs Volume & 0.31*** & 0.55*** \\
+        \quad Core cellular-perfused vs Volume & -0.18* & -0.22** \\
+        \bottomrule
+    \end{tabular}
+\end{table}
 
 *p\textless0.05, **p\textless0.01, ***p\textless0.001
 
@@ -56,51 +48,29 @@ patients.
 \textbf{Table D.2 \textbar{} Habitat metric comparisons: treatment-naive
 vs neoadjuvant-treated (TCIA).}
 
-{\def\LTcaptype{none} % do not increment counter
-\begin{longtable}[]{@{}
-  >{\centering\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.1674}}
-  >{\centering\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2891}}
-  >{\centering\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2740}}
-  >{\centering\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.1322}}
-  >{\centering\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.1373}}@{}}
-\toprule\noalign{}
-\begin{minipage}[b]{\linewidth}\centering
-\textbf{Metric}
-\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
-\textbf{Treatment-naive (n=74) Median {[}IQR{]}}
-\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
-\textbf{Neoadjuvant (n=115) Median {[}IQR{]}}
-\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
-\textbf{Unadjusted p}
-\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
-\textbf{FDR-adjusted p}
-\end{minipage} \\
-\midrule\noalign{}
-\endhead
-\bottomrule\noalign{}
-\endlastfoot
-Tumor volume (mm³) & 14,639 {[}5,812--38,421{]} & 8,620
-{[}3,284--24,108{]} & 0.018 & 0.057 \\
-Whole entropy & 1.45 {[}1.38--1.52{]} & 1.51 {[}1.44--1.57{]} &
-\textless0.001 & 0.001 \\
-Whole avascular & 0.398 {[}0.31--0.49{]} & 0.354 {[}0.27--0.44{]} &
-0.019 & 0.057 \\
-Whole cellular-perfused & 0.412 {[}0.34--0.48{]} & 0.408
-{[}0.35--0.47{]} & 0.75 & 0.75 \\
-Whole vascular & 0.168 {[}0.12--0.22{]} & 0.214 {[}0.16--0.27{]} &
-\textless0.001 & 0.001 \\
-Rim entropy & 1.13 {[}1.02--1.24{]} & 1.25 {[}1.14--1.35{]} &
-\textless0.001 & 0.001 \\
-Rim avascular & 0.152 {[}0.09--0.22{]} & 0.138 {[}0.08--0.20{]} & 0.28 &
-0.42 \\
-Rim cellular-perfused & 0.485 {[}0.41--0.56{]} & 0.512 {[}0.44--0.58{]}
-& 0.057 & 0.11 \\
-Rim vascular & 0.342 {[}0.28--0.41{]} & 0.328 {[}0.27--0.39{]} & 0.35 &
-0.47 \\
-Core entropy & 1.08 {[}0.95--1.21{]} & 1.12 {[}1.01--1.24{]} & 0.09 &
-0.16 \\
-\end{longtable}
-}
+\begin{table}[ht]
+    \centering
+    \footnotesize
+    \caption{\textbf{Habitat metric comparisons: treatment-naive vs neoadjuvant-treated (TCIA).} Mann-Whitney U test. FDR correction using Benjamini-Hochberg procedure. Bold indicates FDR-adjusted p$<$0.05.}
+    \label{tab:annex_neoadjuvant_comparison}
+    \begin{tabular}{l c c c c}
+        \toprule
+        \textbf{Metric} & \textbf{\makecell{Treatment-naive\\(n=74)}} & \textbf{\makecell{Neoadjuvant\\(n=115)}} & \textbf{\makecell{Unadjusted\\p}} & \textbf{\makecell{FDR-\\adjusted p}} \\
+        & \textbf{Median [IQR]} & \textbf{Median [IQR]} & & \\
+        \midrule
+        Tumor volume ($mm^3$) & 14,639 [5,812--38,421] & 8,620 [3,284--24,108] & 0.018 & 0.057 \\ \addlinespace
+        Whole entropy & 1.45 [1.38--1.52] & 1.51 [1.44--1.57] & $<$0.001 & \textbf{0.001} \\ \addlinespace
+        Whole avascular & 0.398 [0.31--0.49] & 0.354 [0.27--0.44] & 0.019 & 0.057 \\ \addlinespace
+        Whole cellular-perf. & 0.412 [0.34--0.48] & 0.408 [0.35--0.47] & 0.75 & 0.75 \\ \addlinespace
+        Whole vascular & 0.168 [0.12--0.22] & 0.214 [0.16--0.27] & $<$0.001 & \textbf{0.001} \\ \addlinespace
+        Rim entropy & 1.13 [1.02--1.24] & 1.25 [1.14--1.35] & $<$0.001 & \textbf{0.001} \\ \addlinespace
+        Rim avascular & 0.152 [0.09--0.22] & 0.138 [0.08--0.20] & 0.28 & 0.42 \\ \addlinespace
+        Rim cellular-perf. & 0.485 [0.41--0.56] & 0.512 [0.44--0.58] & 0.057 & 0.11 \\ \addlinespace
+        Rim vascular & 0.342 [0.28--0.41] & 0.328 [0.27--0.39] & 0.35 & 0.47 \\ \addlinespace
+        Core entropy & 1.08 [0.95--1.21] & 1.12 [1.01--1.24] & 0.09 & 0.16 \\
+        \bottomrule
+    \end{tabular}
+\end{table}
 
 Mann-Whitney U test. FDR correction using Benjamini-Hochberg procedure.
 Bold indicates FDR-adjusted p\textless0.05.
@@ -111,113 +81,62 @@ Bold indicates FDR-adjusted p\textless0.05.
 \textbf{Table D.3a \textbar{} Cox regression: Chemotherapy alone (n=122,
 89 events).}
 
-{\def\LTcaptype{none} % do not increment counter
-\begin{longtable}[]{@{}
-  >{\centering\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.1837}}
-  >{\centering\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2523}}
-  >{\centering\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.0680}}
-  >{\centering\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2700}}
-  >{\centering\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.0696}}@{}}
-\toprule\noalign{}
-\begin{minipage}[b]{\linewidth}\centering
-\textbf{Variable}
-\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
-\textbf{Univariable HR {[}95\% CI{]}}
-\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
-\textbf{p}
-\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
-\textbf{Multivariable HR {[}95\% CI{]}}
-\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
-\textbf{p}
-\end{minipage} \\
-\midrule\noalign{}
-\endhead
-\bottomrule\noalign{}
-\endlastfoot
-Tumor volume & 5.46 {[}3.19--9.34{]} & \textless0.001 & 5.21
-{[}2.98--9.12{]} & \textless0.001 \\
-Rim entropy & 0.88 {[}0.54--1.43{]} & 0.61 & --- & --- \\
-Extrahepatic disease & 1.82 {[}1.18--2.81{]} & 0.007 & 1.54
-{[}0.98--2.42{]} & 0.06 \\
-Age & 1.24 {[}0.92--1.67{]} & 0.16 & --- & --- \\
-\textbf{C-index} & & & 0.703 & \\
-\end{longtable}
-}
+\begin{table}[ht]
+    \centering
+    \small
+    \caption{\textbf{Cox regression: Chemotherapy alone (n=122, 89 events).}}
+    \label{tab:annex_cox_chemo}
+    \begin{tabular}{l c c c c}
+        \toprule
+        \textbf{Variable} & \textbf{Univariable HR [95\% CI]} & \textbf{p} & \textbf{Multivariable HR [95\% CI]} & \textbf{p} \\
+        \midrule
+        Tumor volume & 5.46 [3.19--9.34] & $<$0.001 & 5.21 [2.98--9.12] & $<$0.001 \\
+        Rim entropy & 0.88 [0.54--1.43] & 0.61 & --- & --- \\
+        Extrahepatic disease & 1.82 [1.18--2.81] & 0.007 & 1.54 [0.98--2.42] & 0.06 \\
+        Age & 1.24 [0.92--1.67] & 0.16 & --- & --- \\
+        \midrule
+        \textbf{C-index} & & & \multicolumn{2}{c}{0.703} \\
+        \bottomrule
+    \end{tabular}
+\end{table}
 
-\textbf{Table D.3b \textbar{} Cox regression: Chemotherapy + Bevacizumab
-(n=133, 95 events).}
+\begin{table}[ht]
+    \centering
+    \small
+    \caption{\textbf{Cox regression: Chemotherapy + Bevacizumab (n=133, 95 events).}}
+    \label{tab:annex_cox_bev}
+    \begin{tabular}{l c c c c}
+        \toprule
+        \textbf{Variable} & \textbf{Univariable HR [95\% CI]} & \textbf{p} & \textbf{Multivariable HR [95\% CI]} & \textbf{p} \\
+        \midrule
+        Tumor volume & 1.69 [1.31--2.17] & $<$0.001 & 1.58 [1.21--2.06] & 0.001 \\
+        Rim entropy & 0.68 [0.52--0.88] & 0.004 & 0.71 [0.54--0.93] & 0.012 \\
+        Extrahepatic disease & 1.44 [0.95--2.18] & 0.09 & 1.38 [0.90--2.12] & 0.14 \\
+        Left primary & 0.58 [0.38--0.89] & 0.012 & 0.62 [0.40--0.96] & 0.031 \\
+        \midrule
+        \textbf{C-index} & & & \multicolumn{2}{c}{0.674} \\
+        \bottomrule
+    \end{tabular}
+\end{table}
 
-{\def\LTcaptype{none} % do not increment counter
-\begin{longtable}[]{@{}
-  >{\centering\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.1837}}
-  >{\centering\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2523}}
-  >{\centering\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.0680}}
-  >{\centering\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2700}}
-  >{\centering\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.0572}}@{}}
-\toprule\noalign{}
-\begin{minipage}[b]{\linewidth}\centering
-\textbf{Variable}
-\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
-\textbf{Univariable HR {[}95\% CI{]}}
-\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
-\textbf{p}
-\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
-\textbf{Multivariable HR {[}95\% CI{]}}
-\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
-\textbf{p}
-\end{minipage} \\
-\midrule\noalign{}
-\endhead
-\bottomrule\noalign{}
-\endlastfoot
-Tumor volume & 1.69 {[}1.31--2.17{]} & \textless0.001 & 1.58
-{[}1.21--2.06{]} & 0.001 \\
-Rim entropy & 0.68 {[}0.52--0.88{]} & 0.004 & 0.71 {[}0.54--0.93{]} &
-0.012 \\
-Extrahepatic disease & 1.44 {[}0.95--2.18{]} & 0.09 & 1.38
-{[}0.90--2.12{]} & 0.14 \\
-Left primary & 0.58 {[}0.38--0.89{]} & 0.012 & 0.62 {[}0.40--0.96{]} &
-0.031 \\
-\textbf{C-index} & & & 0.674 & \\
-\end{longtable}
-}
-
-\textbf{Table D.3c \textbar{} Cox regression: RAS-mutant patients
-(n=195, 138 events).}
-
-{\def\LTcaptype{none} % do not increment counter
-\begin{longtable}[]{@{}
-  >{\centering\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.1837}}
-  >{\centering\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2523}}
-  >{\centering\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.0680}}
-  >{\centering\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2700}}
-  >{\centering\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.0696}}@{}}
-\toprule\noalign{}
-\begin{minipage}[b]{\linewidth}\centering
-\textbf{Variable}
-\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
-\textbf{Univariable HR {[}95\% CI{]}}
-\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
-\textbf{p}
-\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
-\textbf{Multivariable HR {[}95\% CI{]}}
-\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
-\textbf{p}
-\end{minipage} \\
-\midrule\noalign{}
-\endhead
-\bottomrule\noalign{}
-\endlastfoot
-Tumor volume & 1.89 {[}1.41--2.53{]} & \textless0.001 & 1.78
-{[}1.32--2.41{]} & \textless0.001 \\
-Rim entropy & 0.80 {[}0.65--1.00{]} & 0.047 & 0.82 {[}0.66--1.02{]} &
-0.07 \\
-Extrahepatic disease & 1.61 {[}1.14--2.27{]} & 0.007 & 1.48
-{[}1.04--2.11{]} & 0.03 \\
-Age & 1.18 {[}0.96--1.45{]} & 0.11 & --- & --- \\
-\textbf{C-index} & & & 0.700 & \\
-\end{longtable}
-}
+\begin{table}[ht]
+    \centering
+    \small
+    \caption{\textbf{Cox regression: RAS-mutant patients (n=195, 138 events).}}
+    \label{tab:annex_cox_ras}
+    \begin{tabular}{l c c c c}
+        \toprule
+        \textbf{Variable} & \textbf{Univariable HR [95\% CI]} & \textbf{p} & \textbf{Multivariable HR [95\% CI]} & \textbf{p} \\
+        \midrule
+        Tumor volume & 1.89 [1.41--2.53] & $<$0.001 & 1.78 [1.32--2.41] & $<$0.001 \\
+        Rim entropy & 0.80 [0.65--1.00] & 0.047 & 0.82 [0.66--1.02] & 0.07 \\
+        Extrahepatic disease & 1.61 [1.14--2.27] & 0.007 & 1.48 [1.04--2.11] & 0.03 \\
+        Age & 1.18 [0.96--1.45] & 0.11 & --- & --- \\
+        \midrule
+        \textbf{C-index} & & & \multicolumn{2}{c}{0.700} \\
+        \bottomrule
+    \end{tabular}
+\end{table}
 
 \subsection{D.4. Longitudinal Analysis Summary
 Statistics}\label{d.4.-longitudinal-analysis-summary-statistics}
@@ -225,40 +144,19 @@ Statistics}\label{d.4.-longitudinal-analysis-summary-statistics}
 \textbf{Table D.4 \textbar{} Rim entropy change by RECIST category
 (n=38).}
 
-{\def\LTcaptype{none} % do not increment counter
-\begin{longtable}[]{@{}
-  >{\centering\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1770}}
-  >{\centering\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.0285}}
-  >{\centering\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.2306}}
-  >{\centering\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1268}}
-  >{\centering\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1097}}
-  >{\centering\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1150}}
-  >{\centering\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.2124}}@{}}
-\toprule\noalign{}
-\begin{minipage}[b]{\linewidth}\centering
-\textbf{RECIST Category}
-\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
-\textbf{n}
-\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
-\textbf{Median Δ Rim Entropy}
-\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
-\textbf{IQR}
-\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
-\textbf{n Increase}
-\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
-\textbf{n Decrease}
-\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
-\textbf{Median OS (months)}
-\end{minipage} \\
-\midrule\noalign{}
-\endhead
-\bottomrule\noalign{}
-\endlastfoot
-All patients & 38 & +0.013 & {[}-0.04, +0.10{]} & 21 & 17 & 27.1 \\
-PR & 23 & +0.053 & {[}-0.02, +0.10{]} & 14 & 9 & 32.8 \\
-SD & 8 & +0.023 & {[}-0.06, +0.16{]} & 4 & 4 & 18.3 \\
-PD & 7 & -0.041 & {[}-0.25, +0.03{]} & 3 & 4 & 9.0 \\
-\end{longtable}
-}
-
-\chapter{}\label{section}
+\begin{table}[ht]
+    \centering
+    \small
+    \caption{\textbf{Rim entropy change by RECIST category (n=38).}}
+    \label{tab:annex_recist}
+    \begin{tabular}{l c c c c c c}
+        \toprule
+        \textbf{\makecell{RECIST\\Category}} & \textbf{n} & \textbf{\makecell{Median $\Delta$ Rim\\Entropy}} & \textbf{IQR} & \textbf{\makecell{n\\Increase}} & \textbf{\makecell{n\\Decrease}} & \textbf{\makecell{Median OS\\(months)}} \\
+        \midrule
+        All patients & 38 & +0.013 & [-0.04, +0.10] & 21 & 17 & 27.1 \\ \addlinespace
+        PR & 23 & +0.053 & [-0.02, +0.10] & 14 & 9 & 32.8 \\ \addlinespace
+        SD & 8 & +0.023 & [-0.06, +0.16] & 4 & 4 & 18.3 \\ \addlinespace
+        PD & 7 & -0.041 & [-0.25, +0.03] & 3 & 4 & 9.0 \\
+        \bottomrule
+    \end{tabular}
+\end{table}

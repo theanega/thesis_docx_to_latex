@@ -31,9 +31,8 @@
 /build/
 /output/
 /example/
-# Word inputs (original thesis/annex)
 /input/
-
+/bin/
 ############################
 # Optional large assets
 ############################

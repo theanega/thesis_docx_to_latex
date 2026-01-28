@@ -15,7 +15,7 @@
 % Comando: xelatex main.tex
 % O usar latexmk: latexmk -xelatex main.tex
 
-\documentclass[11pt,a4paper,oneside]{book}
+\documentclass[11pt,a4paper,twoside]{book}
 
 % ============================================================================
 % PAQUETES BÁSICOS Y CONFIGURACIÓN DE FUENTES
@@ -35,10 +35,10 @@
 % Nota: newtxmath causa conflictos con amssymb (\Zbar, \Bbbk). 
 % Usamos amsmath estándar que funciona bien con Times text.
 
-% Fuente de títulos: Sans-serif
-% Usar la fuente sans-serif por defecto del sistema (Latin Modern Sans)
-% Si tienes Fira Sans instalada, descomenta la siguiente línea:
-% \setsansfont{Fira Sans}
+% Configuración de fuentes sans-serif (Fira Sans) - Usando paquete para mayor compatibilidad
+\usepackage{FiraSans}
+\setmainfont{TeX Gyre Termes} 
+\newfontfamily\georgiafont{Georgia}
 
 % Definir comando titlefont que use sans-serif (Fira Sans)
 \newcommand{\titlefont}{\sffamily}
@@ -70,6 +70,7 @@
 \usepackage{makecell}   % Para celdas con múltiples líneas
 \usepackage{array}
 \usepackage{multirow}
+\usepackage{ragged2e}
 \usepackage{threeparttable}  % Para notas en tablas
 
 % Configuración de tablas: texto pequeño (9pt) y mejor espaciado
@@ -92,16 +93,17 @@
 
 \usepackage{fancyhdr}
 \pagestyle{fancy}
+\setlength{\headheight}{25pt}
 
 % Limpiar headers por defecto
 \fancyhf{}
 
 % Configuración de headers - solo título del capítulo (sin "Chapter X")
-\fancyhead[C]{\leftmark}        % Título del capítulo centrado arriba
+\fancyhead[RO,LE]{\leftmark}     % Título del capítulo: Par Izquierda, Impar Derecha
 \fancyfoot[C]{\thepage}         % Número de página abajo centrado
 
-% Línea separadora fina
-\renewcommand{\headrulewidth}{0.4pt}
+% Sin línea separadora
+\renewcommand{\headrulewidth}{0pt}
 \renewcommand{\footrulewidth}{0pt}
 \setlength{\headheight}{15pt}
 
@@ -135,7 +137,8 @@
 % LISTAS Y ACRÓNIMOS
 % ============================================================================
 
-\usepackage[acronym,nonumberlist,style=long,toc]{glossaries}  % Para lista de acrónimos
+\usepackage[acronym,nonumberlist,style=list,toc]{glossaries}  % Para lista de acrónimos
+\renewcommand*{\glspostdescription}{} % Quitar el punto final de las descripciones
 \usepackage{multicol}  % Para dos columnas en abbreviations
 \makeglossaries
 
@@ -159,10 +162,25 @@
 \setlength{\cftbeforesecskip}{2pt}
 \setlength{\cftbeforesubsecskip}{1pt}
 
-% Reducir espaciado en List of Figures y List of Tables
+% Reduce espaciado en List of Figures y List of Tables
 \setlength{\cftbeforefigskip}{2pt}
 \setlength{\cftbeforetabskip}{2pt}
-\usepackage[numbers,sort&compress]{natbib}  % Para bibliografía con estilo unsrtnat
+
+% Quitar el espacio extra entre capítulos en la LOF/LOT
+\newcommand*{\noaddvspace}{\renewcommand*{\addvspace}[1]{}}
+
+% Configurar colores del TOC: texto negro, páginas azul
+\renewcommand{\cftchapfont}{\normalfont\bfseries}
+\renewcommand{\cftchappagefont}{\normalfont\bfseries\color{linkcolor}}
+\renewcommand{\cftsecfont}{\normalfont}
+\renewcommand{\cftsecpagefont}{\normalfont\color{linkcolor}}
+\renewcommand{\cftsubsecfont}{\normalfont}
+\renewcommand{\cftsubsecpagefont}{\normalfont\color{linkcolor}}
+\renewcommand{\cftfigfont}{\normalfont}
+\renewcommand{\cftfigpagefont}{\normalfont\color{linkcolor}}
+\renewcommand{\cfttabfont}{\normalfont}
+\renewcommand{\cfttabpagefont}{\normalfont\color{linkcolor}}
+\usepackage[sort&compress,authoryear]{natbib}  % Para bibliografía con estilo authoryear
 \usepackage{microtype}  % Mejoras tipográficas
 \usepackage{url}  % URLs
 % Nota: breakurl no es compatible con XeLaTeX, usamos xurl en su lugar
@@ -246,6 +264,11 @@
 
 % Captions de figuras y tablas
 \usepackage{caption}
+% Redefinir \textbf para que en el contexto de caption use sans-serif bold
+\AtBeginEnvironment{caption}{
+  \let\oldtextbf\textbf
+  \renewcommand{\textbf}[1]{\oldtextbf{\sffamily#1}}
+}
 \captionsetup{
   font={small},           % 9pt para el texto del caption
   labelfont={bf,sf},      % Label en bold sans-serif (Fira Sans)
@@ -321,11 +344,14 @@
 \cleardoublepage
 
 % Lista de figuras
+\begingroup
+\renewcommand*{\addvspace}[1]{}
 \listoffigures
 \cleardoublepage
 
 % Lista de tablas
 \listoftables
+\endgroup
 \cleardoublepage
 
 % Lista de acrónimos (mostrar todos aunque no se usen en el texto)
@@ -489,8 +515,9 @@
 \backmatter
 
 % Bibliografía
+\addcontentsline{toc}{chapter}{References}
 \renewcommand{\bibname}{References}  % Título "References" en lugar de "Bibliography"
-\bibliographystyle{apalike}
+\bibliographystyle{plainnat}
 {\small  % Tamaño 9pt para las referencias
 \bibliography{../source/references}
 }

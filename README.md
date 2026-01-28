@@ -1,6 +1,7 @@
 # Word to LaTeX Thesis Conversion
 
 ## Goal
+
 Convert thesis from Word to LaTeX and generate 4 PDF outputs:
     - thesis_with_annex_digital_version.pdf - Full thesis with colored links (digital submission)
     - thesis_digital_version.pdf - Thesis only, colored links
@@ -31,7 +32,7 @@ thesis_docx_to_latex/
     ├── thesis.docx
     └── annex_thesis.docx
 
-I tried to generate an automatic pipeline to convert the docx to latex but didnt work, I am rtweaking things semiautomatically  (manually!). 
+I tried to generate an automatic pipeline to convert the docx to latex but didnt work, I am rtweaking things semiautomatically  (manually!).
 
 ### ToDos
 
@@ -43,7 +44,6 @@ Use the url package by Donald Arseneau.
 
 Example usage
 In the preamble:
-
 
 \usepackage{url}
 
@@ -57,20 +57,19 @@ In the preamble:
 
 In a BibTeX entry:
 
-
 @misc{
     c.elmohamed,
     author = "Saleh Elmohamed",
     title = "Examples in {H}igh {P}erformance {F}ortran",
     howpublished = "Website",
     year = {1996},
-    note = {\url{http://www.npac.syr.edu/projects/
+    note = {\url{<http://www.npac.syr.edu/projects/>
                     cpsedu/summer98summary/ examples/hpf/hpf.html}}
 }
 
-4. The headers shouldn't have a line, I prefer just the title wihtout a line. In addition, odd-numbered pages should have the header title in the right and even-numbered pafes should have the title in the left. 
-5. The list of abbreviations should be one page only ideally, perhaps in two columns. 
-6. The references should be listed in the tabel of contents at the end, right after the conclusions and without a number of course.
+1. The headers shouldn't have a line, I prefer just the title wihtout a line. In addition, odd-numbered pages should have the header title in the right and even-numbered pafes should have the title in the left.
+2. The list of abbreviations should be one page only ideally, perhaps in two columns.
+3. The references should be listed in the tabel of contents at the end, right after the conclusions and without a number of course.
 Once we have done all of this, we will compile the thesis_digital.tex and then I will go manually chapter by chapter fixing structure, typos, references (abbreivations, citations, figures, tables adn other chatpers/sections) with your help. Then we will do the same for the annex and finally we will compile the thesis_with_annex_digital.tex and the thesis_with_annex_printed_version.tex.
-If time allows, we will add some ornaments with psvectorian for the five Parts, the dedication and the funding page. 
-The printed version should have a first page right before the preamble saying that this thesis cover was crated by scientist and scietnific illutrstor Maria Balaguer. 
+If time allows, we will add some ornaments with psvectorian for the five Parts, the dedication and the funding page.
+The printed version should have a first page right before the preamble saying that this thesis cover was crated by scientist and scietnific illutrstor Maria Balaguer.

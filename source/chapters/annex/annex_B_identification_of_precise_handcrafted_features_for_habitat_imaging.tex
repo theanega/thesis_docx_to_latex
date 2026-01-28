@@ -4,476 +4,141 @@ Imaging}\label{identification-of-precise-handcrafted-features-for-habitat-imagin
 \subsection{B.1. Cohort
 Characteristics}\label{b.1.-cohort-characteristics}
 
-\textbf{Table B.1. Total number of patients, images, and lesions per
-cohort and lesion location.}
+\begin{table}[ht]
+    \centering
+    \small
+    \caption{\textbf{Total number of patients, images, and lesions per cohort and lesion location.}}
+    \label{tab:annex_totals}
+    \begin{tabular}{l c c c c c c}
+        \toprule
+        \textbf{Primary tumor} & \multicolumn{2}{c}{\textbf{Patients}} & \multicolumn{2}{c}{\textbf{Images}} & \multicolumn{2}{c}{\textbf{Lesions}} \\
+        \cmidrule(lr){2-3} \cmidrule(lr){4-5} \cmidrule(lr){6-7}
+        & \textbf{Liver} & \textbf{Lung} & \textbf{Liver} & \textbf{Lung} & \textbf{Liver} & \textbf{Lung} \\
+        \midrule
+        Colorectal      & 63 & 12 & 186 & 29 & 959 & 122 \\
+        Lung            & 13 & 72 & 22 & 102 & 89 & 141 \\
+        Neuroendocrine  & 86 & 0  & 86 & 0   & 447 & 0   \\
+        Mixed           & 44 & 41 & 93 & 87  & 366 & 312 \\
+        \midrule
+        \textbf{Total}  & 206 & 125 & 387 & 218 & 1861 & 575 \\
+        & \multicolumn{2}{c}{\textbf{331}} & \multicolumn{2}{c}{\textbf{605}} & \multicolumn{2}{c}{\textbf{2436}} \\
+        \bottomrule
+    \end{tabular}
+\end{table}
 
-{\def\LTcaptype{none} % do not increment counter
-\begin{longtable}[]{@{}
-  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1976}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1330}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1327}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1331}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1327}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1331}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1327}}@{}}
-\toprule\noalign{}
-\multirow{2}{=}{\begin{minipage}[b]{\linewidth}\raggedright
-\textbf{Primary tumor}
-\end{minipage}} &
-\multicolumn{2}{>{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.2657} + 2\tabcolsep}}{%
-\begin{minipage}[b]{\linewidth}\raggedright
-\textbf{Patients}
-\end{minipage}} &
-\multicolumn{2}{>{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.2658} + 2\tabcolsep}}{%
-\begin{minipage}[b]{\linewidth}\raggedright
-\textbf{Images}
-\end{minipage}} &
-\multicolumn{2}{>{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.2658} + 2\tabcolsep}@{}}{%
-\begin{minipage}[b]{\linewidth}\raggedright
-\textbf{Lesions}
-\end{minipage}} \\
-& \begin{minipage}[b]{\linewidth}\raggedright
-Liver
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-Lung
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-Liver
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-Lung
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-Liver
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-Lung
-\end{minipage} \\
-\midrule\noalign{}
-\endhead
-\bottomrule\noalign{}
-\endlastfoot
-Colorectal & 63 & 12 & 186 & 29 & 959 & 122 \\
-Lung & 13 & 72 & 22 & 102 & 89 & 141 \\
-Neuroendocrine & 86 & 0 & 86 & 0 & 447 & 0 \\
-Mixed & 44 & 41 & 93 & 87 & 366 & 312 \\
-\multirow{2}{=}{Total} & 206 & 125 & 387 & 218 & 1861 & 575 \\
-&
-\multicolumn{2}{>{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.2657} + 2\tabcolsep}}{%
-331} &
-\multicolumn{2}{>{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.2658} + 2\tabcolsep}}{%
-605} &
-\multicolumn{2}{>{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.2658} + 2\tabcolsep}@{}}{%
-2436} \\
-\end{longtable}
-}
+\begin{table}[ht]
+    \centering
+    \small
+    \caption{\textbf{Image acquisition parameters per cohort.} (*) Median [IQR]}
+    \label{tab:annex_acquisition}
+    \begin{tabularx}{\textwidth}{@{} l c c c c @{}}
+        \toprule
+        & \textbf{\makecell{Colorectal\\(n=215)}} & \textbf{\makecell{Lung\\(n=124)}} & \textbf{\makecell{Neuroendocrine\\(n=86)}} & \textbf{\makecell{Mixed\\(n=180)}} \\
+        \midrule
+        \textbf{Manufacturers} & & & & \\
+        \makecell[l]{SIEMENS/PHILIPS/\\TOSHIBA/GE} & \makecell{138/58/9/10} & \makecell{63/40/0/21} & \makecell{22/35/6/23} & \makecell{144/23/3/10} \\ \addlinespace
+        \textbf{Tube Voltage (kVP)} & & & & \\
+        \makecell[l]{100/110/120/\\130/140/unknown} & \makecell{25/17/161/\\0/0/12} & \makecell{6/1/105/\\3/0/9} & \makecell{10/3/70/\\1/2/0} & \makecell{14/7/158/\\0/1/0} \\ \addlinespace
+        \textbf{Recon. kernel} & & & & \\
+        \makecell[l]{SOFT/STANDARD/B\\B20f/B30f/B31f\\I31s/I50s/unknown} & \makecell{1/7/96\\16/38/12\\15/6/20} & \makecell{14/7/43\\11/23/0\\0/0/22} & \makecell{1/19/36\\2/2/4\\0/0/19} & \makecell{2/11/21\\9/112/4\\0/0/21} \\ \addlinespace
+        \textbf{Slice thickness (mm)*} & 2.0 [2.0--5.0] & 2.5 [2.0--5.0] & 2.0 [2.0--3.0] & 5.0 [1.0--5.0] \\ \addlinespace
+        \textbf{Pixel spacing (mm)*} & 0.92 [0.77--0.98] & 0.91 [0.81--0.98] & 0.75 [0.70--0.82] & 0.98 [0.82--0.98] \\ 
+        \bottomrule
+    \end{tabularx}
+\end{table}
 
-\textbf{Table B.2. Image acquisition parameters per cohort.}
-
-{\def\LTcaptype{none} % do not increment counter
-\begin{longtable}[]{@{}
-  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2898}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.1927}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.1549}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.1886}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.1739}}@{}}
-\toprule\noalign{}
-\begin{minipage}[b]{\linewidth}\raggedright
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-\textbf{Colorectal}
-
-\textbf{(n=215)}
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-\textbf{Lung}
-
-\textbf{(n=124)}
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-\textbf{Neuroendocrine}
-
-\textbf{(n=86)}
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-\textbf{Mixed}
-
-\textbf{(n=180)}
-\end{minipage} \\
-\midrule\noalign{}
-\endhead
-\bottomrule\noalign{}
-\endlastfoot
-\textbf{Manufacturers}
-
-SIEMENS/PHILIPS/
-
-TOSHIBA/GENERAL ELECTRIC & 138/58/9/10 & 63/40/0/21 & 22/35/6/23 &
-144/23/3/10 \\
-\textbf{Tube Voltage (kVP)}
-
-100/110/120/130/140/unknown & 25/17/161/0/0/12 & 6/1/105/3/0/9 &
-10/3/70/1/2/0 & 14/7/158/0/1/0 \\
-\textbf{Reconstruction kernel}
-
-SOFT/STANDARD/B
-
-B20f/B30f/B31f
-
-I31s/I50s/unkown & 1/7/96
-
-16/38/12
-
-15/6/20 & 14/7/43
-
-11/23/0
-
-0/0/22 & 1/19/36
-
-2/2/4
-
-0/0/19 & 2/11/21
-
-9/112/4
-
-0/0/21 \\
-\textbf{Slice thickness (mm)*} & 2.0 {[}2.00-5.00{]} & 2.5 {[}2.0-5.0{]}
-& 2.0 {[}2.0-3.0{]} & 5.0 {[}1.00-5.00{]} \\
-\textbf{Pixel spacing (mm)*} & 0.92 {[}0.77-0.98{]} & 0.91
-{[}0.81-0.98{]} & 0.75 {[}0.70-0.82{]} & 0.98 {[}0.82-0.98{]} \\
-\multicolumn{5}{@{}>{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{1.0000} + 8\tabcolsep}@{}}{%
-(*) Median {[}IQR{]}} \\
-\end{longtable}
-}
-
-\textbf{Table B.3. List of primary tumor types included within the mixed
-cohort.}
-
-{\def\LTcaptype{none} % do not increment counter
-\begin{longtable}[]{@{}
-  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1457}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1425}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1423}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1424}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1423}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1424}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1423}}@{}}
-\toprule\noalign{}
-\multirow{2}{=}{\begin{minipage}[b]{\linewidth}\raggedright
-\textbf{Primary tumor}
-\end{minipage}} &
-\multicolumn{2}{>{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.2848} + 2\tabcolsep}}{%
-\begin{minipage}[b]{\linewidth}\raggedright
-\textbf{Patients}
-\end{minipage}} &
-\multicolumn{2}{>{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.2847} + 2\tabcolsep}}{%
-\begin{minipage}[b]{\linewidth}\raggedright
-\textbf{Images}
-\end{minipage}} &
-\multicolumn{2}{>{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.2847} + 2\tabcolsep}@{}}{%
-\begin{minipage}[b]{\linewidth}\raggedright
-\textbf{Lesions}
-\end{minipage}} \\
-& \begin{minipage}[b]{\linewidth}\raggedright
-\textbf{Liver}
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-\textbf{Lung}
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-\textbf{Liver}
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-\textbf{Lung}
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-\textbf{Liver}
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-\textbf{Lung}
-\end{minipage} \\
-\midrule\noalign{}
-\endhead
-\bottomrule\noalign{}
-\endlastfoot
-Adrenal & 3 & 0 & 5 & 0 & 35 & 5 \\
-Biliary Tract & 11 & 5 & 24 & 11 & 71 & 66 \\
-Bladder & 3 & 3 & 5 & 5 & 41 & 20 \\
-Bone & 0 & 1 & 0 & 3 & 0 & 21 \\
-Breast & 4 & 2 & 9 & 6 & 32 & 6 \\
-Cervix & 2 & 2 & 3 & 3 & 21 & 21 \\
-Esophagus & 1 & 2 & 2 & 4 & 8 & 9 \\
-Head\&Neck & 2 & 4 & 4 & 11 & 13 & 13 \\
-Kidney & 1 & 2 & 2 & 3 & 4 & 18 \\
-Liver & 2 & 1 & 3 & 1 & 11 & 1 \\
-Ovary & 1 & 2 & 2 & 4 & 4 & 26 \\
-Pancreas & 2 & 0 & 4 & 0 & 12 & 0 \\
-Penis & 1 & 0 & 3 & 0 & 9 & 0 \\
-Skin & 6 & 11 & 13 & 19 & 68 & 39 \\
-Stomach & 4 & 0 & 10 & 0 & 29 & 0 \\
-Thymus & 1 & 0 & 4 & 0 & 8 & 0 \\
-Thyroid & 0 & 6 & 0 & 17 & 0 & 52 \\
-Total & 44 & 41 & 93 & 87 & 366 & 312 \\
-&
-\multicolumn{2}{>{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.2848} + 2\tabcolsep}}{%
-85} &
-\multicolumn{2}{>{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.2847} + 2\tabcolsep}}{%
-180} &
-\multicolumn{2}{>{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.2847} + 2\tabcolsep}@{}}{%
-678} \\
-\end{longtable}
-}
+\begin{table}[ht]
+    \centering
+    \small
+    \caption{\textbf{List of primary tumor types included within the mixed cohort.}}
+    \label{tab:annex_mixed_cohort}
+    \begin{tabular}{l c c c c c c}
+        \toprule
+        \textbf{Primary tumor} & \multicolumn{2}{c}{\textbf{Patients}} & \multicolumn{2}{c}{\textbf{Images}} & \multicolumn{2}{c}{\textbf{Lesions}} \\
+        \cmidrule(lr){2-3} \cmidrule(lr){4-5} \cmidrule(lr){6-7}
+        & \textbf{Liver} & \textbf{Lung} & \textbf{Liver} & \textbf{Lung} & \textbf{Liver} & \textbf{Lung} \\
+        \midrule
+        Adrenal         & 3 & 0 & 5 & 0 & 35 & 5 \\
+        Biliary Tract   & 11 & 5 & 24 & 11 & 71 & 66 \\
+        Bladder         & 3 & 3 & 5 & 5 & 41 & 20 \\
+        Bone            & 0 & 1 & 0 & 3 & 0 & 21 \\
+        Breast          & 4 & 2 & 9 & 6 & 32 & 6 \\
+        Cervix          & 2 & 2 & 3 & 3 & 21 & 21 \\
+        Esophagus       & 1 & 2 & 2 & 4 & 8 & 9 \\
+        Head \& Neck    & 2 & 4 & 4 & 11 & 13 & 13 \\
+        Kidney          & 1 & 2 & 2 & 3 & 4 & 18 \\
+        Liver           & 2 & 1 & 3 & 1 & 11 & 1 \\
+        Ovary           & 1 & 2 & 2 & 4 & 4 & 26 \\
+        Pancreas        & 2 & 0 & 4 & 0 & 12 & 0 \\
+        Penis           & 1 & 0 & 3 & 0 & 9 & 0 \\
+        Skin            & 6 & 11 & 13 & 19 & 68 & 39 \\
+        Stomach         & 4 & 0 & 10 & 0 & 29 & 0 \\
+        Thymus          & 1 & 0 & 4 & 0 & 8 & 0 \\
+        Thyroid         & 0 & 6 & 0 & 17 & 0 & 52 \\
+        \midrule
+        \textbf{Total}  & 44 & 41 & 93 & 87 & 366 & 312 \\
+        & \multicolumn{2}{c}{\textbf{85}} & \multicolumn{2}{c}{\textbf{180}} & \multicolumn{2}{c}{\textbf{678}} \\
+        \bottomrule
+    \end{tabular}
+\end{table}
 
 \subsection{B.2. Radiomics Features and
 Computation}\label{b.2.-radiomics-features-and-computation}
 
-\textbf{Table B.4. List of Radiomics features analyzed in this study.}
-
-\begin{longtable}[]{@{}
-  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.1042}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.3432}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.1072}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.4344}}@{}}
-\caption{93 voxel-wise features were computed. However, 91 were analyzed
-after excluding GLCM\_MCC (for having missing values in many cases due
-to memory error) and FirstOrder\_TotalEnergy (for being equal to
-FirstOrder\_Energy for constant kernel size during computation). Feature
-definitions are available in the IBSI reference manual (Zwanenburg et
-al., 2020).}\tabularnewline
-\toprule\noalign{}
-\begin{minipage}[b]{\linewidth}\raggedright
-\textbf{Class}
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-\textbf{Feature}
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-\textbf{Class}
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-\textbf{Feature}
-\end{minipage} \\
-\midrule\noalign{}
-\endfirsthead
-\toprule\noalign{}
-\begin{minipage}[b]{\linewidth}\raggedright
-\textbf{Class}
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-\textbf{Feature}
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-\textbf{Class}
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-\textbf{Feature}
-\end{minipage} \\
-\midrule\noalign{}
-\endhead
-\bottomrule\noalign{}
-\endlastfoot
-\multirow{2}{=}{\textbf{First order}} & \multirow{2}{=}{10Percentile
-
-90Percentile
-
-Energy
-
-Entropy
-
-InterquartileRange
-
-Kurtosis
-
-Maximum
-
-MeanAbsoluteDeviation
-
-Mean
-
-Median
-
-Minimum
-
-Range
-
-RobustMeanAbsoluteDeviation
-
-RootMeanSquared
-
-Skewness
-
-TotalEnergy
-
-Uniformity
-
-Variance} & \textbf{GLRLM} & GrayLevelNonUniformity
-
-GrayLevelNonUniformityNormalized
-
-GrayLevelVariance
-
-HighGrayLevelRunEmphasis
-
-LongRunEmphasis
-
-LongRunHighGrayLevelEmphasis
-
-LongRunLowGrayLevelEmphasis
-
-LowGrayLevelRunEmphasis
-
-RunEntropy
-
-RunLengthNonUniformity
-
-RunLengthNonUniformityNormalized
-
-RunPercentage
-
-RunVariance
-
-ShortRunEmphasis
-
-ShortRunHighGrayLevelEmphasis
-
-ShortRunLowGrayLevelEmphasis \\
-& & \multirow{2}{=}{\textbf{GLSZM}} &
-\multirow{2}{=}{GrayLevelNonUniformity
-
-GrayLevelNonUniformityNormalized
-
-GrayLevelVariance
-
-HighGrayLevelZoneEmphasis
-
-LargeAreaEmphasis
-
-LargeAreaHighGrayLevelEmphasis
-
-LargeAreaLowGrayLevelEmphasis
-
-LowGrayLevelZoneEmphasis
-
-SizeZoneNonUniformity
-
-SizeZoneNonUniformityNormalized
-
-SmallAreaEmphasis
-
-SmallAreaHighGrayLevelEmphasis
-
-SmallAreaLowGrayLevelEmphasis
-
-ZoneEntropy
-
-ZonePercentage
-
-ZoneVariance} \\
-\multirow{2}{=}{\textbf{GLCM}} & \multirow{2}{=}{Autocorrelation
-
-ClusterProminence
-
-ClusterShade
-
-ClusterTendency
-
-Contrast
-
-Correlation
-
-DifferenceAverage
-
-DifferenceEntropy
-
-DifferenceVariance
-
-Id
-
-Idm
-
-Idmn
-
-Idn
-
-Imc1
-
-Imc2
-
-InverseVariance
-
-JointAverage
-
-JointEnergy
-
-JointEntropy
-
-MCC
-
-MaximumProbability
-
-SumAverage
-
-SumEntropy
-
-SumSquares} \\
-& & \multirow{2}{=}{\textbf{GLDM}} & \multirow{2}{=}{DependenceEntropy
-
-DependenceNonUniformity
-
-DependenceNonUniformityNormalized
-
-DependenceVariance
-
-GrayLevelNonUniformity
-
-GrayLevelVariance
-
-HighGrayLevelEmphasis
-
-LargeDependenceEmphasis
-
-LargeDependenceHighGrayLevelEmphasis
-
-LargeDependenceLowGrayLevelEmphasis
-
-LowGrayLevelEmphasis
-
-SmallDependenceEmphasis
-
-SmallDependenceHighGrayLevelEmphasis
-
-SmallDependenceLowGrayLevelEmphasis} \\
-\textbf{NGTDM} & Busyness
-
-Coarseness
-
-Complexity
-
-Contrast
-
-Strength \\
-\end{longtable}
-
-Table B.5. Image processing and radiomics feature computation
-parameters.
-
-{\def\LTcaptype{none} % do not increment counter
-\begin{longtable}[]{@{}
-  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.4819}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5181}}@{}}
-\toprule\noalign{}
-\multicolumn{2}{@{}>{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{1.0000} + 2\tabcolsep}@{}}{%
-\begin{minipage}[b]{\linewidth}\raggedright
-\textbf{Image Processing}
-\end{minipage}} \\
-\midrule\noalign{}
-\endhead
-\bottomrule\noalign{}
-\endlastfoot
-Software & PyRadiomics v3.0.1, installed in Python 3.7.10 \\
-Bounding box & Defined by the segmentation, extended by default padding
-distance. \\
-Resampled voxel spacing (mm) & 1 x 1 x 1 \\
-Image interpolation method & B-spline \\
-Intensity rounding & None \\
-ROI interpolation method & Nearest neighbor \\
-Resegmentation & None \\
-\multicolumn{2}{@{}>{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{1.0000} + 2\tabcolsep}@{}}{%
-\textbf{Feature Computation}} \\
-Kernel radius & 1 / 3mm \\
-Discretization (fixed bin size) & 12/25HU \\
-Image filter & None \\
-maskedKernel & True (only voxels in the kernel that were also segmented
-in the ROI were used for calculation) \\
-Initvalue & NaN (voxels outside ROI were considered as transparent) \\
-Distance weighting for GLCM, GLRLM, NGTDM & No weighting \\
-GLCM Symmetry & Symmetric \\
-GLCM distance, GLSZM linkage distance, GLDZM linkage distance, NGTDM
-distance & Chebyshev distance δ = 1 \\
-NGTDM coarseness & Coarseness parameter α = 0 \\
-\end{longtable}
-}
+\begin{table}[ht]
+    \centering
+    \scriptsize 
+    \caption{\textbf{List of Radiomics features analyzed in this study.} 93 voxel-wise features were computed. 91 were analyzed after excluding GLCM\_MCC and FirstOrder\_TotalEnergy. Feature definitions are available in the IBSI reference manual (Zwanenburg et al., 2020).}
+    \label{tab:annex_features}
+    \begin{tabularx}{\textwidth}{@{} l >{\raggedright\arraybackslash}X | l >{\raggedright\arraybackslash}X @{}}
+        \toprule
+        \textbf{Class} & \textbf{Feature} & \textbf{Class} & \textbf{Feature} \\
+        \midrule
+        \textbf{First Order} & 10Percentile, 90Percentile, Energy, Entropy, InterquartileRange, Kurtosis, Maximum, MeanAbsoluteDeviation, Mean, Median, Minimum, Range, RobustMeanAbsoluteDeviation, RootMeanSquared, Skewness, TotalEnergy, Uniformity, Variance & 
+        \textbf{GLRLM} & GrayLevelNonUniformity, GrayLevelNonUniformityNorm., GrayLevelVariance, HighGrayLevelRunEmphasis, LongRunEmphasis, LongRunHighGrayLevelEmphasis, LongRunLowGrayLevelEmphasis, LowGrayLevelRunEmphasis, RunEntropy, RunLengthNonUniformity, RunLengthNonUniformityNorm., RunPercentage, RunVariance, ShortRunEmphasis, ShortRunHighGrayLevelEmphasis, ShortRunLowGrayLevelEmphasis \\
+        \midrule
+        \textbf{GLSZM} & GrayLevelNonUniformity, GrayLevelNonUniformityNorm., GrayLevelVariance, HighGrayLevelZoneEmphasis, LargeAreaEmphasis, LargeAreaHighGrayLevelEmphasis, LargeAreaLowGrayLevelEmphasis, LowGrayLevelZoneEmphasis, SizeZoneNonUniformity, SizeZoneNonUniformityNorm., SmallAreaEmphasis, SmallAreaHighGrayLevelEmphasis, SmallAreaLowGrayLevelEmphasis, ZoneEntropy, ZonePercentage, ZoneVariance &
+        \textbf{GLDM} & DependenceEntropy, DependenceNonUniformity, DependenceNonUniformityNorm., DependenceVariance, GrayLevelNonUniformity, GrayLevelVariance, HighGrayLevelEmphasis, LargeDependenceEmphasis, LargeDependenceHighGrayLevelEmphasis, LargeDependenceLowGrayLevelEmphasis, LowGrayLevelEmphasis, SmallDependenceEmphasis, SmallDependenceHighGrayLevelEmphasis, SmallDependenceLowGrayLevelEmphasis \\
+        \midrule
+        \textbf{GLCM} & Autocorrelation, ClusterProminence, ClusterShade, ClusterTendency, Contrast, Correlation, DifferenceAverage, DifferenceEntropy, DifferenceVariance, Id, Idm, Idmn, Idn, Imc1, Imc2, InverseVariance, JointAverage, JointEnergy, JointEntropy, MCC (Excluded), MaximumProbability, SumAverage, SumEntropy, SumSquares & 
+        \textbf{NGTDM} & Busyness, Coarseness, Complexity, Contrast, Strength \\
+        \bottomrule
+    \end{tabularx}
+\end{table}
+
+\begin{table}[ht]
+    \centering
+    \small
+    \caption{\textbf{Image processing and radiomics feature computation parameters.}}
+    \label{tab:annex_parameters}
+    \begin{tabularx}{\textwidth}{@{} l >{\raggedright\arraybackslash}X @{}}
+        \toprule
+        \textbf{Parameter} & \textbf{Value/Description} \\
+        \midrule
+        \multicolumn{2}{l}{\textbf{Image Processing}} \\
+        \midrule
+        Software & PyRadiomics v3.0.1, installed in Python 3.7.10 \\
+        Bounding box & Defined by the segmentation, extended by default padding distance. \\
+        Resampled voxel spacing & 1 x 1 x 1 mm \\
+        Image interpolation & B-spline \\
+        Intensity rounding & None \\
+        ROI interpolation & Nearest neighbor \\
+        Resegmentation & None \\
+        \midrule
+        \multicolumn{2}{l}{\textbf{Feature Computation}} \\
+        \midrule
+        Kernel radius & 1 / 3 mm \\
+        Discretization & 12 / 25 HU (Fixed Bin Size) \\
+        Image filter & None \\
+        maskedKernel & True (only voxels in kernel also in ROI used) \\
+        Initvalue & NaN (voxels outside ROI considered transparent) \\
+        Distance weighting & No weighting \\
+        GLCM Symmetry & Symmetric \\
+        Distance Metrics & Chebyshev distance $\delta = 1$ \\
+        NGTDM Coarseness & Coarseness parameter $\alpha = 0$ \\
+        \bottomrule
+    \end{tabularx}
+\end{table}
 
 \subsection{B.3. Image Perturbation}\label{b.3.-image-perturbation}
 
