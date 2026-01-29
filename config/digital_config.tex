@@ -1,16 +1,16 @@
 % Configuración para versiones digitales
 % Links coloreados, hipervínculos activos
 
+% Configuración de colores para elementos interactivos
+\definecolor{linkcolor}{RGB}{0, 76, 153}  % Un azul más oscuro y elegante
+\definecolor{citecolor}{RGB}{0, 76, 153}
+
 % Configuración de hyperref para versiones digitales
 \hypersetup{
   colorlinks=true,
-  linkcolor=black,     % Títulos en negro en el TOC
+  linkcolor=linkcolor, % Todos los links en azul (incluyendo TOC)
   urlcolor=linkcolor,  % URLs en azul
   citecolor=linkcolor, % Citas en azul
   filecolor=linkcolor, % Links a archivos en azul
   pdfborder={0 0 0},   % Sin borde en los links
 }
-
-% Configuración de colores para elementos interactivos
-\definecolor{linkcolor}{RGB}{0, 76, 153}  % Un azul más oscuro y elegante
-\definecolor{citecolor}{RGB}{0, 76, 153}

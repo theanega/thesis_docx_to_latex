@@ -16,7 +16,7 @@ differences in intensity, texture, enhancement patterns, and spatial
 organization that may reflect underlying biological variation. In the
 literature, the term has been used inconsistently. Different authors
 have referred to imaging heterogeneity when describing abstract
-radiological phenotypes linked to CT{} density, global texture features
+radiological phenotypes linked to CT density, global texture features
 computed across whole tumors, or subregions (i.e. habitats). In this
 thesis, we focus on the latter. We define imaging heterogeneity as the
 spatial variation in tissue composition that can be detected and
@@ -44,7 +44,7 @@ foundation for texture analysis that would later support radiomics
 tumor subregions appeared in the 2000s \citep{caranoQuantificationTumorTissue2004}, predating
 the formal concept of habitat imaging. Around the same time,
 quantitative approaches to response assessment emerged, including the
-Choi criteria incorporating CT{} attenuation changes \citep{choiCorrelationComputedTomography2007}
+Choi criteria incorporating CT attenuation changes \citep{choiCorrelationComputedTomography2007}
 and morphological response criteria for colorectal liver metastases
 \citep{chunAssociationComputedTomography2009}.
 
@@ -62,7 +62,7 @@ Biomarker Standardization Initiative (IBSI) \citep{zwanenburgImageBiomarkerStand
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=0.95\textwidth]{fig_4_1.pdf}
-\caption[Evolution of approaches to imaging heterogeneity]{Evolution of approaches to imaging heterogeneity.
+\caption[Evolution of approaches to imaging heterogeneity]{\textbf{Evolution of approaches to imaging heterogeneity.}
 Timeline illustrating the methodological progression in quantifying
 tumor heterogeneity from medical images. Early foundations include
 computer-aided diagnosis \citep{lodwickCodingRoentgenImages1963} and texture analysis
@@ -112,12 +112,23 @@ transform from heterogeneous, irregular lesions with ill-defined borders
 into homogeneous, hypoattenuating lesions with well-defined borders.
 Importantly, morphologic response. \hyperref[_Ref219734577]{Figure~\ref{fig:4.2}}
 shows an example of pre- and post-treatment CT{} scans of two patients
-defined as stable disease by RECIST but different morphological
 response.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.8\textwidth]{fig_4_2.png}
+\caption[Example of qualitative approach to imaging heterogeneity]{\textbf{Example of qualitative approach to imaging heterogeneity.}
+Pre- and posttreatment CT scans showing RECIST stable disease and
+morphological optimal response (top) and incomplete response (bottom).
+Optimal response is characterized by homogenous attenuation and sharp
+tumor-liver interface while incomplete response is characterized.
+Adapted from Chun, 2009.}
+\label{fig:4.2}
+\end{figure}
 
 Conventional quantitative approaches use objective numerical values
 derived from standard imaging. The most direct quantitative measure from
-CT{} is the Hounsfield unit value itself. In contrast-enhanced CT{}, the
+CT{} is the Hounsfield unit value itself. In CECT, the
 difference in HU between pre-contrast and post-contrast images reflects
 contrast agent accumulation, which is related to tissue vascularity.
 Studies have shown that changes in tumor attenuation can detect early
@@ -126,10 +137,9 @@ anti-vascular effects of bevacizumab before size changes occur
 Choi et al., 2007, who extended RECIST by incorporating HU changes for
 gastrointestinal stromal tumors (GIST) treated with imatinib, a targeted
 therapy. Similar to the therapies discussed in Section
-\hyperref[treatment-landscape-and-selection-challenges]{3.3. Treatment
-Landscape and Selection Challenges}, imatinib is a cytostatic drug,
+\Cref{treatment-landscape-and-selection-challenges}, imatinib is a cytostatic drug,
 inhibiting growth and division of cancer cells rather than killing them
-outright. In the study, a 15\% reduction in HU on contrast-enhanced CT{}
+outright. In the study, a 15\% reduction in HU on CECT
 was included alongside size criteria, acknowledging that for targeted
 therapies, compositional changes captured by attenuation matter. The use
 of Choi criteria has been suggested for metastatic colorectal cancer,
@@ -151,17 +161,7 @@ into proper quantitative imaging biomarkers with demonstrated
 reproducibility. This came in the 2010s with the formalization of
 radiomics.
 
-\begin{figure}[htbp]
-\centering
-\includegraphics[width=0.8\textwidth]{fig_4_2.png}
-\caption[Example of qualitative approach to imaging heterogeneity]{Example of qualitative approach to imaging heterogeneity.
-Pre- and posttreatment CT scans showing RECIST stable disease and
-morphological optimal response (top) and incomplete response (bottom).
-Optimal response is characterized by homogenous attenuation and sharp
-tumor-liver interface while incomplete response is characterized.
-Adapted from Chun, 2009.}
-\label{fig:4.2}
-\end{figure}
+
 
 \section{Radiomics}\label{radiomics}
 
@@ -172,7 +172,7 @@ widely used was the gray-level co-occurrence matrix (GLCM) (Haralick et
 al., 1973), which counts how often specific pairs of intensity values
 appear next to each other in an image. Texture analysis was applied to
 medical imaging throughout the 1990s and 2000s. Early studies
-demonstrated that CT{} texture features could predict survival in
+demonstrated that CT texture features could predict survival in
 colorectal cancer \citep{milesColorectalCancerTexture2009}, decode gene expression patterns
 in hepatocellular carcinoma \citep{segalDecodingGlobalGene2007}, and correlate with
 histopathological characteristics in non-small cell lung cancer (Kawata
@@ -243,17 +243,10 @@ radiomics pipeline is straightforward: extract features from segmented
 tumors, select or reduce features to avoid overfitting, and train a
 supervised model to predict a clinical endpoint.
 
-The limitation of ROI-wise radiomics is that it implicitly assumes
-tumors are sufficiently homogeneous that averaging captures their
-essential properties. As discussed in Chapter~\ref{ch:3}, colorectal liver
-metastases are histologically heterogeneous, with viable tumor,
-necrosis, and fibrosis distributed in spatial patterns. Averaging over
-this heterogeneity may discard clinically relevant information.
-
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=0.95\textwidth]{fig_4_3.pdf}
-\caption[Schematic comparison of radiomics feature extraction methods]{Schematic comparison of radiomics feature extraction methods.
+\caption[Schematic comparison of radiomics feature extraction methods]{\textbf{Schematic comparison of radiomics feature extraction methods.}
 Handcrafted Radiomics: Features are derived from explicit intermediate
 mathematical representations, such as the Gray-Level Co-occurrence
 Matrix (GLCM). In the ROI-wise approach (top), a single large GLCM is
@@ -269,6 +262,15 @@ for a specific task, without explicit human-defined formulas or
 intermediate matrix representations. Created with BioRender.com.}
 \label{fig:4.3}
 \end{figure}
+
+The limitation of ROI-wise radiomics is that it implicitly assumes
+tumors are sufficiently homogeneous that averaging captures their
+essential properties. As discussed in Chapter~\ref{ch:3}, colorectal liver
+metastases are histologically heterogeneous, with viable tumor,
+necrosis, and fibrosis distributed in spatial patterns. Averaging over
+this heterogeneity may discard clinically relevant information.
+
+
 
 \section{Habitat Imaging}\label{habitat-imaging}
 
@@ -290,7 +292,7 @@ relatively small throughout the 2010s, with most radiomics research
 focusing on supervised learning approaches that required whole-tumor
 feature vectors.
 
-To date, most habitat imaging studies have used MRI rather than CT{}.
+To date, most habitat imaging studies have used MRI rather than CT.
 This is mainly due to the richer biological information available from
 multiparametric MRI: diffusion-weighted imaging provides the apparent
 diffusion coefficient (ADC), which correlates with cellularity; dynamic
@@ -301,7 +303,7 @@ habitat interpretation more straightforward.
 
 This advantage was first demonstrated in glioblastoma, where Katiyar and
 colleagues \citep{katiyarNovelUnsupervisedSegmentation2017} applied spatially regularised spectral
-clustering to multiparametric MRI in mouse xenografts, achieving strong
+clustering to mpMRI in mouse xenografts, achieving strong
 correlation with histological tissue fractions of necrosis and viable
 tumor. This was later shown in breast cancer mouse models
 \citep{jardim-perassiMultiparametricMRICoregistered2019}, where habitats derived from six MRI
@@ -316,33 +318,10 @@ been shown to correlate with clinical outcomes, mainly in glioblastoma
 habitats from perfusion MRI and demonstrated that they were highly
 prognostic at presurgery \citep{juan-albarracinGlioblastomaVascularHabitats2018}.
 
-CT{}-based habitat imaging has received less attention across all tumor
-types, likely because CT{} provides fewer biologically interpretable
-parameters. Contrast-enhanced CT{} reflects vascularity, and Hounsfield
-units correlate broadly with tissue density, but the relationship
-between CT{} intensity and specific tissue types is less direct than for
-MRI-derived parameters.
-
-Two studies have applied habitat imaging to colorectal liver metastases,
-both using MRI rather than CT{} as well. In one study, researchers used
-a semi-automated clustering approach based on PCA of DCE-MRI contrast
-uptake curves to define regions of viable and non-viable tumor in 14
-patients with CRLM scheduled for hepatic resection \citep{franklinRadiologicallyDefinedHabitats2020}. Imaging-derived subregions showed good concordance with spatially
-matched histology (mean Dice similarity coefficient 0.74 for viable
-tumor), and pharmacokinetic parameters differed significantly between
-viable and non-viable subregions. In \citep{katiyarQuantificationIntratumouralHeterogeneity2023} , the
-authors applied a cross-species approach, training multi-view spectral
-clustering on preclinical PET-MRI and applying it to six CRLM lesions
-from four patients undergoing resection, with tissue fractions
-correlating with histology. These studies provide proof-of-concept that
-imaging habitats can reflect meaningful biological phenotypes in CRLM,
-but sample sizes were small and the imaging modalities (DCE-MRI,
-PET-MRI) are not routinely used for CRLM management.
-
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=0.95\textwidth]{fig_4_4.png}
-\caption[Examples of MRI-based habitat imaging]{Examples of MRI-based habitat imaging.
+\caption[Examples of MRI-based habitat imaging]{\textbf{Examples of MRI-based habitat imaging.}
 \textbf{(A)} Preclinical breast cancer model illustrating biological
 validation of imaging habitats. Habitats were defined by clustering six
 MRI parameters (T2, T2*, ADC, and DCE kinetic metrics) using a Gaussian
@@ -361,6 +340,31 @@ been shown to differ in survival prognosis. Adapted from
 Juan-Albarracín et al., 2018.}
 \label{fig:4.4}
 \end{figure}
+
+CT-based habitat imaging has received less attention across all tumor
+types, likely because CT provides fewer biologically interpretable
+parameters. CECT reflects vascularity, and Hounsfield
+units correlate broadly with tissue density, but the relationship
+between CT intensity and specific tissue types is less direct than for
+MRI-derived parameters.
+
+Two studies have applied habitat imaging to colorectal liver metastases,
+both using MRI rather than CT as well. In one study, researchers used
+a semi-automated clustering approach based on PCA of DCE-MRI contrast
+uptake curves to define regions of viable and non-viable tumor in 14
+patients with CRLM scheduled for hepatic resection \citep{franklinTumourSubregionAnalysis2020}. Imaging-derived subregions showed good concordance with spatially
+matched histology (mean Dice similarity coefficient 0.74 for viable
+tumor), and pharmacokinetic parameters differed significantly between
+viable and non-viable subregions. In \citep{katiyarQuantificationIntratumouralHeterogeneity2023} , the
+authors applied a cross-species approach, training multi-view spectral
+clustering on preclinical PET-MRI and applying it to six CRLM lesions
+from four patients undergoing resection, with tissue fractions
+correlating with histology. These studies provide proof-of-concept that
+imaging habitats can reflect meaningful biological phenotypes in CRLM,
+but sample sizes were small and the imaging modalities (DCE-MRI,
+PET-MRI) are not routinely used for CRLM management.
+
+
 
 Unlike supervised radiomics, where the pipeline is relatively
 standardised (feature extraction, feature selection, model training),
@@ -411,9 +415,9 @@ Habitat imaging is virtually unexplored for colorectal liver metastases
 despite strong biological rationale: the histopathological heterogeneity
 of CRLM (viable tumor, necrosis, fibrosis) and its prognostic
 significance suggest that spatial imaging phenotypes may carry clinical
-information. The absence of CT{}-based habitat studies in CRLM, combined
+information. The absence of CT-based habitat studies in CRLM, combined
 with the broader validation gaps, motivated the work in this thesis. The
-following chapters address these gaps through a staged approach: Chapter~\ref{ch:5} develops a standardised pipeline for CT{}-based habitat imaging in
+following chapters address these gaps through a staged approach: Chapter~\ref{ch:5} develops a standardised pipeline for CT-based habitat imaging in
 CRLM, Chapter~\ref{ch:6} establishes technical precision through feature
 stability analysis, Chapter~\ref{ch:7} provides biological validation using
 multiparametric MRI as a reference, and Chapter~\ref{ch:8} assesses clinical
@@ -426,9 +430,9 @@ contexts.
     \caption[Summary of selected habitat imaging studies]{\textbf{Summary of selected habitat imaging studies.} Studies are listed chronologically. Technical validation refers to test-retest reproducibility or multi-site stability; biological validation refers to correlation with histopathology or known tissue biology; clinical validation refers to outcome prediction. GBM: glioblastoma; GMM: Gaussian mixture model.}
     \label{tab:habitat_studies}
     
-    \begin{tabularx}{\textwidth}{@{} l >{\raggedright\arraybackslash}X c l c >{\raggedright\arraybackslash}X >{\raggedright\arraybackslash}X >{\raggedright\arraybackslash}X @{}}
+    \begin{tabularx}{\textwidth}{@{} l >{\centering\arraybackslash}X c l c >{\centering\arraybackslash}X >{\centering\arraybackslash}X >{\centering\arraybackslash}X @{}}
         \toprule
-        \textbf{Study} & \textbf{Cancer Type} & \textbf{Modality} & \textbf{Method} & \textbf{\textit{k}} & \textbf{Tech. Val.} & \textbf{Bio. Val.} & \textbf{Clin. Val.} \\
+        \textbf{Study} & \textbf{\makecell{Cancer\\Type}} & \textbf{Modality} & \textbf{Method} & \textbf{\textit{k}} & \textbf{\makecell{Tech.\\Val.}} & \textbf{\makecell{Bio.\\Val.}} & \textbf{\makecell{Clin.\\Val.}} \\
         \midrule
         \citep{caranoQuantificationTumorTissue2004} & Colorectal (preclinical) & MRI & K-means & 4 & No & Yes (histology) & No \\ \addlinespace
         \citep{henningMultispectralQuantificationTissue2007} & Sarcoma (preclinical) & MRI & K-means & 4 & No & Yes (histology) & No \\ \addlinespace

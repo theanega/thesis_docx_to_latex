@@ -13,7 +13,7 @@ computing tumor habitats from medical images.
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=0.95\textwidth]{fig_5_1.pdf}
-\caption[Overview of patient cohorts used in this thesis]{Overview of patient cohorts used in this thesis.
+\caption[Overview of patient cohorts used in this thesis]{\textbf{Overview of patient cohorts used in this thesis.}
 Prospective cohorts provide multiparametric imaging (PREDICT) and
 histology (POEM) for developing and validating the biologically-informed
 habitat model. Retrospective cohorts (blue) provide large-scale CT
@@ -25,16 +25,16 @@ remaining after exclusions.}
 
 This thesis is based on four main datasets of colorectal cancer patients
 with liver metastases, each serving a distinct role in the development,
-validation, and clinical application of CT{}-derived tumor habitats
+validation, and clinical application of CT-derived tumor habitats
 (\Cref{tab:datasets}, \Cref{fig:5.1}). For the development and
 biological validation of the habitat model we used two small prospective
 cohorts: PREDICT (n=10 patients, 42 tumors) provides co-registered
-multiparametric MRI (mpMRI) to anchor CT{}-derived habitats to
+multiparametric MRI (mpMRI) to anchor CT-derived habitats to
 quantitative imaging proxies of vascularity and cellularity, while POEM
 (n=6 patients, 6 tumors) provides whole-tumor histopathology for
 independent validation. Two large retrospective cohorts---TCIA (n=189
 patients, 389 tumors) and VHIO (n=343 patients, 1759 tumors)---provide
-portal-phase CT{} imaging alongside clinical outcomes and are used to
+portal-phase CT imaging alongside clinical outcomes and are used to
 apply the biologically-informed habitat model (developed in Chapter~\ref{ch:7})
 and assess its prognostic value (Chapter~\ref{ch:8}). Detailed demographic and
 clinical characteristics of TCIA and VHIO are provided in Chapter~\ref{ch:8}.
@@ -74,7 +74,7 @@ such studies.
 
 \subsection{CT Image Preprocessing}\label{ct-image-preprocessing}
 
-All CT{} images were acquired in the portal venous phase with
+All CT images were acquired in the portal venous phase with
 intravenous contrast, tube voltage of 100-130kV, slice thickness of
 1.25-5mm and pixel size 0.7-1.1mm\textsuperscript{2}, and stored in
 DICOM format (\emph{Digital Imaging and Communications in Medicine
@@ -86,8 +86,7 @@ storage server. TCIA scans were downloaded from the public repository
 (\url{https://www.cancerimagingarchive.net/}). POEM scans were provided
 through a collaborative project with Hospital Universitari de Bellvitge
 (see Section 5.1.3.) DICOM files were converted to NIfTI (Neuroimaging
-Informatics Technology Initiative) format using dcm2niix (X. Li et al.,
-2016), which also stored acquisition metadata in JSON files.
+Informatics Technology Initiative) format using dcm2niix \citep{liFirstStepNeuroimaging2016},
 
 Images underwent qualitative assessment by both the author and the
 group's experienced radiologists to ensure acquisition quality and
@@ -95,8 +94,7 @@ suitability for analysis. Scans were excluded if they were
 non-contrast-enhanced, acquired outside the portal venous phase, did not
 include the entire liver, or showed no measurable disease at baseline
 (defined as liver lesions \textless1 cm in diameter or absent liver
-metastases). \hyperref[_Ref219813073]{Figure~\ref{fig:5.1} \textbar{} Overview of
-patient cohorts used in this thesis} summarizes exclusion counts for
+metastases). \Cref{fig:5.1} summarizes exclusion counts for
 each cohort.
 
 For the majority of the scans, tumor segmentation was performed manually
@@ -108,8 +106,7 @@ supervised by an experienced radiologist. The rest were automatically
 delineated by SALSA, an automated liver tumor segmentation tool
 developed in our lab during the course of this thesis, with manual
 correction when needed. For TCIA, manual segmentations were performed by
-radiologists as part of the original data collection (Simpson et al.,
-2024)
+radiologists as part of the original data collection \citep{simpsonPreoperativeCTSurvival2024}
 
 Voxel resampling and intensity preprocessing were performed during
 feature extraction (see Methods Section of Chapters 6 and 7), ensuring
@@ -118,8 +115,8 @@ voxelwise feature maps.
 
 \subsection{Multiparametric MRI Preprocessing (PREDICT)}\label{multiparametric-mri-preprocessing-predict}
 
-The PREDICT cohort included contrast-enhanced CT{} alongside
-multiparametric MRI (mpMRI) acquired on two scanners: a 1.5T Siemens
+The PREDICT cohort included contrast-enhanced CT alongside
+mpMRI acquired on two scanners: a 1.5T Siemens
 Avanto and a 3T GE SIGNA Pioneer. The MRI protocol included
 high-resolution anatomical imaging (T2-weighted and T1-weighted),
 advanced diffusion MRI with multiple b-values and echo times, variable
@@ -135,31 +132,22 @@ segmentations were drawn manually by an experienced radiologist on the
 T2-weighted scan, aided by visual inspection of all MRI contrasts.
 
 From the preprocessed MRI data, thirteen multiparametric (mpMRI) maps
-were derived using biophysical models (\hyperref[_Ref219812935]{Table
-5.2}). Diffusion-relaxation MRI was modeled using two approaches: (1) a
+were derived using biophysical models (\Cref{tab:mpmri_maps}). Diffusion-relaxation MRI was modeled using two approaches: (1) a
 two-pool system capturing tissue and vascular water contributions,
-yielding apparent diffusion coefficients (ADCₜ, ADCᵥ), corresponding to
+yielding apparent diffusion coefficients ($ADC_t$, $ADC_v$), corresponding to
 tissue and vascular water contributions, transverse relaxation times
-(T₂ₜ), vascular signal fraction (fᵥ), and tissue kurtosis excess (Kₜ);
+($T_{2t}$), vascular signal fraction ($f_v$), and tissue kurtosis excess ($K_t$);
 and (2) an advanced microstructural model \citep{grussuClinicallyFeasibleLiver2025}
 incorporating intra- and extracellular compartments, yielding intrinsic
-diffusivity (D₀), volume-weighted cell size (vCS), intracellular
-fraction (fᵢₙ), and cell density. Variable flip angle imaging provided
-total longitudinal relaxation time (T₁). DCE MRI was fitted using a
+diffusivity ($D_0$), volume-weighted cell size ($vCS$), intracellular
+fraction ($f_{in}$), and cell density. Variable flip angle imaging provided
+total longitudinal relaxation time ($T_1$). DCE MRI was fitted using a
 two-compartment Tofts model \citep{toftsModelingTracerKinetics1997}, yielding the capillary
-permeability constant (K\textsuperscript{trans}), plasma volume fraction
-(vₚ), and extracellular-extravascular volume fraction (vₑ). Model
+permeability constant ($K^{trans}$), plasma volume fraction
+($v_p$), and extracellular-extravascular volume fraction ($v_e$). Model
 fitting was performed using custom Python code available at
 \url{https://github.com/fragrussu/MyRelax} and
 \url{https://github.com/fragrussu/bodymritools}.
-
-We harmonized mpMRI metrics across scanners with a custom-written ComBat
-\citep{fortinHarmonizationCorticalThickness2018} implementation, rescaling metrics obtained on the
-1.5T system to the 3T range. Quality control ensured that all mpMRI
-values were biologically plausible. For each metric, we established a
-valid range based on empirical knowledge (Annex A). Voxels within this
-range were included, those marginally outside (±10\%) were clipped to
-the boundary, and those beyond this tolerance were excluded.
 
 \begin{table}[ht]
     \centering
@@ -188,6 +176,16 @@ the boundary, and those beyond this tolerance were excluded.
     \end{tabularx}
 \end{table}
 
+We harmonized mpMRI metrics across scanners with a custom-written ComBat
+\citep{fortinHarmonizationCorticalThickness2018} implementation, rescaling metrics obtained on the
+1.5T system to the 3T range. Quality control ensured that all mpMRI
+values were biologically plausible. For each metric, we established a
+valid range based on empirical knowledge (Annex A). Voxels within this
+range were included, those marginally outside (±10\%) were clipped to
+the boundary, and those beyond this tolerance were excluded.
+
+
+
 \subsection{Histopathology Workflow (POEM)}\label{histopathology-workflow-poem}
 
 The POEM cohort (PrOspEctive Metastases Imaging) was collected as part
@@ -195,16 +193,15 @@ of a multicenter observational study led by Dr. Peter Vermeulen (GZA
 Hospitals, Belgium) in collaboration with Hospital Universitari de
 Bellvitge (Spain). The study aims to develop radiomic signatures of
 histopathological growth patterns \citep{lataczCanMedicalImaging2021} in liver
-metastases from colorectal and breast cancer using standard-of-care CT{}
-and MRI alongside complete histopathological sampling (Latacz et al.,
-2024). Our analysis focused on colorectal liver metastases from patients
+metastases from colorectal and breast cancer using standard-of-care CT
+and MRI alongside complete histopathological sampling \citep{lataczProspectiveCompleteHistopathological2024}. Our analysis focused on colorectal liver metastases from patients
 treated at Hospital Universitari de Bellvitge who underwent complete
 tumor resection.
 
 The histopathology protocol was designed to preserve spatial orientation
 for comparison with preoperative imaging. Surgeons applied orientation
 marks to the resected specimen, allowing the pathologist to slice the
-tissue in transverse (axial) planes corresponding to CT{} and MRI
+tissue in transverse (axial) planes corresponding to CT and MRI
 imaging planes. Slices were cut at 0.5--1 cm thickness, photographed,
 and sampled systematically. Tissue samples were formalin-fixed,
 paraffin-embedded, and stained with hematoxylin and eosin (H\&E).
@@ -217,8 +214,8 @@ open-source digital pathology platform, and supervised by an experienced
 pathologist. An experienced pathologist manually delineated regions of
 necrosis, fibrosis, and viable tumor on digitized whole-slide images.
 These annotations provided qualitative ground truth for validating
-CT{}-derived habitats (Chapter~\ref{ch:7}). We attempted spatial coregistration
-between histology slices and corresponding CT{} slices but found it
+CT-derived habitats (Chapter~\ref{ch:7}). We attempted spatial coregistration
+between histology slices and corresponding CT slices but found it
 impractical due to tissue deformation during resection and processing.
 As a result, histology was used for qualitative biological validation
 rather than voxel-by-voxel spatial comparison.
@@ -248,7 +245,7 @@ specific dataset and analysis.
 To enable the work in Chapters 7 and 8, and to support future research,
 we developed a modular, documented pipeline that addresses these issues
 systematically. The pipeline is image-modality agnostic, being
-applicable to any voxelwise imaging data (CT{}, MRI, PET, etc.) and
+applicable to any voxelwise imaging data (CT, MRI, PET, etc.) and
 works with both 2D and 3D data. It also includes key design choices as
 configurable parameters rather than hardcoded assumptions. We are
 currently preparing the pipeline for public release as an open-source
@@ -262,7 +259,7 @@ reproducibility and comparability in the field.
 \subsection{Pipeline Overview}\label{pipeline-overview}
 
 The pipeline consists of three modules: Preprocessing, Clustering, and
-Analysis (\hyperref[_Ref219813172]{Figure 5.2}):
+Analysis (\Cref{fig:5.2}):
 
 \begin{itemize}
 \item
@@ -286,10 +283,10 @@ Analysis (\hyperref[_Ref219813172]{Figure 5.2}):
   downstream analysis.
 \end{itemize}
 
-\begin{figure}[htbp]
+\begin{figure}[t!]
 \centering
 \includegraphics[width=0.95\textwidth]{fig_5_2.pdf}
-\caption[Habitat imaging pipeline overview]{Habitat imaging pipeline overview.
+\caption[Habitat imaging pipeline overview]{\textbf{Habitat imaging pipeline overview.}
 The pipeline consists of three modules. Preprocessing removes background
 voxels, applies optional log transformation, and performs standard
 scaling, outputting a 4D NIfTI volume per tumor. Clustering assigns
@@ -300,6 +297,8 @@ habitat-derived metrics (proportions, entropy, rim/core statistics) and
 exports summary tables.}
 \label{fig:5.2}
 \end{figure}
+
+
 
 The pipeline is implemented in Python and can be run from the command
 line. All random seeds are exposed for reproducibility, and outputs are
@@ -355,7 +354,22 @@ Criterion (BIC) or the Silhouette Score.
 
 \textbf{Clustering Scope:} A critical design choice is whether to
 cluster each tumor individually or pool all tumors together. The
-pipeline supports three modes (\hyperref[_Ref219813148]{Figure~\ref{fig:5.3}}):
+pipeline supports three modes (\Cref{fig:5.3}):
+
+\begin{figure}[t!]
+\centering
+\includegraphics[width=0.9\textwidth]{fig_5_3.pdf}
+\caption[Clustering scope: single-tumor, pooled, and hybrid modes]{\textbf{Clustering scope: single-tumor, pooled, and hybrid modes.}
+\textbf{(A)} Single-tumor mode. Each tumor is clustered independently.
+Labels are arbitrary and not comparable across tumors. \textbf{(B)}
+Pooled mode. All voxels are clustered together, producing globally
+consistent labels. However, local heterogeneity may be diluted.
+\textbf{(C)} Hybrid mode. Tumors are first clustered locally, then local
+cluster centroids are pooled and meta-clustered to define global
+prototypes. Each local cluster is mapped to its nearest prototype,
+yielding consistent labels while preserving local structure.}
+\label{fig:5.3}
+\end{figure}
 
 \emph{Single-tumor mode} clusters each tumor independently. This
 preserves local heterogeneity patterns but produces arbitrary label
@@ -403,20 +417,7 @@ reorders labels based on a biologically meaningful reference feature
 consistently represents the lowest-intensity phenotype across all
 tumors, Habitat K the highest. This can be applied to any mode.
 
-\begin{figure}[htbp]
-\centering
-\includegraphics[width=0.9\textwidth]{fig_5_3.pdf}
-\caption[Clustering scope: single-tumor, pooled, and hybrid modes]{Clustering scope: single-tumor, pooled, and hybrid modes.
-\textbf{(A)} Single-tumor mode. Each tumor is clustered independently.
-Labels are arbitrary and not comparable across tumors. \textbf{(B)}
-Pooled mode. All voxels are clustered together, producing globally
-consistent labels. However, local heterogeneity may be diluted.
-\textbf{(C)} Hybrid mode. Tumors are first clustered locally, then local
-cluster centroids are pooled and meta-clustered to define global
-prototypes. Each local cluster is mapped to its nearest prototype,
-yielding consistent labels while preserving local structure.}
-\label{fig:5.3}
-\end{figure}
+
 
 \subsection{Habitat-Derived Quantitative Metrics}\label{habitat-derived-quantitative-metrics}
 

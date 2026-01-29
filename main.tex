@@ -61,7 +61,8 @@
 % Gráficos e imágenes
 \usepackage{graphicx}
 \usepackage{svg}  % Para incluir SVG
-\graphicspath{{../source/figures/}}
+\usepackage{psvectorian} % Para ornamentos
+\graphicspath{{source/figures/}}
 
 % Tablas mejoradas
 \usepackage{booktabs}  % Para tablas profesionales (\toprule, \midrule, \bottomrule)
@@ -86,6 +87,20 @@
 
 % Colores
 \usepackage{xcolor}
+% TOC Control
+\usepackage{tocloft}
+\renewcommand{\cftchapfont}{\normalfont\bfseries\color{black}}
+\renewcommand{\cftsecfont}{\normalfont\color{black}}
+\renewcommand{\cftsubsecfont}{\normalfont\color{black}}
+\renewcommand{\cftfigfont}{\normalfont\color{black}}
+\renewcommand{\cfttabfont}{\normalfont\color{black}}
+\renewcommand{\cftchappagefont}{\normalfont\bfseries\color{blue}}
+\renewcommand{\cftsecpagefont}{\normalfont\color{blue}}
+\renewcommand{\cftsubsecpagefont}{\normalfont\color{blue}}
+\renewcommand{\cftfigpagefont}{\normalfont\color{blue}}
+\renewcommand{\cfttabpagefont}{\normalfont\color{blue}}
+% Fix blank page headers globally
+\usepackage{emptypage}
 
 % ============================================================================
 % CABECERAS Y PIES DE PÁGINA (fancyhdr)
@@ -114,6 +129,19 @@
   \renewcommand{\headrulewidth}{0pt}
 }
 
+% Empty style for blank pages (no header, no footer)
+\fancypagestyle{empty}{
+  \fancyhf{}
+  \renewcommand{\headrulewidth}{0pt}
+  \renewcommand{\footrulewidth}{0pt}
+}
+
+% Redefine cleardoublepage to use empty style on blank pages
+\makeatletter
+\def\cleardoublepage{\clearpage\if@twoside \ifodd\c@page\else
+  \thispagestyle{empty}\hbox{}\newpage\if@twocolumn\hbox{}\newpage\fi\fi\fi}
+\makeatother
+
 % Marcadores de capítulo para headers (SOLO título, sin "Chapter X")
 \renewcommand{\chaptermark}[1]{\markboth{\MakeUppercase{#1}}{}}
 \renewcommand{\sectionmark}[1]{}  % No actualizar el header con secciones
@@ -137,13 +165,13 @@
 % LISTAS Y ACRÓNIMOS
 % ============================================================================
 
-\usepackage[acronym,nonumberlist,style=list,toc]{glossaries}  % Para lista de acrónimos
+\usepackage[acronym,nonumberlist,style=list,toc,nogroupskip]{glossaries}  % Para lista de acrónimos
 \renewcommand*{\glspostdescription}{} % Quitar el punto final de las descripciones
 \usepackage{multicol}  % Para dos columnas en abbreviations
 \makeglossaries
 
 % Cargar definiciones de acrónimos
-\input{../source/abbreviations.tex}
+\input{source/abbreviations.tex}
 
 % Configuración de listas
 \usepackage{enumitem}
@@ -180,6 +208,16 @@
 \renewcommand{\cftfigpagefont}{\normalfont\color{linkcolor}}
 \renewcommand{\cfttabfont}{\normalfont}
 \renewcommand{\cfttabpagefont}{\normalfont\color{linkcolor}}
+
+% Part entries in TOC: number blue, title black
+\renewcommand{\cftpartfont}{\normalfont\bfseries\large}
+\renewcommand{\cftpartpagefont}{\normalfont\bfseries\large\color{linkcolor}}
+\renewcommand{\cftpartleader}{\cftdotfill{\cftdotsep}}
+
+% TOC/LOF/LOT Titles in Fira Sans
+\renewcommand{\cfttoctitlefont}{\Huge\bfseries\sffamily}
+\renewcommand{\cftloftitlefont}{\Huge\bfseries\sffamily}
+\renewcommand{\cftlottitlefont}{\Huge\bfseries\sffamily}
 \usepackage[sort&compress,authoryear]{natbib}  % Para bibliografía con estilo authoryear
 \usepackage{microtype}  % Mejoras tipográficas
 \usepackage{url}  % URLs
@@ -199,7 +237,7 @@
 % Aplicar Roboto a títulos de partes, capítulos, secciones, etc.
 % Esto se hace redefiniendo los comandos de formato
 
-% Títulos de partes - alineados a la izquierda con quote
+% Títulos de partes - Part X centered at top with ornament
 \makeatletter
 \renewcommand{\@part}[2][]{%
   \ifnum \c@secnumdepth >-2\relax
@@ -209,14 +247,19 @@
     \addcontentsline{toc}{part}{#1}%
   \fi
   \markboth{}{}%
-  {\raggedright  % Alineado a la izquierda
-   \interlinepenalty \@M
+  % Part number at top, centered
+  {\centering
    \normalfont
    \ifnum \c@secnumdepth >-2\relax
      \fontsize{20}{24}\selectfont\bfseries\sffamily\titlefont \partname\nobreakspace\thepart
      \par
-     \vskip 15\p@
+     \vskip 10\p@
+     % Ornament below Part number
+     \psvectorian[scale=0.2]{8}
+     \par
+     \vskip 30\p@
    \fi
+   % Title centered
    \fontsize{26}{32}\selectfont\bfseries\sffamily\titlefont #1\par}%
   \vskip 30\p@  % Espacio después del título, antes de la quote
   }
@@ -288,9 +331,9 @@
 % Nota: Las rutas son relativas a donde se compila (desde build/), por eso usamos ../
 \def\printversion{print}
 \ifx\thesisversion\printversion
-  \input{../config/print_config.tex}
+  \input{config/print_config.tex}
 \else
-  \input{../config/digital_config.tex}
+  \input{config/digital_config.tex}
 \fi
 
 % ============================================================================
@@ -310,33 +353,33 @@
 % Página de créditos para versión impresa (solo si es versión print)
 \def\printversion{print}
 \ifx\thesisversion\printversion
-  \input{../source/frontmatter/printed_cover_credits.tex}
+  \input{source/frontmatter/printed_cover_credits.tex}
 \fi
 
 \frontmatter
 
 % Portada
-\input{../source/frontmatter/titlepage.tex}
+\input{source/frontmatter/titlepage.tex}
 \cleardoublepage
 
 % Copyright y Funding
-\input{../source/frontmatter/copyright_and_funding.tex}
+\input{source/frontmatter/copyright_and_funding.tex}
 \cleardoublepage
 
 % Dedicatoria
-\input{../source/frontmatter/dedication.tex}
+\input{source/frontmatter/dedication.tex}
 \cleardoublepage
 
 % Abstract, Resumen, Resum
-\input{../source/frontmatter/abstract.tex}
+\input{source/frontmatter/abstract.tex}
 \cleardoublepage
-\input{../source/frontmatter/resumen.tex}
+\input{source/frontmatter/resumen.tex}
 \cleardoublepage
-\input{../source/frontmatter/resum.tex}
+\input{source/frontmatter/resum.tex}
 \cleardoublepage
 
 % Agradecimientos
-\input{../source/frontmatter/acknowledgements.tex}
+\input{source/frontmatter/acknowledgements.tex}
 \cleardoublepage
 
 % Tabla de contenidos
@@ -346,18 +389,39 @@
 % Lista de figuras
 \begingroup
 \renewcommand*{\addvspace}[1]{}
+\cleardoublepage
+\phantomsection
+\addcontentsline{toc}{chapter}{List of Figures}
 \listoffigures
 \cleardoublepage
 
 % Lista de tablas
+\cleardoublepage
+\phantomsection
+\addcontentsline{toc}{chapter}{List of Tables}
 \listoftables
 \endgroup
 \cleardoublepage
 
 % Lista de acrónimos (mostrar todos aunque no se usen en el texto)
 \glsaddall
-\printglossary[type=\acronymtype,title=List of Abbreviations]
-\cleardoublepage
+% Explicitly add all 13 mpMRI symbols
+\glsadd{adct}
+\glsadd{adcv}
+\glsadd{kt}
+\glsadd{fv}
+\glsadd{t2t}
+\glsadd{d0}
+\glsadd{vcs}
+\glsadd{fin}
+\glsadd{cd}
+\glsadd{t1}
+\glsadd{t2star}
+\glsadd{ktrans}
+\glsadd{ve}
+\glsadd{vp}
+\printglossary[type=\acronymtype,title=Abbreviations \& Symbols]
+\clearpage
 
 \mainmatter
 
@@ -378,9 +442,9 @@
   % Part I: Introduction
   \cleardoublepage
   \thispagestyle{empty}
-  \vspace*{4cm}
+  \vspace*{2cm}
   \part{Introduction}
-  \vspace{1cm}
+  \vfill
   \begin{flushright}
   \begin{minipage}{0.75\textwidth}
   \raggedleft
@@ -391,15 +455,16 @@
   \upshape\normalsize --- Richard Hamming
   \end{minipage}
   \end{flushright}
+  \vfill
   \cleardoublepage
-  \input{../source/chapters/thesis/chapter_1_motivation_objectives_and_contributions.tex}
+  \input{source/chapters/thesis/chapter_1_motivation_objectives_and_contributions.tex}
   
   % Part II: Foundations
   \cleardoublepage
   \thispagestyle{empty}
-  \vspace*{4cm}
+  \vspace*{2cm}
   \part{Foundations}
-  \vspace{1cm}
+  \vfill
   \begin{flushright}
   \begin{minipage}{0.75\textwidth}
   \raggedleft
@@ -414,17 +479,24 @@
   \upshape\normalsize --- Delphine Horvilleur, \emph{Vivre avec nos morts}
   \end{minipage}
   \end{flushright}
+  \vfill
   \cleardoublepage
-  \input{../source/chapters/thesis/chapter_2_medical_image_techniques_an_overview.tex}
+  \input{source/chapters/thesis/chapter_2_medical_image_techniques_an_overview.tex}
   \cleardoublepage
-  \input{../source/chapters/thesis/chapter_3_colorectal_liver_metastases.tex}
+  \input{source/chapters/thesis/chapter_3_colorectal_liver_metastases.tex}
   
   % Part III: Methodological Framework
+  % NOTE: Chapter 4 is now part of Part II (Foundations) or preceding Part III.
+  % The user requested Part III to start AFTER Chapter 4, before Chapter 5.
+  % So Chapter 4 stays here (visually under Foundations unless we want a separate part, but user just said "is part of Part II").
+  \cleardoublepage
+  \input{source/chapters/thesis/chapter_4_imaging_heterogeneity_state_of_the_art.tex}
+  
   \cleardoublepage
   \thispagestyle{empty}
-  \vspace*{4cm}
+  \vspace*{2cm}
   \part{Methodological Framework}
-  \vspace{1cm}
+  \vfill
   \begin{flushright}
   \begin{minipage}{0.75\textwidth}
   \raggedleft
@@ -437,17 +509,16 @@
   \upshape\normalsize --- Noam Chomsky
   \end{minipage}
   \end{flushright}
+  \vfill
   \cleardoublepage
-  \input{../source/chapters/thesis/chapter_4_imaging_heterogeneity_state_of_the_art.tex}
-  \cleardoublepage
-  \input{../source/chapters/thesis/chapter_5_data_and_habitat_imaging_pipeline.tex}
+  \input{source/chapters/thesis/chapter_5_data_and_habitat_imaging_pipeline.tex}
   
   % Part IV: A Data-Driven Approach to CT Habitats
   \cleardoublepage
   \thispagestyle{empty}
-  \vspace*{4cm}
+  \vspace*{2cm}
   \part{A Data-Driven Approach to CT Habitats}
-  \vspace{1cm}
+  \vfill
   \begin{flushright}
   \begin{minipage}{0.75\textwidth}
   \raggedleft
@@ -458,19 +529,20 @@
   \upshape\normalsize --- Antoni Gaudí
   \end{minipage}
   \end{flushright}
+  \vfill
   \cleardoublepage
-  \input{../source/chapters/thesis/chapter_6_identification_of_precise_handcrafted_features_for_ct.tex}
+  \input{source/chapters/thesis/chapter_6_identification_of_precise_handcrafted_features_for_ct.tex}
   \cleardoublepage
-  \input{../source/chapters/thesis/chapter_7_development_and_validation_of_an_mpmri_anchored_ct.tex}
+  \input{source/chapters/thesis/chapter_7_development_and_validation_of_an_mpmri_anchored_ct.tex}
   \cleardoublepage
-  \input{../source/chapters/thesis/chapter_8_clinical_relevance_of_ct.tex}
+  \input{source/chapters/thesis/chapter_8_clinical_relevance_of_ct.tex}
   
   % Part V: Synthesis and Conclusions
   \cleardoublepage
   \thispagestyle{empty}
-  \vspace*{4cm}
+  \vspace*{2cm}
   \part{Synthesis and Conclusions}
-  \vspace{1cm}
+  \vfill
   \begin{flushright}
   \begin{minipage}{0.75\textwidth}
   \raggedleft
@@ -485,10 +557,11 @@
   \upshape\normalsize --- Robert Weinberg, \emph{The Biology of Cancer}
   \end{minipage}
   \end{flushright}
+  \vfill
   \cleardoublepage
-  \input{../source/chapters/thesis/chapter_9_general_discussion.tex}
+  \input{source/chapters/thesis/chapter_9_general_discussion.tex}
   \cleardoublepage
-  \input{../source/chapters/thesis/chapter_10_conclusions.tex}
+  \input{source/chapters/thesis/chapter_10_conclusions.tex}
 \fi
 
 % ============================================================================
@@ -502,13 +575,13 @@
 % Comparar con string "true"
 \ifx\includeannex\trueflag
   \appendix
-  \input{../source/chapters/annex/annex_A_image_aquisition_details.tex}
+  \input{source/chapters/annex/annex_A_image_aquisition_details.tex}
   \cleardoublepage
-  \input{../source/chapters/annex/annex_B_identification_of_precise_handcrafted_features_for_habitat_imaging.tex}
+  \input{source/chapters/annex/annex_B_identification_of_precise_handcrafted_features_for_habitat_imaging.tex}
   \cleardoublepage
-  \input{../source/chapters/annex/annex_C_development_and_validation_of_biologically_informed_ct_habitats.tex}
+  \input{source/chapters/annex/annex_C_development_and_validation_of_biologically_informed_ct_habitats.tex}
   \cleardoublepage
-  \input{../source/chapters/annex/annex_D_clinical_relevance_of_ct_habitats.tex}
+  \input{source/chapters/annex/annex_D_clinical_relevance_of_ct_habitats.tex}
   \cleardoublepage
 \fi
 
@@ -519,7 +592,7 @@
 \renewcommand{\bibname}{References}  % Título "References" en lugar de "Bibliography"
 \bibliographystyle{plainnat}
 {\small  % Tamaño 9pt para las referencias
-\bibliography{../source/references}
+\bibliography{source/references}
 }
 
 % Índice alfabético (opcional)

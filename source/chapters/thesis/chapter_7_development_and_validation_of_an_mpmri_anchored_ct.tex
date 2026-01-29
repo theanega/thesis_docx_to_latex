@@ -3,7 +3,7 @@ CT{} Habitat
 Model}{Development and Validation of an mpMRI-anchored CT Habitat Model}}\label{development-and-validation-of-an-mpmri-anchored-ct-habitat-model}\label{ch:7}
 
 In Chapter~\ref{ch:6}, we identified a set of precise handcrafted radiomics
-features for stable CT{} habitat computation. An exploratory analysis
+features for stable CT habitat computation. An exploratory analysis
 suggested qualitative agreement between these habitats and histologic
 phenotypes such as necrosis and viable cancer. In this chapter, we
 address the central question arising from that observation: can CT{}
@@ -12,29 +12,23 @@ metastases?
 
 The key methodological strength is the use of the PREDICT dataset (see
 Section 5.1.). Each CT{} voxel is paired with aligned mpMRI maps
-reflecting cellularity and vascularity. This allows us to evaluate CT{}
+reflecting cellularity and vascularity. This allows us to evaluate CT
 habitats against pseudo-biological ground truth during development---not
 just post-hoc.
 
 \textbf{Contributions:}
 
-\begin{itemize}
+\begin{itemize}[label={--}]
 \item
   We compare four CT{} data representations for habitat
-  computation---raw Hounsfield units, handcrafted radiomics features,
+  computation---raw HU, handcrafted radiomics features,
   deep learning features from a liver tumor segmentation model, and deep
   learning features from a foundation model---and identify the
   representation that yields the most biologically coherent habitats.
-\end{itemize}
-
-\begin{itemize}
 \item
   We develop an mpMRI-anchored framework for CT{} habitat discovery,
   using co-registered multiparametric MRI as a surrogate for tissue
   cellularity and vascularity.
-\end{itemize}
-
-\begin{itemize}
 \item
   We validate CT{} habitats against whole-tumor histopathology
   annotations of necrosis, fibrosis, and viable cancer in resected
@@ -61,7 +55,7 @@ histologically complex ecosystems containing variable proportions of
 viable tumor, necrosis, and fibrosis. These compartments carry
 prognostic significance: fibrosis often indicates favorable response to
 chemotherapy \citep{poultsidesPathologicResponsePreoperative2012}, while central necrosis may
-reflect treatment failure due to poor drug penetration \citep{wongColorectalCancerLiver2007b}. If we could distinguish these tissue states non-invasively, we
+reflect treatment failure due to poor drug penetration \citep{wongSpecificityIntraacinarNecrosis2007}. If we could distinguish these tissue states non-invasively, we
 might stratify patients more accurately and guide treatment decisions
 earlier.
 
@@ -84,7 +78,7 @@ datasets. In conventional radiomics studies (i.e. bulk radiomics, not
 voxelwise studies) several studies have compared handcrafted and deep
 learning features for outcome prediction. For habitat imaging, however,
 no study has compared these representations. Thus, to date, we do not
-know whether the representational capacity of deep learning trnaslated
+know whether the representational capacity of deep learning translated
 into more biologically coherent habitats, or if simpler handcrafted
 features are enough.
 
@@ -102,15 +96,13 @@ histology\textquotesingle s cellular resolution and
 CT{}\textquotesingle s accessibility. Diffusion-weighted imaging (DWI),
 the primary non-invasive MRI technique for probing tissue microstructure
 \citep{lebihanDiffusionTensorImaging2001}, measures water diffusion at scales far below
-the millimeter-level image resolution. In tumors, apparent diffusion
-coefficient (ADC) values inversely correlate with cellularity: dense
-cellular packing restricts water motion, yielding low ADC (Chen et al.,
-2013; Surov et al., 2017). Advanced diffusion models can also estimate
-microvascular volume fraction (fv), a marker of tissue vascularity
-\citep{federauPerfusionMeasurementBrain2014,togaoMeasurementPerfusionFraction2018}. Similarly, dynamic
-contrast-enhanced (DCE) MRI quantifies vascular properties through
+the millimeter-level image resolution. In tumors, ADC
+values inversely correlate with cellularity: dense
+cellular packing restricts water motion, yielding low ADC \citep{chenCorrelationApparentDiffusion2013, surovCorrelationApparentDiffusion2017}. Advanced diffusion models can also estimate
+microvascular volume fraction ($f_v$), a marker of tissue vascularity
+\citep{federauPerfusionMeasurementBrain2014,togaoMeasurementPerfusionFraction2018}. Similarly, DCE MRI quantifies vascular properties through
 pharmacokinetic modeling. Parameters such as the transfer constant
-(\emph{Ktrans)} have been validated as markers of tumor vascularity and
+(K$^{trans}$) have been validated as markers of tumor vascularity and
 perfusion \citep{jacksonImagingTumorVascular2007,toftsMeasurementBloodbrainBarrier1991}. Together,
 these modalities provide voxel-level maps of biologically meaningful
 tissue states---cellularity and vascularity---that are impractical to
@@ -131,8 +123,7 @@ reference.
 
 We followed a two-stage strategy. First, in the PREDICT cohort, we
 compared four CT{} representations and selected the one whose habitats
-best separated mpMRI-derived measures of cellularity (ADC) and
-vascularity (fv, Ktrans). Second, we applied the selected model to the
+connected measures (cellularity $ADC$; vascularity $f_v, K^{trans}$). Second, we applied the selected model to the
 POEM cohort---patients with resected colorectal liver metastases and
 whole-tumor histopathology---to confirm that habitats exhibit spatial
 organization consistent with necrotic cores, fibrotic regions, and
@@ -159,9 +150,9 @@ colorectal liver metastases who underwent both contrast-enhanced CT{}
 and multiparametric MRI before treatment. CT{} was acquired in the
 portal venous phase; mpMRI included T2-weighted, diffusion-weighted, and
 dynamic contrast-enhanced sequences. Quantitative mpMRI maps---including
-ADCt, Ktrans, and fv---were derived as described in Section 5.1.2. For
+$ADC_t$, K$^{trans}$, and $f_v$---were derived as described in Section 5.1.2. For
 the present analysis, we included 10 patients (42 tumors) with evaluable
-imaging on both modalities and successful CT{}--mpMRI co-registration.
+imaging on both modalities and successful CT--mpMRI co-registration.
 
 \textbf{2. Histopathological Validation (POEM).} The POEM cohort
 (Section 5.1.3) was used for independent validation against biological
@@ -175,17 +166,17 @@ architecture.
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=0.95\textwidth]{fig_7_1.pdf}
-\caption[Schematic of the mpMRI-anchored CT habitat model development]{Schematic of the mpMRI-anchored CT habitat model development.
+\caption[Schematic of the mpMRI-anchored CT habitat model development]{\textbf{Schematic of the mpMRI-anchored CT habitat model development.}
 CT and MRI scans from the PREDICT cohort were co-registered to T2w
 space. Four voxelwise CT feature representations---Raw HU, Handcrafted
 Radiomics, DL-SALSA, and DL-FM---were extracted and processed through
 the imaging habitats pipeline to generate candidate habitat maps.
 Co-registered mpMRI maps (including vascular fraction, $f_v$; capillary
-permeability, $K^{trans}$; and tissue apparent diffusion coefficient, $ADC_t$)
+permeability, K$^{trans}$; and tissue ADC, $ADC_t$)
 provided biophysical reference for model selection. The optimal CT
 habitat model was selected based on its ability to spatially separate
 tissue properties reflecting cellularity and vascularity (with the three
-mpMRI maps shown: ADCt, Ktrans and fv), and further characterized using
+mpMRI maps shown: $ADC_t$, K$^{trans}$ and $f_v$), and further characterized using
 additional mpMRI maps. Created with BioRender.com.}
 \label{fig:7.1}
 \end{figure}
@@ -201,7 +192,7 @@ Images were cropped to a tumor-centered bounding box (5--7 mm margin)
 and resampled to 2×2×2 mm isotropic resolution prior to registration.
 Registration was performed using NiftyReg in sequential stages: rigid,
 affine, then deformable B-spline if alignment improved. Quality was
-assessed by Dice similarity coefficient (DSC) between the T2w tumor mask
+assessed by DSC between the T2w tumor mask
 and the warped mask; the transformation yielding the highest DSC was
 retained. Full methodological details are provided in Annex C.
 
@@ -211,7 +202,7 @@ Four CT{} representations were evaluated:
 
 \begin{itemize}
 \item
-  \textbf{Raw Hounsfield units.} The original portal-venous phase CT{}
+  \textbf{Raw HU.} The original portal-venous phase CT
   images, serving as baseline.
 \item
   \textbf{Handcrafted radiomics features.} Voxelwise texture features
@@ -224,15 +215,13 @@ Four CT{} representations were evaluated:
   length non-uniformity, and NGTDM coarseness. Correlation analysis is
   detailed in Annex C.
 \item
-  \textbf{Deep learning features from a liver tumro segmentation model
+  \textbf{Deep learning features from a liver tumor segmentation model
   (DL-SALSA).} Activations from the penultimate decoder layer of SALSA,
-  a 3D nnU-Net trained for liver tumor segmentation (Balaguer-Montero et
-  al., 2025).
+  a 3D nnU-Net trained for liver tumor segmentation \citep{balaguer-monteroCTbasedDeepLearningdriven2025}.
 \item
   \textbf{Deep learning features from a foundation model (DL-FM).}
   Activations from a SegResEncoder foundation model pretrained on
-  diverse CT{} datasets using self-supervised learning (Pai et al.,
-  2025).
+  diverse CT datasets using self-supervised learning \citep{paiVisionFoundationModels2025}.
 \end{itemize}
 
 All CT{} images were resampled to 1×1×1 mm isotropic resolution prior to
@@ -271,13 +260,13 @@ we selected the following three:
   \textbf{f\textsubscript{v}} (vascular signal fraction): a measure of
   blood volume
 \item
-  \textbf{K\textsuperscript{trans}} (volume transfer constant): a
+  \textbf{K$^{trans}$} (volume transfer constant): a
   measure of capillary permeability
 \end{itemize}
 
 Both fv and Ktrans were included to capture different aspects of tumor
-vascularity---structural vascular density fv versus functional leakiness
-and perfusion Ktrans.
+vascularity---structural vascular density $f_v$ versus functional leakiness
+and perfusion K$^{trans}$.
 
 For each representation, we computed habitats and extracted the median
 value of each mpMRI metric within each habitat for each patient. We
@@ -285,7 +274,7 @@ aggregated to patient level (N=10) to avoid pseudo-replication. Habitat
 separation was assessed using the Friedman test, with
 Kendall\textquotesingle s W as effect size \citep{kendallProblem$m$Rankings1939,tomczakNeedReportEffect} . To summarize performance across the three
 metrics, we computed a biophysical separation score defined as the mean
-Kendall\textquotesingle s W across ADCt, fv, and Ktrans. The
+Kendall\textquotesingle s W across $ADC_t$, $f_v$, and K$^{trans}$. The
 representation with the highest biophysical separation score was
 selected for further validation.
 
@@ -376,10 +365,10 @@ and CT{}-to-T2w (median DSC = 0.70, IQR: 0.65--0.78).
 
 \textbf{CT}{} \textbf{Habitat Model Selection.} We compared the four
 CT{} representations by their ability to produce habitats that separate
-the three pre-specified mpMRI metrics: tissue ADC (cellularity proxy),
-vascular fraction (fv), and perfusion (Ktrans).
-\hyperref[_Ref219821967]{Figure~\ref{fig:7.2}} shows examples of CT{} habitats
-with the four feature sets. \hyperref[_Ref219821259]{Table 7.1}
+the three pre-specified mpMRI metrics: tissue ADC ($ADC_t$),
+vascular fraction ($f_v$), and perfusion (K$^{trans}$).
+\Cref{fig:7.2} shows examples of CT habitats
+with the four feature sets. \Cref{tab:ct_feature_comparison}
 summarizes the results.
 
 Handcrafted radiomics achieved the highest biophysical separation score
@@ -389,8 +378,8 @@ moderate separation for cellularity (W = 0.31) but failed to distinguish
 vascular phenotypes. DL-SALSA performed moderately on vascular metrics;
 DL-FM showed no significant separation on any metric.
 
-Notably, none of the representations achieved strong separation on ADCt,
-our primary cellularity proxy. This suggested that CT{} habitats capture
+Notably, none of the representations achieved strong separation on $ADC_t$,
+our primary cellularity proxy. This suggested that CT habitats capture
 vascular rather than cellular heterogeneity---a finding we examine in
 detail in Section 7.3.2.
 
@@ -434,18 +423,18 @@ reported in Annex C.
 Based on these findings, handcrafted radiomics was selected as the final
 CT{} habitat model.
 
-\begin{figure}[htbp]
+\begin{figure}[t!]
 \centering
 \includegraphics[width=0.95\textwidth]{fig_7_2.pdf}
-\caption[Selection of the optimal CT representation]{Selection of the optimal CT representation.
+\caption[Selection of the optimal CT representation]{\textbf{Selection of the optimal CT representation.}
 \textbf{(A)} Representative habitat maps for a single tumor generated by
 the four candidate representations (Raw HU, Handcrafted Radiomics,
-DL-SALSA, DL-FM), alongside reference mpMRI maps (ADCt, fv, Ktrans).
+DL-SALSA, DL-FM), alongside reference mpMRI maps ($ADC_t$, $f_v$, K$^{trans}$).
 \textbf{(B)} Biophysical separation performance
 (Kendall's W) for each representation across the three
 pre-specified mpMRI metrics. Handcrafted radiomics achieved the highest
-separation on vascular metrics (fv, Ktrans) but not on cellularity
-(ADCt). \textbf{(C)} Technical stability metrics: initialization
+separation on vascular metrics ($f_v$, K$^{trans}$) but not on cellularity
+($ADC_t$). \textbf{(C)} Technical stability metrics: initialization
 stability (ARI across seeds), data stability (bootstrap ARI), and
 spatial coherence (Moran's I).}
 \label{fig:7.2}
@@ -456,10 +445,23 @@ spatial coherence (Moran's I).}
 We characterized the three habitats using 13 mpMRI metrics to test
 whether they corresponded to the hypothesized histological
 compartments---necrosis, fibrosis, and viable tumor
-(\hyperref[_Ref219821277]{Table 7.2}). \hyperref[_Ref219821980]{Figure
-7.3} shows boxplots for the eight metrics with significant differences
-across habitats, plus two cellularity-related metrics (fin, ADCt). Full
+compartments---necrosis, fibrosis, and viable tumor
+(\Cref{tab:habitat_characterization}). \Cref{fig:7.3} shows boxplots for the eight metrics with significant differences
+across habitats, plus two cellularity-related metrics ($f_{in}$, $ADC_t$). Full
 results with pairwise significance tests are available in Annex C.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.95\textwidth]{fig_7_3.png}
+\caption[Biophysical characterization of CT habitats using mpMRI]{\textbf{Biophysical characterization of CT habitats using mpMRI.}
+Distribution of eight mpMRI metrics across the three CT habitats (H1:
+blue, H2: yellow, H3: pink). Vascular parameters ($f_v$, K$^{trans}$, $ADC_v$, $D_0$)
+show gradients from H1 to H3. Cellular parameters ($ADC_t$, $f_{in}$) show H2 as
+the most cellular habitat. Boxplots show patient-level medians (N = 10).
+Brackets indicate significant pairwise comparisons (Wilcoxon,
+BH-corrected): *p $<$ 0.05, **p $<$ 0.01.}
+\label{fig:7.3}
+\end{figure}
 
 \begin{table}[ht]
     \centering
@@ -495,15 +497,15 @@ results with pairwise significance tests are available in Annex C.
 \fi
 
 Vascular parameters showed consistent gradients across habitats.
-Vascular fraction (fv) increased monotonically from H1 to H3 (0.068 →
-0.112; W = 0.67, p = 0.005), as did vascular ADC. Relaxation times (T2*,
-T1) decreased in parallel, consistent with increased blood content and
-contrast uptake. However, capillary permeability (Ktrans) did not follow
+Vascular fraction ($f_v$) increased monotonically from H1 to H3 (0.068 →
+0.112; W = 0.67, p = 0.005), as did vascular ADC. Relaxation times ($T_2^*$,
+$T_1$) decreased in parallel, consistent with increased blood content and
+contrast uptake. However, capillary permeability (K$^{trans}$) did not follow
 this gradient---it was highest in H2 (0.52 min⁻¹), not H3 (0.51 min⁻¹),
 with both elevated relative to H1 (W = 0.52, p = 0.018). If H3
 represented angiogenic tumor tissue, we would expect it to show the
-highest Ktrans, since tumor neovessels are typically leaky. The
-combination of high fv but moderate Ktrans in H3 suggests partial volume
+highest K$^{trans}$, since tumor neovessels are typically leaky. The
+combination of high $f_v$ but moderate K$^{trans}$ in H3 suggests partial volume
 effects at the tumor-liver interface, where voxels mix tumor tissue with
 adjacent normal liver parenchyma---which has mature, less permeable
 vasculature.
@@ -517,27 +519,16 @@ pointed in the same direction: H2 contains the most densely packed
 cells. H1, by contrast, showed low-moderate cellularity consistent with
 necrotic or fibrotic tissue; H3 showed intermediate values.
 
-\begin{figure}[htbp]
-\centering
-\includegraphics[width=0.95\textwidth]{fig_7_4.pdf}
-\caption[Biophysical characterization of CT habitats using mpMRI]{Biophysical characterization of CT habitats using mpMRI.
-Distribution of eight mpMRI metrics across the three CT habitats (H1:
-blue, H2: yellow, H3: pink). Vascular parameters (fv, Ktrans, ADCv, D0)
-show gradients from H1 to H3. Cellular parameters (ADCt, fin) show H2 as
-the most cellular habitat. Boxplots show patient-level medians (N = 10).
-Brackets indicate significant pairwise comparisons (Wilcoxon,
-BH-corrected): *p $<$ 0.05, **p $<$ 0.01.}
-\label{fig:7.4}
-\end{figure}
+
 
 Based on these profiles, we propose the following biological
 interpretation:
 
 \begin{itemize}
 \item
-  \textbf{Habiat 1: Avascular.} Low vascular fraction, low permeability,
+  \textbf{Habitat 1: Avascular.} Low vascular fraction, low permeability,
   low-moderate cellularity. Likely contains necrosis, fibrosis, or
-  both---CT{} cannot distinguish between them.
+  both---CT cannot distinguish between them.
 \item
   \textbf{Habitat 2: Cellular-Perfused.} Intermediate vascular fraction,
   highest capillary permeability, highest cellularity. Consistent with
@@ -562,17 +553,35 @@ habitat model to the POEM cohort (n = 6) to assess correspondence with
 whole-tumor histology. Resected specimens displayed the architecture
 characteristic of colorectal liver metastases: central regions of
 necrosis and fibrosis surrounded by viable tumor at the periphery
-(\hyperref[_Ref219822008]{Figure~\ref{fig:7.4}}A). CT{} habitat maps captured this
+(\Cref{fig:7.4}A). CT habitat maps captured this
 organization---H1 (Avascular) localized to tumor cores, coinciding
 mostly with histologically annotated necrosis, while H2
 (Cellular-Perfused) and H3 (Vascular) predominated at the periphery,
-corresponding to viable tumor margins (\hyperref[_Ref219822008]{Figure
-7.4}B).
+corresponding to viable tumor margins (\Cref{fig:7.4}B).
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.95\textwidth]{fig_7_4.pdf}
+\caption[Spatial architecture and histopathological validation of CT habitats]{\textbf{Spatial architecture and histopathological validation of CT habitats.}
+\textbf{(A)} Schematic representation of habitat organization in
+colorectal liver metastases. H1 (Avascular, blue) localizes to the tumor
+core; H2 (Cellular-Perfused, yellow) represents viable proliferating
+tumor; H3 (Vascular, pink) localizes to the periphery at the tumor-liver
+interface. \textbf{(B)} Habitat proportions in whole tumor, rim (2mm
+outer shell), and core (interior) across both cohorts (POEM n=6, PREDICT
+n=42). H1 dominates the core ($\sim$80\%); H2 and H3 dominate
+the rim. \textbf{(C)} Representative case from the POEM cohort showing
+correspondence between CT habitats and whole-tumor histology. Left:
+CT slice with habitat overlay. Right: H\&E section. H1 coincides with
+necrotic/fibrotic regions (blue); H2 corresponds to viable tumor at the
+periphery (yellow).}
+\label{fig:7.4}
+\end{figure}
 
 To quantify this spatial organization, we computed habitat proportions
 separately for the tumor rim (2mm outer shell) and core (interior)
 across both cohorts (N = 48 tumors: 6 POEM, 42 PREDICT;
-\hyperref[_Ref219822008]{Figure~\ref{fig:7.4}}C). H1 dominated the core (79.4\% ±
+\Cref{fig:7.4}C). H1 dominated the core (79.4\% ±
 2.9\%) but was largely absent from the rim (9.0\% ± 2.3\%). H3 was
 concentrated in the rim (35.0\% ± 1.5\%) and virtually absent from the
 core (0.4\% ± 0.2\%). H2 showed intermediate localization, enriched in
@@ -589,24 +598,7 @@ scale mismatch between voxel-level imaging and microscopic histology, as
 well as CT{}\textquotesingle s inability to distinguish necrosis from
 fibrosis within the avascular compartment.
 
-\begin{figure}[htbp]
-\centering
-\includegraphics[width=0.95\textwidth]{fig_7_3.png}
-\caption[Spatial architecture and histopathological validation of CT habitats]{Spatial architecture and histopathological validation of CT habitats.
-\textbf{(A)} Schematic representation of habitat organization in
-colorectal liver metastases. H1 (Avascular, blue) localizes to the tumor
-core; H2 (Cellular-Perfused, yellow) represents viable proliferating
-tumor; H3 (Vascular, pink) localizes to the periphery at the tumor-liver
-interface. \textbf{(B)} Habitat proportions in whole tumor, rim (2mm
-outer shell), and core (interior) across both cohorts (POEM n=6, PREDICT
-n=42). H1 dominates the core ($\sim$80\%); H2 and H3 dominate
-the rim. \textbf{(C)} Representative case from the POEM cohort showing
-correspondence between CT habitats and whole-tumor histology. Left:
-CT slice with habitat overlay. Right: H\&E section. H1 coincides with
-necrotic/fibrotic regions (blue); H2 corresponds to viable tumor at the
-periphery (yellow).}
-\label{fig:7.3}
-\end{figure}
+
 
 \section{Discussion}\label{discussion-1}
 
@@ -640,8 +632,8 @@ vascular architecture. This is not surprising given that we used
 contrast-enhanced portal-venous phase CT{}, where signal intensity
 directly reflects contrast uptake and thus tissue perfusion. Our
 interpretation of the three habitats was: avascular tissue (H1) with low
-fv/Ktrans; a cellular-perfused habitat (H2) towards the rim with highest
-Ktrans and celullarity indicating possible viable cancer, and finally a
+$f_v$/K$^{trans}$; a cellular-perfused habitat (H2) towards the rim with highest
+K$^{trans}$ and cellularity indicating possible viable cancer, and finally a
 vascular rim (H3) with highest fv and moderate-high Ktrans. The
 fv/Ktrans dissociation in H3 has a plausible explanation: high vascular
 fraction but moderate permeability is consistent with the tumor-liver
@@ -654,7 +646,7 @@ from two independent cohorts, H1 dominated tumor cores
 35\%, respectively). This architecture---avascular interior,
 vascularized periphery---matches the known histology of colorectal liver
 metastases, where viable tumor surrounds a necrotic or fibrotic core
-{[}Poultsides et al., 2012; Van den Eynden et al., 2013{]}. Our initial
+\citep{poultsidesPathologicResponsePreoperative2012, vandeneyndenMultifacetedRoleMicroenvironment2013}. Our initial
 hypothesis---that CT{} habitats would map onto necrosis, fibrosis, and
 viable tumor as discrete categories---was not fully supported. CT{}
 reliably separates vascularized from avascular tissue, but within the
@@ -678,7 +670,7 @@ reflecting the difficulty of acquiring co-registered multimodal imaging
 and whole-tumor histology. CT{}-mpMRI registration introduces
 uncertainty that propagates into habitat analyses although our median
 accuracy (DSC 0.70--0.79) compares favorably with recent benchmarks
-{[}Demir et al., 2025{]}. The biological interpretation of H3 as
+\citep{demirMultiGradICONFoundationModel2025}. The biological interpretation of H3 as
 tumor-liver interface is plausible but not proven---alternative
 explanations such as a stromal-rich compartment cannot be excluded.
 Finally, histopathological validation was qualitative since voxel-wise

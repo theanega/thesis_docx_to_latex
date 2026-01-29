@@ -44,7 +44,7 @@ for differences between metastases. Treatment decisions for most
 patients are therefore made without direct knowledge of tissue
 composition or its evolution over time.
 
-Computed tomography (CT) is the standard imaging modality for the
+CT is the standard imaging modality for the
 clinical management of colorectal liver metastases. CT scans are
 routinely acquired for staging and treatment monitoring, enabling
 repeated, non-invasive assessment of the whole liver over time. However,
@@ -68,11 +68,10 @@ characteristics. These subregions, referred to as habitats, may
 correspond to different tissue phenotypes within the same tumor.
 
 To date, habitat imaging has been applied predominantly to magnetic
-resonance imaging (MRI) \citep{liMRIbasedHabitatImaging2024}. Multiparametric MRI
+resonance imaging (MRI) \citep{liMRIbasedHabitatImaging2024}. mpMRI
 combines multiple quantitative sequences acquired in the same imaging
 session, each sensitive to different tissue properties. For instance,
-the apparent diffusion coefficient (ADC) reflects tissue cellularity (Le
-Bihan D, 1985), and the volume transfer constant,
+the ADC reflects tissue cellularity \citep{lebihandImagerieDiffusionVivo1985}, and the volume transfer constant,
 K\textsuperscript{trans} , provides information on vascular permeability
 and perfusion \citep{toftsMeasurementBloodbrainBarrier1991}. These biologically interpretable
 maps make MRI particularly suitable for studying intratumor
@@ -116,10 +115,10 @@ formalizes these problems as five research questions.
 
 \section{Hypothesis and Objectives}\label{hypothesis-and-objectives}
 
-This thesis aims to develop and validate a biologically grounded CT{}
+This thesis aims to develop and validate a biologically grounded CT
 habitat imaging framework to characterize intratumor heterogeneity in
 colorectal liver metastases, and to assess its clinical relevance. This
-aim is based on the hypothesis that CT{}-derived habitats capture
+aim is based on the hypothesis that CT-derived habitats capture
 biologically meaningful heterogeneity that provides clinically relevant
 information beyond tumor volume. Towards this aim, we pose the following
 research questions:
@@ -127,15 +126,15 @@ research questions:
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
 \item
-  Which CT{} handcrafted radiomics features are repeatable and
+  Which CT handcrafted radiomics features are repeatable and
   reproducible enough to support stable habitat computation?
 \item
-  Which CT{} data representation produces habitats that best separate
+  Which CT data representation produces habitats that best separate
   tissue with different cellularity and vascularity?
 \item
-  What tissue phenotypes do CT{}-derived habitats represent?
+  What tissue phenotypes do CT-derived habitats represent?
 \item
-  Do CT{}-derived habitats provide prognostic information independent of
+  Do CT-derived habitats provide prognostic information independent of
   tumor volume?
 \item
   If prognostic information exists, is it spatially localized (i.e. at
@@ -147,18 +146,18 @@ These research questions correspond to five specific objectives:
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
 \item
-  \textbf{Objective 1:} To identify precise CT{} handcrafted radiomics
+  \textbf{Objective 1:} To identify precise CT handcrafted radiomics
   features suitable for robust habitat computation. \emph{(Chapter~\ref{ch:6})}
 \item
-  \textbf{Objective 2:} To determine the optimal CT{} data
+  \textbf{Objective 2:} To determine the optimal CT data
   representation for capturing biologically distinct tissue regions.
   \emph{(Chapter~\ref{ch:7})}
 \item
   \textbf{Objective 3:} To characterize the biological meaning of
-  CT{}-derived habitats using multiparametric MRI and histopathology.
+  CT-derived habitats using multiparametric MRI and histopathology.
   \emph{(Chapter~\ref{ch:7})}
 \item
-  \textbf{Objective 4:} To evaluate whether CT{}-derived habitats
+  \textbf{Objective 4:} To evaluate whether CT-derived habitats
   provide clinically relevant information beyond tumor volume.
   \emph{(Chapter~\ref{ch:8})}
 \item
@@ -188,20 +187,16 @@ clinical limitations of existing habitat imaging approaches.
   assessment of repeatability and reproducibility for 3D voxelwise
   features in liver and lung lesions. This work is described in Chapter
   6 and was published as:
-\end{enumerate}
 
-\begin{itemize}
-\item
-  \textbf{Prior O}, Macarro C, Navarro V, et al; Bernatowicz K,
-  Perez-Lopez R. Identification of Precise 3D CT{} Radiomics for Habitat
-  Computation by Machine Learning in Cancer. \emph{Radiol Artif Intell.}
-  2024;6(2):e230118. DOI:
-  \href{https://doi.org/10.1148/ryai.230118}{10.1148/ryai.230118}.
-\end{itemize}
+  \begin{itemize}[label={--}]
+  \item
+    \textbf{Prior O}, Macarro C, Navarro V, et al; Bernatowicz K,
+    Perez-Lopez R. Identification of Precise 3D CT Radiomics for Habitat
+    Computation by Machine Learning in Cancer. \emph{Radiol Artif Intell.}
+    2024;6(2):e230118. DOI:
+    \href{https://doi.org/10.1148/ryai.230118}{10.1148/ryai.230118}.
+  \end{itemize}
 
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\setcounter{enumi}{2}
 \item
   \textbf{Multiple CT}{} \textbf{data representations were compared for
   the first time for habitat imaging.} Raw Hounsfield units, handcrafted
@@ -214,29 +209,26 @@ clinical limitations of existing habitat imaging approaches.
   (cellularity, vascularity) measured with quantitative MRI rather than
   post-hoc outcome associations. This work is described in Chapter~\ref{ch:7}.
   Preliminary results were presented at international meetings as:
-\end{enumerate}
 
-\begin{itemize}
-\item
-  \textbf{Prior O}; Grussu F; Garcia-Ruiz A; et al; Perez-Lopez R.
-  Decoding liver intra-tumour heterogeneity with co-localized CT{} and
-  multi-parametric MRI. \emph{ISMRM Diffusion MRI Workshop} (Amsterdam,
-  The Netherlands, 2022). Oral presentation.
-\item
-  \textbf{Prior O}; Grussu F; Macarro C; et al; Perez-Lopez R.
-  Dissecting heterogeneity in liver metastases: an mpMRI and CT{}
-  approach. \emph{ISMRM Iberian Chapter} (Valladolid, Spain, 2023).
-  Poster.
-\item
-  \textbf{Prior O}; Macarro C; Grigoriou A; et al; Perez-Lopez R.
-  Non-invasive Characterization of Intratumor Heterogeneity: Comparing
-  MRI-Radiomics and Histological Habitats. \emph{ISMRM Iberian Chapter}
-  (Porto, Portugal, 2024). Oral presentation.
-\end{itemize}
+  \begin{itemize}[label={--}]
+  \item
+    \textbf{Prior O}; Grussu F; Garcia-Ruiz A; et al; Perez-Lopez R.
+    Decoding liver intra-tumour heterogeneity with co-localized CT and
+    multi-parametric MRI. \emph{ISMRM Diffusion MRI Workshop} (Amsterdam,
+    The Netherlands, 2022). Oral presentation.
+  \item
+    \textbf{Prior O}; Grussu F; Macarro C; et al; Perez-Lopez R.
+    Dissecting heterogeneity in liver metastases: an mpMRI and CT
+    approach. \emph{ISMRM Iberian Chapter} (Valladolid, Spain, 2023).
+    Poster.
+  \item
+    \textbf{Prior O}; Macarro C; Grigoriou A; et al; Perez-Lopez R.
+    Non-invasive Characterization of Intratumor Heterogeneity: Comparing
+    MRI-Radiomics and Histological Habitats. \emph{ISMRM Iberian Chapter}
+    (Porto, Portugal, 2024). Oral presentation.
+  \end{itemize}
 
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\setcounter{enumi}{4}
+
 \item
   \textbf{The clinical relevance of CT}{} \textbf{habitats was
   demonstrated to depend on context.} Habitat metrics were prognostic in
@@ -249,11 +241,11 @@ clinical limitations of existing habitat imaging approaches.
   heterogeneity measures. This work is described in Chapter~\ref{ch:8}.
 \end{enumerate}
 
-\begin{itemize}
+\begin{itemize}[label={--}]
 \item
   \emph{Manuscript in preparation (Contributions 3--6):} \textbf{Prior
   O}, et al; Grussu F, Perez-Lopez R. Mapping Tumor Heterogeneity of
-  Colorectal Liver Metastases via CT{} Habitats Improves Prognosis.
+  Colorectal Liver Metastases via CT Habitats Improves Prognosis.
   \emph{In preparation.}
 \end{itemize}
 
@@ -262,7 +254,7 @@ PhD}\label{other-contributions-during-the-phd}
 
 \textbf{\ul{Publications}}
 
-\begin{itemize}
+\begin{itemize}[label={--}]
 \item
   Ligero M, Gielen B, Navarro V, \textbf{Prior O}, et al; Perez-Lopez R.
   A whirl of radiomics-based biomarkers in cancer immunotherapy, why is
@@ -290,7 +282,7 @@ PhD}\label{other-contributions-during-the-phd}
 
 \textbf{\ul{Conference Presentations}}
 
-\begin{itemize}
+\begin{itemize}[label={--}]
 \item
   \textbf{Prior O}; Bernatowicz K; Ligero M; et al; Perez-Lopez R.
   Artificial Intelligence for Predicting Response to Standard of Care
@@ -311,15 +303,16 @@ PhD}\label{other-contributions-during-the-phd}
   \textbf{COLOSSUS (EU-funded H2020 project, led by the Royal College of
   Surgeons in Ireland):} Contribution to the development of candidate
   imaging biomarkers for colorectal cancer patients.
+
+  \begin{itemize}[label={--}]
+  \item
+    \emph{Manuscript in preparation:} Connor K*, \textbf{Prior O.}*,
+    Shiels LP, et al; Byrne AT. ``Co-clinical CT radiomics pipeline to
+    establish candidate imaging biomarkers for colorectal cancer.'' (*equal
+    contribution)
+  \end{itemize}
 \end{itemize}
 
-\begin{itemize}
-\item
-  \emph{Manuscript in preparation:} Connor K*, \textbf{Prior O.}*,
-  Shiels LP, et al; Byrne AT. "Co-clinical CT{} radiomics pipeline to
-  establish candidate imaging biomarkers for colorectal cancer." (*equal
-  contribution)
-\end{itemize}
 
 \begin{itemize}
 \item
@@ -343,7 +336,7 @@ PhD}\label{other-contributions-during-the-phd}
 \begin{itemize}
 \item
   \textbf{CT}{} \textbf{preprocessing pipeline}: Developed and
-  implemented standardized CT{} preprocessing pipelines for the
+  implemented standardized CT preprocessing pipelines for the
   Radiomics Group at VHIO, ensuring reproducibility in feature
   extraction across imaging datasets from multiple clinical studies.
 \item
@@ -356,20 +349,20 @@ PhD}\label{other-contributions-during-the-phd}
 \section{Thesis Structure}\label{thesis-structure}
 
 This thesis consists of five parts across ten chapters. Part I
-introduces the problem and research objectives (\textbf{Chapter 1}).
+introduces the problem and research objectives (\textbf{Chapter~\ref{ch:1}}).
 Part II provides foundations: medical imaging techniques
 (\textbf{Chapter~\ref{ch:2}}), oncological context with focus on colorectal liver
 metastases and treatment response assessment (\textbf{Chapter 3}), and
 imaging heterogeneity methods including the state of the art in habitat
 imaging (\textbf{Chapter~\ref{ch:4}}). Part III describes data sources, the
 general methodological framework, and the habitat imaging pipeline
-developed for this work (\textbf{Chapter 5}). Part IV presents the core
+developed for this work (\textbf{Chapter~\ref{ch:5}}). Part IV presents the core
 experimental contributions: precision analysis of radiomics features
-(\textbf{Chapter~\ref{ch:6}}), development and biological validation of CT{}
-habitats using multiparametric MRI (\textbf{Chapter 7}), and clinical
+(\textbf{Chapter~\ref{ch:6}}), development and biological validation of CT
+habitats using mpMRI (\textbf{Chapter~\ref{ch:7}}), and clinical
 relevance assessment across treatment contexts (\textbf{Chapter~\ref{ch:8}}).
 Part V synthesizes findings and draws conclusions: general discussion
-including limitations and future directions (\textbf{Chapter 9}), and
+including limitations and future directions (\textbf{Chapter~\ref{ch:9}}), and
 main conclusions (\textbf{Chapter~\ref{ch:10}}).
 
 Each experimental chapter is self-contained and can be read
