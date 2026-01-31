@@ -87,18 +87,8 @@
 
 % Colores
 \usepackage{xcolor}
-% TOC Control
+% TOC Control - colors configured later after linkcolor is defined
 \usepackage{tocloft}
-\renewcommand{\cftchapfont}{\normalfont\bfseries\color{black}}
-\renewcommand{\cftsecfont}{\normalfont\color{black}}
-\renewcommand{\cftsubsecfont}{\normalfont\color{black}}
-\renewcommand{\cftfigfont}{\normalfont\color{black}}
-\renewcommand{\cfttabfont}{\normalfont\color{black}}
-\renewcommand{\cftchappagefont}{\normalfont\bfseries\color{blue}}
-\renewcommand{\cftsecpagefont}{\normalfont\color{blue}}
-\renewcommand{\cftsubsecpagefont}{\normalfont\color{blue}}
-\renewcommand{\cftfigpagefont}{\normalfont\color{blue}}
-\renewcommand{\cfttabpagefont}{\normalfont\color{blue}}
 % Fix blank page headers globally
 \usepackage{emptypage}
 
@@ -393,7 +383,6 @@
 \phantomsection
 \addcontentsline{toc}{chapter}{List of Figures}
 \listoffigures
-\cleardoublepage
 
 % Lista de tablas
 \cleardoublepage
@@ -421,8 +410,9 @@
 \glsadd{ve}
 \glsadd{vp}
 \printglossary[type=\acronymtype,title=Abbreviations \& Symbols]
-\clearpage
 
+% End frontmatter and start mainmatter immediately
+% Part I will start on page 1 (no blank pages before it)
 \mainmatter
 
 % ============================================================================
@@ -440,9 +430,6 @@
 \def\trueflag{true}
 \ifx\includethesis\trueflag
   % Part I: Introduction
-  \cleardoublepage
-  \thispagestyle{empty}
-  \vspace*{2cm}
   \part{Introduction}
   \vfill
   \begin{flushright}
@@ -456,13 +443,11 @@
   \end{minipage}
   \end{flushright}
   \vfill
-  \cleardoublepage
+  \clearpage
   \input{source/chapters/thesis/chapter_1_motivation_objectives_and_contributions.tex}
   
   % Part II: Foundations
-  \cleardoublepage
-  \thispagestyle{empty}
-  \vspace*{2cm}
+  % Part II: Foundations
   \part{Foundations}
   \vfill
   \begin{flushright}
@@ -492,9 +477,6 @@
   \cleardoublepage
   \input{source/chapters/thesis/chapter_4_imaging_heterogeneity_state_of_the_art.tex}
   
-  \cleardoublepage
-  \thispagestyle{empty}
-  \vspace*{2cm}
   \part{Methodological Framework}
   \vfill
   \begin{flushright}
@@ -514,9 +496,7 @@
   \input{source/chapters/thesis/chapter_5_data_and_habitat_imaging_pipeline.tex}
   
   % Part IV: A Data-Driven Approach to CT Habitats
-  \cleardoublepage
-  \thispagestyle{empty}
-  \vspace*{2cm}
+  % Part IV: A Data-Driven Approach to CT Habitats
   \part{A Data-Driven Approach to CT Habitats}
   \vfill
   \begin{flushright}
@@ -538,9 +518,7 @@
   \input{source/chapters/thesis/chapter_8_clinical_relevance_of_ct.tex}
   
   % Part V: Synthesis and Conclusions
-  \cleardoublepage
-  \thispagestyle{empty}
-  \vspace*{2cm}
+  % Part V: Synthesis and Conclusions
   \part{Synthesis and Conclusions}
   \vfill
   \begin{flushright}
