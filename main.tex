@@ -158,10 +158,11 @@
 \usepackage[acronym,nonumberlist,style=list,toc,nogroupskip]{glossaries}  % Para lista de acrónimos
 \renewcommand*{\glspostdescription}{} % Quitar el punto final de las descripciones
 \usepackage{multicol}  % Para dos columnas en abbreviations
+\newglossary[slg]{symbols}{syi}{syg}{Symbols} % Define new symbols glossary
 \makeglossaries
 
 % Cargar definiciones de acrónimos
-\input{source/abbreviations.tex}
+\input{source/frontmatter/abbreviations.tex}
 
 % Configuración de listas
 \usepackage{enumitem}
@@ -213,6 +214,7 @@
 \usepackage{url}  % URLs
 % Nota: breakurl no es compatible con XeLaTeX, usamos xurl en su lugar
 \usepackage{xurl}  % URLs que se parten en líneas (compatible con XeLaTeX)
+\usepackage{doi}   % Makes DOIs in bibliography clickable hyperlinks
 
 % Paquete para subrayado (usado por Pandoc en el contenido convertido)
 \usepackage{soul}  % Proporciona \ul para subrayado
@@ -390,7 +392,7 @@
 \addcontentsline{toc}{chapter}{List of Tables}
 \listoftables
 \endgroup
-\cleardoublepage
+% \cleardoublepage removed to avoid extra blank pages. \printglossary handles clearing.
 
 % Lista de acrónimos (mostrar todos aunque no se usen en el texto)
 \glsaddall
@@ -409,7 +411,8 @@
 \glsadd{ktrans}
 \glsadd{ve}
 \glsadd{vp}
-\printglossary[type=\acronymtype,title=Abbreviations \& Symbols]
+\printglossary[type=\acronymtype,title=Abbreviations]
+\printglossary[type=symbols,title=Symbols]
 
 % End frontmatter and start mainmatter immediately
 % Part I will start on page 1 (no blank pages before it)

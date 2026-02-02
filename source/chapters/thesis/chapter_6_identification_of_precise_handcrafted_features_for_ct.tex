@@ -8,9 +8,9 @@ will be measuring noise, not biology. In this Chapter we describe a
 comprehensive study of precision analysis of handcrafted features, with
 the goal of identifying optimal features for stable habitat computation.
 
-\subsection*{Contributions}
+\textbf{Contributions:}
 
-\begin{itemize}[label={--}]
+\begin{itemize}
 \item
   We assess repeatability by perturbating images to simulate a
   test-retest dataset collected under routine clinical conditions.
@@ -29,10 +29,12 @@ the goal of identifying optimal features for stable habitat computation.
   of 13 liver metastases with mpMRI and histology.
 \end{itemize}
 
+\begin{quote}
 This chapter reproduces many parts of the publication \citep{priorIdentificationPrecise3D2024}, adapted to the thesis format. A note on scope: lung lesion
 results are not directly relevant to the questions addressed in this
 thesis and therefore are not discussed in depth, they have just been
 kept for comparison.
+\end{quote}
 
 \section{Rationale}\label{rationale}
 
@@ -96,8 +98,7 @@ metastasis cohort.
 
 We analyzed 1,861 liver lesions and 575 lung lesions from 318 patients
 (mean age 64.5 years ± 10.1 SD; 185 male) imaged at multiple timepoints
-between November 2010 and December 2021 (\hyperref[_Ref219819126]{Figure
-6.1}A). All patients had advanced cancer with liver metastases.
+between November 2010 and December 2021 (\Cref{fig:6.1}A). All patients had advanced cancer with liver metastases.
 Intravenous contrast-enhanced CT scans were acquired as part of
 routine clinical care at Vall d\textquotesingle Hebron University
 Hospital. The analysis of anonymized imaging data was approved by the
@@ -179,7 +180,7 @@ details are provided in Annex B.
 
 \subsection{Precision Analysis: Repeatability and Reproducibility}\label{precision-analysis-repeatability-and-reproducibility}
 
-\hyperref[_Ref219819126]{Figure~\ref{fig:6.1}}B summarizes the precision analysis
+\Cref{fig:6.1}B summarizes the precision analysis
 workflow. We evaluated:
 
 \begin{itemize}
@@ -287,7 +288,7 @@ and repeatability analysis is publicly available at
 
 \subsection{Precision Analysis}\label{precision-analysis}
 
-\textbf{Repeatability.} \hyperref[_Ref219819183]{Figure~\ref{fig:6.2}} shows the
+\textbf{Repeatability.} \Cref{fig:6.2} shows the
 distribution of repeatability across the four parameter settings. Most
 features exhibited poor repeatability (ICC LCL \textless0.50) regardless
 of settings, but clear differences emerged between parameter choices.
@@ -302,7 +303,7 @@ of 0.442 (IQR: 0.312--0.516) across all features, compared to 0.191
 kernel radius.
 
 The type of repeatable features varied by lesion location
-(\hyperref[_Ref219819183]{Figure~\ref{fig:6.2}}B). In liver lesions, first-order
+(\Cref{fig:6.2}B). In liver lesions, first-order
 and Gray-Level Run-Length Matrix (GLRLM) features were more repeatable.
 Primary tumor type (colorectal, lung, neuroendocrine, other) had no
 detectable effect on repeatability (Annex B).
@@ -310,7 +311,7 @@ detectable effect on repeatability (Annex B).
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=\textwidth]{fig_6_2.png}
-\caption[Repeatability of voxelwise radiomics features]{Repeatability of voxelwise radiomics features.
+\caption[Repeatability of voxelwise radiomics features]{\textbf{Repeatability of voxelwise radiomics features.}
 \textbf{(A)} Repeatability distribution of radiomics features per
 setting. Most radiomic features exhibit poor repeatability. Features
 extracted with kernel radius (R) of 3mm were more repeatable than those
@@ -332,7 +333,7 @@ Matrix Features.}
 
 \textbf{Reproducibility.} Features were far more sensitive to changes in
 kernel radius than to changes in bin size
-(\hyperref[_Ref219819213]{Figure~\ref{fig:6.3}}A-B). Changing R from 1 mm to 3 mm
+(\Cref{fig:6.3}A-B). Changing R from 1 mm to 3 mm
 substantially altered feature values: median ICC LCL was only 0.440
 (IQR: 0.330--0.526) when B=12 HU and 0.437 (0.355--0.524) when B=25 HU.
 In contrast, changing B from 12 HU to 25 HU had little effect: median
@@ -353,7 +354,7 @@ when R=1 mm.
         \cmidrule(lr){2-3} \cmidrule(lr){4-5} \cmidrule(lr){6-7} \cmidrule(lr){8-9}
         & \textbf{Liver} & \textbf{Lung} & \textbf{Liver} & \textbf{Lung} & \textbf{Liver} & \textbf{Lung} & \textbf{Liver} & \textbf{Lung} \\
         \midrule
-        \makecell[l]{LCL\\{[}Median (IQR){]}} & 0.422 & 0.573 & 0.407 & 0.573 & 0.805 & 0.929 & 0.921 & 0.967 \\
+        \makecell[l]{LCL\\Median\\(IQR)} & 0.422 & 0.573 & 0.407 & 0.573 & 0.805 & 0.929 & 0.921 & 0.967 \\
          & \scriptsize(0.346-0.513) & \scriptsize(0.403-0.701) & \scriptsize(0.291-0.536) & \scriptsize(0.443-0.696) & \scriptsize(0.672-0.919) & \scriptsize(0.823-0.997) & \scriptsize(0.821-0.982) & \scriptsize(0.93-0.999) \\
         \bottomrule
     \end{tabular}
@@ -368,8 +369,7 @@ B=25 HU (p \textless0.001). Features computed with R=3 mm were more
 reproducible against bin size than those with R=1 mm (p \textless0.001).
 
 As with repeatability, lesion location affected reproducibility
-(\hyperref[_Ref219819213]{Figure~\ref{fig:6.3}}C-D, \hyperref[_Ref219819227]{Table
-6.2}\hyperref[_Ref219819242]{Table 6.1}). Features from lung lesions
+(\Cref{fig:6.3}C-D, \Cref{tab:reproducibility}). Features from lung lesions
 were more reproducible than those from liver lesions, both against R and
 against B (p \textless0.001), particularly for GLCM and GLRLM feature
 classes. Primary tumor type again had no detectable effect (Annex B).
@@ -512,7 +512,7 @@ using all features, compared to 0.651 (0.520--0.784) when using only
 precise features. For lung lesions, median DSC was 0.532 (0.424--0.637)
 with all features versus 0.601 (0.494--0.712) with precise features.
 
-\hyperref[_Ref219819367]{Figure~\ref{fig:6.5}}B illustrates this difference for a
+\Cref{fig:6.5}B illustrates this difference for a
 single liver lesion. Habitats derived from precise features maintained
 their spatial structure across test-retest (DSC: 0.976, 0.891, 0.915 for
 the three habitats), whereas habitats derived from all features
@@ -577,13 +577,13 @@ volume fraction, Ve: extravascular and extracellular volume fraction.}
 
 CT{} habitats (computed from precise features) displayed spatial
 distributions qualitatively consistent with habitats derived from nine
-mpMRI maps (\hyperref[_Ref219819404]{Figure~\ref{fig:6.6}}A--B). For example, a
+mpMRI maps (\Cref{fig:6.6}A--B). For example, a
 CT{} habitat depicted in blue---spatially concordant with an mpMRI
 habitat in the lesion core---showed elevated T2t, T1, and ADCt
 (consistent with lower cellularity) and reduced fv, Ktrans, ve, and vp
 (consistent with lower vascularization). This pattern is compatible with
 necrosis. Histopathology confirmed a necrotic core surrounded by viable
-tumor (\hyperref[_Ref219819404]{Figure~\ref{fig:6.6}}C), matching the spatial
+tumor (\Cref{fig:6.6}C), matching the spatial
 organization suggested by both imaging modalities.
 
 This exploratory analysis relied on visual comparison rather than

@@ -152,7 +152,7 @@ fitting was performed using custom Python code available at
 \begin{table}[ht]
     \centering
     \small
-    \caption[Multiparametric MRI maps used for CT habitat development]{\textbf{Multiparametric MRI maps used for CT habitat development.} Thirteen quantitative maps were derived from diffusion-relaxation MRI, variable flip angle T1 mapping, and dynamic contrast-enhanced MRI.}
+    \caption[Multiparametric MRI maps used for CT habitat development]{\textbf{Multiparametric MRI maps used for CT habitat development.} Thirteen quantitative maps were derived from diffusion-relaxation MRI, variable flip angle T1 mapping, and dynamic contrast-enhanced MRI. ADC: Apparent Diffusion Coefficient; T2: Transverse Relaxation Time; EES: Extravascular Extracellular Space; SGrE: Spoiled Gradient Echo; DCE: Dynamic Contrast-Enhanced.   }
     \label{tab:mpmri_maps}
     
     \begin{tabularx}{\textwidth}{@{} l l l c >{\raggedright\arraybackslash}X @{}}
@@ -345,8 +345,7 @@ meaningful biological variation rather than measurement artifacts.
 supports multiple clustering algorithms: Gaussian Mixture Models (GMM),
 K-means, and HDBSCAN. GMM is our default because it provides
 probabilistic (soft) assignments that better capture gradual transitions
-between tumor phenotypes---biologically plausible given partial volume
-effects and mixed tissue interfaces. However, users may prefer hard
+between tumor phenotypes, which are biologically plausible given partial volume effects and mixed tissue interfaces. However, users may prefer hard
 assignments or density-based clustering depending on their application.
 The number of clusters can be specified manually or determined
 automatically using different criteria such as the Bayesian Information

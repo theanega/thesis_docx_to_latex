@@ -33,7 +33,7 @@ targeted therapies requiring monitoring, non-invasive assessment of
 spatial and temporal heterogeneity could inform treatment decisions.
 
 Approaches to quantifying imaging heterogeneity have evolved over time
-(\hyperref[_Ref219708580]{Figure~\ref{fig:4.1}}).The idea of using computers to
+(\Cref{fig:4.1}).The idea of using computers to
 extract quantitative information from medical images dates back to the
 1960s, when Lodwick first applied computational analysis to chest
 radiographs and introduced the concept of computer-aided diagnosis
@@ -110,7 +110,7 @@ sharp), and peripheral rim of enhancement (present or absent). They
 observed that metastases treated with anti-angiogenic therapy often
 transform from heterogeneous, irregular lesions with ill-defined borders
 into homogeneous, hypoattenuating lesions with well-defined borders.
-Importantly, morphologic response. \hyperref[_Ref219734577]{Figure~\ref{fig:4.2}}
+Importantly, morphologic response. \Cref{fig:4.2}
 shows an example of pre- and post-treatment CT{} scans of two patients
 response.
 
@@ -197,8 +197,7 @@ derived from radiological images, the term is most commonly used in the
 literature to denote \emph{handcrafted} radiomic features (a convention
 largely shaped by the influence of PyRadiomics). Handcrafted features
 are derived from explicitly defined mathematical formulas or matrices
-designed by humans, such as the GLCM (\hyperref[_Ref219844826]{Figure
-4.3}). They are typically grouped into three categories: shape features
+designed by humans, such as the GLCM (\Cref{fig:4.3}). They are typically grouped into three categories: shape features
 that describe tumor geometry (e.g., volume, surface area, sphericity),
 first-order features that summarize the distribution of voxel
 intensities (e.g., mean, variance, skewness), and texture features that
@@ -228,7 +227,7 @@ handcrafted features, although comparisons with deep learning--based
 embeddings are presented in Chapter~\ref{ch:7}.
 
 A relevant distinction in radiomics is how features are computed
-spatially (\hyperref[_Ref219844826]{Figure 4.3}).Computing features over
+spatially (\Cref{fig:4.3}). Computing features over
 the entire tumor, producing a single value per feature, is known as
 region-of-interest-wise (ROI-wise) or standard radiomics. This is the
 dominant approach because most radiomics studies use supervised
@@ -308,7 +307,7 @@ correlation with histological tissue fractions of necrosis and viable
 tumor. This was later shown in breast cancer mouse models
 \citep{jardim-perassiMultiparametricMRICoregistered2019}, where habitats derived from six MRI
 parameters were validated against co-registered histology using
-3D-printed tumor moulds (\hyperref[_Ref219736071]{Figure~\ref{fig:4.4}}). The
+3D-printed tumor moulds (\Cref{fig:4.4}). The
 resulting habitats corresponded to viable-normoxic, viable-hypoxic,
 nonviable-hypoxic, and nonviable-normoxic tissue types, validated
 against H\&E staining, pimonidazole (a hypoxia marker), and CD31 (a
@@ -371,8 +370,7 @@ standardised (feature extraction, feature selection, model training),
 there is no consensus pipeline for habitat imaging. Published studies
 vary considerably in their methodological choices, and these differences
 affect results in ways that are not fully understood
-(\hyperref[_Ref219804883]{Table 4.1 \textbar{} Summary of selected
-habitat imaging studies}).
+(\Cref{tab:habitat_studies}).
 
 Studies differ in the features used for clustering: some use raw
 intensity values from single or multiple imaging sequences, others use
@@ -432,7 +430,7 @@ contexts.
     
     \begin{tabularx}{\textwidth}{@{} l >{\centering\arraybackslash}X >{\centering\arraybackslash}X >{\centering\arraybackslash}X c >{\centering\arraybackslash}X >{\centering\arraybackslash}X >{\centering\arraybackslash}X @{}}
         \toprule
-        \textbf{Study} & \textbf{\makecell{Cancer\\type}} & \textbf{\makecell{Moda-\\lity}} & \textbf{\makecell{Meth-\\od}} & \textbf{\textit{k}} & \textbf{\makecell{Technical\\validation}} & \textbf{\makecell{Biological\\validation}} & \textbf{\makecell{Clinical\\validation}} \\
+        \textbf{Study} & \textbf{\makecell{Cancer\\type}} & \textbf{Modality} & \textbf{Method} & \textbf{\textit{k}} & \textbf{\makecell{Tech.\\Val.}} & \textbf{\makecell{Biol.\\Val.}} & \textbf{\makecell{Clin.\\Val.}} \\
         \midrule
         \citep{caranoQuantificationTumorTissue2004} & \makecell{Colorectal\\(preclinical)} & MRI & K-means & 4 & No & \makecell{Yes\\(histo.)} & No \\ \addlinespace
         \citep{henningMultispectralQuantificationTissue2007} & \makecell{Sarcoma\\(preclinical)} & MRI & K-means & 4 & No & \makecell{Yes\\(histo.)} & No \\ \addlinespace
