@@ -43,12 +43,12 @@ choice between curative surgery and palliative systemic therapy. RECIST
 criteria \citep{eisenhauerNewResponseEvaluation2009}, which inform treatment decisions
 across solid tumors, define response and progression primarily through
 size change. This framework works reasonably well when tumors shrink or
-grow substantially ---but there are moments during treatment when
-changes in size are not informative
+grow substantially, but there are moments during treatment when
+changes in size are not informative.
 
 The limitation is not volume itself but what volume ignores: the
 internal composition of the tumor. A 30 cm³ metastasis that is 80\%
-necrotic differs fundamentally from one that is 80\% viable tumor---yet
+necrotic differs fundamentally from one that is 80\% viable tumor, yet
 both receive identical volumetric assessment. This matters for two
 clinical problems. First, response assessment: a tumor that neither
 shrinks nor grows might be genuinely controlled by treatment, or it
@@ -56,8 +56,8 @@ might be slowly progressing. Survival outcomes among volumetrically
 similar patients vary widely, yet current imaging cannot distinguish
 these scenarios. Second, treatment selection: many patients do not
 respond as expected to first-line therapy, and we lack imaging tools to
-predict who will benefit from which regimen. Both problems---assessing
-response and selecting treatment---could benefit from imaging biomarkers
+predict who will benefit from which regimen. Both problems (assessing
+response and selecting treatment) could benefit from imaging biomarkers
 that characterize tumor heterogeneity beyond size.
 
 Habitat imaging offers a potential solution. By segmenting tumors into
@@ -69,23 +69,20 @@ representing necrotic or fibrotic tissue, a cellular-perfused
 compartment representing viable tumor, and a vascular rim at the
 tumor-liver interface. If these phenotypes have prognostic relevance,
 habitat-derived metrics should predict survival independently of
-volume---and potentially discriminate outcomes among volumetrically
+volume and potentially discriminate outcomes among volumetrically
 similar patients.
 
 This chapter tests these hypotheses across two cohorts with
-complementary clinical contexts:
-
-TCIA cohort (n=189, resectable disease): Patients underwent hepatic
-resection with curative intent; 60\% received neoadjuvant chemotherapy.
+complementary clinical contexts. First, the TCIA cohort (n=189, resectable disease): Patients underwent hepatic resection with curative intent; 60\% received neoadjuvant chemotherapy.
 We ask: Does neoadjuvant treatment alter habitat composition? Do
 post-treatment habitat patterns predict survival? We hypothesize that
 treatment remodels tumor composition in ways detectable by CT, and
 that spatial heterogeneity at the invasive rim will carry prognostic
 information beyond what volume provides.
 
-VHIO cohort (n=344, unresectable disease): Patients received first-line
-systemic therapy---chemotherapy alone, chemotherapy plus bevacizumab, or
-chemotherapy plus targeted agents. We ask: Do baseline habitat metrics
+Second, VHIO cohort (n=344, unresectable disease): Patients received first-line
+systemic therapy (chemotherapy alone, chemotherapy plus bevacizumab, or
+\mbox{chemotherapy plus targeted agents}). We ask: Do baseline habitat metrics
 predict survival? Does prognostic value depend on treatment type and
 molecular context? We hypothesize that for cytotoxic chemotherapy, where
 response manifests as tumor shrinkage, volume will dominate. For
@@ -163,7 +160,7 @@ lesions.
 
 \begin{figure}[!ht]
 \centering
-\includegraphics[width=0.95\textwidth]{fig_8_1.pdf}
+\includegraphics[width=0.95\textwidth]{fig_8_1.png}
 \caption[Clinical validation study design]{\textbf{Clinical validation study design.}
 \textbf{(A)} Two independent cohorts with distinct clinical scenarios.
 TCIA (n=189): resectable colorectal liver metastases, CT acquired
@@ -177,31 +174,16 @@ vascular habitat (red) enrich at the invasive rim. The vascular habitat
 may partly reflect partial volume effects at the tumor-liver interface.
 \textbf{(C)} Habitat-derived quantitative metrics computed at three
 spatial scales (whole tumor, rim, core): habitat proportions and Shannon
-entropy. Tumor volume computed as sum of tumor voxels $\times$ voxel spacing.}
+entropy. Tumor volume computed as sum of tumor voxels $\times$ voxel spacing. 
+For patients with multiple lesions, metrics were aggregated using
+volume-weighted averaging. Created with BioRender.com.}
 \label{fig:8.1}
 \end{figure}
-For patients with multiple lesions, metrics were aggregated using
-volume-weighted averaging. Created with BioRender.com.
+
 
 \subsection{Statistical Analyses}\label{statistical-analyses}
 
-Group comparisons used Mann-Whitney U tests \citep{mannTestWhetherOne1947} with
-false discovery rate (FDR) correction for multiple comparisons
-\citep{benjaminiControllingFalseDiscovery1995}.
-
-Survival analyses used Cox proportional hazards regression \citep{coxRegressionModelsLifeTables1972}
-in a two-stage approach. Stage 1 screened all variables in univariable
-models, retaining those with p\textless0.10. Stage 2 fitted a
-multivariable model with retained variables. Hazard ratios (HR) are
-reported per standard deviation increase. Model discrimination was
-assessed using Harrell\textquotesingle s C-index \citep{harrellMULTIVARIABLEPROGNOSTICMODELS1996}.
-The proportional hazards assumption was tested using Schoenfeld
-residuals \citep{schoenfeldPartialResidualsProportional1982}. Kaplan-Meier curves \citep{kaplanNonparametricEstimationIncomplete1958} were generated using median splits, with differences assessed by
-log-rank test \citep{petoDesignAnalysisRandomized1976}.
-
-Statistical analyses used Python 3.10 with lifelines 0.27
-\citep{davidson-pilonLifelinesSurvivalAnalysis2019} and scipy 1.11. Significance was set at
-p\textless0.05.
+Group comparisons used Mann-Whitney U tests \citep{mannTestWhetherOne1947} with false discovery rate (FDR) correction for multiple comparisons \citep{benjaminiControllingFalseDiscovery1995}. Survival analyses used Cox proportional hazards regression \citep{coxRegressionModelsLifeTables1972} in a two-stage approach. Stage 1 screened all variables in univariable models, retaining those with p\textless0.10. Stage 2 fitted a multivariable model with retained variables. Hazard ratios (HR) are reported per standard deviation increase. Model discrimination was assessed using Harrell\textquotesingle s C-index \citep{harrellMULTIVARIABLEPROGNOSTICMODELS1996}. The proportional hazards assumption was tested using Schoenfeld residuals \citep{schoenfeldPartialResidualsProportional1982}. Kaplan-Meier curves \citep{kaplanNonparametricEstimationIncomplete1958} were generated using median splits, with differences assessed by log-rank test \citep{petoDesignAnalysisRandomized1976}. Statistical analyses used Python 3.10 with lifelines 0.27 \citep{davidson-pilonLifelinesSurvivalAnalysis2019} and scipy 1.11. Significance was set at p\textless0.05.
 
 \section{Results}\label{results-2}
 
@@ -270,9 +252,6 @@ curative versus palliative treatment intent.
 \end{table}
 
 \subsection{Habitat Characteristics Across Cohorts}\label{habitat-characteristics-across-cohorts}
-
-We assessed whether CT habitats showed consistent spatial patterns and
-how they related to tumor volume.
 
 \textbf{Spatial architecture.} Despite differences in tumor burden and
 clinical setting, both cohorts showed the same spatial pattern observed
@@ -497,11 +476,15 @@ Kaplan-Meier curves for overall survival stratified by tumor volume
 (left column) and rim entropy (right column), using median splits.
 \textbf{(A)} Treatment-stratified analysis. Top row: Chemotherapy alone
 (n=122)---volume separates survival (p=0.002) but rim entropy does not
-(p=0.374). Bottom row: Chemotherapy plus bevacizumab (n=133)---both
+(p=0.374). Bottom row: Chemotherapy plus bevacizumab (n=133). Both
 volume (p$<$0.001) and rim entropy (p$<$0.001) separate
 survival. \textbf{(B)} RAS-stratified analysis. Top row: RAS wild-type
 (n=136)---volume separates survival (p=0.023) but rim entropy does not
-typically receive bevacizumab rather than anti-EGFR therapy).}
+(p=0.415). Bottom row: RAS-mutant (n=195). Both volume (p$<$0.001) and
+rim entropy (p=0.003) separate survival. The rim entropy signal appears
+specifically in contexts where anti-angiogenic therapy is relevant:
+bevacizumab-treated and RAS-mutant patients (who typically receive
+bevacizumab rather than anti-EGFR therapy).}
 \label{fig:8.4}
 \end{figure}
 
@@ -546,7 +529,7 @@ As predicted, in RAS wild-type patients (n=136), only volume was
 prognostic (HR=1.23, p=0.028); rim entropy showed no association
 (HR=0.96, p=0.76). In RAS-mutant patients (n=195), both volume (HR=1.89,
 p\textless0.001) and rim entropy (HR=0.80, 95\% CI 0.65--1.00, p=0.047)
-were independently prognostic \Cref{fig:8.4}B).
+were independently prognostic (\Cref{fig:8.4}B).
 
 The bevacizumab and RAS-mutant findings converge---unsurprising given
 that these groups overlap substantially---RAS-mutant patients often
@@ -583,6 +566,7 @@ summarized in \Cref{tab:context_dependent_prognostic}.
     \end{tabular}
 \end{table}
 
+\vspace*{-0.5\baselineskip}
 \subsubsection{Biological Interpretation: Rim Entropy and Growth Patterns}\label{biological-interpretation-rim-entropy-and-growth-patterns}
 
 We do not know what rim entropy is measuring at the tissue level. But
@@ -686,7 +670,7 @@ beyond tumor volume in colorectal liver metastases. We consistently
 found that habitat-derived heterogeneity metrics are prognostic in
 specific treatment contexts but not universally. In TCIA, post-treatment
 rim entropy predicted survival only after neoadjuvant chemotherapy
-(HR=0.59)---not in treatment-naive patients. In VHIO, baseline rim
+(HR=0.59) and not in treatment-naive patients. In VHIO, baseline rim
 entropy was prognostic specifically with bevacizumab (HR=0.68, p=0.004)
 and in RAS-mutant patients (HR=0.80, p=0.047), who typically receive
 anti-angiogenic rather than anti-EGFR therapy. For chemotherapy alone,
@@ -695,7 +679,7 @@ added nothing.
 
 This pattern has a coherent interpretation. Cytotoxic chemotherapy
 produces measurable tumor shrinkage; response assessment based on size
-works. Anti-angiogenic therapy works differently---it stops blood
+works. Anti-angiogenic therapy works differently: it stops blood
 supply, slows growth, and may induce compositional changes without
 substantial size reduction. In this context, spatial heterogeneity at
 the invasive margin captures treatment-relevant biology that volume
@@ -709,8 +693,8 @@ rim entropy (HR=0.59), rim avascular proportion (HR=0.60), and rim
 cellular-perfused proportion (HR=1.65); core metrics showed no signal.
 In VHIO, rim entropy was the only habitat metric to survive
 multivariable adjustment in the bevacizumab subgroup. This gradient
-supports the biological premise that the invasive margin---where tumor
-meets liver, where angiogenesis and immune interactions concentrate---is
+supports the biological premise that the invasive margin, where tumor
+meets liver, where angiogenesis and immune interactions concentrate, is
 the most clinically relevant compartment. This finding aligns with
 growing recognition in the literature that the tumor-liver interface
 carries distinct prognostic information \citep{nielsenMorphologicalGrowthPatterns2014}. Our
@@ -718,7 +702,7 @@ results suggest that CT-derived rim heterogeneity may capture similar
 biology non-invasively.
 
 Higher rim entropy predicted better survival across multiple contexts,
-which seems counterintuitive---shouldn't heterogenous tumors do worse?
+which seems counterintuitive: shouldn't heterogenous tumors do worse?
 One explanation is that rim entropy captures biological features
 associated with better prognosis. The POEM analysis suggests a specific
 hypothesis: rim entropy may reflect desmoplastic growth pattern.
@@ -735,8 +719,8 @@ did not demonstrate statistically significant prediction of OS by rim
 entropy direction (p=0.76). However, the pattern was consistent with
 other findings: partial responders showed increasing entropy (median OS
 32.8 months), progressors showed decreasing entropy (median OS 9.0
-months). Among patients classified as stable disease by RECIST---where
-clinical decisions are most uncertain---rim entropy trajectories varied
+months). Among patients classified as stable disease by RECIST, where
+clinical decisions are most uncertain, rim entropy trajectories varied
 substantially. Four showed the highest entropy increases in the cohort;
 four showed decreasing entropy. This heterogeneity suggests that rim
 entropy dynamics may capture treatment-tumor interactions invisible to

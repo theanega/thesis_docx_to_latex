@@ -3,11 +3,11 @@ Overview}\label{medical-image-techniques-an-overview}\label{ch:2}
 
 Imaging guides clinical decisions at nearly every stage of cancer care.
 The modalities most relevant to this thesis are computed tomography
-(CT{}), magnetic resonance imaging (MRI), and histopathology. This
+(CT), magnetic resonance imaging (MRI), and histopathology. This
 chapter describes how each technique generates images and captures
 tumors at different scales. A note on terminology: because radiological
 images are 3D volumes, the basic unit of measurement is the voxel (a
-pixel extended into three dimensions). A single CT{} or MRI voxel
+pixel extended into three dimensions). A single CT or MRI voxel
 typically represents a tissue volume on the order of
 1mm\textsuperscript{3}. Histopathological images, by contrast, are 2D
 sections at micrometer resolution so the basic unit is the pixel.
@@ -26,7 +26,7 @@ their composition. For instance, bone, with its high calcium content,
 attenuates strongly (i.e. has a high \emph{μ}); air attenuates almost
 none; soft tissues like liver fall in between.
 
-A CT{} scanner consists of an X-ray tube and a rotating detector, with
+A CT scanner consists of an X-ray tube and a rotating detector, with
 the patient lying on a table that passes through. The X-ray tube emits a
 narrow beam that traverses the patient while detectors on the opposite
 side count the photons that emerge. Each detector reading represents the
@@ -37,7 +37,7 @@ rotation, the scanner collects hundreds of such measurements from
 different angles, effectively sampling line integrals of \emph{μ(x)}
 through the body from all directions. The relationship follows
 Lambert-Beer\textquotesingle s law: a beam from origin \emph{s,} with
-unit direction vector \emph{θ} and initial intensity \(N_{0}\)is reduced
+unit direction vector \emph{θ} and initial intensity \(N_{0}\) is reduced
 to \(N\) as it passes through tissue, where:
 
 \[N\, = \, N_{0}\, e^{- \int_{}^{}{\, d\lambda\,\mu(s\, + \,\lambda\theta)}\,}\]
@@ -92,13 +92,13 @@ is travelling through the body at that point:
   extracellular spaces and is washing out.
 \end{enumerate}
 
-CT{} is one of the most widely used imaging modalities due to its speed
+CT is one of the most widely used imaging modalities due to its speed
 (the total acquisition time is less than 15 minutes), availability, and
 quantitative nature. The main disadvantage is ionizing radiation. For
 primary liver tumors such as hepatocellular carcinoma, MRI is preferred
 because its superior soft tissue contrast enables more accurate
 diagnosis \citep{CancerFactsFigures}. For colorectal
-liver metastases, however, CT{} remains the standard for diagnosis and
+liver metastases, however, CT remains the standard for diagnosis and
 response assessment.
 
 \begin{figure}[htbp]
@@ -111,7 +111,7 @@ response assessment.
 measure of X-ray attenuation, with values depending on scanner and
 protocol. \textbf{(B)} Axial abdominal CT images acquired without
 contrast and after contrast administration in the arterial and portal
-venous phases, adapted from Hartung et al., 2024. Images are displayed
+venous phases, adapted from \citep{hartungAbdominalCTPhases2024}. Images are displayed
 according to radiological convention (viewed from the patient's feet).
 Arrows indicate the liver's vasculature (blue) and the aorta (green) to
 highlight phase-specific enhancement. Created with BioRender.com.}
@@ -126,7 +126,7 @@ Magnetic resonance imaging\footnote{MRI was developed for clinical use
   gradient-based spatial encoding). Both were awarded the Nobel Prize in
   Physiology or Medicine in 2003.} (MRI) generates images by exploiting
 the magnetic properties of atomic nuclei, primarily hydrogen. Unlike
-CT{}, MRI uses no ionizing radiation. Instead, it's based on
+CT, MRI uses no ionizing radiation. Instead, it's based on
 radiofrequency pulses and strong magnetic fields to induce and detect
 signals from water protons in tissue. \Cref{fig:2.2} shows examples of MRI images of patients with liver metastases.
 
@@ -241,23 +241,23 @@ vascular permeability.}
 MRI}\label{dynamic-contrast-enhanced-mri}
 
 DCE captures the flow of a contrast
-agent through tissue over time. Unlike CT{}, the contrast agent is
+agent through tissue over time. Unlike CT, the contrast agent is
 gadolinium-based. Following the injection of the contrast, MRI
 differentiates tissues based on how gadolinium shortens the T1
 relaxation. Therefore, in tissues where gadolinium accumulates, the
 signal is enhanced. Pharmacokinetic models analyze these enhancement
-curves. The most common model used is the Tofts model \citep{toftsMeasurementBloodbrainBarrier1991} which assumes that the movemenet of the contrast agent in the
+curves. The most common model used is the Tofts model \citep{toftsMeasurementBloodbrainBarrier1991} which assumes that the movement of the contrast agent in the
 tissue is from the blood vessels to the extracellular space (outside the
 cells). Thus, we can obtain a parameter related to the contrast agent
 leakage (perfusion), \emph{K\textsuperscript{tran}}\textsuperscript{s},
-and a parameters related to the volume of the extracellular space,
+and a parameter related to the volume of the extracellular space,
 \emph{ve}.
 
 Within a single examination, multiple MRI sequences can be acquired to
 obtain functional information beyond anatomy. We refer to this
 combination of sequences as mpMRI. After
 preprocessing and model fitting, we can obtain the different
-quantitative parameters such as ADC, fv, and Ktrans. We refer to these
+quantitative parameters such as ADC, $f_v$, and $K^{trans}$. We refer to these
 as mpMRI maps. In this thesis, mpMRI serves as the biological reference
 for developing and validating CT-derived habitats (Chapter~\ref{ch:7}). The
 specific parameters used are detailed in Chapter~\ref{ch:5}.
@@ -299,28 +299,28 @@ details that are impossible for the human eye to count can be fed the
 same image that a pathologist examines.
 
 Understanding the scale gap between radiology and pathology will allow
-us to contextualize the results in Chapter~\ref{ch:7}. A single CT{} voxel may
+us to contextualize the results in Chapter~\ref{ch:7}. A single CT voxel may
 contain tens of thousands of hepatocytes (liver cells) while in a
 whole-slide image a single hepatocyte covers thousands of pixels. The
 resolution gap is approximately nine orders of magnitude in
-volume.\footnote{A CT{} voxel is approximately 1 mm³ volume (=10⁹ μm³).
+volume.\footnote{A CT voxel is approximately 1 mm³ volume (=10⁹ μm³).
   Assuming an average hepatocyte diameter of \textasciitilde30 μm
   (volume ≈ 14,000 μm³ for a sphere), this is roughly 10⁴--10⁵
   hepatocytes per voxel. Whole-slide imaging at 40× magnification has a
   pixel size of \textasciitilde0.25 × 0.25 μm (0.0625 μm²).
   Approximating a hepatocyte cross-section as a circle of diameter 30 μm
   (area ≈ 700 μm²), one cell spans \textasciitilde10⁴ pixels. Comparing
-  volumes: one CT{} voxel (10⁹ μm³) versus one histology pixel extended
+  volumes: one CT voxel (10⁹ μm³) versus one histology pixel extended
   to a 5 μm section thickness (0.0625 μm² × 5 μm ≈ 0.3 μm³) gives a
   ratio of \textasciitilde10⁹.} As an analogy, we can picture
 Barcelona's beach. Histopathology is like examining individual grains of
-sand while CT{} imaging is like viewing the beach from an airplane. From
+sand while CT imaging is like viewing the beach from an airplane. From
 altitude we can tell fine sand from rocky areas, but individual grains
 are invisible.
 
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=0.95\textwidth]{fig_2_3.pdf}
+\includegraphics[width=0.95\textwidth]{fig_2_3.png}
 \caption[From radiological imaging to histopathological examination]{\textbf{From radiological imaging to histopathological examination.}
 Pre-operative CT reveals a colorectal liver metastasis (dashed
 contour, $\sim$4 cm). Following surgical resection, the

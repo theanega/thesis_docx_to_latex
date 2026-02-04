@@ -1,13 +1,11 @@
-\chapter{Identification of Precise Handcrafted Features for Habitat
-Imaging}\label{identification-of-precise-handcrafted-features-for-habitat-imaging}
+\chapter{Identification of Precise Handcrafted Features}\label{annex:identification-of-precise-handcrafted-features-for-habitat-imaging}
 
-\subsection{B.1. Cohort
-Characteristics}\label{b.1.-cohort-characteristics}
+\section{Cohort Characteristics}\label{sec:B.1}
 
 \begin{table}[ht]
     \centering
     \small
-    \caption{\textbf{Total number of patients, images, and lesions per cohort and lesion location.}}
+    \caption[Total number of patients, images, and lesions per cohort and lesion location]{\textbf{Total number of patients, images, and lesions per cohort and lesion location.}}
     \label{tab:annex_totals}
     \begin{tabular}{l c c c c c c}
         \toprule
@@ -29,7 +27,7 @@ Characteristics}\label{b.1.-cohort-characteristics}
 \begin{table}[ht]
     \centering
     \small
-    \caption{\textbf{Image acquisition parameters per cohort.} (*) Median [IQR]}
+    \caption[Image acquisition parameters per cohort]{\textbf{Image acquisition parameters per cohort.} (*) Median [IQR]}
     \label{tab:annex_acquisition}
     \begin{tabularx}{\textwidth}{@{} l c c c c @{}}
         \toprule
@@ -50,7 +48,7 @@ Characteristics}\label{b.1.-cohort-characteristics}
 \begin{table}[ht]
     \centering
     \small
-    \caption{\textbf{List of primary tumor types included within the mixed cohort.}}
+    \caption[List of primary tumor types included within the mixed cohort]{\textbf{List of primary tumor types included within the mixed cohort.}}
     \label{tab:annex_mixed_cohort}
     \begin{tabular}{l c c c c c c}
         \toprule
@@ -82,13 +80,14 @@ Characteristics}\label{b.1.-cohort-characteristics}
     \end{tabular}
 \end{table}
 
-\subsection{B.2. Radiomics Features and
-Computation}\label{b.2.-radiomics-features-and-computation}
+\clearpage
+
+\section{Radiomics Features and Computation}\label{sec:B.2}
 
 \begin{table}[ht]
     \centering
     \scriptsize 
-    \caption{\textbf{List of Radiomics features analyzed in this study.} 93 voxel-wise features were computed. 91 were analyzed after excluding GLCM\_MCC and FirstOrder\_TotalEnergy. Feature definitions are available in the IBSI reference manual (Zwanenburg et al., 2020).}
+    \caption[List of radiomics features analyzed in this study]{\textbf{List of radiomics features analyzed in this study.} 93 voxel-wise features were computed. 91 were analyzed after excluding GLCM\_MCC and FirstOrder\_TotalEnergy. Feature definitions are available in the IBSI reference manual \citep{zwanenburgImageBiomarkerStandardisation2020}.}
     \label{tab:annex_features}
     \begin{tabularx}{\textwidth}{@{} l >{\raggedright\arraybackslash}X | l >{\raggedright\arraybackslash}X @{}}
         \toprule
@@ -109,7 +108,7 @@ Computation}\label{b.2.-radiomics-features-and-computation}
 \begin{table}[ht]
     \centering
     \small
-    \caption{\textbf{Image processing and radiomics feature computation parameters.}}
+    \caption[Image processing and radiomics feature computation parameters]{\textbf{Image processing and radiomics feature computation parameters.}}
     \label{tab:annex_parameters}
     \begin{tabularx}{\textwidth}{@{} l >{\raggedright\arraybackslash}X @{}}
         \toprule
@@ -140,29 +139,30 @@ Computation}\label{b.2.-radiomics-features-and-computation}
     \end{tabularx}
 \end{table}
 
-\subsection{B.3. Image Perturbation}\label{b.3.-image-perturbation}
+\clearpage
+
+\section{Image Perturbation}\label{sec:B.3}
 
 Image perturbation was carried out in three ways: rotation, translation,
 and noise addition. While the first two emulate changes in patient
 positioning, the latter represents the noise present in different voxel
 intensities in CT images. Perturbations were performed as described in
-(Bernatowicz et al., 2021), where the authors demonstrated that the
+\citet{bernatowiczRobustImagingHabitat2021}, where the authors demonstrated that the
 combination of these three perturbations simulate the retest scenario.
 Briefly, we added Gaussian noise (mean 0, standard deviation as present
 in the image); for translation, we shifted the voxel grid by a fraction
 of the image voxel spacing following; finally, we rotated the image
 around the z-axis by an angle of 0.5°.
 
-\subsection{B.4. Habitat Computation}\label{b.4.-habitat-computation}
+\section{Habitat Computation}\label{sec:B.4}
 
 To take into account intravoxel heterogeneity, we decided to choose a
 probabilistic model, Gaussian Mixture Models (GMMs), for clustering
 rather than a deterministic approach. GMMs, which have been previously
-used in similar contexts (J. Chen et al., 2019; Jardim-Perassi et al.,
-2019), are generative probabilistic models that find a mixture of
+used in similar contexts \citep{chenUnsupervisedClusteringQuantitative2019, jardim-perassiMultiparametricMRICoregistered2019}, are generative probabilistic models that find a mixture of
 multiple Gaussian probability distributions that best fit the data. The
 Expectation-Maximization (EM) algorithm is used to estimate the model
-parameters (Bishop, 2006). A GMM is represented by the following
+parameters \citep{bishopPatternRecognitionMachine2006}. A GMM is represented by the following
 formula:
 
 \[P\ (x) = \sum_{}^{}(\pi_{k}\ N\ (x\ |\ \mu_{k},\ \sum_{k})\]
@@ -171,12 +171,12 @@ where
 
 P(x) : probability density of the data point x
 
-\(\mathbf{\pi}_{\mathbf{k}}\): mixing coefficient for the kth Gaussian
+$\mathbf{\pi}_{\mathbf{k}}$: mixing coefficient for the kth Gaussian
 component
 
-\(\mathbf{N}\ (\mathbf{x}\ |\ \mathbf{\mu}_{\mathbf{k}},\ \sum_{\mathbf{k}})\):
-kth Gaussian component with mean \(\mathbf{\mu}_{\mathbf{k}}\) and
-covariance matrix \(\sum_{\mathbf{k}}\)
+$\mathbf{N}\ (\mathbf{x}\ |\ \mathbf{\mu}_{\mathbf{k}},\ \sum_{\mathbf{k}})$:
+kth Gaussian component with mean $\mathbf{\mu}_{\mathbf{k}}$ and
+covariance matrix $\sum_{\mathbf{k}}$
 
 To determine the optimal number of habitats (k), we used the Bayesian
 Information Criterion (BIC). The formula for BIC is:
@@ -213,14 +213,14 @@ scikit-learn (v1.0.2) with a random seed of 123, and default parameters
 type and initialization with kmeans.
 
 In addition, The Hungarian algorithm (also known as the Kuhn-Munkres
-algorithm) (Kuhn, 1955), was used to match habitats between original and
+algorithm) \citep{kuhnHungarianMethodAssignment1955}, was used to match habitats between original and
 perturbed data. The Hungarian algorithm is a combinatorial optimization
 algorithm that solves the assignment problem in polynomial time. It
 finds an optimal one-to-one matching between two sets by minimizing the
 total cost (in our case, the difference in cluster assignments).
 
 Finally, to quantify habitat stability, we computed the Dice Similarity
-Coefficient (DSC) (Zou et al., 2004) between original and perturbed
+Coefficient (DSC) \citep{zouStatisticalValidationImage2004} between original and perturbed
 habitats for each habitat within a lesion, across all lesions. The DSC
 is a widely used metric for evaluating the overlap between two sets,
 with a higher DSC indicating greater similarity.
@@ -228,13 +228,12 @@ with a higher DSC indicating greater similarity.
 All codes are publicly available at
 \url{https://github.com/radiomicsgroup/precise-habitats}.
 
-\subsection{B.5. Intraclass Correlation
-Coefficient}\label{b.5.-intraclass-correlation-coefficient}
+\section{Intraclass Correlation Coefficient}\label{sec:B.5}
 
 An Intraclass Correlation Coefficient (ICC) value of 1 indicates that a
 feature is highly repeatable/reproducible whereas a value of 0 implies
 no reliability. Negative ICC values were truncated at 0 as proposed and
-done previously (Bartko, 1976; Fornacon-Wood et al., 2020). The ICC is
+done previously \citep{bartkoVariousIntraclassCorrelation1976, fornacon-woodReliabilityPrognosticValue2020}. The ICC is
 calculated by mean squares obtained through the analysis of variance
 (ANOVA). In this study, we use two versions of the ICC that are based on
 a two-way mixed effects ANOVA model, following Koo's guidelines. Below
@@ -243,98 +242,87 @@ information regarding such formulas can be found in the highly cited
 paper from McGraw and Wong.
 
 To compute the ANOVA model let's consider a dataframe with dimensions
-\(\mathbf{n}\  \times \mathbf{k}\) dataframe where \(\mathbf{n}\) is the
+$\mathbf{n}\ \times \mathbf{k}$ dataframe where $\mathbf{n}$ is the
 total number of voxels (rows) for one region of interest (ROI) and
-\(\mathbf{k}\) is the total number of conditions or measurements
-(columns). In our case, \(\mathbf{k}\)=2. For repeatability the two
+$\mathbf{k}$ is the total number of conditions or measurements
+(columns). In our case, $\mathbf{k}$=2. For repeatability the two
 conditions are original-perturbed (test-retest) and for reproducibility
 against kernel size the two conditions are computation with radius
 kernel 1mm or radius kernel 3mm (or bin size 12HU or 25HU in the case of
 reproducibility against bin size). Each voxel measurement is indexed as
-\(\mathbf{Y}_{\mathbf{ij}}\) where \emph{i} denotes the voxel (\emph{i}
+$\mathbf{Y}_{\mathbf{ij}}$ where \emph{i} denotes the voxel (\emph{i}
 = 1, \ldots{} \emph{n)} and \emph{j} denotes the measurement under the
 repeatability/reproducibility condition (\emph{j = 1 \ldots{} k)}. We
 define the following concepts:
 
-\({\overline{\mathbf{Y}}}_{\mathbf{i}}\): mean of all voxel values in a
+${\overline{\mathbf{Y}}}_{\mathbf{i}}$: mean of all voxel values in a
 column
 
 \[{\overline{\mathbf{Y}}}_{\mathbf{i}} = \frac{\sum_{\mathbf{j} = \mathbf{1}}^{\mathbf{k}}\mathbf{Y}_{\mathbf{ij}}}{\mathbf{k}}\]
 
-\({\overline{\mathbf{Y}}}_{\mathbf{j}}:\) mean of all voxel values in a
+${\overline{\mathbf{Y}}}_{\mathbf{j}}:$ mean of all voxel values in a
 column
 
 \[{\overline{\mathbf{Y}}}_{\mathbf{j}} = \frac{\sum_{\mathbf{i} = \mathbf{1}}^{\mathbf{n}}\mathbf{Y}_{\mathbf{ij}}}{\mathbf{n}}\]
 
-\(\mathbf{\mu}:\) mean of all values (also called \emph{grand mean})
+$\mathbf{\mu}:$ mean of all values (also called \emph{grand mean})
 
 \[\mathbf{\mu} = \frac{\sum_{\mathbf{j} = \mathbf{1}}^{\mathbf{k}}{\sum_{\mathbf{i} = \mathbf{1}}^{\mathbf{n}}\mathbf{Y}_{\mathbf{ij}}}}{\mathbf{n}*\mathbf{k}}\]
 
-\({\mathbf{\sigma}_{\mathbf{w}}}^{\mathbf{2}}:\ \)Within-voxel variance,
+${\mathbf{\sigma}_{\mathbf{w}}}^{\mathbf{2}}:\ $Within-voxel variance,
 the estimated variance of repeated measurements
 
 \[{\mathbf{\sigma}_{\mathbf{w}}}^{\mathbf{2}} = \frac{\sum_{\mathbf{j} = \mathbf{1}}^{\mathbf{k}}{(\mathbf{Y}_{\mathbf{ij}} - {\overline{\mathbf{Y}}}_{\mathbf{i}})\ }^{\mathbf{2}}}{\mathbf{k} - \mathbf{1}}\]
 
-\(\mathbf{\sigma}_{\mathbf{w}}\ :\ \ \)Within-voxel standard deviation,
+$\mathbf{\sigma}_{\mathbf{w}}\ :\ \ $Within-voxel standard deviation,
 the standard deviation we get if we measure the voxel multiple times.
 Calculated by averaging the within-subject sample variances. Since we
 have a variance per voxel and we can't meaningfully take the average of
 a list of standard deviations, we first calculate the variance for each
 voxel, and then compute the average of those, and finally square root
-that mean variance (Ye et al., 2022).
+that mean variance \citep{yeStatisticalConsiderationsRepeatability2022}.
 
 \[\mathbf{\sigma}_{\mathbf{w}} = \sqrt{\frac{\sum_{\mathbf{i} = \mathbf{1}}^{\mathbf{n}}\frac{\sum_{\mathbf{j} = \mathbf{1}}^{\mathbf{k}}{(\mathbf{Y}_{\mathbf{ij}} - {\overline{\mathbf{Y}}}_{\mathbf{i}})\ }^{\mathbf{2}}}{\mathbf{k} - \mathbf{1}}}{\mathbf{n}}}\]
 
 The degrees of freedom, sum squares and mean square expectations that
 correspond to a two-way mixed ANOVA model are summarized below.
 
-{\def\LTcaptype{none} % do not increment counter
-\begin{longtable}[]{@{}
-  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2511}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.1648}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2996}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2846}}@{}}
-\toprule\noalign{}
-\begin{minipage}[b]{\linewidth}\raggedright
-\textbf{Source of Variation}
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-\textbf{Degrees of freedom}
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-\textbf{Sum Squares}
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-\textbf{Mean Square Expectations}
-\end{minipage} \\
-\midrule\noalign{}
-\endhead
-\bottomrule\noalign{}
-\endlastfoot
+\needspace{10\baselineskip}
+\begin{table}[H]
+\centering
+\small
+\caption[Two-way Mixed ANOVA Model]{\textbf{Two-way Mixed ANOVA Model.} MSC: mean square columns, MSR: mean square rows, MSE: mean square error, SSC= sum of squares columns, SSR=sum of squares rows, SST= sum of squares total, SSE= sum of squares error, dfc= degrees of freedom columns, dfr=degrees of freedom rows, dfe=degrees of freedom errors}
+\label{tab:annex_anova_model}
+\begin{tabular}{@{}p{3.5cm}p{2cm}p{4.5cm}p{4cm}@{}}
+\toprule
+\textbf{Source of Variation} & \textbf{Degrees of freedom} & \textbf{Sum Squares} & \textbf{Mean Square Expectations} \\
+\midrule
 Conditions (columns) & dfc = k -1 &
-\(\mathbf{SSC} = \ \sum_{\mathbf{j} = \mathbf{1}}^{\mathbf{k}}{\mathbf{n}\  \times \ {({\overline{\mathbf{Y}}}_{\mathbf{j}} - \mathbf{\mu})\ }^{\mathbf{2}}}\)
+$\mathbf{SSC} = \ \sum_{\mathbf{j} = \mathbf{1}}^{\mathbf{k}}{\mathbf{n}\  \times \ {({\overline{\mathbf{Y}}}_{\mathbf{j}} - \mathbf{\mu})\ }^{\mathbf{2}}}$
 &
-\(\mathbf{MSC} = \frac{\mathbf{SSC}}{\mathbf{dfc}\  \times \ \mathbf{n}\ }\) \\
+$\mathbf{MSC} = \frac{\mathbf{SSC}}{\mathbf{dfc}\  \times \ \mathbf{n}\ }$ \\
 Voxels (rows) & dfr = n -1 &
-\(\mathbf{SSR} = \ \sum_{\mathbf{i} = \mathbf{1}}^{\mathbf{n}}{\mathbf{k}\  \times \ {({\overline{\mathbf{Y}}}_{\mathbf{i}} - \mathbf{\mu})\ }^{\mathbf{2}}}\)
-& \(\mathbf{MSR} = \frac{\mathbf{SSR}}{\mathbf{dfr}\ }\) \\
+$\mathbf{SSR} = \ \sum_{\mathbf{i} = \mathbf{1}}^{\mathbf{n}}{\mathbf{k}\  \times \ {({\overline{\mathbf{Y}}}_{\mathbf{i}} - \mathbf{\mu})\ }^{\mathbf{2}}}$
+& $\mathbf{MSR} = \frac{\mathbf{SSR}}{\mathbf{dfr}\ }$ \\
 Total & &
-\(\mathbf{SST} = \ \sum_{\mathbf{j} = \mathbf{1}}^{\mathbf{k}}{\sum_{\mathbf{i} = \mathbf{1}}^{\mathbf{n}}{(\mathbf{Y}_{\mathbf{ij}} - \mathbf{\mu})\ }^{\mathbf{2}}\ }\)
+$\mathbf{SST} = \ \sum_{\mathbf{j} = \mathbf{1}}^{\mathbf{k}}{\sum_{\mathbf{i} = \mathbf{1}}^{\mathbf{n}}{(\mathbf{Y}_{\mathbf{ij}} - \mathbf{\mu})\ }^{\mathbf{2}}\ }$
 & \\
 Error (or residual) & dfe = (n -1)(k -1) &
-\(\mathbf{SSE} = \mathbf{SST} - \mathbf{SSC} - \mathbf{SSR}\) &
-\(\mathbf{MSE} = \frac{\mathbf{SSE}}{\mathbf{dfe}\ }\) \\
-\multicolumn{4}{@{}>{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{1.0000} + 6\tabcolsep}@{}}{%
-MSC: mean square columns, MSR: mean square rows, MSE: mean square error,
-SSC= sum of squares columns, SSR=sum of squares rows, SST= sum of
-squares total, SSE= sum of squares error, dfc= degrees of freedom
-columns, dfr=degrees of freedom rows, dfe=degrees of freedom errors} \\
-\end{longtable}
-}
+$\mathbf{SSE} = \mathbf{SST} - \mathbf{SSC} - \mathbf{SSR}$ &
+$\mathbf{MSE} = \frac{\mathbf{SSE}}{\mathbf{dfe}\ }$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+
 
 We compute the two versions of ICC for repeatability and
 reproducibility:
 
-Repeatibility ICC(3A,1): ICC based on single-measurement,
-absolute-agreement, two-way mixed-effects model. \emph{\hfill\break
-}\[\mathbf{ICC}\ (\mathbf{3A},\mathbf{1}) = \frac{\mathbf{MSR} - \mathbf{MSE}}{\mathbf{MSR} + \mathbf{dfc}\  \times \ \mathbf{MSE} + \ \frac{\mathbf{k}}{\mathbf{n}\ }\  \times (\mathbf{MSC} - \mathbf{MSE})\ \ }\]
+Repeatability ICC(3A,1): ICC based on single-measurement,
+absolute-agreement, two-way mixed-effects model.
+
+\[\mathbf{ICC}\ (\mathbf{3A},\mathbf{1}) = \frac{\mathbf{MSR} - \mathbf{MSE}}{\mathbf{MSR} + \mathbf{dfc}\  \times \ \mathbf{MSE} + \ \frac{\mathbf{k}}{\mathbf{n}\ }\  \times (\mathbf{MSC} - \mathbf{MSE})\ \ }\]
 
 Reproducibility ICC(3C,1): ICC based on single-measurement, consistency,
 two-way mixed-effects model.
@@ -346,25 +334,24 @@ bound (UCL):
 
 \[\mathbf{LCL =}\frac{\frac{\mathbf{FR}}{\mathbf{F}}\mathbf{- 1}}{\frac{\mathbf{FR}}{\mathbf{F}}\mathbf{+ k - \ 1}}\mathbf{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ UCL =}\frac{\mathbf{(FR\  \times \ F)\  - 1}}{\mathbf{(FR\  \times \ F) + k - \ 1}}\]
 
-Where F is the (1-\(\frac{\mathbf{\alpha}}{\mathbf{2}}\) ) x
+Where F is the (1-$\frac{\mathbf{\alpha}}{\mathbf{2}}$ ) x
 100\textsuperscript{th} percentile of the F distribution with n-1
 numerator degrees of freedom and (n-1)(k-1) denominator degrees of
 freedom and FR is the F-statistic for voxels computed as:
-\(\mathbf{FR =}\frac{\mathbf{MSR}}{\mathbf{MSE}}\)\emph{\textbf{.}}
+$\mathbf{FR =}\frac{\mathbf{MSR}}{\mathbf{MSE}}$.
 
-Custom codes used to calculate ICC (3A,1) and ICC (3C,1)\textbf{,} based
-on Nipype's (Esteban et al., 2022) module ICC (v1.8.5) and approved by
-an statistician (VN) are available at
-https://github.com/radiomicsgroup/precise-habitats.
+Custom codes used to calculate ICC (3A,1) and ICC (3C,1), based
+on Nipype's \citep{estebanNipyNipype1832022} module ICC (v1.8.5) and approved by
+a statistician (VN) are available at
+\url{https://github.com/radiomicsgroup/precise-habitats}.
 
-\subsection{B.6. Justification for NGTDM Coarseness
-Inclusion}\label{b.6.-justification-for-ngtdm-coarseness-inclusion}
+\section{Justification for NGTDM Coarseness Inclusion}\label{sec:B.6}
 
 NGTDM (Neighborhood Gray-Tone-Difference Matrix) coarseness describes
 the roughness (i.e. how fine or coarse) the texture of an image is. In
 the radiomics literature, evidence has been found regarding its
 usefulness to characterize heterogeneity and predict progression-free
-survival in oncology (Gupta et al., 2021).
+survival in oncology \citep{guptaPredictingProgressionFreeSurvival2021}.
 
 In our study, we identified precise features by linking repeatability
 and reproducibility results. That is, for every feature, we considered
@@ -382,33 +369,22 @@ gray-tone values between pairs of neighboring pixels. Considering the
 feature's excellent results in two out of three experiments, its
 potential usefulness and in light of the fact that we were already being
 stringent, first by using LCL rather than ICC and second by linking
-results of three different experiments, , we decided to include it as a
+results of three different experiments, we decided to include it as a
 precise feature for both liver and lung lesions.
 
-\subsection{B.7. Primary Tumor Has No Effect on
-Precision}\label{b.7.-primary-tumor-has-no-effect-on-precision}
+\clearpage
+\section{Primary Tumor Has No Effect on Precision}\label{sec:B.7}
 
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=0.95\textwidth]{fig_B_1.png}
-\caption{Repeatability by primary tumor type.}
+\caption[Repeatability by primary tumor type]{\textbf{Repeatability by primary tumor type.} Repeatability distribution of radiomics features computed with setting R1B12 (A), R1B25 (B), R3B12 (C) and R3B25 (D) per cohort for lung and liver lesions separately. Primary tumor has no effect on repeatability. LCL, 95\% lower confidence limit of the Intraclass Correlation Coefficient; R1B12, features computed with kernel radius 1mm and bin size 12HU; R1B25, features computed with kernel radius 1mm and bin size 25HU; R3B12, features computed with kernel radius 3mm and bin size 12HU; R3B25, features computed with kernel radius 3mm and bin size 25HU; CRC: colorectal cohort; NET: neuroendocrine cohort; ALL: all cohorts combined.}
 \label{fig:B.1}
 \end{figure}
 
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=0.95\textwidth]{fig_B_2.png}
-\caption{Reproducibility by primary tumor type.
-Repeatability distribution of radiomics features computed with
-setting R1B12 \textbf{(A)}, R1B25 \textbf{(B)}, R3B12 \textbf{(C)} and
-R3B25 \textbf{(D)} per cohort for lung and liver lesions separately.
-Primary tumor has no effect on repeatability. LCL, 95\% lower confidence
-limit of the Intraclass Correlation Coefficient; R1B12, features
-computed with kernel radius 1mm and bin size 12HU; R1B25, features
-computed with kernel radius 1mm and bin size 25HU; R3B12, features
-computed with kernel radius 3mm and bin size 12HU; R3B25, features
-computed with kernel radius 3mm and bin size 25HU; CRC: colorectal
-cohort; NET: neuroendocrine cohort; ALL: all cohorts combined.}
+\caption[Reproducibility by primary tumor type]{\textbf{Reproducibility by primary tumor type.} Reproducibility distribution against R of radiomics features computed with fixed bin size of 12HU (A) and fixed bin size of 25HU (B) per cohort for lung and liver lesions separately. Similary, (C) and (D) depict the reproducibility distribution against B of radiomics features computed with fixed radius of 1mm (C) and 3mm (D) per cohort for lung and liver lesions separately. LCL, 95\% lower confidence limit of the Intraclass Correlation Coefficient; CRC: colorectal cohort; NET: neuroendocrine cohort; ALL: all cohorts combined.}
 \label{fig:B.2}
 \end{figure}
-

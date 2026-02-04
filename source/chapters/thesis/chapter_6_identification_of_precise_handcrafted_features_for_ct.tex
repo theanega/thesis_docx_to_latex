@@ -212,7 +212,7 @@ mixed-effects model. Following Koo and Li, we classified features based
 on the LCL of the ICC: poor (LCL
 \textless0.50), moderate (0.50 \textless{} LCL \textless0.75), good (0.75 \textless{} LCL
 \textless0.90), and excellent (LCL ≥0.90). A feature was selected as
-\textbf{precise} if the 95\% LCL of the ICC was
+precise if the 95\% LCL of the ICC was
 ≥ 0.50 across the three relevant experiments: repeatability (R3B12),
 reproducibility against R (B=12HU), and reproducibility against B
 (R=3mm).
@@ -247,21 +247,21 @@ implementation and BIC optimization are provided in Annex B.
 
 \subsection{Exploratory Biological Case Study}\label{exploratory-biological-case-study}
 
-To assess whether CT{} habitats capture biologically meaningful tissue
+To assess whether CT habitats capture biologically meaningful tissue
 compartments rather than imaging artifacts, we conducted an exploratory
 analysis in a subset of 13 patients from the PREDICT cohort (see Section
-5.1) who had co-acquired CT{}, multiparametric MRI (mpMRI) and digitized
+5.1) who had co-acquired CT, multiparametric MRI (mpMRI) and digitized
 hematoxylin-eosin (HE) histopathology from biopsy.
 
-CT{} habitats were computed using the precise liver features identified
+CT habitats were computed using the precise liver features identified
 in Section 6.2.4, clustered with GMM and BIC as described above. For
 comparison, mpMRI habitats were computed by voxelwise clustering of nine
 quantitative maps---warped non-linearly onto a high-resolution
-T2-weighted anatomical scan---including tissue T2 (T2t), longitudinal
-relaxation time (T1), tissue and vascular apparent diffusion
-coefficients (ADCt, ADCv), tissue apparent kurtosis (Kt), vascular
-fraction (fv), capillary permeability constant ($K^{trans}$), extracellular
-extravascular volume fraction (ve), and plasma volume fraction (vp). We
+T2-weighted anatomical scan---including tissue T2 ($T_{2t}$), longitudinal
+relaxation time ($T_1$), tissue and vascular apparent diffusion
+coefficients ($ADC_t$, $ADC_v$), tissue apparent kurtosis ($K_t$), vascular
+fraction ($f_v$), capillary permeability constant ($K^{trans}$), extracellular
+extravascular volume fraction ($v_e$), and plasma volume fraction ($v_p$). We
 then compared the number of habitats selected by BIC for both CT and
 mpMRI habitats in each lesion and the qualtiative correspondence between
 imaging habitats and tissue phenotypes identified by a pathologist on HE
@@ -269,7 +269,7 @@ slides.
 
 This analysis was deliberately exploratory. Given the sampling bias, our
 goal was not to establish definitive biological ground truth, but to
-confirm that CT{} habitats have a plausible relationship to known tissue
+confirm that CT habitats have a plausible relationship to known tissue
 phenotypes such as necrosis and viable tumor.
 
 \subsection{Statistical Analysis}\label{statistical-analysis}
@@ -360,9 +360,9 @@ when R=1 mm.
     \end{tabular}
 \end{table}
 
-In other words, \textbf{most features were reproducible against bin
-size} (good or excellent agreement), \textbf{but poorly reproducible
-against kernel radius}. The choice of neighborhood size matters more
+In other words, most features were reproducible against bin
+size (good or excellent agreement), but poorly reproducible
+against kernel radius. The choice of neighborhood size matters more
 than the choice of discretization bin. Features computed with B=12 HU
 were slightly more reproducible against kernel radius than those with
 B=25 HU (p \textless0.001). Features computed with R=3 mm were more
@@ -539,21 +539,16 @@ Coefficient.}
 \label{fig:6.5}
 \end{figure}
 
-\textbf{\hfill\break
-}
-
-
-
 \subsection{Exploratory Biological Case Study}\label{exploratory-biological-case-study-1}
 
-As a preliminary check of biological plausibility, we examined CT{}
+As a preliminary check of biological plausibility, we examined CT
 habitats in 13 PREDICT patients with multiparametric MRI (mpMRI) and
 histopathology (biopsy, not whole tumor resection).
 
 \Cref{fig:6.6} shows an example from a patient
 with liver metastasis from melanoma.
 
-\begin{figure}[htbp]
+\begin{figure}[H]
 \centering
 \includegraphics[width=0.95\textwidth]{fig_6_6.png}
 \caption[Exploration of the biological relevance of imaging habitats]{\textbf{Exploration of the biological relevance of imaging habitats.}
@@ -566,21 +561,21 @@ CT habitats presented comparable distributions. \textbf{(C)} Image
 guided biopsy with needle (N) and liver (L) tumor lesion (T), and
 resulting histologic image (H\&E stain) with observable tissue types,
 annotated by a pathologist. The H\&E-stained histological material reveals
-areas of necrosis in the core of the lesion. ADCt: tissue apparent
-diffusion coefficient, ADCv: vascular apparent diffusion coefficient,
-T2t: tissue transverse relaxation time, AKt: tissue apparent kurtosis
-coefficient, Fv: vascular signal fraction, T1: total longitudinal
-relaxation time, Ktrans: capillary permeability constant, Vp: plasma
-volume fraction, Ve: extravascular and extracellular volume fraction.}
+areas of necrosis in the core of the lesion. $ADC_t$: tissue apparent
+diffusion coefficient, $ADC_v$: vascular apparent diffusion coefficient,
+$T_{2t}$: tissue transverse relaxation time, $K_t$: tissue apparent kurtosis
+coefficient, $f_v$: vascular signal fraction, $T_1$: total longitudinal
+relaxation time, $K^{trans}$: capillary permeability constant, $v_p$: plasma
+volume fraction, $v_e$: extravascular and extracellular volume fraction.}
 \label{fig:6.6}
 \end{figure}
 
-CT{} habitats (computed from precise features) displayed spatial
+CT habitats (computed from precise features) displayed spatial
 distributions qualitatively consistent with habitats derived from nine
 mpMRI maps (\Cref{fig:6.6}A--B). For example, a
-CT{} habitat depicted in blue---spatially concordant with an mpMRI
-habitat in the lesion core---showed elevated T2t, T1, and ADCt
-(consistent with lower cellularity) and reduced fv, Ktrans, ve, and vp
+CT habitat depicted in blue---spatially concordant with an mpMRI
+habitat in the lesion core---showed elevated $T_{2t}$, $T_1$, and $ADC_t$
+(consistent with lower cellularity) and reduced $f_v$, $K^{trans}$, $v_e$, and $v_p$
 (consistent with lower vascularization). This pattern is compatible with
 necrosis. Histopathology confirmed a necrotic core surrounded by viable
 tumor (\Cref{fig:6.6}C), matching the spatial
@@ -590,16 +585,16 @@ This exploratory analysis relied on visual comparison rather than
 voxel-wise co-registration or quantitative spatial metrics. Its purpose
 was not to validate the biological meaning of habitats definitively, but
 to rule out the possibility that they reflect pure imaging noise or
-reconstruction artifacts. The qualitative agreement between CT{}
+reconstruction artifacts. The qualitative agreement between CT
 habitats, mpMRI habitats, and pathologist-identified tissue types
-(necrosis, viable tumor) suggests that CT{} habitats encode biologically
+(necrosis, viable tumor) suggests that CT habitats encode biologically
 relevant information about tumor microenvironment heterogeneity.
 
 
 
 \section{Discussion}\label{discussion}
 
-To achieve an effective clinical translation of CT{} habitats, excellent
+To achieve an effective clinical translation of CT habitats, excellent
 robustness of the underlying imaging features is necessary. In this
 chapter we examined 3D radiomics\textquotesingle{} repeatability in a
 simulated test-retest scenario and reproducibility against kernel radius
@@ -634,7 +629,7 @@ This was true both in number and in type: GLCM features were more
 precise in lung, while first-order and GLRLM features were more precise
 in liver. One plausible explanation is the difference in
 contrast-to-noise ratio between the two tissue types. Lung lesions,
-surrounded by air, exhibit high contrast on CT{}; liver lesions,
+surrounded by air, exhibit high contrast on CT; liver lesions,
 embedded in soft tissue, do not. This suggests that radiomics models are
 not universally portable---features that work in one anatomical site may
 not work in another. Primary tumor type (colorectal, lung,
@@ -642,7 +637,7 @@ neuroendocrine, other) had no detectable effect on precision, implying
 that lesion location matters more than tumor origin.
 
 Our exploratory case study attempted to explore the biological relevance
-of CT{} habitats, inspired by previous studies that highlighted the
+of CT habitats, inspired by previous studies that highlighted the
 value of quantitative MRI-derived habitats for characterizing tumor
 heterogeneity \citep{divinePopulationBasedGaussianMixture2016,jardim-perassiMultiparametricMRICoregistered2019}. In the
 In the
@@ -650,7 +645,7 @@ In the
 habitats derived from nine mpMRI maps and with tissue features visible
 on histology (e.g., necrotic cores, viable tumor rims). Though
 conclusions are difficult to draw in view of our limited sample size,
-CT{} and mpMRI habitats may be capturing biologically relevant imaging
+CT and mpMRI habitats may be capturing biologically relevant imaging
 phenotypes, potentially serving as non-invasive markers of cancer
 aggressiveness. This underscores the potential clinical utility of our
 approach, still in an exploratory context.
@@ -703,7 +698,7 @@ protocols---namely, patient repositioning and computational parameter
 choices. These sources of variability are less explored and, we argue,
 equally important.
 
-Fourth, our precision analysis was limited to CT{}. Whether the same
+Fourth, our precision analysis was limited to CT. Whether the same
 features are precise in MRI or PET, and whether habitats derived from
 different modalities overlap spatially, are open questions. The
 exploratory mpMRI analysis in this chapter suggests qualitative
@@ -725,14 +720,14 @@ features.
 \section{Summary}\label{summary}
 
 Our comprehensive repeatability and reproducibility analysis identified
-two subsets of precise RF for effectively computing stable CT{} tumor
+two subsets of precise RF for effectively computing stable CT tumor
 habitats in lung and liver lesions. By employing these precise RF and
 using unsupervised clustering models, we demonstrated the ability to
-identify distinct tumor phenotypes in an exploratory case study. CT{}
+identify distinct tumor phenotypes in an exploratory case study. CT
 tumor habitats correlated with biologically meaningful tumor aspects
 such as cellularity, vascularization, and necrosis, but further studies
 with larger sample sizes are needed to validate these findings. This
-approach to computing CT{} habitats holds great potential for studying
+approach to computing CT habitats holds great potential for studying
 intra-tumoral heterogeneity and monitoring cancer evolution throughout
 the course of the disease.
 
@@ -753,7 +748,7 @@ the course of the disease.
   features.
 \item
   Exploratory validation with mpMRI and histopathology suggested that
-  CT{} habitats capture biologically relevant tissue compartments (e.g.,
+  CT habitats capture biologically relevant tissue compartments (e.g.,
   necrosis, viable tumor, vascularization differences).
 \end{itemize}
 

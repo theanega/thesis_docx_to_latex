@@ -40,6 +40,35 @@ xelatex -output-directory=build build/thesis_digital.tex
 xelatex -output-directory=build build/thesis_digital.tex
 ```
 
-**Output:** The final PDF will be at `build/thesis_digital.pdf`.
+To compile the **Annex** specifically:
 
----
+```bash
+# 1. Compile LaTeX
+xelatex -output-directory=build build/annex_digital.tex
+
+# 2. Process Bibliography
+bibtex build/annex_digital
+
+# 3. Final Compilation
+xelatex -output-directory=build build/annex_digital.tex
+xelatex -output-directory=build build/annex_digital.tex
+```
+
+**Output:** The final PDFs will be at `build/thesis_digital.pdf` and `build/annex_digital.pdf`.
+
+### Optional: printed cover and cover credits
+
+You can add two extra pages **before** the titlepage (they do not affect main-body page numbering):
+
+1. **Cover image** — full-page PDF (or image) in `source/figures/`, e.g. `cover_A4.pdf`
+2. **Cover credits** — `source/frontmatter/printed_cover_credits.tex`
+
+In the **build file** (e.g. `build/thesis_digital.tex` or `build/thesis_with_annex_print.tex`), set one or both flags before `\input{../main.tex}`:
+
+```latex
+\def\includecoverimage{true}   % include the cover image page
+\def\includecovercredits{true} % include the cover credits page
+```
+
+- **Print version** (`thesis_with_annex_print.tex`) already has both set to `true`.
+- Other build files leave them unset (no cover/credits). Add the lines above if you want them for a given build.

@@ -25,6 +25,8 @@
 \usepackage{fontspec}
 \usepackage{xunicode}
 \usepackage{xltxtra}
+% Note: To avoid grey borders on figures that use transparency (e.g. some PDFs),
+% compile with xelatex-unsafe instead of xelatex (enables -dALLOWPSTRANSPARENCY).
 
 % Fuente de texto: Times New Roman (mejor calidad con newtxtext)
 % Nota: Con XeLaTeX no necesitamos inputenc/fontenc, pero los mantenemos por compatibilidad
@@ -57,9 +59,11 @@
 
 % Geometría de página - márgenes normales A4
 \usepackage[a4paper,left=2.5cm,right=2.5cm,top=2.5cm,bottom=2.5cm]{geometry}
+\raggedbottom
 
 % Gráficos e imágenes
 \usepackage{graphicx}
+\usepackage{pdfpages}  % Para insertar la portada como PDF completo (full page)
 \usepackage{svg}  % Para incluir SVG
 \usepackage{psvectorian} % Para ornamentos
 \graphicspath{{source/figures/}}
@@ -91,6 +95,9 @@
 \usepackage{tocloft}
 % Fix blank page headers globally
 \usepackage{emptypage}
+% Keep section titles with following text (avoid large gap when title sits at page bottom)
+\usepackage{needspace}
+\usepackage{float}  % [H] for "here" placement of tables/figures
 
 % ============================================================================
 % CABECERAS Y PIES DE PÁGINA (fancyhdr)
@@ -229,8 +236,13 @@
 % Aplicar Roboto a títulos de partes, capítulos, secciones, etc.
 % Esto se hace redefiniendo los comandos de formato
 
-% Títulos de partes - Part X centered at top with ornament
+% Títulos de partes - Centered title using titlefont, without "Part X" label
 \makeatletter
+% Redefine \part to NOT clear page or add vertical space (allowing images above)
+\renewcommand{\part}{%
+  \thispagestyle{plain}%
+  \secdef\@part\@spart}
+
 \renewcommand{\@part}[2][]{%
   \ifnum \c@secnumdepth >-2\relax
     \refstepcounter{part}%
@@ -239,23 +251,18 @@
     \addcontentsline{toc}{part}{#1}%
   \fi
   \markboth{}{}%
-  % Part number at top, centered
   {\centering
    \normalfont
-   \ifnum \c@secnumdepth >-2\relax
-     \fontsize{20}{24}\selectfont\bfseries\sffamily\titlefont \partname\nobreakspace\thepart
-     \par
-     \vskip 10\p@
-     % Ornament below Part number
-     \psvectorian[scale=0.2]{8}
-     \par
-     \vskip 30\p@
-   \fi
-   % Title centered
-   \fontsize{26}{32}\selectfont\bfseries\sffamily\titlefont #1\par}%
-  \vskip 30\p@  % Espacio después del título, antes de la quote
+   \fontsize{26}{32}\selectfont\bfseries\sffamily\titlefont #2\par}%
+  \vskip 20\p@  % Reduced space to move quote higher
   }
-% Redefinir \@endpart para NO forzar nueva página
+\renewcommand{\@spart}[1]{%
+    {\centering
+     \interlinepenalty \@M
+     \normalfont
+     \fontsize{26}{32}\selectfont\bfseries\sffamily\titlefont #1\par}%
+     \vskip 20\p@
+}
 \renewcommand\@endpart{}
 \makeatother
 
@@ -342,10 +349,25 @@
 
 \begin{document}
 
-% Página de créditos para versión impresa (solo si es versión print)
-\def\printversion{print}
-\ifx\thesisversion\printversion
-  \input{source/frontmatter/printed_cover_credits.tex}
+% ----------------------------------------------------------------------------
+% Optional printed cover and cover credits (before frontmatter, no page numbers).
+% Order when both enabled: cover (full page) -> blank -> credits -> blank -> frontmatter.
+% Set \includecoverimage{true} and/or \includecovercredits{true} in the build file.
+% ----------------------------------------------------------------------------
+\ifx\includecoverimage\undefined
+  \def\includecoverimage{false}
+\fi
+\ifx\includecovercredits\undefined
+  \def\includecovercredits{false}
+\fi
+\def\coverflagtrue{true}
+\ifx\includecoverimage\coverflagtrue
+  \includepdf[pages={1},fitpaper]{source/figures/cover_A4.pdf}%
+  \thispagestyle{empty}\null\newpage
+\fi
+\ifx\includecovercredits\coverflagtrue
+  \thispagestyle{empty}\input{source/frontmatter/printed_cover_credits.tex}%
+  \thispagestyle{empty}\null\newpage
 \fi
 
 \frontmatter
@@ -433,8 +455,14 @@
 \def\trueflag{true}
 \ifx\includethesis\trueflag
   % Part I: Introduction
+  \cleardoublepage
+  \thispagestyle{plain}
+  \vspace*{2cm}
+  \begin{center}
+  \includegraphics[height=6cm]{part_I.png}
+  \end{center}
   \part{Introduction}
-  \vfill
+  \vspace{3cm}
   \begin{flushright}
   \begin{minipage}{0.75\textwidth}
   \raggedleft
@@ -451,8 +479,14 @@
   
   % Part II: Foundations
   % Part II: Foundations
+  \cleardoublepage
+  \thispagestyle{plain}
+  \vspace*{2cm}
+  \begin{center}
+  \includegraphics[height=6cm]{part_II.png}
+  \end{center}
   \part{Foundations}
-  \vfill
+  \vspace{3cm}
   \begin{flushright}
   \begin{minipage}{0.75\textwidth}
   \raggedleft
@@ -480,8 +514,14 @@
   \cleardoublepage
   \input{source/chapters/thesis/chapter_4_imaging_heterogeneity_state_of_the_art.tex}
   
+  \cleardoublepage
+  \thispagestyle{plain}
+  \vspace*{2cm}
+  \begin{center}
+  \includegraphics[height=6cm]{part_III.png}
+  \end{center}
   \part{Methodological Framework}
-  \vfill
+  \vspace{3cm}
   \begin{flushright}
   \begin{minipage}{0.75\textwidth}
   \raggedleft
@@ -500,8 +540,14 @@
   
   % Part IV: A Data-Driven Approach to CT Habitats
   % Part IV: A Data-Driven Approach to CT Habitats
+  \cleardoublepage
+  \thispagestyle{plain}
+  \vspace*{2cm}
+  \begin{center}
+  \includegraphics[height=6cm]{part_IV.png}
+  \end{center}
   \part{A Data-Driven Approach to CT Habitats}
-  \vfill
+  \vspace{3cm}
   \begin{flushright}
   \begin{minipage}{0.75\textwidth}
   \raggedleft
@@ -522,8 +568,14 @@
   
   % Part V: Synthesis and Conclusions
   % Part V: Synthesis and Conclusions
+  \cleardoublepage
+  \thispagestyle{plain}
+  \vspace*{2cm}
+  \begin{center}
+  \includegraphics[height=6cm]{part_V.png}
+  \end{center}
   \part{Synthesis and Conclusions}
-  \vfill
+  \vspace{3cm}
   \begin{flushright}
   \begin{minipage}{0.75\textwidth}
   \raggedleft
@@ -556,6 +608,8 @@
 % Comparar con string "true"
 \ifx\includeannex\trueflag
   \appendix
+  \renewcommand{\appendixname}{Annex}
+  \renewcommand{\chaptername}{Annex}
   \input{source/chapters/annex/annex_A_image_aquisition_details.tex}
   \cleardoublepage
   \input{source/chapters/annex/annex_B_identification_of_precise_handcrafted_features_for_habitat_imaging.tex}

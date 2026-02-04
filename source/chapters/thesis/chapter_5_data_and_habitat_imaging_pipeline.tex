@@ -43,7 +43,7 @@ Chapter~\ref{ch:6} presents a broader technical study assessing the precision of
 3D voxelwise radiomics features using additional retrospective data from
 both liver and lung lesions. That analysis established which handcrafted
 features are sufficiently robust for habitat computation and informed
-the feature selection strategy used in Chapter 7. The datasets described
+the feature selection strategy used in Chapter~\ref{ch:7}. The datasets described
 here---PREDICT, POEM, TCIA, and VHIO---form the foundation for the
 biologically-informed habitat model and its clinical translation, which
 are the central contributions of this thesis.
@@ -229,20 +229,20 @@ Each study implements its own custom-built codes, which are rarely
 shared and in the case they are, poorly documented. Any researcher
 interested in habitat imaging faces the same challenges repeatedly: how
 to preprocess voxelwise features, how to choose the clustering
-algorithm, how to ensure habitat labels are across patients are
+algorithm, how to ensure habitat labels across patients are
 consistent so that ``Habitat 1'' means the same thing in every case,
 etc.
 
 These are not trivial implementation choices. A pipeline that ignores
-voxel spacing differences will produce habitats that reflect acquistion
+voxel spacing differences will produce habitats that reflect acquisition
 parameters rather than biology. A pipeline that clusters all tumors
 together may dilute tumor-specific heterogeneity into noise. The
 experiments carried out in Chapter~\ref{ch:6} made these challenges concrete for
-us. Computing habitats for the precision analysis requires solvign each
+us. Computing habitats for the precision analysis requires solving each
 of these problems from scratch, and the solutions were tied to the
 specific dataset and analysis.
 
-To enable the work in Chapters 7 and 8, and to support future research,
+To enable the work in Chapters~\ref{ch:7} and~\ref{ch:8}, and to support future research,
 we developed a modular, documented pipeline that addresses these issues
 systematically. The pipeline is image-modality agnostic, being
 applicable to any voxelwise imaging data (CT, MRI, PET, etc.) and
@@ -468,5 +468,5 @@ proportions and entropy separately. High rim entropy, for example, may
 reflect an active tumor-host interface with mixed viable tumor and
 vascular remodeling, while low core entropy may indicate uniform
 necrosis. These spatially-resolved metrics are used as imaging
-biomarkers in the clinical analyses of Chapter 8.
+biomarkers in the clinical analyses of Chapter~\ref{ch:8}.
 

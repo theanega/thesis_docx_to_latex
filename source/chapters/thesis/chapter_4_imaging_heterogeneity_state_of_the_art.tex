@@ -5,13 +5,12 @@ This chapter reviews how imaging heterogeneity has been approached, from
 qualitative visual assessment through radiomics to habitat imaging. The
 goal is to establish the scientific context for the work in this thesis
 and to identify the methodological gaps that motivate it. This chapter
-largely follows the comprehensive reviews carried out by O'Connor (J. P.
-O'Connor et al., 2008; J. P. B. O'Connor et al., 2015; O'Connor, 2017).
+largely follows the comprehensive reviews carried out by O'Connor and colleagues \citep{oconnorQuantitativeImagingBiomarkers2008, oconnorImagingIntratumorHeterogeneity2015, oconnorCancerHeterogeneityImaging2017}.
 
 \section{Definition and Historical Context}\label{definition-and-historical-context}
 
 At the macroscopic scale of radiology, intratumor heterogeneity refers
-to variations in imaging phenotype observed within tumor . These are
+to variations in imaging phenotype observed within tumor. These are
 differences in intensity, texture, enhancement patterns, and spatial
 organization that may reflect underlying biological variation. In the
 literature, the term has been used inconsistently. Different authors
@@ -33,7 +32,7 @@ targeted therapies requiring monitoring, non-invasive assessment of
 spatial and temporal heterogeneity could inform treatment decisions.
 
 Approaches to quantifying imaging heterogeneity have evolved over time
-(\Cref{fig:4.1}).The idea of using computers to
+(\Cref{fig:4.1}). The idea of using computers to
 extract quantitative information from medical images dates back to the
 1960s, when Lodwick first applied computational analysis to chest
 radiographs and introduced the concept of computer-aided diagnosis
@@ -67,14 +66,12 @@ Timeline illustrating the methodological progression in quantifying
 tumor heterogeneity from medical images. Early foundations include
 computer-aided diagnosis \citep{lodwickCodingRoentgenImages1963} and texture analysis
 mathematics \citep{haralickTexturalFeaturesImage1973}. The 2000s saw early subregion
-analysis \citep{caranoQuantificationTumorTissue2004} and quantitative response criteria (Choi
-et al., 2007; Chun, 2009). The field was formalized in the early 2010s
+analysis \citep{caranoQuantificationTumorTissue2004} and quantitative response criteria \citep{choiCorrelationComputedTomography2007, chunAssociationComputedTomography2009}. The field was formalized in the early 2010s
 with the definition of radiomics \citep{lambinRadiomicsExtractingMore2012} and habitats
 \citep{gatenbyQuantitativeImagingCancer2013}, followed by the demonstration of prognostic
 value across cancers \citep{aertsDecodingTumourPhenotype2014} and standardization
 initiatives \citep{vangriethuysenComputationalRadiomicsSystem2017,zwanenburgImageBiomarkerStandardization2020}. The
-late 2010s marked the entry of deep learning into radiology (Lakhani \&
-Sundaram, 2017) and foundation models for cancer imaging biomarkers have
+late 2010s marked the entry of deep learning into radiology \citep{lakhaniDeepLearningChest2017} and foundation models for cancer imaging biomarkers have
 emerged most recently \citep{paiFoundationModelCancer2024}. The trajectory shows a shift
 from qualitative assessment and handcrafted features toward learned
 representations. Created with Biorender.com.}
@@ -82,13 +79,12 @@ representations. Created with Biorender.com.}
 \end{figure}
 
 More recently, deep learning approaches have begun to complement or
-replace handcrafted features. Lakhani and Sundaram (2017) demonstrated
+replace handcrafted features. \citet{lakhaniDeepLearningChest2017} demonstrated
 the application of deep convolutional neural networks to chest
 radiograph interpretation, marking the entry of deep learning into
 mainstream radiology research \citep{lakhaniDeepLearningChest2017}. Foundation
 models are now emerging in medical imaging, including models
-specifically designed for cancer imaging biomarker discovery (Pai et
-al., 2024). These developments represent a shift from handcrafted
+specifically designed for cancer imaging biomarker discovery \citep{paiFoundationModelCancer2024}. These developments represent a shift from handcrafted
 features designed by humans to learned representations discovered by
 neural networks.
 
@@ -110,8 +106,8 @@ sharp), and peripheral rim of enhancement (present or absent). They
 observed that metastases treated with anti-angiogenic therapy often
 transform from heterogeneous, irregular lesions with ill-defined borders
 into homogeneous, hypoattenuating lesions with well-defined borders.
-Importantly, morphologic response. \Cref{fig:4.2}
-shows an example of pre- and post-treatment CT{} scans of two patients
+\Cref{fig:4.2}
+shows an example of pre- and post-treatment CT scans of two patients
 response.
 
 \begin{figure}[htbp]
@@ -120,23 +116,22 @@ response.
 \caption[Example of qualitative approach to imaging heterogeneity]{\textbf{Example of qualitative approach to imaging heterogeneity.}
 Pre- and posttreatment CT scans showing RECIST stable disease and
 morphological optimal response (top) and incomplete response (bottom).
-Optimal response is characterized by homogenous attenuation and sharp
-tumor-liver interface while incomplete response is characterized.
-Adapted from Chun, 2009.}
+Optimal response is characterized by homogeneous attenuation and sharp
+tumor-liver interface. Adapted from \citep{chunAssociationComputedTomography2009}.}
 \label{fig:4.2}
 \end{figure}
 
 Conventional quantitative approaches use objective numerical values
 derived from standard imaging. The most direct quantitative measure from
-CT{} is the Hounsfield unit value itself. In CECT, the
+CT is the Hounsfield unit value itself. In CECT, the
 difference in HU between pre-contrast and post-contrast images reflects
 contrast agent accumulation, which is related to tissue vascularity.
 Studies have shown that changes in tumor attenuation can detect early
 anti-vascular effects of bevacizumab before size changes occur
 \citep{koukourakisEarlyAntivascularEffects2007}. A seminal study in this area is the work of
-Choi et al., 2007, who extended RECIST by incorporating HU changes for
+\citet{choiCorrelationComputedTomography2007}, who extended RECIST by incorporating HU changes for
 gastrointestinal stromal tumors (GIST) treated with imatinib, a targeted
-therapy. Similar to the therapies discussed in Section
+therapy. Similar to the therapies discussed in
 \Cref{treatment-landscape-and-selection-challenges}, imatinib is a cytostatic drug,
 inhibiting growth and division of cancer cells rather than killing them
 outright. In the study, a 15\% reduction in HU on CECT
@@ -152,7 +147,7 @@ capture spatial complexity within tumors. Second, qualitative assessment
 suffers from inter-observer variability and HU values are sensitive to
 acquisition parameters (tube voltage, reconstruction kernel, contrast
 timing). For an imaging measurement to serve as a biomarker, it must be
-quantifiable and reproducible (J. P. B. O'Connor et al., 2017). The
+quantifiable and reproducible \citep{oconnorImagingBiomarkerRoadmap2017}. The
 qualitative observations and conventional quantitative measures
 described above showed that imaging heterogeneity contains prognostic
 information, but they lacked the standardization required for clinical
@@ -168,15 +163,13 @@ radiomics.
 The idea of extracting quantitative features from medical images is not
 new. Historically, this work was known as texture analysis and included
 different methods for quantifying spatial patterns in images. The most
-widely used was the gray-level co-occurrence matrix (GLCM) (Haralick et
-al., 1973), which counts how often specific pairs of intensity values
+widely used was the gray-level co-occurrence matrix (GLCM) \citep{haralickTexturalFeaturesImage1973}, which counts how often specific pairs of intensity values
 appear next to each other in an image. Texture analysis was applied to
 medical imaging throughout the 1990s and 2000s. Early studies
 demonstrated that CT texture features could predict survival in
 colorectal cancer \citep{milesColorectalCancerTexture2009}, decode gene expression patterns
 in hepatocellular carcinoma \citep{segalDecodingGlobalGene2007}, and correlate with
-histopathological characteristics in non-small cell lung cancer (Kawata
-et al., 2012).
+histopathological characteristics in non-small cell lung cancer \citep{kawataQuantitativeClassificationBased2012}.
 
 What changed in the 2010s was not the underlying mathematics but the
 framing and infrastructure. The term \emph{radiomics} was coined by
@@ -295,8 +288,8 @@ To date, most habitat imaging studies have used MRI rather than CT.
 This is mainly due to the richer biological information available from
 multiparametric MRI: diffusion-weighted imaging provides the apparent
 diffusion coefficient (ADC), which correlates with cellularity; dynamic
-contrast-enhanced sequences yield perfusion parameters such as Ktrans
-and ve; and T2-weighted imaging reflects tissue water content and edema.
+contrast-enhanced sequences yield perfusion parameters such as K$^{trans}$
+and $v_e$; and T2-weighted imaging reflects tissue water content and edema.
 These parameters have known relationships to tissue biology, making
 habitat interpretation more straightforward.
 
@@ -392,7 +385,7 @@ and complicates efforts to establish habitat imaging as a reliable tool.
 The lack of standardisation would be less problematic if habitat methods
 were rigorously validated. However, validation remains the most
 significant gap in the literature. The imaging biomarker roadmap for
-cancer studies (O'Connor et al., 2017) describes three types of
+cancer studies \citep{oconnorImagingBiomarkerRoadmap2017} describes three types of
 validation: technical (is the measurement reproducible?), biological
 (does it reflect true tissue properties?), and clinical (does it predict
 outcomes independently of established factors?). Most habitat studies
