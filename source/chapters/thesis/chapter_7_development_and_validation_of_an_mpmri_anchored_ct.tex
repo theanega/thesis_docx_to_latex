@@ -195,7 +195,7 @@ Registration was performed using NiftyReg in sequential stages: rigid,
 affine, then deformable B-spline if alignment improved. Quality was
 assessed by DSC between the T2w tumor mask
 and the warped mask; the transformation yielding the highest DSC was
-retained. Full methodological details are provided in Annex C.
+retained. Full methodological details are provided in \Cref{annex:development-and-validation-of-biologically-informed-ct-habitats}.
 
 \subsection{CT Feature Extraction}\label{ct-feature-extraction}
 
@@ -214,7 +214,7 @@ Four CT representations were evaluated:
   percentile intensity, GLDM dependence entropy, GLDM small dependence
   high gray level emphasis, GLRLM gray level non-uniformity, GLRLM run
   length non-uniformity, and NGTDM coarseness. Correlation analysis is
-  detailed in Annex C.
+  detailed in \Cref{annex:development-and-validation-of-biologically-informed-ct-habitats}.
 \item
   \textbf{Deep learning features from a liver tumor segmentation model
   (DL-SALSA).} Activations from the penultimate decoder layer of SALSA,
@@ -421,7 +421,7 @@ K=2 and K=4. The K=3 solution provided the best balance between
 biological interpretability and cluster stability; K=2 merged
 biologically distinct vascular phenotypes, while K=4 introduced a
 habitat with unstable membership across bootstrap iterations. Results
-are detailed in Annex C.
+are detailed in \Cref{annex:development-and-validation-of-biologically-informed-ct-habitats}.
 
 \textbf{Technical validation.} All representations demonstrated high
 initialization stability (ARI \textgreater{} 0.96), indicating that the
@@ -430,7 +430,7 @@ spatial coherence differed substantially. Handcrafted features produced
 spatially contiguous habitats (Moran\textquotesingle s I ≈ 0.80), while
 DL-SALSA and DL-FM produced fragmented, "salt-and-pepper" patterns with
 low spatial autocorrelation. Full technical validation results are
-reported in Annex C.
+reported in \Cref{annex:development-and-validation-of-biologically-informed-ct-habitats}.
 
 Based on these findings, handcrafted radiomics was selected as the final
 CT habitat model.
@@ -441,7 +441,7 @@ We characterized the three habitats using 13 mpMRI metrics to test
 whether they corresponded to the hypothesized histological
 compartments (necrosis, fibrosis, and viable tumor) (\Cref{tab:habitat_characterization}). \Cref{fig:7.3} shows boxplots for the eight metrics with significant differences
 across habitats, plus two cellularity-related metrics ($f_{in}$, $ADC_t$). Full
-results with pairwise significance tests are available in Annex C.
+results with pairwise significance tests are available in \Cref{annex:development-and-validation-of-biologically-informed-ct-habitats}.
 
 Vascular parameters showed consistent gradients across habitats.
 Vascular fraction ($f_v$) increased monotonically from H1 to H3 (0.068 →
@@ -584,7 +584,7 @@ near-absent from PREDICT cores (0.4\%).
 \textbf{Correlation with histological tissue percentages}. As an
 exploratory analysis, we computed Spearman correlations between
 whole-tumor habitat proportions and histological tissue percentages.
-Correlations were weak and non-significant (Annex C), reflecting the
+Correlations were weak and non-significant (\Cref{annex:development-and-validation-of-biologically-informed-ct-habitats}), reflecting the
 scale mismatch between voxel-level imaging and microscopic histology, as
 well as CT\textquotesingle s inability to distinguish necrosis from
 fibrosis within the avascular compartment.

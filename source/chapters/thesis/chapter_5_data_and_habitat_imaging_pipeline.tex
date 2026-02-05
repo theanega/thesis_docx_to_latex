@@ -122,7 +122,7 @@ high-resolution anatomical imaging (T2-weighted and T1-weighted),
 advanced diffusion MRI with multiple b-values and echo times, variable
 flip angle spoiled gradient echo (SGrE) imaging for T1 mapping, and
 dynamic contrast-enhanced (DCE) MRI. Full acquisition parameters are
-provided in Annex A.
+provided in \Cref{annex:image-acquisition-details}.
 
 MRI preprocessing was performed by MRI physicist F. Grussu, and included
 denoising (MP-PCA) \citep{veraartDenoisingDiffusionMRI2016}, Gibbs unringing \citep{kellnerGibbsringingArtifactRemoval2016}, motion correction via affine coregistration \citep{ourselinReconstructing3DStructure2001}, and EPI distortion correction using reversed phase-encoding
@@ -180,7 +180,7 @@ We harmonized mpMRI metrics across scanners with a custom-written ComBat
 \citep{fortinHarmonizationCorticalThickness2018} implementation, rescaling metrics obtained on the
 1.5T system to the 3T range. Quality control ensured that all mpMRI
 values were biologically plausible. For each metric, we established a
-valid range based on empirical knowledge (Annex A). Voxels within this
+valid range based on empirical knowledge (\Cref{annex:image-acquisition-details}). Voxels within this
 range were included, those marginally outside (±10\%) were clipped to
 the boundary, and those beyond this tolerance were excluded.
 

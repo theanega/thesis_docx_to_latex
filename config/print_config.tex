@@ -1,13 +1,16 @@
 % Configuración para versión impresa
-% Links en negro (excepto figuras que mantienen color), sin hipervínculos visibles
+
+% Configuración de colores para elementos interactivos
+\definecolor{linkcolor}{RGB}{0, 0, 0} % Negro para impresión
 
 % Configuración de hyperref para versión impresa
 \hypersetup{
-  colorlinks=false,    % Links sin color (negro)
-  hidelinks=true,      % Ocultar bordes de links
+  colorlinks=true,     % Enable colored links
+  linkcolor=black,     % Internal links in black
+  urlcolor=black,      % URLs in black
+  citecolor=black,     % Citations in black
+  filecolor=black,     % File links in black
   pdfborder={0 0 0},
   pdfusetitle=true,
 }
-
 % Nota: Las figuras mantendrán sus colores naturales
-% Los links seguirán funcionando pero serán invisibles (negro sobre negro)

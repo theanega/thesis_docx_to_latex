@@ -373,7 +373,11 @@
 \frontmatter
 
 % Portada
-\input{source/frontmatter/titlepage.tex}
+\ifx\thesisversion\printversion
+  \input{source/frontmatter/printed_titlepage.tex}
+\else
+  \input{source/frontmatter/titlepage.tex}
+\fi
 \cleardoublepage
 
 % Copyright y Funding
@@ -597,6 +601,30 @@
   \input{source/chapters/thesis/chapter_10_conclusions.tex}
 \fi
 
+\backmatter
+
+% TOC Spacing
+\addtocontents{toc}{\protect\addvspace{20pt}} % Separation similar to Parts
+
+% Bibliografía
+\phantomsection
+\addcontentsline{toc}{chapter}{References}
+\renewcommand{\bibname}{References}  % Título "References" en lugar de "Bibliography"
+\bibliographystyle{plainnat}
+{\small  % Tamaño 9pt para las referencias
+\bibliography{source/references}
+}
+
+% TOC Spacing after References
+\addtocontents{toc}{\protect\addvspace{20pt}}
+
+% Switch back to mainmatter behavior for Appendix (numbered chapters) 
+% WITHOUT resetting page numbering (which \mainmatter does).
+% We directly set the boolean \@mainmatter to true.
+\makeatletter
+\@mainmattertrue
+\makeatother
+
 % ============================================================================
 % ANEXOS (si aplica)
 % ============================================================================
@@ -608,9 +636,13 @@
 % Comparar con string "true"
 \ifx\includeannex\trueflag
   \appendix
-  \renewcommand{\appendixname}{Annex}
-  \renewcommand{\chaptername}{Annex}
-  \input{source/chapters/annex/annex_A_image_aquisition_details.tex}
+  \renewcommand{\appendixname}{Appendix}
+  \renewcommand{\chaptername}{Appendix}
+  % Reset chapter counter to 0 so A, B, C works is handled by \appendix usually
+  % But since we called \mainmatter again, we should make sure \appendix does its job.
+  % \appendix is a declaration, not an environment.
+  
+  \input{source/chapters/annex/annex_A_image_acquisition_details.tex}
   \cleardoublepage
   \input{source/chapters/annex/annex_B_identification_of_precise_handcrafted_features_for_habitat_imaging.tex}
   \cleardoublepage
@@ -619,16 +651,6 @@
   \input{source/chapters/annex/annex_D_clinical_relevance_of_ct_habitats.tex}
   \cleardoublepage
 \fi
-
-\backmatter
-
-% Bibliografía
-\addcontentsline{toc}{chapter}{References}
-\renewcommand{\bibname}{References}  % Título "References" en lugar de "Bibliography"
-\bibliographystyle{plainnat}
-{\small  % Tamaño 9pt para las referencias
-\bibliography{source/references}
-}
 
 % Índice alfabético (opcional)
 % \printindex

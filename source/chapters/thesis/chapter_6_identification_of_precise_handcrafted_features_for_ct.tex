@@ -107,7 +107,7 @@ consent. The cohort comprised four primary tumor types: (1) colorectal,
 (2) lung, (3) gastrointestinal neuroendocrine tumors, and (4) a mixed
 group of other cancers. Patients with neuroendocrine tumors were
 enrolled in the multicenter phase II TALENT trial (NCT02678780). Full
-cohort characteristics and imaging protocols are detailed in Annex B.
+cohort characteristics and imaging protocols are detailed in \Cref{annex:identification-of-precise-handcrafted-features-for-habitat-imaging}.
 
 A small independent cohort of 13 patients with liver metastases,
 enrolled in the PREDICT prospective trial (PR{[}AG{]}29/2020), underwent
@@ -127,7 +127,7 @@ To assess repeatability, we simulated test-retest scenarios by applying
 controlled image perturbations, implemented using the
 \href{https://github.com/oncoray/mirp}{Medical Image Radiomics Processor
 (MIRP) toolkit} (v1.2.0) \citep{zwanenburgAssessingRobustnessRadiomic2019}. Details of the
-perturbation protocol are provided in Annex B.
+perturbation protocol are provided in \Cref{annex:identification-of-precise-handcrafted-features-for-habitat-imaging}.
 
 \begin{figure}[htbp]
 \centering
@@ -156,7 +156,7 @@ and repeatability results. R, kernel size; B, bin size.}
 
 We computed 91 voxelwise radiomics features using PyRadiomics (v3.0.1)
 \citep{vangriethuysenComputationalRadiomicsSystem2017}. The full feature list is provided in
-Annex B. Features were calculated on original (unfiltered) images at
+\Cref{annex:identification-of-precise-handcrafted-features-for-habitat-imaging}. Features were calculated on original (unfiltered) images at
 each voxel within the segmented lesion volume. For each lesion we
 computed features four times, using the different combinations of the
 two computational parameteres we're studying:
@@ -176,7 +176,7 @@ literature. PyRadiomics defaults to R=1 mm and B=25 HU; we selected R=3
 mm and B=12 HU as alternative values frequently reported in prior
 studies. All computations followed the Image Biomarker Standardization
 Initiative (IBSI) guidelines \citep{zwanenburgImageBiomarkerStandardization2020}. Computation
-details are provided in Annex B.
+details are provided in \Cref{annex:identification-of-precise-handcrafted-features-for-habitat-imaging}.
 
 \subsection{Precision Analysis: Repeatability and Reproducibility}\label{precision-analysis-repeatability-and-reproducibility}
 
@@ -243,7 +243,7 @@ Habitat stability was quantified by comparing the spatial overlap of
 habitats derived from original versus perturbed images, using the DSC. Higher DSC indicates greater stability. We
 tested the hypothesis that habitats derived from precise features would
 be more stable than those derived from all features. Details of the GMM
-implementation and BIC optimization are provided in Annex B.
+implementation and BIC optimization are provided in \Cref{annex:identification-of-precise-handcrafted-features-for-habitat-imaging}.
 
 \subsection{Exploratory Biological Case Study}\label{exploratory-biological-case-study}
 
@@ -306,7 +306,7 @@ The type of repeatable features varied by lesion location
 (\Cref{fig:6.2}B). In liver lesions, first-order
 and Gray-Level Run-Length Matrix (GLRLM) features were more repeatable.
 Primary tumor type (colorectal, lung, neuroendocrine, other) had no
-detectable effect on repeatability (Annex B).
+detectable effect on repeatability (\Cref{annex:identification-of-precise-handcrafted-features-for-habitat-imaging}).
 
 \begin{figure}[htbp]
 \centering
@@ -372,7 +372,7 @@ As with repeatability, lesion location affected reproducibility
 (\Cref{fig:6.3}C-D, \Cref{tab:reproducibility}). Features from lung lesions
 were more reproducible than those from liver lesions, both against R and
 against B (p \textless0.001), particularly for GLCM and GLRLM feature
-classes. Primary tumor type again had no detectable effect (Annex B).
+classes. Primary tumor type again had no detectable effect (\Cref{annex:identification-of-precise-handcrafted-features-for-habitat-imaging}).
 
 
 \begin{figure}[htbp]
@@ -417,7 +417,7 @@ clinical use.
 Of the 91 features tested, 25 met all three criteria for liver lesions.
 A 26th feature---NGTDM Coarseness---was added based on its consistently
 high performance across experiments (top 3 most repeatable and
-reproducible against B; see Annex B for justification). The final set
+reproducible against B; see \Cref{annex:identification-of-precise-handcrafted-features-for-habitat-imaging} for justification). The final set
 thus comprised 26 precise features for liver lesions. The same analysis
 for lung lesions also identified 26 precise features
 (\Cref{tab:radiomics_features}). \Cref{fig:6.4} displays the ICC LCL values for all 91 features across the three

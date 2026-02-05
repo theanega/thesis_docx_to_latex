@@ -54,7 +54,32 @@ xelatex -output-directory=build build/annex_digital.tex
 xelatex -output-directory=build build/annex_digital.tex
 ```
 
+To compile the **Combined Thesis and Annex** (Digital Version):
+
+```bash
+# 1. Compile LaTeX
+xelatex -output-directory=build build/thesis_with_annex_digital.tex
+
+# 2. Process Bibliography
+bibtex build/thesis_with_annex_digital
+
+# 3. Final Compilation
+xelatex -output-directory=build build/thesis_with_annex_digital.tex
+xelatex -output-directory=build build/thesis_with_annex_digital.tex
+```
+
 **Output:** The final PDFs will be at `build/thesis_digital.pdf` and `build/annex_digital.pdf`.
+
+# For combined print version
+# 1. Compile LaTeX
+xelatex -output-directory=build build/thesis_with_annex_print.tex
+
+# 2. Process Bibliography
+bibtex build/thesis_with_annex_print
+
+# 3. Final Compilation (Run twice for cross-references)
+xelatex -output-directory=build build/thesis_with_annex_print.tex
+xelatex -output-directory=build build/thesis_with_annex_print.tex
 
 ### Optional: printed cover and cover credits
 
