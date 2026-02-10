@@ -29,7 +29,6 @@
 # Build directories
 ############################
 /build/
-/output/
 /example/
 /input/
 /bin/

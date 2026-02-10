@@ -11,6 +11,8 @@ Converting PhD thesis from Word to LaTeX. Manual semi-automated process using pa
 - `annex_thesis_digital_version.pdf` - Annex only, colored links
 - `thesis_with_annex_printed_version.pdf` - Full thesis, black links (print)
 
+
+Only the **digital full thesis with annex** PDF (`output/thesis_with_annex_digital.pdf`) is included in the repository. 
 **Project structure:**
 
 ```
